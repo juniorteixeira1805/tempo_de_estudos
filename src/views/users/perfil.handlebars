@@ -1,0 +1,40 @@
+ <div class="row">
+    <div class="col-sm my-2">
+      <a><img class="mx-4"  src="https://www.freeiconspng.com/uploads/home-icon-png-31.png" width="30" alt="Home Icon Png" /></a></li>
+    </div>
+</div>
+
+<div class="row">
+<div class="col-sm-3 mb-4">
+    <div class="card" style="width: 100%;">
+        <img src="https://instagram.fnat15-1.fna.fbcdn.net/v/t51.2885-19/s150x150/70464836_1246945115484749_6960622848293470208_n.jpg?_nc_ht=instagram.fnat15-1.fna.fbcdn.net&_nc_ohc=Qvl_AvyG6NAAX8JBCav&oh=59ed5c154c7b764cb471fc54ab3c2420&oe=5F0B0A9F" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{user.name}}</h5>
+            <p class="card-text">email: {{user.email}}</p>
+            <p class="card-text">Curso: {{user.curso}}</p>
+            <a href="#" class="btn btn-primary">Editar perfil</a>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-9 text-center">
+    <div class="card">
+        <div class="card-body text-center">
+            <h3>Historico:</h3>
+        </div>
+    </div>
+    {{#each tempos}}
+    <div class="card text-center mb-2">
+    <div class="card-header">
+        {{dateCreater}}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{inicio}} às {{termino}}</h5>
+        <p class="card-text">Estudou: {{tempoEstudado}} minutos</p>
+    </div>  
+    </div>
+    {{else}}
+    {{/each}}
+</div>
+</div>
+

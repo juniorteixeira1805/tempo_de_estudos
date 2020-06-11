@@ -1,0 +1,23 @@
+{{#if user}}
+<nav class="navbar navbar-dark bg-dark ">
+    <tr>
+      <th scope="col"><a class="navbar-brand" href="/user/home" style="color: white;">Improdutiva Estudos LTDA</a></th>
+    </tr>
+
+    <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{user.name}}
+  </button>
+    <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="/user/perfil/{{user._id}}">Perfil</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="/user/logout">Logout</a>
+    </div>
+  </div>
+  {{else}}
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" style="color: white;">
+      Improdutiva Estudos LTDA
+    </a>
+  {{/if}}
+</nav>
