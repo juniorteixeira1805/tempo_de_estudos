@@ -6,7 +6,10 @@ const Schema = mongoose.Schema
 const TempoSchema = new mongoose.Schema({
     dateCreater: {
         type: Date,
-        default: Date.now()
+    },
+
+    novaData: {
+        type: String,
     },
 
     inicio: {
@@ -36,6 +39,9 @@ const TempoSchema = new mongoose.Schema({
 
 TempoSchema.pre('save', async function(next) {
     this.tempoEstudado = await funcdata.tempoEstudado(this.inicio, this.termino)
+
+    this.novaData = await funcdata.novadata(this.dateCreater)
+
     next();
 })
 

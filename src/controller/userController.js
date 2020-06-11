@@ -14,17 +14,15 @@ router.post('/registerTempo', async (req, res) => {
 
 
     try{
-    
-        minutosTotal = funcdata.tempoEstudado(req.body.inicio, req.body.termino)
-        minutosTotal = parseInt(minutosTotal) + parseInt(req.body.dia)        
-        await User.updateOne({_id: req.body.id}, {dia: minutosTotal}, function(err, res) {
-        });
+
+        const data = new Date();
         
         const novoTempo = {
             inicio: req.body.inicio, //recebe o nome do formulario (referente ao formulario categoria)
             termino: req.body.termino,  //recebe o slug do formulario (referente ao formulario categoria)
             estudante: req.body.id,
-
+            tipo: req.body.tipo,
+            dateCreater: data
         }
 
         minutosNoDia = funcdata.tempoEstudado(req.body.inicio, req.body.termino)

@@ -33,11 +33,15 @@ module.exports = function(passport){
     }))
 
     passport.serializeUser((user, done) => {
+       // User.updateOne({_id: user.id}, {status: "online"}, function(err, res) {
+       // });
         done(null, user.id);
     })
 
     passport.deserializeUser((id, done) => {
         User.findById(id, (err, user) => {
+           // User.updateOne({_id: user.id}, {status: "offline"}, function(err, res) {
+           // });
             done(err, user);
         })
     })

@@ -10,12 +10,13 @@ const Tempo = mongoose.model("tempos")
 
 const router = express.Router();
 
-const funcdata = require("../controller/tempoController")
+const passport = require('passport')
+const agr = require("../config/auth")(passport)
 
 //rota que renderiza pagina inicaial
     router.get('/home', eAdmin, async (req, res) => {
 
-          User.find({}).sort({hr_dia: -1}).then((usuarios) => {
+          User.find({}).sort({dia: -1}).then((usuarios) => {
 
             res.render("./users/home", {usuarios: usuarios})
             }).catch((err) => {
@@ -40,10 +41,6 @@ const funcdata = require("../controller/tempoController")
 
 // rota que renderiza para fazer o logout
     router.get('/logout', async (req,res) => {
-        const offline = "offline"
-        await User.updateOne({}, {status: offline}, function(err, res) {
-        });
-
         req.logout()
         req.flash("sucess_msg", "Deslogado")
         res.redirect("/auth/login")
