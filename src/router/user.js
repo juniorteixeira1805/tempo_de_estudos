@@ -45,6 +45,18 @@ const router = express.Router();
 
     })
 
+    router.get('/historico/:id', eAdmin, async (req, res) => {
+
+        Tempo.find({'estudante': req.params.id}).sort({dateCreater: -1}).then((tempos) => {
+
+            res.render("./users/historico", {tempos: tempos})
+            }).catch((err) => {
+            res.redirect("/user/home")
+            console.log("deu erro: ", err)
+            })
+
+    })
+
 
 // rota que renderiza para fazer o logout
     router.get('/logout/:id', async (req,res) => {
