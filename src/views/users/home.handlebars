@@ -5,9 +5,11 @@
         <div class="card-header text-center align-middle">
           <div class="jumbotron ">
             <h1 class="display-4">Olá, {{user.name}}</h1>
-            <p class="lead">Essa plataforma foi pensada para ajudar você a ter um foco maior nos seus estudos.</p>
+            <p class="lead">Essa plataforma foi pensada para ajudar você a ter um foco maior nos seus estudos.
+              Aqui você poderá salvar seus tempo de estudos para regulhar e melhorar seu desempenho.
+            </p>
             <hr class="my-4">
-            <p>Aqui você poderá savar seus tempo de estudos e compara com outras pessoa que utilizam a plataforma.</p>
+            <p>A plataforma está na fase Beta, podendo existir erros e falhas. Peço-lhes que me informe qualquer erro encontrado.</p>
 
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#tempo">
@@ -43,11 +45,14 @@
                           <small>Fim: </small>
                           <input class="col-auto" type="time" id="termino" name="termino" min="00:00" max="23:59" required>
                           <div class="col-auto my-1">
-                            <select class="custom-select" name="tipo" size="3" required>
-                              <option value="Estudo">Estudo</option>
-                              <option value="Aula">Aula</option>
-                              <option value="Leitura">Leitura</option>
+                            <label for="validationServer01">Informe o tipo da atividade</label>
+                            <select class="custom-select is-valid" name="tipo" size="3" required>
+                              <option value="Estudou">Estudei</option>
+                              <option value="Assistiu aula">Assisti aula</option>
+                              <option value="Leitura">Li</option>
                             </select>
+                            <label for="validationServer01">Informe o subtipo da atividade:</label>
+                            <input type="text" class="form-control is-valid" name="subTipo" placeholder="O que leu?, Qual foi a aula?ou O que estudou?" id="validationServer01" value="{{user.subTipo}}" required>
                           </div>
                         </div>
                       <button type="submit" class="btn btn-primary">Salvar</button>
@@ -73,7 +78,7 @@
               </svg>
             </button>
 
-            <!-- Modal -->
+            <!-- Modal Musica-->
             <div class="modal fade" id="musica" tabindex="-1" role="dialog" aria-labelledby="musica" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">

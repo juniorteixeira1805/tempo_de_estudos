@@ -24,7 +24,8 @@ router.post('/registerTempo', async (req, res) => {
             termino: req.body.termino,  //recebe o slug do formulario (referente ao formulario categoria)
             estudante: req.body.id,
             tipo: req.body.tipo,
-            dateCreater: data
+            dateCreater: data,
+            subTipo: req.body.subTipo,
         }
 
         minutosNoDia = funcdata.tempoEstudado(req.body.inicio, req.body.termino)
