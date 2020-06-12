@@ -4,7 +4,7 @@
       <div class="card">
         <div class="card-header text-center align-middle">
           <div class="jumbotron ">
-            <h1 class="display-4">Olá, {{user.name}}</h1>
+            <h1 class="display-4 bg-light">Olá, {{user.name}}!</h1>
             <p class="lead">Essa plataforma foi pensada para ajudar você a ter um foco maior nos seus estudos.
               Aqui você poderá salvar seus tempo de estudos para regulhar e melhorar seu desempenho.
             </p>
@@ -108,7 +108,7 @@
                         <select class="custom-select is-valid" name="tipo" size="3" required>
                           <option value="Estudou">Estudei</option>
                           <option value="Assistiu aula">Assisti aula</option>
-                          <option value="Leitura">Li</option>
+                          <option value="Leitura">Fiz uma Leitura</option>
                         </select>
                         <label for="validationServer01">Informe o subtipo da atividade:</label>
                         <input type="text" class="form-control is-valid" name="subTipo" placeholder="O que leu?, Qual foi a aula?ou O que estudou?" id="validationServer01" value="{{user.subTipo}}" required>
