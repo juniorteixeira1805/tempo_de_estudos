@@ -62,6 +62,25 @@ router.post('/registerTempo', async (req, res) => {
     }
 })
 
+router.post('/registerRecado', async (req, res) => {
+
+
+    try{        
+
+        await User.updateOne({_id: req.body.id}, {recado: req.body.recado}, function(err, res) {
+
+        });
+
+        req.flash("sucess_msg", "tempo salvo com sucesso") // apresenta na tela a msg de salvo
+        res.redirect("/user/home") //redireciona para a pagina
+
+    }
+    
+    catch(err) {
+        console.log("Deu erro: ", err)
+    }
+})
+
 router.post("/editPerfil", eAdmin, async (req, res) => {
     
     await User.updateOne({_id: req.body.id}, {name: req.body.name}, function(err, res) {
