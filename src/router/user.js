@@ -29,7 +29,7 @@ const router = express.Router();
         res.render("./users/registro")
     })
 
-    router.get('/saladeleitura', (req, res) => {
+    router.get('/saladeleitura',eAdmin, (req, res) => {
         res.render("./users/biblioteca")
     })
 
