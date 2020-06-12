@@ -26,14 +26,15 @@
     {{>_footer}}
 
 <script>
-    $(function () {
+$(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
-    $(document).ready(function() { 
-        $("#myBtn").click(function() { 
-            $('.toast').toast('show'); 
-        }); 
+$('.toast').toast('show');
+$(document).ready(function() { 
+    $("#myBtn").click(function() { 
+        $('.toast').toast('show'); 
     }); 
+}); 
 </script> 
 </body>
 
