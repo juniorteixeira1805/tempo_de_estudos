@@ -29,6 +29,10 @@ const router = express.Router();
         res.render("./users/registro")
     })
 
+    router.get('/saladeleitura', (req, res) => {
+        res.render("./users/biblioteca")
+    })
+
     router.get('/editarusuario', eAdmin, (req, res) => {
         res.render("./users/editarUsuario")
     })
