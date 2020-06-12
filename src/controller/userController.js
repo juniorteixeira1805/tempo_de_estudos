@@ -6,6 +6,8 @@ const User = require('../models/User');
 
 const router = express.Router();
 
+const {eAdmin} = require("../helpers/eAdmin")
+
 const funcdata = require("../controller/tempoController")
 
 
@@ -60,10 +62,27 @@ router.post('/registerTempo', async (req, res) => {
     }
 })
 
+router.post("/editPerfil", eAdmin, async (req, res) => {
+    
+    await User.updateOne({_id: req.body.id}, {name: req.body.name}, function(err, res) {
+    });
+    await User.updateOne({_id: req.body.id},{curso: req.body.curso}, function(err, res) {
+    });
+    await User.updateOne({_id: req.body.id}, {foto: req.body.foto}, function(err, res) {
+    });
+    await User.updateOne({_id: req.body.id}, {email: req.body.email}, function(err, res) {
+    });
+
+    req.flash("sucess_msg", "Perfil editado")
+    res.redirect("/user/home")
+
+})
+
 
 router.get('/login', (req, res) =>{
     res.render("./users/login")
 })
+
 
 router.post('/authenticate', (req, res, next) => {
     

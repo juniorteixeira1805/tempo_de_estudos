@@ -19,9 +19,12 @@ router.post('/registerUser', async (req, res) => {
 
         console.log("Cadastrado")
 
+
     } catch(err) {
         console.log("Deu erro: ", err)
     }
+    req.flash("sucess_msg", "Cadastro realizado")
+    res.redirect("/auth/login")
 })
 
 router.get('/login', (req, res) =>{

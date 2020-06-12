@@ -1,3 +1,8 @@
+const mongoose = require("mongoose")
+
+require('../models/User');
+const User = mongoose.model("users");
+
 module.exports = {
 
     tempoEstudado: function(inicio, fim){
@@ -74,4 +79,53 @@ module.exports = {
         return datadeRecebimento
     },
 
+    verifcaDia: function(diaAnterior){
+        
+        var dataCriada = new Date()
+        
+        var diaatual = ( dataCriada.getDate()).toString()
+
+        if(diaatual != diaAnterior){
+            User.updateMany({dia: 0}, function(err, res) {
+            });
+
+            User.updateMany({diaAnterior: diaatual}, function(err, res) {
+            });
+        }
+    
+    },
+
+    verifcaSemana: function(semanaAnterior){
+        
+        var dataCriada = new Date()
+        
+        var diaDaSemana = ( dataCriada.getDay()).toString()
+        if(diaDaSemana == semanaAnterior){
+            User.updateMany({semana: 0}, function(err, res) {
+            });
+            User.updateMany({semanaAnterior: 8}, function(err, res) {
+            });
+
+        }if(diaDaSemana == 1){
+            User.updateMany({semanaAnterior: 7}, function(err, res) {
+            });
+        }
+    
+    },
+
+    verifcaMes: function(mesAnterior){
+        
+        var dataCriada = new Date()
+        
+        var mesAtual =  dataCriada.getMonth() +1
+
+        if(mesAtual != mesAnterior){
+            User.updateMany({mes: 0}, function(err, res) {
+            });
+
+            User.updateMany({mesAnterior: mesAtual}, function(err, res) {
+            });
+        }
+    
+    },
 }

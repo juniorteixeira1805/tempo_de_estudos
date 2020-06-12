@@ -24,11 +24,24 @@ const UserSchema = new mongoose.Schema({
 
     foto:{
         type: String,
+        default: "https://i0.wp.com/www.techcult.com.br/wp-content/uploads/2017/03/perfil-twitter.png?resize=1024%2C1024&ssl=1"
     },
 
-    status: {
-        type: String,
-        default: "offline"
+    verificadorOnline: {
+        type: Boolean,
+        default: false
+    },
+
+    diaAnterior: {
+        type: Number,
+    },
+
+    semanaAnterior: {
+        type: Number,
+    },
+
+    mesAnterior: {
+        type: Number,
     },
 
     dia: {
@@ -55,6 +68,19 @@ const UserSchema = new mongoose.Schema({
 UserSchema.pre('save', async function(next) {
     const hash = await bcrypt.hash(this.password, 5);
     this.password = hash;
+
+    if(this.foto == ""){
+        this.foto = "https://i0.wp.com/www.techcult.com.br/wp-content/uploads/2017/03/perfil-twitter.png?resize=1024%2C1024&ssl=1"
+    }
+
+    var dataCriada = new Date()
+    var diaDaSemana =  dataCriada.getDay()
+    var aux = 7 - diaDaSemana
+
+    this.semanaAnterior = aux + diaDaSemana
+
+    this.diaAnterior = dataCriada.getDate()
+    this.mesAnterior = dataCriada.getMonth()+1
 
     next();
 })

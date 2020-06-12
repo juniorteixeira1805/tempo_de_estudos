@@ -1,12 +1,20 @@
 <div class="row">
 <div class="col-sm-3 mb-4">
     <div class="card" style="width: 100%;">
-        <img src="https://instagram.fnat15-1.fna.fbcdn.net/v/t51.2885-19/s150x150/70464836_1246945115484749_6960622848293470208_n.jpg?_nc_ht=instagram.fnat15-1.fna.fbcdn.net&_nc_ohc=Qvl_AvyG6NAAX8JBCav&oh=59ed5c154c7b764cb471fc54ab3c2420&oe=5F0B0A9F" class="card-img-top" alt="...">
+        <img src="{{{user.foto}}}" class="card-img-top border border-secondary" alt="...">
         <div class="card-body">
-            <h5 class="card-title">{{user.name}}</h5>
-            <p class="card-text">email: {{user.email}}</p>
-            <p class="card-text">Curso: {{user.curso}}</p>
-            <a href="#" class="btn btn-primary">Editar perfil</a>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><h5 class="card-title">{{user.name}}</h5></li>
+                <li class="list-group-item"><p class="card-text">email: {{user.email}}</p></li>
+                <li class="list-group-item"><p class="card-text">Curso: {{user.curso}}</p></li>
+                <li class="list-group-item"><p class="card-text">Tempo total: {{user.total}} min</p></li>
+                <li class="list-group-item"><p class="card-text"><a href="/user/editarusuario" class="btn btn-primary">
+                    <svg class="bi bi-pencil-square" width="15px" height="15px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                    </svg> Editar perfil</a></p>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
@@ -14,13 +22,25 @@
 <div class="col-sm-9 text-center">
     <div class="card">
         <div class="card-body text-center">
-            <h3>Historico:</h3>
+            <h3 class="text-body">Historico:
+                <svg class="bi bi-card-list" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                <path fill-rule="evenodd" d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z"/>
+                <circle cx="3.5" cy="5.5" r=".5"/>
+                <circle cx="3.5" cy="8" r=".5"/>
+                <circle cx="3.5" cy="10.5" r=".5"/>
+                </svg>
+            </h3>
         </div>
     </div>
     {{#each tempos}}
     <div class="card text-center mb-2">
     <div class="card-header">
         Data: {{novaData}}
+        <svg class="bi bi-calendar3" width="25px" height="25px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+            <path fill-rule="evenodd" d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+        </svg>
     </div>
     <div class="card-body">
         <h5 class="card-title">{{inicio}} às {{termino}}</h5>

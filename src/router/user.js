@@ -10,8 +10,7 @@ const Tempo = mongoose.model("tempos")
 
 const router = express.Router();
 
-const passport = require('passport')
-const agr = require("../config/auth")(passport)
+
 
 //rota que renderiza pagina inicaial
     router.get('/home', eAdmin, async (req, res) => {
@@ -24,6 +23,14 @@ const agr = require("../config/auth")(passport)
             console.log("deu erro: ", err)
             })
 
+    })
+
+    router.get('/registrodeusuario', (req, res) => {
+        res.render("./users/registro")
+    })
+
+    router.get('/editarusuario', eAdmin, (req, res) => {
+        res.render("./users/editarUsuario")
     })
 
     router.get('/perfil/:id', eAdmin, async (req, res) => {
@@ -40,7 +47,11 @@ const agr = require("../config/auth")(passport)
 
 
 // rota que renderiza para fazer o logout
-    router.get('/logout', async (req,res) => {
+    router.get('/logout/:id', async (req,res) => {
+
+        User.updateOne({_id: req.params.id}, {verificadorOnline: false}, function(err, res) {
+        });
+
         req.logout()
         req.flash("sucess_msg", "Deslogado")
         res.redirect("/auth/login")

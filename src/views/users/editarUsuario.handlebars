@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-sm"></div>
+    <div class="col-sm-10">
+        <div class="card" style="box-shadow: 11px 9px 7px rgba(50, 50, 50, 0.77);">
+            <div class="card-body">
+                <form action="/tempo/editPerfil" method="POST">
+                <div class="alert alert-warning" role="alert" style="text-align: center;">
+                Todos os campos com "*" são obrigatorios!
+                </div>
+                    <div class="row my-4">
+                        <div class="col-sm">
+                            <label for="name" class="text-muted">Nome e Sobrenome*</label>
+                            <input type="name" name="name" id="name" class="form-control" value="{{user.name}}" placeholder="Informe o nome e sobrenome">
+                        </div>
+                    </div>
+
+                    <div class="row my-4">
+                        <div class="col-sm">
+                            <label for="email" class="text-muted">Curso*</label>
+                            <input type="text" name="curso" id="curso" class="form-control" value="{{user.curso}}" placeholder="Informe o curso ou se concurseira(o)">
+                        </div>
+                    </div>
+
+                    <div class="row my-4">
+                        <div class="col-sm">
+                            <label class="text-muted">Insira um endereço de uma foto</label>
+                            <input type="text" name="foto" id="foto" class="form-control" value="{{user.foto}}" placeholder="Insira um url de uma foto de uma rede social">
+                        </div>
+                    </div>
+
+                    <div class="row my-4">
+                        <div class="col-sm">
+                            <label for="email" class="text-muted">E-mail*</label>
+                            <input type="email" name="email" id="email" class="form-control" value="{{user.email}}" placeholder="Informe o email">
+                        </div>
+                    </div>
+                    <input type="hidden" name="id" value="{{user._id}}">
+                    <button type="submit" class="btn btn-outline-warning">Cadastrar</button>
+                </form>
+            </div>
+        </div>     
+    </div>
+    <div class="col-sm"></div>
+</div>

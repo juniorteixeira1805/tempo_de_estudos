@@ -3,6 +3,8 @@ const localstrategy = require('passport-local');
 
 const mongoose = require('mongoose');
 
+const funcdata = require("../controller/tempoController")
+
 const bct = require('bcryptjs');
 
 //carregando o modulo o user
@@ -33,15 +35,22 @@ module.exports = function(passport){
     }))
 
     passport.serializeUser((user, done) => {
-       // User.updateOne({_id: user.id}, {status: "online"}, function(err, res) {
-       // });
+
+        User.updateOne({_id: user.id}, {verificadorOnline: true}, function(err, res) {
+        });
+
+        funcdata.verifcaDia(user.diaAnterior);
+        funcdata.verifcaSemana(user.semanaAnterior);
+        funcdata.verifcaMes(user.mesAnterior);
+
+        console.log(user.name + " conectado")
+
         done(null, user.id);
     })
 
     passport.deserializeUser((id, done) => {
         User.findById(id, (err, user) => {
-           // User.updateOne({_id: user.id}, {status: "offline"}, function(err, res) {
-           // });
+
             done(err, user);
         })
     })
