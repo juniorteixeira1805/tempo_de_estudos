@@ -57,6 +57,10 @@ const router = express.Router();
 
     })
 
+    router.get('/saladeleitura',eAdmin, (req, res) => {
+        res.render("./users/biblioteca")
+    })
+
 
 // rota que renderiza para fazer o logout
     router.get('/logout/:id', async (req,res) => {
