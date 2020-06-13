@@ -43,6 +43,7 @@ require("./config/auth")(passport)
 
     //handlebars
         app.engine('handlebars', handlebars({defautLayout: 'main'})) //definido o LayoutPadrão main
+        app.set('views', __dirname + '/views') // caminho da pasta views
         app.set('view engine', 'handlebars') //setandoo handlebars como o template
 
     //mongoose
