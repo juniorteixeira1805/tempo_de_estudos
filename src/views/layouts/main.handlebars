@@ -35,6 +35,11 @@ $(document).ready(function() {
         $('.toast').toast('show'); 
     }); 
 }); 
+$(".btn-sm").click(function() 
+{
+    var emoji = $(this).text();
+    $('#conteudo').val($('#conteudo').val() + emoji);
+}); 
 </script> 
 </body>
 

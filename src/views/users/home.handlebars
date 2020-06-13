@@ -235,10 +235,15 @@
                       <div class="modal-body">
                         <form action="/tempo/registerRecado" class="was-validated" method="POST">
                           <div class="mb-3">
-                              <input type="text" class="form-control is-valid" placeholder="Fale algo de bom"  id="recado" name="recado" value="{{user.recado}}" required>
-                              <div class="invalid-feedback" >
-                                  Vizualize os recados clicando nos perfis abaixo.
-                              </div>
+                              <input type="text" class="form-control is-valid" placeholder="Fale algo de bom"  id="conteudo" name="recado" value="{{user.recado}}" required>
+                                <div class="container responsive-sm">
+                                  <button type="button" class="btn btn-sm">😁</button>
+                                  <button type="button" class="btn btn-sm">😂</button>
+                                  <button type="button" class="btn btn-sm">😃</button>
+                                  <button type="button" class="btn btn-sm">😅</button>
+                                  <button type="button" class="btn btn-sm">🙌</button>
+                                  <button type="button" class="btn btn-sm">🙏</button>
+                                </div>
                           </div>    
                           <input type="hidden" name="id" value="{{user._id}}">
                         <button type="submit" class="btn btn-info">Salvar</button>

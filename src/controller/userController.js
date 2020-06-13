@@ -72,7 +72,7 @@ router.post('/registerRecado', async (req, res) => {
 
         });
 
-        req.flash("sucess_msg", "tempo salvo com sucesso") // apresenta na tela a msg de salvo
+        req.flash("sucess_msg", "Seu recado foi salvo.") // apresenta na tela a msg de salvo
         res.redirect("/user/home") //redireciona para a pagina
 
     }
