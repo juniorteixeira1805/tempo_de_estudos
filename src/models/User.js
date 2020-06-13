@@ -17,6 +17,11 @@ const UserSchema = new mongoose.Schema({
         type: String,
     },
 
+    recado:{
+        type: String,
+        default: "Ainda não escrevi meu recado."
+    },
+
     password:{
         type: String,
         required: true,

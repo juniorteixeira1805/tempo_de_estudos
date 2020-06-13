@@ -34,6 +34,11 @@ const TempoSchema = new mongoose.Schema({
 
     tipo:{
         type: String,
+    },
+
+    subTipo:{
+        type: String,
+        default: "Não informado"
     }
 });
 

@@ -24,7 +24,8 @@ router.post('/registerTempo', async (req, res) => {
             termino: req.body.termino,  //recebe o slug do formulario (referente ao formulario categoria)
             estudante: req.body.id,
             tipo: req.body.tipo,
-            dateCreater: data
+            dateCreater: data,
+            subTipo: req.body.subTipo,
         }
 
         minutosNoDia = funcdata.tempoEstudado(req.body.inicio, req.body.termino)
@@ -54,6 +55,25 @@ router.post('/registerTempo', async (req, res) => {
             res.redirect("/user/home") // redireciona para a pagina
         })
 
+
+    }
+    
+    catch(err) {
+        console.log("Deu erro: ", err)
+    }
+})
+
+router.post('/registerRecado', async (req, res) => {
+
+
+    try{        
+
+        await User.updateOne({_id: req.body.id}, {recado: req.body.recado}, function(err, res) {
+
+        });
+
+        req.flash("sucess_msg", "tempo salvo com sucesso") // apresenta na tela a msg de salvo
+        res.redirect("/user/home") //redireciona para a pagina
 
     }
     
