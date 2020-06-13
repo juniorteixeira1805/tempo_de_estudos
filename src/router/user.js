@@ -29,10 +29,13 @@ const router = express.Router();
         res.render("./users/registro")
     })
 
+<<<<<<< HEAD
     router.get('/saladeleitura',eAdmin, (req, res) => {
         res.render("./users/biblioteca")
     })
 
+=======
+>>>>>>> parent of 2b23859... Funcionalidade Biblioteca
     router.get('/editarusuario', eAdmin, (req, res) => {
         res.render("./users/editarUsuario")
     })

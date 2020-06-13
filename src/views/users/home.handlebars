@@ -25,28 +25,6 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-sm my-2">
-    <div class="col-sm">
-      <div class="toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-          <svg class="bi bi-exclamation-square-fill text-danger" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
-          </svg>
-          <strong class="mr-auto mx-2"> Informação </strong>
-          <small>Essa mensagem desaparecerá em 5s</small>
-          <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="toast-body">
-          A funcionalidade Sala de leitura já está disponível. Aproveite!
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="container text-center">
   <div class="row">
     <div class="col-sm text-center">
@@ -71,7 +49,7 @@
               <p class="card-text">Para aqueles que gostam de ler a Improdutiva Estudos LTDA disponibiliza alguns livros digitais. Venha conferir!</p>
                 <!-- Button trigger modal -->
                 <div class="col-sm">
-                  <a href="/user/saladeleitura"><button type="button" class="btn btn-info">
+                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#biblioteca">
                     Biblioteca
                   <svg class="bi bi-bookmarks" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M7 13l5 3V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10.234z"/>
@@ -82,7 +60,7 @@
                     <path fill-rule="evenodd" d="M9 3v10H8V3h1z"/>
                     <path d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z"/>
                   </svg>
-                </button></a>
+                </button>
                 </div>
             </div>
           </div>
@@ -168,6 +146,26 @@
                 </form>
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Modal Biblioteca-->
+        <div class="modal fade" id="biblioteca" tabindex="-1" role="dialog" aria-labelledby="biblioteca" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Estamos preparando tudo para você.</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <h1>Em breve!</h1>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              </div>
+            </div>
+          </div>
+        </div>
           </div>
         </div>
 
