@@ -100,4 +100,29 @@ router.post("/editPerfil", eAdmin, async (req, res) => {
 
 })
 
+router.post('/privacidade', async (req, res) => {
+
+    try {
+        if(req.user.privacidade){
+            await User.updateOne({_id: req.user._id}, {privacidade: false}, function(err, res) {
+            });
+        }
+        else{
+            await User.updateOne({_id: req.user._id}, {privacidade: true}, function(err, res) {
+            });
+        }
+
+        console.log(req.user.name + " mudou a privacidade para: " + req.user.privacidade)
+        req.flash("sucess_msg", "você mudou a privacidade")
+        res.redirect("/user/home")
+        
+    } catch(err) {
+        console.log("Deu erro: " + err)
+        req.flash("sucess_msg", "você mudou a privacidade")
+        res.redirect("/user/home")
+    }
+
+
+})
+
 module.exports = router

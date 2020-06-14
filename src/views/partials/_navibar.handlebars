@@ -1,12 +1,38 @@
 {{#if user}}
 <nav class="navbar navbar-dark bg-dark ">
-    <tr>
-      <th scope="col"><a class="navbar-brand" href="/user/home" style="color: white;">Improdutiva Estudos LTDA</a></th>
-    </tr>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="navbar-brand" href="/user/home" style="color: white;">Improdutiva Estudos LTDA</a>
+    </li>
+    <li>
+      {{#if user.privacidade}}
+      <form action="/tempo/privacidade" method="POST">
+        <button type="submit" class="btn btn-secondary">
+          <input type="hidden" name="priv" value="{{user.privacidade}}"></td>
+          <svg class="bi bi-unlock-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z"/>
+            <path fill-rule="evenodd" d="M8.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>
+          </svg>
+        </button>
+        </form>
+      {{else}}
+      <form action="/tempo/privacidade" method="POST">
+        <input type="hidden" name="priv" value="{{user.privacidade}}"></td>
+        <button type="submit" class="btn btn-secondary">
+          <svg class="bi bi-lock-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <rect width="11" height="9" x="2.5" y="7" rx="2"/>
+            <path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>
+          </svg>
+        </button>
+      </form>
+      {{/if}}
+    </li>
+  </ul>
 
-    <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <img class="rounded-circle" style="width: 25px; height: 25px;" src="{{user.foto}}"> - {{user.name}}</button>
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <img class="rounded-circle" style="width: 25px; height: 25px;" src="{{user.foto}}"> - {{user.name}}
+    </button>
     <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
       <a class="dropdown-item" href="/user/perfil/{{user._id}}">Perfil</a>
       <div class="dropdown-divider"></div>

@@ -73,6 +73,8 @@ const router = express.Router();
 // rota que renderiza para fazer o logout
     router.get('/logout/:id', async (req,res) => {
 
+        console.log(req.user.name + " Esta na pagina perfil")
+
         User.updateOne({_id: req.params.id}, {verificadorOnline: false}, function(err, res) {
         });
 

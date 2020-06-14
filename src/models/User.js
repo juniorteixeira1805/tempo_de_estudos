@@ -37,6 +37,11 @@ const UserSchema = new mongoose.Schema({
         default: false
     },
 
+    privacidade: {
+        type: Boolean,
+        default: true
+    },
+
     diaAnterior: {
         type: Number,
     },
