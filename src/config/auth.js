@@ -43,14 +43,11 @@ module.exports = function(passport){
         funcdata.verifcaSemana(user.semanaAnterior);
         funcdata.verifcaMes(user.mesAnterior);
 
-        console.log(user.name + " conectado")
-
         done(null, user.id);
     })
 
     passport.deserializeUser((id, done) => {
         User.findById(id, (err, user) => {
-
             done(err, user);
         })
     })

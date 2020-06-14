@@ -4,15 +4,23 @@
         <img src="{{{user.foto}}}" class="card-img-top border border-secondary" alt="...">
         <div class="card-body">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><h5 class="card-title">{{user.name}}</h5></li>
-                <li class="list-group-item"><p class="card-text">email: {{user.email}}</p></li>
-                <li class="list-group-item"><p class="card-text">Curso: {{user.curso}}</p></li>
-                <li class="list-group-item"><p class="card-text">Tempo total: {{user.total}} min</p></li>
-                <li class="list-group-item"><p class="card-text"><a href="/user/editarusuario" class="btn btn-primary">
+                <li class="list-group-item text-left"><h5 class="card-title">{{user.name}}</h5></li>
+                <li class="list-group-item text-left"><p class="card-text">email: {{user.email}}</p></li>
+                <li class="list-group-item text-left"><p class="card-text">Curso: {{user.curso}}</p></li>
+                <li class="list-group-item text-left"><p class="card-text">Tempo total: {{user.total}} min</p></li>
+                <li class="list-group-item text-left"><p class="card-text"><a href="/user/editarusuario" class="btn btn-primary">
                     <svg class="bi bi-pencil-square" width="15px" height="15px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                         <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                     </svg> Editar perfil</a></p>
+                </li>
+                <li class="list-group-item text-left">
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#musica">
+                    Excluir conta
+                        <svg class="bi bi-trash-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                        </svg>
+                    </button>
                 </li>
             </ul>
         </div>
@@ -52,3 +60,29 @@
     {{/each}}
 </div>
 </div>
+
+
+<div class="modal fade" id="musica" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-danger" id="exampleModalLabel">Tem certeza que deseja fazer isso?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="text-danger">Caso selecione a opção deletar, todos seus dados serão perdidos.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <form action="/auth/deletarUser" method="POST">
+            <input type="hidden" name="id" value="{{user._id}}">
+            <button type="submit" class="btn btn-danger">Deletar</button>
+        </form>
+        </div>
+    </div>
+  </div>
+</div>
+
+

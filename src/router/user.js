@@ -15,9 +15,12 @@ const router = express.Router();
 //rota que renderiza pagina inicaial
     router.get('/home', eAdmin, async (req, res) => {
 
-          User.find({}).sort({dia: -1}).then((usuarios) => {
+        User.updateOne({_id: req.user.id}, {verificadorOnline: true}, function(err, res) {
+        });
 
+          User.find({}).sort({dia: -1}).then((usuarios) => {
             res.render("./users/home", {usuarios: usuarios})
+            console.log(req.user.name + " Esta na pagina home")
             }).catch((err) => {
             res.redirect("/user/home")
             console.log("deu erro: ", err)
@@ -31,10 +34,12 @@ const router = express.Router();
 
     router.get('/editarusuario', eAdmin, (req, res) => {
         res.render("./users/editarUsuario")
+        console.log(req.user.name + " Esta na pagina editarusuario")
     })
 
     router.get('/perfil/:id', eAdmin, async (req, res) => {
 
+        console.log(req.user.name + " Esta na pagina perfil")
         Tempo.find({'estudante': req.params.id}).populate("estudante").then((tempos) => {
 
             res.render("./users/perfil", {tempos: tempos})
@@ -50,6 +55,8 @@ const router = express.Router();
         Tempo.find({'estudante': req.params.id}).sort({dateCreater: -1}).then((tempos) => {
 
             res.render("./users/historico", {tempos: tempos})
+            console.log(req.user.name + " Esta na pagina editarusuario vizualisando o historico de " +  req.params.id)
+
             }).catch((err) => {
             res.redirect("/user/home")
             console.log("deu erro: ", err)
@@ -58,6 +65,7 @@ const router = express.Router();
     })
 
     router.get('/saladeleitura',eAdmin, (req, res) => {
+        console.log(req.user.name + " Esta na pagina saladeleitura")
         res.render("./users/biblioteca")
     })
 

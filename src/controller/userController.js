@@ -46,7 +46,7 @@ router.post('/registerTempo', async (req, res) => {
         });
     
         new Tempo(novoTempo).save().then( async () => {
-
+            console.log(req.user.name + " Acresentou novo tempo")
             req.flash("sucess_msg", "tempo salvo com sucesso") // apresenta na tela a msg de salvo
             res.redirect("/user/home") //redireciona para a pagina
         }).catch((err) => {
@@ -71,13 +71,15 @@ router.post('/registerRecado', async (req, res) => {
         await User.updateOne({_id: req.body.id}, {recado: req.body.recado}, function(err, res) {
 
         });
-
+        console.log(req.user.name + " Registrou recado")
         req.flash("sucess_msg", "Seu recado foi salvo.") // apresenta na tela a msg de salvo
         res.redirect("/user/home") //redireciona para a pagina
 
     }
     
     catch(err) {
+        req.flash("error_msg", "Houve um erro ao salvar") // apresenta uma mensagem de erro
+        res.redirect("/user/home")
         console.log("Deu erro: ", err)
     }
 })
@@ -92,25 +94,10 @@ router.post("/editPerfil", eAdmin, async (req, res) => {
     });
     await User.updateOne({_id: req.body.id}, {email: req.body.email}, function(err, res) {
     });
-
+    console.log(req.user.name + " Editou o perfil")
     req.flash("sucess_msg", "Perfil editado")
     res.redirect("/user/home")
 
-})
-
-
-router.get('/login', (req, res) =>{
-    res.render("./users/login")
-})
-
-
-router.post('/authenticate', (req, res, next) => {
-    
-    passport.authenticate("local", {
-        successRedirect: "/user/home",
-        failureRedirect: "/auth/login",
-        failureFlash: true
-    })(req, res, next)
 })
 
 module.exports = router
