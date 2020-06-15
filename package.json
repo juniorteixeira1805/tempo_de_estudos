@@ -8,7 +8,7 @@
     "start": "node src/app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "@juniorteixeira",
   "license": "ISC",
   "dependencies": {
     "@types/rox-node": "^4.8.2",
