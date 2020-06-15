@@ -54,26 +54,22 @@
       <div class="card">
         <div class="card-header text-center align-middle">
           <div class="jumbotron ">
-            <h1 class="display-4 bg-light">Olá, {{user.name}}!</h1>
-            <p class="lead">Essa plataforma foi pensada para ajudar você a ter um foco maior no seus estudos.
-              Aqui você poderá salvar seus tempos de estudo para regular e melhorar seu desempenho.
-            </p>
-            <hr class="my-4">
-              <div class="alert alert-danger" role="alert">
-                A plataforma está na fase Beta, podendo existir erros e falhas. Peço-lhes que me informe qualquer erro encontrado.
-              </div>
-              <div class="alert alert-info" role="alert">
-                <p><b>{{user.name}}</b>, Teremos, em breve, algumas novidades para você. A aqui vai algumas:
+            <h1 class="display-4" style="text-shadow: 3px 2px 5px">Olá, {{user.name}}!</h1>
+              <div class="alert alert-info shadow-lg p-3 mb-5 bg-white rounded" role="alert">
+                <p>Teremos, em breve, algumas novidades para você. A aqui vai algumas:
                   <ul>
                     <li class="text-left"><b>Sistema de recompensa:</b> Implementaremos um sistema de recompensa para que você seja estimulado a estudar;</li>
-                    <li class="text-left"><b>Ocultar Usuario:</b> Em breve você terá a opção de sair do raqueamento geral para que outros usuarios não vizualize seus tempos;</li>
+                    <li class="text-left"><b>sala individual:</b> Você terá um local para organizar suas metas horarios para facilitar você cumprir seu objetivo;</li>
                     <li class="text-left"><b>Salas de estudos individuais: </b> Você poderá criar um grupo de estudo virtual para adicionar amigos;</li>
                     <li class="text-left"><b>Feedback geral: </b> Lugar onde você poderá dar o feedback da plataforma.</li>
                     <li class="text-left"><b>Gráficos: </b> Gráficos feito com seus tempos de estudos serão implementados e adicionados ao seu perfil.</li>
                   </ul>
                 </p>
               </div>
-
+            <hr class="my-4">
+              <div class="alert alert-danger" role="alert">
+                A plataforma está na fase Beta, podendo existir erros e falhas. Peço-lhes que me informe qualquer erro encontrado.
+              </div>
             <div class="container">
               <div class="row">
 
@@ -219,14 +215,16 @@
               </div>
 
           </div>
-
+          <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Rank geral
+          </button>
         </div>
-        <div class="card-body ">
+        <div class="collapse mt-2" id="collapseExample">
           <!-- Usuarios que não são privados verão está pagina-->
         {{#if user.privacidade}}
           <div class="table-responsive-sm">
-          <table class="table table-striped">
-            <h2 class="bg-secondary text-light">Ranqueamento em relação aos minutos diários</h2>
+          <table class="table table-borderless table-hover">
+            <h2 class="text-light" style="background-color: cadetblue; text-shadow: 1px 2px 5px;">Rank em relação aos minutos diários</h2>
             <thead>
               <tr>
                 <th scope="col">
@@ -304,7 +302,7 @@
               {{#if privacidade}} <!-- Só lista os usuarios que não são privados -->
               <tr>
                 <td class="text-right"><span class="d-inline-block text-" tabindex="0" data-toggle="tooltip" title="{{{recado}}}"><img class="rounded-circle border border-secondary" style="width: 40px; height: 40px;" src="{{foto}}"></span></td>
-                <td class="text-rigcenterht"><a href="/user/historico/{{_id}}">{{name}}</a></td>
+                <td class="text-rigcenterht"><a href="/user/historico/{{_id}}" style="text-decoration: none;">{{name}}</a></td>
                 <td>{{curso}}</td>
                 <td>{{dia}} minutos</td>
                 <td>{{semana}} minutos</td>
@@ -372,9 +370,12 @@
           </table>
           </div>
           {{/if}}
-
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+
+</p>
