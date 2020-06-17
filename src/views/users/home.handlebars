@@ -19,6 +19,7 @@
       </div>
     </div>
   </div>
+
   <div class="col-sm my-2">
     <div class="col-sm">
       <div class="toast" data-delay="20000" role="alert" aria-live="assertive" aria-atomic="true">
@@ -65,330 +66,335 @@
   </div>
 </div>
 
-<div class="container text-center">
-  <div class="row">
-    <div class="col-sm text-center">
-      <div class="card">
-        <div class="card-header text-center align-middle">
-          <div class="jumbotron ">
-            <div class="alert alert-info shadow-lg p-3 mb-5 bg-white rounded" role="alert">
-              <p>Olá,<b> {{user.name}}</b>. Teremos, em breve, algumas novidades para você. A aqui vai algumas:
-                <ul>
-                  <li class="text-left"><b>Sistema de recompensa:</b> Implementaremos um sistema de recompensa para que você seja estimulado a estudar;</li>
-                  <li class="text-left"><b>sala individual:</b> Você terá um local para organizar suas metas horarios para facilitar você cumprir seu objetivo;</li>
-                  <li class="text-left"><b>Salas de estudos individuais: </b> Você poderá criar um grupo de estudo virtual para adicionar amigos;</li>
-                  <li class="text-left"><b>Feedback geral: </b> Lugar onde você poderá dar o feedback da plataforma.</li>
-                  <li class="text-left"><b>Gráficos: </b> Gráficos feito com seus tempos de estudos serão implementados e adicionados ao seu perfil.</li>
-                </ul>
-              </p>
-            </div>
-            <hr class="my-4">
-            <div class="container">
-              <div class="row">
+<div class="container">
+<!-- Alerta para informações  -->
+  <div class="alert alert-secondary shadow-lg p-3 mb-5 rounded text-center text-dark" role="alert">
+    <p>Olá,<b> {{user.name}}</b>. Teremos, em breve, algumas novidades para você. A aqui vai algumas:
+      <ul>
+        <li class="text-left"><b>Sistema de recompensa:</b> Implementaremos um sistema de recompensa para que você seja estimulado a estudar;</li>
+        <li class="text-left"><b>sala individual:</b> Você terá um local para organizar suas metas horarios para facilitar você cumprir seu objetivo;</li>
+        <li class="text-left"><b>Salas de estudos individuais: </b> Você poderá criar um grupo de estudo virtual para adicionar amigos;</li>
+        <li class="text-left"><b>Feedback geral: </b> Lugar onde você poderá dar o feedback da plataforma.</li>
+        <li class="text-left"><b>Gráficos: </b> Gráficos feito com seus tempos de estudos serão implementados e adicionados ao seu perfil.</li>
+      </ul>
+    </p>
+  </div>
 
-                <div class="card-deck">
-                  <div class="card">
-                    <img src="https://cio.com.br/wp-content/uploads/2019/12/os-livros-tecnologia-ler-2020.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Sala de leitura</h5>
-                      <p class="card-text">Para aqueles que gostam de ler a Improdutiva Estudos LTDA disponibiliza alguns livros digitais. Venha conferir!</p>
-                        <!-- Button trigger modal -->
-                        <div class="col-sm">
-                          <a href="/user/saladeleitura"><button type="button" class="btn btn-secondary">
-                            Biblioteca
-                          <svg class="bi bi-bookmarks" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M7 13l5 3V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10.234z"/>
-                            <path d="M14 14l-1-.6V2a1 1 0 0 0-1-1H4.268A2 2 0 0 1 6 0h6a2 2 0 0 1 2 2v12z"/>
-                          </svg>
-                        </button></a>
-                        </div>
-                    </div>
-                  </div>
-
-                  <div class="card">
-                    <img src="data:image/jpeg;base64,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" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Músicas para estudar</h5>
-                      <p class="card-text">Disponibilizamos algumas playlists de musicas que ajudam no foco e também musicas que ajudam a relaxar nas pausas para descanso.</p>
-                      <!-- Button trigger modal -->
-                        <div class="col-sm"><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#musica">
-                          Playlists
-                          <svg class="bi bi-music-player" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M12 1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
-                            <path fill-rule="evenodd" d="M11 3H5v3h6V3zM5 2a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H5zm3 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                            <circle cx="8" cy="11" r="1"/>
-                          </svg>
-                          <svg class="bi bi-music-note" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-                            <path fill-rule="evenodd" d="M9 3v10H8V3h1z"/>
-                            <path d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z"/>
-                          </svg>
-                        </button>
-                        </div>
-                    </div>
-                  </div>
-
-                  <div class="card">
-                    <img src="data:image/jpeg;base64,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" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Salve o tempo da sua atividade</h5>
-                      <p class="card-text">Aqui você pode adicionar o tempo da atividade que praticou. Adicione o inicio e fim, atividade e a sub atividade.</p>
-                      <!-- Button trigger modal -->
-                      <div class="col-sm"><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#tempo">
-                        salvar nova atividade
-                        <svg class="bi bi-clock" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                          <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
-                          <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
-                        </svg>
-                      </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              </div>
-            <!-- Modal tempo-->
-              <div class="modal fade" id="tempo" tabindex="-1" role="dialog" aria-labelledby="tempo" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Informe o horário</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <form action="/authUser/registerTempo" method="POST">
-
-                          <input type="hidden" name="id" value="{{user._id}}"></td>
-                          <input type="hidden" name="dia" value="{{user.dia}}"></td>
-                          <input type="hidden" name="semana" value="{{user.semana}}"></td>
-                          <input type="hidden" name="mes" value="{{user.mes}}"></td>
-                          <input type="hidden" name="total" value="{{user.total}}"></td>
-
-                          <div class="form-group">
-                            <small>Inicio: </small>
-                            <input class="col-auto" type="time" id="inicio" name="inicio" min="00:00" max="23:59" required>
-                            <small>Fim: </small>
-                            <input class="col-auto" type="time" id="termino" name="termino" min="00:00" max="23:59" required>
-                            <div class="col-auto my-1">
-                              <label for="validationServer01">Informe o tipo da atividade</label>
-                              <select class="custom-select is-valid" name="tipo" size="3" required>
-                                <option value="Estudou">Estudei</option>
-                                <option value="Assistiu aula">Assisti aula</option>
-                                <option value="Leitura">Fiz uma Leitura</option>
-                              </select>
-                              <label for="validationServer01">Informe o subtipo da atividade:</label>
-                              <input type="text" class="form-control is-valid" name="subTipo" placeholder="O que leu? Qual foi a aula? O que estudou?" id="validationServer01" required>
-                            </div>
-                          </div>
-                        <button type="submit" class="btn btn-info">Salvar</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-          <!-- Modal Musica-->
-              <div class="modal fade" id="musica" tabindex="-1" role="dialog" aria-labelledby="musica" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Relaxe e foque!</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                    <div class="embed-responsive embed-responsive-21by9">
-                      <iframe width="853" height="480" src="https://www.youtube.com/embed/5qap5aO4i9A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="dropdown-divider"></div>
-                    <div class="embed-responsive embed-responsive-21by9">
-                      <iframe src="https://open.spotify.com/embed/playlist/6h0GXbTeBnMipifB6CPE6s" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                    </div>
-                    <div class="dropdown-divider"></div>
-                    <div class="embed-responsive embed-responsive-21by9">
-                      <iframe src="https://open.spotify.com/embed/artist/0i1x07FrN1DGBYbOxD4Hr5" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>                  
-                    </div>
-                    <div class="dropdown-divider"></div>
-                    <div class="embed-responsive embed-responsive-21by9">
-                      <iframe src="https://open.spotify.com/embed/album/2GfqgW9ftpW5sDZjgBNTNc" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                    </div>                  
-                    <div class="dropdown-divider"></div>
-                    <div class="dropdown-divider"></div>
-                    <div class="embed-responsive embed-responsive-21by9">
-                      <iframe src="https://open.spotify.com/embed/album/29QGXrsRbfQnAKMwIjPGBB" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                    </div>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-          </div>
-          <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            Rank geral
-          </button>
-        </div>
-        <div class="collapse mt-2" id="collapseExample">
-          <!-- Usuarios que não são privados verão está pagina-->
-        {{#if user.privacidade}}
-          <div class="table-responsive-sm">
-          <table class="table table-borderless table-hover">
-            <h2 class="text-light" style="background-color: rgb(87, 103, 104); text-shadow: 1px 1px 2px;">Rank em relação aos minutos semanais</h2>
-            <thead>
-              <tr>
-                <th scope="col">
-                <!-- Recado -->
-                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#recado">
-                  <svg class="bi bi-pencil-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                  </svg>
-                </button>
-
-                <!-- Modal Recado -->
-                <div class="modal fade" id="recado" tabindex="-1" role="dialog" aria-labelledby="recado" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Escreva seu recado</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <form action="/authUser/registerRecado" class="was-validated" method="POST">
-                          <div class="mb-3">
-                              <input type="text" class="form-control is-valid" placeholder="Fale algo de bom"  id="conteudo" name="recado" value="{{user.recado}}" required>
-                                <div class="container responsive-sm">
-                                  <button type="button" class="btn btn-sm">😁</button>
-                                  <button type="button" class="btn btn-sm">😂</button>
-                                  <button type="button" class="btn btn-sm">😃</button>
-                                  <button type="button" class="btn btn-sm">😅</button>
-                                  <button type="button" class="btn btn-sm">🙌</button>
-                                  <button type="button" class="btn btn-sm">🙏</button>
-                                </div>
-                          </div>    
-                          <input type="hidden" name="id" value="{{user._id}}">
-                        <button type="submit" class="btn btn-secondary">Salvar</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                      </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </th>
-                <th scope="col"><svg class="bi bi-person-lines-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7 1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm2 9a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
-                </svg> - Nome</th>
-                <th scope="col">
-                  <svg class="bi bi-book-half" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 0 0 7.5 2.5v11a.5.5 0 0 0 .854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 0 0-.799-.34 12.96 12.96 0 0 0-2.073-.609zM15 2.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.387-.023-3.426.56V2.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0 1 15 2.82z"/>
-                    <path fill-rule="evenodd" d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 0 1 8.5 2.5v11a.5.5 0 0 1-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 0 1 0 13.5v-11a.5.5 0 0 1 .276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 0 1 .22-.103 12.958 12.958 0 0 1 2.7-.869z"/>
-                  </svg> - Curso</th>
-                <th scope="col">
-                <svg class="bi bi-clock-history" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
-                  <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
-                  <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
-                </svg> - do dia</th>
-                <th scope="col">
-                  <svg class="bi bi-clock-history" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
-                    <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
-                    <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
-                  </svg> - da Semana</th>
-                <th scope="col">
-                    <svg class="bi bi-clock-history" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
-                    <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
-                    <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
-                  </svg> - do mês</th>
-              </tr>
-            </thead>
-            <tbody>
-
-              {{#each usuarios}}
-              {{#if privacidade}} <!-- Só lista os usuarios que não são privados -->
-              <tr>
-                <td class="text-right"><span class="d-inline-block text-" tabindex="0" data-toggle="tooltip" title="{{{recado}}}"><img class="rounded-circle border border-secondary" style="width: 40px; height: 40px;" src="{{foto}}"></span></td>
-                <td class="text-rigcenterht"><a href="/user/historico/{{_id}}" style="text-decoration: none;">{{name}}</a></td>
-                <td>{{curso}}</td>
-                <td>{{dia}} minutos</td>
-                <td>{{semana}} minutos</td>
-                <td>{{mes}} minutos</td>   
-                <td class="entry">{{#if verificadorOnline}}<svg class="bi bi-circle-fill" style="color: rgb(3, 247, 36);" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="5"/>
-                {{else}}<svg class="bi bi-circle-fill" style="color: rgb(81, 87, 76);" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="5"/>Offline
-                {{/if}}</td>
-              </tr>
-              {{/if}}
-              {{else}}
-              {{/each}}
-            </tbody>
-          </table>
-          </div>
-
-
-          <!-- Usuarios que são privados verão esta pagina-->
-          {{else}}
-          <div class="table-responsive-sm">
-          <table class="table table-striped">
-            <h2 class="bg-secondary text-light">Seus dados</h2>
-            <thead>
-              <tr>
-                <th scope="col"><svg class="bi bi-person-lines-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7 1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm2 9a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
-                </svg> - Nome</th>
-                <th scope="col">
-                  <svg class="bi bi-book-half" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 0 0 7.5 2.5v11a.5.5 0 0 0 .854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 0 0-.799-.34 12.96 12.96 0 0 0-2.073-.609zM15 2.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.387-.023-3.426.56V2.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0 1 15 2.82z"/>
-                    <path fill-rule="evenodd" d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 0 1 8.5 2.5v11a.5.5 0 0 1-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 0 1 0 13.5v-11a.5.5 0 0 1 .276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 0 1 .22-.103 12.958 12.958 0 0 1 2.7-.869z"/>
-                  </svg> - Curso</th>
-                <th scope="col">
-                <svg class="bi bi-clock-history" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
-                  <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
-                  <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
-                </svg> - do dia</th>
-                <th scope="col">
-                  <svg class="bi bi-clock-history" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
-                    <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
-                    <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
-                  </svg> - da Semana</th>
-                <th scope="col">
-                    <svg class="bi bi-clock-history" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
-                    <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
-                    <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
-                  </svg> - do mês</th>
-              </tr>
-            </thead>
-            <tbody>
-              
-              <tr>
-                <td>{{user.name}}</td>
-                <td>{{user.curso}}</td>
-                <td>{{user.dia}} minutos</td>
-                <td>{{user.semana}} minutos</td>
-                <td>{{user.mes}} minutos</td>   
-                <td class="entry">{{#if user.verificadorOnline}}<svg class="bi bi-circle-fill" style="color: rgb(3, 247, 36);" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="5"/>
-                {{else}}<svg class="bi bi-circle-fill" style="color: rgb(81, 87, 76);" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="5"/>Offline
-                {{/if}}</td>
-              </tr>
-            </tbody>
-          </table>
-          </div>
-          {{/if}}
-        </div>
+<!-- Alerta para informações  -->
+  <div class="card-deck">
+    <div class="card text-center">
+      <img src="https://66.media.tumblr.com/05b78011f4de0577ae4cd43a683641d9/tumblr_oloxq6IIjt1vl9ohgo1_400.gifv" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><b>Sala de leitura</b></h5>
+        <p class="card-text">Para aqueles que gostam de ler a Improdutiva Estudos LTDA disponibiliza alguns livros digitais. Venha conferir!</p>
+          <!-- Button trigger modal -->
       </div>
+      <div class="card-footer">
+        <div class="col-sm">
+          <a href="/user/saladeleitura">
+            <button type="button" class="btn btn-secondary">
+              Biblioteca
+              <svg class="bi bi-bookmarks" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M7 13l5 3V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10.234z"/>
+                <path d="M14 14l-1-.6V2a1 1 0 0 0-1-1H4.268A2 2 0 0 1 6 0h6a2 2 0 0 1 2 2v12z"/>
+              </svg>
+            </button>
+          </a>
+        </div>
+			</div>
+    </div>
+
+    <div class="card text-center">
+      <img src="https://data.whicdn.com/images/107195970/original.gif" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><b>Músicas para estudar</b></h5>
+        <p class="card-text">Disponibilizamos algumas playlists de musicas que ajudam no foco e também musicas que ajudam a relaxar nas pausas para descanso.</p>
+        <!-- Button trigger modal -->
+      </div>
+      <div class="card-footer">
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#musica">
+          Playlists
+          <svg class="bi bi-music-player" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M12 1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
+            <path fill-rule="evenodd" d="M11 3H5v3h6V3zM5 2a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H5zm3 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+            <circle cx="8" cy="11" r="1"/>
+          </svg>
+          <svg class="bi bi-music-note" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
+            <path fill-rule="evenodd" d="M9 3v10H8V3h1z"/>
+            <path d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="card text-center">
+      <img src="https://secureservercdn.net/198.71.233.179/x92.e8b.myftpupload.com/wp-content/uploads/2019/11/ticking-clock-3.gif?time=1581368292" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><b>Salve o tempo da sua atividade</b>></h5>
+        <p class="card-text">Aqui você pode adicionar o tempo da atividade que praticou. Adicione o inicio e fim, atividade e a sub atividade.</p>
+        <!-- Button trigger modal -->
+      </div>
+      <div class="card-footer">
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#tempo">
+          salvar nova atividade
+          <svg class="bi bi-clock" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
+            <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+<!-- Botão para aprensetar o rank Geral  -->
+  <div class="card text-center mt-2">
+    <div class="card-header">
+    <button class="btn btn-secondary mt-2 bnt-responsive-sm" style="margin: 0 auto;" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Rank geral em relação aos minutos
+    </button>
+    </div>
+    <div class="collapse mt-2" id="collapseExample">
+  {{#if user.privacidade}}
+    <!-- Usuarios que não são privados verão está pagina-->
+      <div class="table-responsive-sm">
+        <table class="table table-borderless table-hover ">
+          <thead>
+            <tr>
+              <th scope="col">
+              <!-- Recado -->
+              <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#recado">
+                <svg class="bi bi-pencil-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                </svg>
+              </button>
+
+              </th>
+              <th scope="col"><svg class="bi bi-person-lines-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7 1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm2 9a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
+              </svg> - Nome</th>
+              <th scope="col">
+                <svg class="bi bi-book-half" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 0 0 7.5 2.5v11a.5.5 0 0 0 .854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 0 0-.799-.34 12.96 12.96 0 0 0-2.073-.609zM15 2.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.387-.023-3.426.56V2.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0 1 15 2.82z"/>
+                  <path fill-rule="evenodd" d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 0 1 8.5 2.5v11a.5.5 0 0 1-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 0 1 0 13.5v-11a.5.5 0 0 1 .276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 0 1 .22-.103 12.958 12.958 0 0 1 2.7-.869z"/>
+                </svg> - Curso</th>
+              <th scope="col">
+              <svg class="bi bi-clock-history" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
+                <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
+                <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+              </svg> - do dia</th>
+              <th scope="col">
+                <svg class="bi bi-clock-history" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
+                  <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
+                  <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+                </svg> - da Semana</th>
+              <th scope="col">
+                  <svg class="bi bi-clock-history" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
+                  <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
+                  <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+                </svg> - do mês</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each usuarios}}
+            {{#if privacidade}} <!-- Só lista os usuarios que não são privados -->
+            <tr>
+              <td class="text-right"><span class="d-inline-block text-" tabindex="0" data-toggle="tooltip" title="{{{recado}}}"><img class="rounded-circle border border-secondary" style="width: 40px; height: 40px;" src="{{foto}}"></span></td>
+              <td class="text-rigcenterht"><a href="/user/historico/{{_id}}" style="text-decoration: none;">{{name}}</a></td>
+              <td>{{curso}}</td>
+              <td>{{dia}} minutos</td>
+              <td>{{semana}} minutos</td>
+              <td>{{mes}} minutos</td>   
+              <td class="entry">{{#if verificadorOnline}}<svg class="bi bi-circle-fill" style="color: rgb(3, 247, 36);" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="5"/>
+            {{else}}<svg class="bi bi-circle-fill" style="color: rgb(81, 87, 76);" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="5"/>Offline
+            {{/if}}
+              </td>
+            </tr>
+            {{/if}}
+            {{else}}
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+
+
+  <!-- Usuarios que são privados verão esta pagina-->
+  {{else}}
+      <div class="table-responsive-sm">
+        <table class="table table-striped">
+          <h2 class="bg-secondary text-light">Seus dados</h2>
+          <thead>
+            <tr>
+              <th scope="col">
+                <svg class="bi bi-person-lines-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7 1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm2 9a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
+                </svg> - Nome
+              </th>
+              <th scope="col">
+                <svg class="bi bi-book-half" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 0 0 7.5 2.5v11a.5.5 0 0 0 .854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 0 0-.799-.34 12.96 12.96 0 0 0-2.073-.609zM15 2.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.387-.023-3.426.56V2.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0 1 15 2.82z"/>
+                  <path fill-rule="evenodd" d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 0 1 8.5 2.5v11a.5.5 0 0 1-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 0 1 0 13.5v-11a.5.5 0 0 1 .276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 0 1 .22-.103 12.958 12.958 0 0 1 2.7-.869z"/>
+                </svg> - Curso
+              </th>
+              <th scope="col">
+              <svg class="bi bi-clock-history" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
+                <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
+                <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+              </svg> - do dia
+            </th>
+              <th scope="col">
+                <svg class="bi bi-clock-history" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
+                  <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
+                  <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+                </svg> - da Semana
+              </th>
+              <th scope="col">
+                  <svg class="bi bi-clock-history" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
+                  <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
+                  <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+                </svg> - do mês
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{user.name}}</td>
+              <td>{{user.curso}}</td>
+              <td>{{user.dia}} minutos</td>
+              <td>{{user.semana}} minutos</td>
+              <td>{{user.mes}} minutos</td>   
+              <td class="entry">{{#if user.verificadorOnline}}<svg class="bi bi-circle-fill" style="color: rgb(3, 247, 36);" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="5"/>
+              {{else}}<svg class="bi bi-circle-fill" style="color: rgb(81, 87, 76);" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="5"/>Offline
+              {{/if}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  {{/if}}
     </div>
   </div>
 </div>
 
 
+        
+        
+    
+      
+<!-- Modal tempo-->
+<div class="modal fade" id="tempo" tabindex="-1" role="dialog" aria-labelledby="tempo" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Informe o horário</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/authUser/registerTempo" method="POST">
 
-</p>
+            <input type="hidden" name="id" value="{{user._id}}"></td>
+            <input type="hidden" name="dia" value="{{user.dia}}"></td>
+            <input type="hidden" name="semana" value="{{user.semana}}"></td>
+            <input type="hidden" name="mes" value="{{user.mes}}"></td>
+            <input type="hidden" name="total" value="{{user.total}}"></td>
+
+            <div class="form-group">
+              <small>Inicio: </small>
+              <input class="col-auto" type="time" id="inicio" name="inicio" min="00:00" max="23:59" required>
+              <small>Fim: </small>
+              <input class="col-auto" type="time" id="termino" name="termino" min="00:00" max="23:59" required>
+              <div class="col-auto my-1">
+                <label for="validationServer01">Informe o tipo da atividade</label>
+                <select class="custom-select is-valid" name="tipo" size="3" required>
+                  <option value="Estudou">Estudei</option>
+                  <option value="Assistiu aula">Assisti aula</option>
+                  <option value="Leitura">Fiz uma Leitura</option>
+                </select>
+                <label for="validationServer01">Informe o subtipo da atividade:</label>
+                <input type="text" class="form-control is-valid" name="subTipo" placeholder="O que leu? Qual foi a aula? O que estudou?" id="validationServer01" required>
+              </div>
+            </div>
+          <button type="submit" class="btn btn-info">Salvar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Musica-->
+<div class="modal fade" id="musica" tabindex="-1" role="dialog" aria-labelledby="musica" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Relaxe e foque!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="embed-responsive embed-responsive-21by9">
+        <iframe width="853" height="480" src="https://www.youtube.com/embed/5qap5aO4i9A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="dropdown-divider"></div>
+      <div class="embed-responsive embed-responsive-21by9">
+        <iframe src="https://open.spotify.com/embed/playlist/6h0GXbTeBnMipifB6CPE6s" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      </div>
+      <div class="dropdown-divider"></div>
+      <div class="embed-responsive embed-responsive-21by9">
+        <iframe src="https://open.spotify.com/embed/artist/0i1x07FrN1DGBYbOxD4Hr5" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>                  
+      </div>
+      <div class="dropdown-divider"></div>
+      <div class="embed-responsive embed-responsive-21by9">
+        <iframe src="https://open.spotify.com/embed/album/2GfqgW9ftpW5sDZjgBNTNc" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      </div>                  
+      <div class="dropdown-divider"></div>
+      <div class="dropdown-divider"></div>
+      <div class="embed-responsive embed-responsive-21by9">
+        <iframe src="https://open.spotify.com/embed/album/29QGXrsRbfQnAKMwIjPGBB" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      </div>
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Recado -->
+<div class="modal fade" id="recado" tabindex="-1" role="dialog" aria-labelledby="recado" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Escreva seu recado</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/authUser/registerRecado" class="was-validated" method="POST">
+          <div class="mb-3">
+              <input type="text" class="form-control is-valid" placeholder="Fale algo de bom"  id="conteudo" name="recado" value="{{user.recado}}" required>
+                <div class="container responsive-sm">
+                  <button type="button" class="btn btn-sm">😁</button>
+                  <button type="button" class="btn btn-sm">😂</button>
+                  <button type="button" class="btn btn-sm">😃</button>
+                  <button type="button" class="btn btn-sm">😅</button>
+                  <button type="button" class="btn btn-sm">🙌</button>
+                  <button type="button" class="btn btn-sm">🙏</button>
+                </div>
+          </div>    
+          <input type="hidden" name="id" value="{{user._id}}">
+        <button type="submit" class="btn btn-secondary">Salvar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
