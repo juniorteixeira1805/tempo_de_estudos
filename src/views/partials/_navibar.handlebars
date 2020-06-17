@@ -6,7 +6,7 @@
     </li>
     <li>
       {{#if user.privacidade}}
-      <form action="/tempo/privacidade" method="POST">
+      <form action="/authUser/privacidade" method="POST">
         <button type="submit" class="btn btn-secondary">
           <input type="hidden" name="priv" value="{{user.privacidade}}"></td>
           <svg class="bi bi-unlock-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -16,7 +16,7 @@
         </button>
         </form>
       {{else}}
-      <form action="/tempo/privacidade" method="POST">
+      <form action="/authUser/privacidade" method="POST">
         <input type="hidden" name="priv" value="{{user.privacidade}}"></td>
         <button type="submit" class="btn btn-secondary">
           <svg class="bi bi-lock-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

@@ -19,7 +19,7 @@ const router = express.Router();
         User.updateOne({_id: req.user.id}, {verificadorOnline: true}, function(err, res) {
         });
         //-- Passando todos os usuarios para a view --//
-          User.find({}).sort({dia: -1}).then((usuarios) => {
+          User.find({}).sort({semana: -1}).then((usuarios) => {
             res.render("./users/home", {usuarios: usuarios})
             console.log(req.user.name + " Esta na pagina home")
             }).catch((err) => {
@@ -43,7 +43,7 @@ const router = express.Router();
     router.get('/perfil', eAdmin, async (req, res) => {
 
         console.log(req.user.name + " Esta na pagina perfil")
-        Atividade.find({'estudante': req.user.id}).then((atv) => {
+        Atividade.find({'estudante': req.user.id}).sort({horarioInicial: 0}).then((atv) => {
 
             res.render("./users/perfil", {atv: atv})
             }).catch((err) => {
