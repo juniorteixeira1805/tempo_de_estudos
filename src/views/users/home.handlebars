@@ -71,22 +71,18 @@
       <div class="card">
         <div class="card-header text-center align-middle">
           <div class="jumbotron ">
-            <h1 class="display-4" style="text-shadow: 3px 2px 5px">Olá, {{user.name}}!</h1>
-              <div class="alert alert-info shadow-lg p-3 mb-5 bg-white rounded" role="alert">
-                <p>Teremos, em breve, algumas novidades para você. A aqui vai algumas:
-                  <ul>
-                    <li class="text-left"><b>Sistema de recompensa:</b> Implementaremos um sistema de recompensa para que você seja estimulado a estudar;</li>
-                    <li class="text-left"><b>sala individual:</b> Você terá um local para organizar suas metas horarios para facilitar você cumprir seu objetivo;</li>
-                    <li class="text-left"><b>Salas de estudos individuais: </b> Você poderá criar um grupo de estudo virtual para adicionar amigos;</li>
-                    <li class="text-left"><b>Feedback geral: </b> Lugar onde você poderá dar o feedback da plataforma.</li>
-                    <li class="text-left"><b>Gráficos: </b> Gráficos feito com seus tempos de estudos serão implementados e adicionados ao seu perfil.</li>
-                  </ul>
-                </p>
-              </div>
+            <div class="alert alert-info shadow-lg p-3 mb-5 bg-white rounded" role="alert">
+              <p>Olá,<b> {{user.name}}</b>. Teremos, em breve, algumas novidades para você. A aqui vai algumas:
+                <ul>
+                  <li class="text-left"><b>Sistema de recompensa:</b> Implementaremos um sistema de recompensa para que você seja estimulado a estudar;</li>
+                  <li class="text-left"><b>sala individual:</b> Você terá um local para organizar suas metas horarios para facilitar você cumprir seu objetivo;</li>
+                  <li class="text-left"><b>Salas de estudos individuais: </b> Você poderá criar um grupo de estudo virtual para adicionar amigos;</li>
+                  <li class="text-left"><b>Feedback geral: </b> Lugar onde você poderá dar o feedback da plataforma.</li>
+                  <li class="text-left"><b>Gráficos: </b> Gráficos feito com seus tempos de estudos serão implementados e adicionados ao seu perfil.</li>
+                </ul>
+              </p>
+            </div>
             <hr class="my-4">
-              <div class="alert alert-danger" role="alert">
-                A plataforma está na fase Beta, podendo existir erros e falhas. Peço-lhes que me informe qualquer erro encontrado.
-              </div>
             <div class="container">
               <div class="row">
 
@@ -98,7 +94,7 @@
                       <p class="card-text">Para aqueles que gostam de ler a Improdutiva Estudos LTDA disponibiliza alguns livros digitais. Venha conferir!</p>
                         <!-- Button trigger modal -->
                         <div class="col-sm">
-                          <a href="/user/saladeleitura"><button type="button" class="btn btn-info">
+                          <a href="/user/saladeleitura"><button type="button" class="btn btn-secondary">
                             Biblioteca
                           <svg class="bi bi-bookmarks" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M7 13l5 3V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10.234z"/>
@@ -115,7 +111,7 @@
                       <h5 class="card-title">Músicas para estudar</h5>
                       <p class="card-text">Disponibilizamos algumas playlists de musicas que ajudam no foco e também musicas que ajudam a relaxar nas pausas para descanso.</p>
                       <!-- Button trigger modal -->
-                        <div class="col-sm"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#musica">
+                        <div class="col-sm"><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#musica">
                           Playlists
                           <svg class="bi bi-music-player" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M12 1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
@@ -138,7 +134,7 @@
                       <h5 class="card-title">Salve o tempo da sua atividade</h5>
                       <p class="card-text">Aqui você pode adicionar o tempo da atividade que praticou. Adicione o inicio e fim, atividade e a sub atividade.</p>
                       <!-- Button trigger modal -->
-                      <div class="col-sm"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#tempo">
+                      <div class="col-sm"><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#tempo">
                         salvar nova atividade
                         <svg class="bi bi-clock" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                           <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
@@ -186,7 +182,7 @@
                               <input type="text" class="form-control is-valid" name="subTipo" placeholder="O que leu? Qual foi a aula? O que estudou?" id="validationServer01" required>
                             </div>
                           </div>
-                        <button type="submit" class="btn btn-primary">Salvar</button>
+                        <button type="submit" class="btn btn-info">Salvar</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                       </form>
                     </div>
@@ -232,7 +228,7 @@
               </div>
 
           </div>
-          <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             Rank geral
           </button>
         </div>
@@ -241,12 +237,12 @@
         {{#if user.privacidade}}
           <div class="table-responsive-sm">
           <table class="table table-borderless table-hover">
-            <h2 class="text-light" style="background-color: cadetblue; text-shadow: 1px 2px 5px;">Rank em relação aos minutos semanais</h2>
+            <h2 class="text-light" style="background-color: rgb(87, 103, 104); text-shadow: 1px 1px 2px;">Rank em relação aos minutos semanais</h2>
             <thead>
               <tr>
                 <th scope="col">
                 <!-- Recado -->
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#recado">
+                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#recado">
                   <svg class="bi bi-pencil-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
@@ -277,7 +273,7 @@
                                 </div>
                           </div>    
                           <input type="hidden" name="id" value="{{user._id}}">
-                        <button type="submit" class="btn btn-info">Salvar</button>
+                        <button type="submit" class="btn btn-secondary">Salvar</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                       </form>
                       </div>
