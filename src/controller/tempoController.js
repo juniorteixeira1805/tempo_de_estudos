@@ -1,3 +1,4 @@
+//-- Importação --//
 const mongoose = require("mongoose")
 
 require('../models/User');
@@ -5,8 +6,10 @@ const User = mongoose.model("users");
 
 module.exports = {
 
+//-- Função que retorna o tempo decorrido --//
     tempoEstudado: function(inicio, fim){
 
+    //-- separando as horas dos minutos --//
         vetorDeHora = inicio.split(":");
         hrInicial = parseInt(vetorDeHora[0])
         minutoInicial = parseInt(vetorDeHora[1])
@@ -15,16 +18,17 @@ module.exports = {
         hrFinal = parseInt(vetorDeHora[0])
         minutoFinal = parseInt(vetorDeHora[1])
 
-
+    //-- verificando se a hora inicial é maior que a final e tratando --//
         if(hrInicial>hrFinal){
             hrInicial = 24 - hrInicial
             tempoTotal = (60*(hrInicial+hrFinal))+(minutoFinal-minutoInicial)
         } else{
-            tempoTotal = (60*(hrFinal-hrInicial))+(minutoFinal-minutoInicial)
+            tempoTotal = (60*(hrFinal-hrInicial))+(minutoFinal-minutoInicial) //-- somando todos os minutos --//
         }
         return tempoTotal;
     },
 
+//-- Que retorna o nome do dia da semana --//
     diadasemana: function(data){
         var recebimento = new Date(data)
     
@@ -58,11 +62,14 @@ module.exports = {
             return "Domingo"
         }
     },
-    
+
+//-- Função que retorna data no formato dd/mm/aaaa --//
     novadata: function(data){
         
-        var recebimento = new Date(data)
-        var dia = ( recebimento.getDate()).toString()
+        var recebimento = new Date(data) //-- Criando data do momento --//
+        var dia = ( recebimento.getDate()).toString() //-- extraindo o dia da data criada --//
+
+    //-- Acrescentando os 0 para quando tiver um algarismo --//
         if(dia < 10){
             dia = "0" + dia
         }
@@ -71,30 +78,33 @@ module.exports = {
             mes = "0" + mes
         }
 
+    //-- Extraindo o ano --//
         var ano = recebimento.getFullYear().toString()
         
     
-        var datadeRecebimento = dia + "/" + mes + "/" + ano
+        var datadeRecebimento = dia + "/" + mes + "/" + ano //-- Juntando tudo --//
     
         return datadeRecebimento
     },
 
-    verifcaDia: function(diaAnterior){
+//-- Função que verifica o dia se o dia mudou e set 0 na variavel dia do banco de dados --//
+    verifcaDia: function(diaAnterior){ //-- parametro é o dia salvo no BD --//
         
         var dataCriada = new Date()
         
         var diaatual = ( dataCriada.getDate()).toString()
 
-        if(diaatual != diaAnterior){
-            User.updateMany({dia: 0}, function(err, res) {
+        if(diaatual != diaAnterior){ //-- verifca o dia atual com o dia salvo no bd (Tem de mudar, pq esta sendo true às 21:00 por causa do fuso horario) --//
+            User.updateMany({dia: 0}, function(err, res) {//-- zerando as horas diarias --//
             });
 
-            User.updateMany({diaAnterior: diaatual}, function(err, res) {
+            User.updateMany({diaAnterior: diaatual}, function(err, res) { //-- O dia do bd recebe o dia de hj --//
             });
         }
     
     },
 
+//-- Função que verifica se a semana passou, mas não está funcionando --//
     verifcaSemana: function(semanaAnterior){
         
         var dataCriada = new Date()
@@ -113,6 +123,7 @@ module.exports = {
     
     },
 
+//-- Função que verifica o mes, mas ainda esta em teste --//
     verifcaMes: function(mesAnterior){
         
         var dataCriada = new Date()

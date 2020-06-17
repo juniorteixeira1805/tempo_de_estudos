@@ -8,7 +8,8 @@
                 <li class="list-group-item text-left"><p class="card-text">email: {{user.email}}</p></li>
                 <li class="list-group-item text-left"><p class="card-text">Curso: {{user.curso}}</p></li>
                 <li class="list-group-item text-left"><p class="card-text">Tempo total: {{user.total}} min</p></li>
-                <li class="list-group-item text-left"><p class="card-text"><a href="/user/editarusuario" class="btn btn-primary">
+                <li class="list-group-item text-left"><a class="text-info" style="text-decoration: none;" href="/user/historicoPessoal/{{user._id}}"> Historico Pessoal</a></li>
+                <li class="list-group-item text-left"><p class="card-text"><a href="/user/editarusuario" class="btn btn-info">
                     <svg class="bi bi-pencil-square" width="15px" height="15px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                         <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
@@ -28,36 +29,189 @@
 </div>
 
 <div class="col-sm-9 text-center">
-    <div class="card">
+<div class="card">
         <div class="card-body text-center">
-            <h3 class="text-body">Historico:
-                <svg class="bi bi-card-list" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <h3 class="text-body">Cronograma:
+              <svg class="bi bi-card-list" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
                 <path fill-rule="evenodd" d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z"/>
                 <circle cx="3.5" cy="5.5" r=".5"/>
                 <circle cx="3.5" cy="8" r=".5"/>
                 <circle cx="3.5" cy="10.5" r=".5"/>
-                </svg>
+              </svg>
             </h3>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Dias</th>
+                <th scope="col">Inicio</th>
+                <th scope="col">Termino</th>
+                <th scope="col">Atividade</th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {{#each atv}}
+                {{#if verifSegunda}}
+                <tr>
+                  <th scope="row">Segunda</th>
+                  <td>{{horarioInicial}}</td>
+                  <td>{{horarioTermino}}</td>
+                  <td>{{atividade}}</td>
+                  <td>
+                    <form action="/authUser/deletarAtividade" method="POST">
+                        <input type="hidden" name="id" value="{{_id}}">
+                        <button type="submit" class="btn btn-danger">
+                          <svg class="bi bi-trash-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                          </svg>
+                        </button>
+                    </form>
+                  </td>
+                </tr>
+                {{else}}
+                {{/if}}
+                {{else}}
+              {{/each}}
+                {{#each atv}}
+                {{#if verifTerca}}
+                <tr>
+                  <th scope="row">Terça</th>
+                  <td>{{horarioInicial}}</td>
+                  <td>{{horarioTermino}}</td>
+                  <td>{{atividade}}</td>
+                  <td>
+                    <form action="/authUser/deletarAtividade" method="POST">
+                        <input type="hidden" name="id" value="{{_id}}">
+                        <button type="submit" class="btn btn-danger">
+                          <svg class="bi bi-trash-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                          </svg>
+                        </button>
+                    </form>
+                </tr>
+                {{else}}
+                {{/if}}
+              {{else}}
+              {{/each}}
+                {{#each atv}}
+                {{#if verifQuarta}}
+                <tr>
+                  <th scope="row">Quarta</th>
+                  <td>{{horarioInicial}}</td>
+                  <td>{{horarioTermino}}</td>
+                  <td>{{atividade}}</td>
+                  <td>
+                    <form action="/authUser/deletarAtividade" method="POST">
+                        <input type="hidden" name="id" value="{{_id}}">
+                        <button type="submit" class="btn btn-danger">
+                          <svg class="bi bi-trash-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                          </svg>
+                        </button>
+                    </form>
+                  </td>
+                </tr>
+                {{else}}
+                {{/if}}
+              {{else}}
+              {{/each}}
+                {{#each atv}}
+                {{#if verifQuinta}}
+                <tr>
+                  <th scope="row">Quinta</th>
+                  <td>{{horarioInicial}}</td>
+                  <td>{{horarioTermino}}</td>
+                  <td>{{atividade}}</td>
+                  <td>
+                    <form action="/authUser/deletarAtividade" method="POST">
+                        <input type="hidden" name="id" value="{{_id}}">
+                        <button type="submit" class="btn btn-danger">
+                          <svg class="bi bi-trash-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                          </svg>
+                        </button>
+                    </form>
+                  </td>
+                </tr>
+                {{else}}
+                {{/if}}
+              {{else}}
+              {{/each}}
+                {{#each atv}}
+                {{#if verifSexta}}
+                <tr>
+                  <th scope="row">Sexta</th>
+                  <td>{{horarioInicial}}</td>
+                  <td>{{horarioTermino}}</td>
+                  <td>{{atividade}}</td>
+                  <td>
+                    <form action="/authUser/deletarAtividade" method="POST">
+                        <input type="hidden" name="id" value="{{_id}}">
+                        <button type="submit" class="btn btn-danger">
+                          <svg class="bi bi-trash-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                          </svg>
+                        </button>
+                    </form>
+                  </td>
+                </tr>
+                {{else}}
+                {{/if}}
+                {{else}}
+              {{/each}}
+                {{#each atv}}
+                {{#if verifSabado}}
+                <tr>
+                  <th scope="row">Sábado</th>
+                  <td>{{horarioInicial}}</td>
+                  <td>{{horarioTermino}}</td>
+                  <td>{{atividade}}</td>
+                  <td>
+                    <form action="/authUser/deletarAtividade" method="POST">
+                        <input type="hidden" name="id" value="{{_id}}">
+                        <button type="submit" class="btn btn-danger">
+                          <svg class="bi bi-trash-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                          </svg>
+                        </button>
+                    </form>
+                  </td>
+                </tr>
+                {{else}}
+                {{/if}}
+              {{else}}
+              {{/each}}
+              {{#each atv}}
+
+                {{#if verifDomingo}}
+                <tr>
+                  <th scope="row">Domingo</th>
+                  <td>{{horarioInicial}}</td>
+                  <td>{{horarioTermino}}</td>
+                  <td>{{atividade}}</td>
+                  <td>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#atv">
+                        <svg class="bi bi-trash-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                        </svg>
+                    </button>
+                  </td>
+                </tr>
+                {{else}}
+                {{/if}}
+              {{else}}
+              {{/each}}
+            </tbody>
+          </table>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#cronograma">
+          Adicionar atividade
+        </button>
         </div>
     </div>
-    {{#each tempos}}
-    <div class="card text-center mb-2">
-    <div class="card-header text-secondary">
-        Data: {{novaData}}
-        <svg class="bi bi-calendar3" width="25px" height="25px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
-            <path fill-rule="evenodd" d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-        </svg>
-    </div>
-    <div class="card-body">
-        <h5 class="card-title text-secondary">{{inicio}} às {{termino}}</h5>
-        <p class="card-text text-secondary">Tempo da atividade: {{tempoEstudado}} minutos</p>
-        <p class="card-text text-secondary">Atividade: {{tipo}} - {{subTipo}}</p>
-    </div>  
-    </div>
-    {{else}}
-    {{/each}}
+
+
 </div>
 </div>
 
@@ -85,4 +239,41 @@
   </div>
 </div>
 
-
+<div class="modal fade" id="cronograma" tabindex="-1" role="dialog" aria-labelledby="cronograma" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Adicione atividade ao seu Cronograma</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/authUser/registerAtividade" method="POST">
+            <div class="form-group">
+              <small>Inicio da atividade: </small>
+              <input class="col-auto" type="time" id="horarioInicial" name="horarioInicial" min="00:00" max="23:59" required>
+              <small>Fim da atividade: </small>
+              <input class="col-auto" type="time" id="horarioTermino" name="horarioTermino" min="00:00" max="23:59" required>
+              <label for="validationServer01">Informe o que vai fazer nesse horário:</label>
+                <input type="text" class="form-control is-valid" name="atividade" placeholder="O que vai fazer neste horário" id="atividade" required>
+              <div class="col-auto my-1">
+                <label for="validationServer01">Informe o dia da semana</label>
+                <select class="custom-select is-valid" name="dia" size="3" required>
+                  <option value="segunda">Segunda</option>
+                  <option value="terca">Terça</option>
+                  <option value="quarta">Quarta</option>
+                  <option value="quinta">Quinta</option>
+                  <option value="sexta">Sexta</option>
+                  <option value="sabado">Sábado</option>
+                  <option value="domingo">Domingo</option>
+                </select>
+              </div>
+            </div>
+          <button type="submit" class="btn btn-primary col-auto">Salvar</button>
+          <button type="button" class="btn btn-secondary text-center" data-dismiss="modal">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

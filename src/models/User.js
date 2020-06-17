@@ -32,68 +32,72 @@ const UserSchema = new mongoose.Schema({
         default: "https://i0.wp.com/www.techcult.com.br/wp-content/uploads/2017/03/perfil-twitter.png?resize=1024%2C1024&ssl=1"
     },
 
-    verificadorOnline: {
+    verificadorOnline: {//-- Parametro para a view saber se ta online --//
         type: Boolean,
         default: false
     },
 
     privacidade: {
-        type: Boolean,
+        type: Boolean, //-- Parametro para a view saber a privacidade --//
         default: true
     },
 
     diaAnterior: {
+        type: Number, //-- parametro para saber se o dia mudou --//
+    },
+
+    semanaAnterior: { //-- parametro para saber se a semana mudou --//
         type: Number,
     },
 
-    semanaAnterior: {
-        type: Number,
-    },
-
-    mesAnterior: {
+    mesAnterior: { //-- Parametro para saber se o mes mudou --//
         type: Number,
     },
 
     dia: {
-        type: Number,
+        type: Number, //-- minutos diarios --//
         default: 0
     },
 
     semana: {
-        type: Number,
+        type: Number, //-- minutos semanais --//
         default: 0
     },
 
     mes: {
-        type: Number,
+        type: Number, //-- minutos semanais --//
         default: 0
     },
 
     total: {
-        type: Number,
+        type: Number, //-- minutos totais --//
         default: 0
     },
 });
 
-UserSchema.pre('save', async function(next) {
-    const hash = await bcrypt.hash(this.password, 5);
-    this.password = hash;
+//-- Tratar antes de salvar --//
+    UserSchema.pre('save', async function(next) {
+    //-- Hasheando a senha --//
+        const hash = await bcrypt.hash(this.password, 5);
+        this.password = hash;
 
-    if(this.foto == ""){
-        this.foto = "https://i0.wp.com/www.techcult.com.br/wp-content/uploads/2017/03/perfil-twitter.png?resize=1024%2C1024&ssl=1"
-    }
+    //-- Setando avatar padrão, caso n venha nenhum do formulario de cadastro --//
+        if(this.foto == ""){
+            this.foto = "https://i0.wp.com/www.techcult.com.br/wp-content/uploads/2017/03/perfil-twitter.png?resize=1024%2C1024&ssl=1"
+        }
 
-    var dataCriada = new Date()
-    var diaDaSemana =  dataCriada.getDay()
-    var aux = 7 - diaDaSemana
+    //-- Salvando a data atual para zerar dia, semana e mes --//
+        var dataCriada = new Date()
+        var diaDaSemana =  dataCriada.getDay()
+        var aux = 7 - diaDaSemana
+    //-- Setando dia, semana e mes --//
+        this.semanaAnterior = aux + diaDaSemana
 
-    this.semanaAnterior = aux + diaDaSemana
+        this.diaAnterior = dataCriada.getDate()
+        this.mesAnterior = dataCriada.getMonth()+1
 
-    this.diaAnterior = dataCriada.getDate()
-    this.mesAnterior = dataCriada.getMonth()+1
-
-    next();
-})
+        next();
+    })
 
 const User = mongoose.model('users', UserSchema);
 

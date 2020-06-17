@@ -12,7 +12,7 @@ require("./config/auth")(passport)
 
 // importando meus packs
     const Auth = require('./controller/authController')
-    const Tempo = require('./controller/userController')
+    const AuthUser = require('./controller/userController')
     const User = require('./router/user')
 
 //configurações
@@ -60,7 +60,7 @@ require("./config/auth")(passport)
 //Rotas
     app.use('/auth', Auth) // fixamos o prefixo "/admin" para o grupo de rotas admin
     app.use('/user', User)
-    app.use('/tempo', Tempo)
+    app.use('/authUser', AuthUser)
 
 //outros
     //conectando o servidor a porta

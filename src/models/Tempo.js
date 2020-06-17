@@ -5,46 +5,49 @@ const Schema = mongoose.Schema
 
 const TempoSchema = new mongoose.Schema({
     dateCreater: {
-        type: Date,
+        type: Date, //-- Data de criação --//
     },
 
     novaData: {
-        type: String,
+        type: String, //-- Data tratada para a view --//
     },
 
     inicio: {
-        type: String,
+        type: String, //-- A hora inicial --//
         default: 0
     },
 
     termino: {
-        type: String,
+        type: String, //-- Hora final --//
         default: 0
     },
 
     tempoEstudado: {
-        type: Number,
+        type: Number, //-- Minutos totais --//
         default: 0
     },
 
     estudante: {
-        type: Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId, //-- Salva o id do dono do tempo --//
         ref: "users"
     },
 
     tipo:{
-        type: String,
+        type: String, //-- Qual foi a atividade --//
     },
 
     subTipo:{
         type: String,
-        default: "Não informado"
+        default: "Não informado" //-- Qual foi a sub atividade --//
     }
 });
 
+//-- Antes de salvar --//
 TempoSchema.pre('save', async function(next) {
+    //-- Calculando os minutos e setando --//
     this.tempoEstudado = await funcdata.tempoEstudado(this.inicio, this.termino)
 
+    //-- Tratando data e setando nova data --//
     this.novaData = await funcdata.novadata(this.dateCreater)
 
     next();
