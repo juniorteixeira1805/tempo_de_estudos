@@ -22,9 +22,9 @@ require("./config/auth")(passport)
             resave: true,
             saveUninitialized: true
         }))
-
         app.use(passport.initialize())
         app.use(passport.session())
+        app.use(session({ cookie: { maxAge: 6000 }}))
 
         app.use(flash())
 
