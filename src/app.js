@@ -8,6 +8,7 @@ const mongoose = require("mongoose")
 const session = require("express-session")
 const flash = require("connect-flash")
 const passport = require('passport')
+const func = require("./config/nodemailer")
 require("./config/auth")(passport)
 
 // importando meus packs
@@ -62,6 +63,7 @@ require("./config/auth")(passport)
     app.use('/authUser', AuthUser)
 
 //outros
+
     //conectando o servidor a porta
         const PORT = process.env.PORT || 3000
         app.listen(PORT, () => {
