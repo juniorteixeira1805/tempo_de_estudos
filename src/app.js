@@ -24,7 +24,6 @@ require("./config/auth")(passport)
         }))
         app.use(passport.initialize())
         app.use(passport.session())
-        app.use(session({ cookie: { maxAge: 6000 }}))
 
         app.use(flash())
 
