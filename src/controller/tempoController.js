@@ -118,7 +118,7 @@ module.exports = {
 //-- Função que verifica se a semana passou, mas não está funcionando --//
     verifcaSemana: async function(){
 
-        setInterval( await function(){
+        setInterval( async function(){
         let data = new Date()
         let diaDaSemana = data.getDay()
         let horaAtual = data.getHours()
@@ -137,12 +137,12 @@ module.exports = {
     },
 
 //-- Função que verifica o mes, mas ainda esta em teste --//
-    verifcaMes: function(){
+    verifcaMes: async function(){
 
         let data = new Date()
         var mesAnterior = data.getMonth()
 
-        setInterval(function(){
+        setInterval(async function(){
         let data = new Date()
         let mesAtual = data.getDate()
         let horaAtual = data.getHours()
