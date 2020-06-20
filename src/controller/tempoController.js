@@ -111,7 +111,7 @@ module.exports = {
         }else{
             console.log("o sistema verificou se mudou o dia: " + false)
         }
-        },6000)
+        },3600000)
     
     },
 
