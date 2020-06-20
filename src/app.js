@@ -16,6 +16,7 @@ require("./config/auth")(passport)
     const Auth = require('./controller/authController')
     const AuthUser = require('./controller/userController')
     const User = require('./router/user')
+    const Administradores = require('./router/admin')
 
 //configurações
     //sessão
@@ -62,6 +63,7 @@ require("./config/auth")(passport)
     app.use('/auth', Auth) // fixamos o prefixo "/admin" para o grupo de rotas admin
     app.use('/user', User)
     app.use('/authUser', AuthUser)
+    app.use('/administradores', Administradores)
 
 //outros
 

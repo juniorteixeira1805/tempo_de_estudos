@@ -22,7 +22,7 @@ const router = express.Router();
         //-- Passando todos os usuarios para a view --//
           User.find({}).sort({semana: -1}).then((usuarios) => {
             res.render("./users/home", {usuarios: usuarios})
-            console.log(req.user.name + " Esta na pagina home. IP: " + ipCliente)
+            console.log(req.user.name + " Esta na pagina home. IP:" + ipCliente)
             }).catch((err) => {
             res.redirect("/user/home")
             console.log("deu erro: ", err)
