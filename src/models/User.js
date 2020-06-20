@@ -42,18 +42,6 @@ const UserSchema = new mongoose.Schema({
         default: true
     },
 
-    diaAnterior: {
-        type: Number, //-- parametro para saber se o dia mudou --//
-    },
-
-    semanaAnterior: { //-- parametro para saber se a semana mudou --//
-        type: Number,
-    },
-
-    mesAnterior: { //-- Parametro para saber se o mes mudou --//
-        type: Number,
-    },
-
     dia: {
         type: Number, //-- minutos diarios --//
         default: 0

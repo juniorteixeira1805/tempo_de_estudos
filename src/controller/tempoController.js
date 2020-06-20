@@ -88,55 +88,83 @@ module.exports = {
     },
 
 //-- Função que verifica o dia se o dia mudou e set 0 na variavel dia do banco de dados --//
-    verifcaDia: function(diaAnterior){ //-- parametro é o dia salvo no BD --//
+    verifcaDia: function(){ 
         
-        var dataCriada = new Date()
-        
-        var diaatual = ( dataCriada.getDate()).toString()
+        let data = new Date()
+        var diaAnterior = data.getDate()
 
-        if(diaatual != diaAnterior){ //-- verifca o dia atual com o dia salvo no bd (Tem de mudar, pq esta sendo true às 21:00 por causa do fuso horario) --//
+        setInterval(function(){
+        let data = new Date()
+        let diaAtual = data.getDate()
+        let horaAtual = data.getHours()
+
+        if(diaAtual != diaAnterior && horaAtual == "3"){
+            console.log("o sistema verificou se mudou o dia: " + true)
             User.updateMany({dia: 0}, function(err, res) {//-- zerando as horas diarias --//
             });
 
-            User.updateMany({diaAnterior: diaatual}, function(err, res) { //-- O dia do bd recebe o dia de hj --//
-            });
+        }else{
+            console.log("o sistema verificou se mudou o dia: " + false)
         }
+        },3600000)
     
     },
 
 //-- Função que verifica se a semana passou, mas não está funcionando --//
-    verifcaSemana: function(semanaAnterior){
-        
-        var dataCriada = new Date()
-        
-        var diaDaSemana = ( dataCriada.getDay()).toString()
-        if(diaDaSemana == semanaAnterior){
+    verifcaSemana: function(){
+
+        setInterval(function(){
+        let data = new Date()
+        let diaDaSemana = data.getDay()
+        let horaAtual = data.getHours()
+
+        if(diaDaSemana == "1" && horaAtual == "3"){
+            console.log("o sistema verificou se mudou a semana: " + true)
             User.updateMany({semana: 0}, function(err, res) {
             });
-            User.updateMany({semanaAnterior: 8}, function(err, res) {
-            });
 
-        }if(diaDaSemana == 1){
-            User.updateMany({semanaAnterior: 7}, function(err, res) {
-            });
+        }else{
+            console.log("o sistema verificou se mudou a semana: " + false)
         }
-    
+        },3600000)        
+
     },
 
 //-- Função que verifica o mes, mas ainda esta em teste --//
-    verifcaMes: function(mesAnterior){
-        
-        var dataCriada = new Date()
-        
-        var mesAtual =  dataCriada.getMonth() +1
+    verifcaMes: function(){
 
-        if(mesAtual != mesAnterior){
-            User.updateMany({mes: 0}, function(err, res) {
+        let data = new Date()
+        var mesAnterior = data.getMonth()
+
+        setInterval(function(){
+        let data = new Date()
+        let mesAtual = data.getDate()
+        let horaAtual = data.getHours()
+
+        if(mesAtual != mesAnterior && horaAtual == "3"){
+            console.log("o sistema verificou se mudou o dia: " + true)
+            User.updateMany({mes: 0}, function(err, res) {//-- zerando as horas diarias --//
             });
 
-            User.updateMany({mesAnterior: mesAtual}, function(err, res) {
-            });
+        }else{
+            console.log("o sistema verificou se mudou o dia: " + false)
         }
-    
+        },3600000)
+        // hora 3600000
     },
+
+    /*verificaStatus: function(user){
+
+            if(user){
+                console.log("o sistema verificou se mudou o status: " + true)
+                User.updateOne({_id: user.id}, {verificadorOnline: true}, function(err, res) {
+                });
+
+            }else{
+                console.log("o sistema verificou se mudou o status: " + false)
+                User.updateOne({_id: user.id}, {verificadorOnline: false}, function(err, res) {
+                });
+            }
+
+    }*/
 }

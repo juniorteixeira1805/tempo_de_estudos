@@ -46,11 +46,7 @@ module.exports = function(passport){
             //--Atualiza o status para online--//
             User.updateOne({_id: user.id}, {verificadorOnline: true}, function(err, res) {
             });
-    
-            //--Funções chamadas para atualizar as horas do dia, semana e mes--//
-            funcdata.verifcaDia(user.diaAnterior);
-            funcdata.verifcaSemana(user.semanaAnterior);
-            funcdata.verifcaMes(user.mesAnterior);
+            
     
         } catch (err){
             console.log("Deu algum erro ao iniciar a sessão: " + err)

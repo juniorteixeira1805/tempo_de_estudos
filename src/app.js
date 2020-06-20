@@ -8,6 +8,7 @@ const mongoose = require("mongoose")
 const session = require("express-session")
 const flash = require("connect-flash")
 const passport = require('passport')
+const funcdata = require("./controller/tempoController") 
 const Func = require("./config/nodemailer")
 require("./config/auth")(passport)
 
@@ -63,6 +64,12 @@ require("./config/auth")(passport)
     app.use('/authUser', AuthUser)
 
 //outros
+
+    //--Funções chamadas para atualizar as horas do dia, semana e mes--//
+    funcdata.verifcaDia();
+    funcdata.verifcaSemana();
+    funcdata.verifcaMes();
+
     //escutando tempo para enviar email
     setInterval(function(){
         let data = new Date()

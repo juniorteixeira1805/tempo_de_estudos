@@ -16,12 +16,13 @@ const router = express.Router();
 //rota que renderiza pagina inicaial
     router.get('/home', eAdmin, async (req, res) => {
     //-- atualizando status para online --//
+    const ipCliente = req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
         User.updateOne({_id: req.user.id}, {verificadorOnline: true}, function(err, res) {
         });
         //-- Passando todos os usuarios para a view --//
           User.find({}).sort({semana: -1}).then((usuarios) => {
             res.render("./users/home", {usuarios: usuarios})
-            console.log(req.user.name + " Esta na pagina home")
+            console.log(req.user.name + " Esta na pagina home. IP: " + ipCliente)
             }).catch((err) => {
             res.redirect("/user/home")
             console.log("deu erro: ", err)
