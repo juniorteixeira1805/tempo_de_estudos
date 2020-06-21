@@ -1,8 +1,8 @@
 <div class="accordion" id="accordionExample">
-  <div class="card">
+  <div class="card bg-secondary">
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">
-        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <button class="btn btn-link btn-block text-left text-light" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
           Histórico <p>Tempo estudado no mes: <b class="meumes">{{user.mes}}</b></p>
         </button>
       </h2>
@@ -49,10 +49,10 @@
   </div>
 
 
-  <div class="card">
+  <div class="card bg-secondary">
     <div class="card-header" id="headingTwo">
       <h2 class="mb-0">
-        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <button class="btn btn-link btn-block text-left collapsed text-light" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
           Gráficos
         </button>
       </h2>
@@ -75,10 +75,10 @@
     </div>
   </div>
 
-<div class="card">
+<div class="card bg-secondary">
     <div class="card-header" id="headingThree">
       <h5 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        <button class="btn btn-link collapsed text-light" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
           Conquistas
         </button>
       </h5>
@@ -87,26 +87,93 @@
       <div class="card-body">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Como funciona</a>
+            <a class="nav-link text-light" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Como funciona</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Avatares conquistados</a>
+            <a class="nav-link text-light" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Avatares conquistados</a>
         </li>
         </ul>
         <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-          <h2>Como ganho um avatar?</h2>
-          <p></p>
-          <p></p>
+          <p class="mt-4 text-light">A plataforma possui 8 níveis de patentes e respectivos avatares. Todos estudantes começam com o nível 1 e progride em uma quantidade de minutos de atividades, podendo chegar ao Nível 8.</p>
+          <h2 class="mt-4 text-light">Como faça para progredir?</h2>
+          <p class="mt-4 text-light">Para progredir de patente, do nível 1 ao nível 6, você terá que práticar 600 minutos de atividades para cada nível. Já nas ultimas dois níveis, esse valor sobe para 700 minutos.</p>
+          <h2 class="mt-4 text-light">E os avatares?</h2>
+          <p class="mt-4 text-light">Para cada nível, você ganhará um avatar que ficará no seu perfil indicando o seu nível. Entretando, caso deseje ver os avatares que você já ganhoiu basta ir em home->Perfil->Historico Pessoal->Conquistas.</p>
+          <h2 class="mt-4 text-light">Por quanto tempo dura os avatares e os Níveis?</h2>
+          <p class="mt-4 text-light">O sistema de Níveis dura por um mês, sempre que o mês acabar e suas horas mensais retornarem a 0, você voltará para o nível 1</p>
         </div>
-        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-        <li class="list-group-item text-left"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nível 1"><img src="/1.gif" class="avatar" style="width: 150px;"/></li></span>
-        <li class="list-group-item text-left"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nível 2"><img src="/2.gif" class="avatar" style="width: 150px;"/></li></span>
-        <li class="list-group-item text-left"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nível 3"><img src="/3.gif" class="avatar" style="width: 150px;"/></li></span>
-        <li class="list-group-item text-left"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nivel 4"><img src="/4.gif" class="avatar" style="width: 150px;"/></li></span>
-        <li class="list-group-item text-left"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nivel 5"><img src="/5.gif" class="avatar" style="width: 150px;"/></li></span>
-        <li class="list-group-item text-left"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nivel 6"><img src="/6.gif" class="avatar" style="width: 150px;"/></li></span>
-        <li class="list-group-item text-left"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nivel 7"><img src="/7.gif" class="avatar" style="width: 150px;"/></li></span>
+        <div class="tab-pane fade bg-secondary" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="card-deck mt-4 bg-secondary">
+          <div class="card bg-dark">
+            <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nível 1"><img src="/1.gif" class="avatar" style="width: 150px;"/></span>
+            <div class="card-body text-light">
+              <h5 class="card-title">Darwin Evolution</h5>
+              <p class="card-text">Charles Robert Darwin estabeleceu a ideia que todos os seres vivos descendem de um ancestral em comum, argumento agora amplamente aceito e considerado um conceito fundamental no meio científico,[5] e propôs a teoria de que os ramos evolutivos são resultados de seleção natural e sexual, onde a luta pela sobrevivência resulta em consequências similares às da seleção artificial.</p>
+              <p class="card-text"><small class="text-muted">Todos começam com este avatar</small></p>
+            </div>
+          </div>
+          <div class="card bg-dark">
+            <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nível 2"><img src="/2.gif" class="avatar" style="width: 150px;"/></span>
+            <div class="card-body text-light">
+              <h5 class="card-title">Einstein Relativo</h5>
+              <p class="card-text">Albert Einstein foi um físico teórico alemão que desenvolveu a teoria da relatividade geral, um dos pilares da física moderna ao lado da mecânica quântica. Embora mais conhecido por sua fórmula de equivalência massa-energia, E=mc² — que foi chamada de "a equação mais famosa do mundo"</p>
+              <p class="card-text"><small class="text-muted">Ganha este avatar com 600 minutos</small></p>
+            </div>
+          </div>
+          <div class="card bg-dark">
+            <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nível 3"><img src="/3.gif" class="avatar" style="width: 150px;"/></span>
+            <div class="card-body text-light">
+              <h5 class="card-title">Issac Graviton</h5>
+              <p class="card-text">Isaac Newton sua obra, Princípios Matemáticos da Filosofia Natural [nota 2] é considerada uma das mais influentes na história da ciência. Publicada em 1687, esta obra descreve a lei da gravitação universal e as três leis de Newton, que fundamentaram a mecânica clássica.</p>
+              <p class="card-text"><small class="text-muted">Ganha este avatar com 1200 minutos</small></p>
+            </div>
+          </div>
+        </div>
+        <div class="card-deck mt-4">
+          <div class="card bg-dark">
+            <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nivel 4"><img src="/4.gif" class="avatar" style="width: 150px;"/></span>
+            <div class="card-body text-light">
+              <h5 class="card-title">PitEureka</h5>
+              <p class="card-text">Pitágoras de Samos foi um dos grandes filósofos pré-socráticos e matemáticos da Grécia Antiga. Um dos mais importantes teoremas da geometria é o Teorema de Pitágoras. É representado pela fórmula (c²= a²+b²).</p>
+              <p class="card-text"><small class="text-muted">Ganha este avatar com 1800 minutos</small></p>
+            </div>
+          </div>
+          <div class="card bg-dark">
+            <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nivel 5"><img src="/5.gif" class="avatar" style="width: 150px;"/></span>
+            <div class="card-body text-light">
+              <h5 class="card-title">Hawking Singular</h5>
+              <p class="card-text">Stephen William Hawking foi um físico teórico e cosmólogo britânico, reconhecido internacionalmente por sua contribuição à ciência, sendo um dos mais renomados cientistas do século. Seus trabalhos científicos incluem um teorema sobre a singularidade gravitacional no âmbito da relatividade geral e a previsão teórica de que os buracos negros emitem radiação.</p>
+              <p class="card-text"><small class="text-muted">Ganha este avatar com 2400 minutos</small></p>
+            </div>
+          </div>
+          <div class="card bg-dark">
+            <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nivel 6"><img src="/6.gif" class="avatar" style="width: 150px;"/></span>
+            <div class="card-body text-light">
+              <h5 class="card-title">Pit O quadrado dos catetos</h5>
+              <p class="card-text">Pitágoras de Samos foi um dos grandes filósofos pré-socráticos e matemáticos da Grécia Antiga. Um dos mais importantes teoremas da geometria é o Teorema de Pitágoras. É representado pela fórmula (c²= a²+b²).</p>
+              <p class="card-text"><small class="text-muted">Ganha este avatar com 3000 minutos</small></p>
+            </div>
+          </div>
+          </div>
+        <div class="card-deck mt-4">
+          <div class="card bg-dark">
+            <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nivel 7"><img src="/7.gif" class="avatar" style="width: 150px;"/></span>
+            <div class="card-body text-light">
+              <h5 class="card-title">Tesla o Iluminado</h5>
+              <p class="card-text">Nikola Tesla mais conhecido pelas suas muitas contribuições revolucionárias no campo do electromagnetismo no fim do século XIX e início do século XX. As patentes de Tesla e o seu trabalho teórico formam as bases dos modernos sistemas de potência eléctrica em corrente alternada (AC),[4] incluindo os sistemas polifásicos de distribuição de energia e o motor AC, com os quais ajudou na introdução da Segunda Revolução Industrial.</p>
+              <p class="card-text"><small class="text-muted">Ganha este avatar com 3600 minutos</small></p>
+            </div>
+          </div>
+          <div class="card bg-dark">
+            <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nivel 8"><img src="/8.gif" class="avatar" style="width: 150px;"/></span>
+            <div class="card-body text-light">
+              <h5 class="card-title">Marie Curie a mulher dos dois Nobels</h5>
+              <p class="card-text">Marie Skłodowska Curie foi uma cientista e física polonesa naturalizada francesa, que conduziu pesquisas pioneiras em todo o mundo no ramo da radioatividade. Foi a primeira mulher a ser laureada com um Prêmio Nobel e a primeira pessoa e única mulher a ganhar o prêmio duas vezes.</p>
+              <p class="card-text"><small class="text-muted">Ganha este avatar com 4300 minutos</small></p>
+            </div>
+          </div>
+        </div>
         </div>
         </div>
       </div>
@@ -237,21 +304,23 @@ const x = parseInt(document.getElementsByClassName("meumes")[0].innerText)
       document.getElementsByClassName("avatar")[3].setAttribute("hidden", "true");
     }
 
-    if(x < 2200){
+    if(x < 2400){
     document.getElementsByClassName("avatar")[4].setAttribute("hidden", "true");
     }
 
-    if(x < 2800){
+    if(x < 3000){
       document.getElementsByClassName("avatar")[5].setAttribute("hidden", "true");
     }
 
-    if(x < 3400){
+    if(x < 3600){
       document.getElementsByClassName("avatar")[6].setAttribute("hidden", "true");
     }
-    if(x > 4500){
+    if(x < 4300){
       document.getElementsByClassName("avatar")[7].setAttribute("hidden", "true");
     }
-
+    if(x > 4300){
+      document.getElementsByClassName("avatar")[8].setAttribute("hidden", "true");
+    }
 
 
 </script>
