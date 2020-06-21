@@ -89,19 +89,13 @@ module.exports = {
 
 //-- Função que verifica o dia se o dia mudou e set 0 na variavel dia do banco de dados --//
     verifcaDia: async function(){ 
-        
-        let data = new Date()
-        var diaAnterior = data.getDate()
 
         setInterval( async function(){
         let data = new Date()
-        let diaAtual = data.getDate()
         let horaAtual = data.getHours()
 
-        console.log(data.getDate())
-        console.log(data.getHours())
-        if(diaAtual != diaAnterior && horaAtual == "3"){
-            console.log("o sistema verificou se mudou o dia: " + true)
+        if(horaAtual == "3"){
+            console.log("o sistema verificou se mudou o dia: " + true +" às: " + horaAtual)
             await User.updateMany({dia: 0}, function(err, res) {//-- zerando as horas diarias --//
                 console.log("dia atualizado")
             });
@@ -109,7 +103,7 @@ module.exports = {
 
 
         }else{
-            console.log("o sistema verificou se mudou o dia: " + false)
+            console.log("o sistema verificou se mudou o dia: " + false +" às: " + horaAtual)
         }
         },3600000)
     
@@ -124,13 +118,13 @@ module.exports = {
         let horaAtual = data.getHours()
 
         if(diaDaSemana == "1" && horaAtual == "3"){
-            console.log("o sistema verificou se mudou a semana: " + true)
+            console.log("o sistema verificou se mudou a semana: " + true +" às: " + horaAtual)
             await User.updateMany({semana: 0}, function(err, res) {
                 console.log("A semana foi atualizada")
             });
 
         }else{
-            console.log("o sistema verificou se mudou a semana: " + false)
+            console.log("o sistema verificou se mudou a semana: " + false +" às: " + horaAtual)
         }
         },3600000)        
 
@@ -139,20 +133,16 @@ module.exports = {
 //-- Função que verifica o mes, mas ainda esta em teste --//
     verifcaMes: async function(){
 
-        let data = new Date()
-        var mesAnterior = data.getMonth()
-
         setInterval(async function(){
         let data = new Date()
-        let mesAtual = data.getMonth()
+        let diaAtual = data.getDate()
         let horaAtual = data.getHours()
 
-        if(mesAtual != mesAnterior && horaAtual == "3"){
-            console.log("o sistema verificou se mudou o dia: " + true)
+        if(diaAtual == "30" && horaAtual == "3"){
+            console.log("o sistema verificou se mudou o mes: " + true +" às: " + horaAtual)
             await User.updateMany({mes: 0}, function(err, res) {//-- zerando as horas diarias --//
-                console.log("o sistema verificou se mudou o mes: " + true)
+                console.log("o sistema verificou se mudou o mes: " + true +" às: " + horaAtual)
             });
-            mesAnterior = mesAtual
 
         }else{
             console.log("o sistema verificou se mudou o dia: " + false)

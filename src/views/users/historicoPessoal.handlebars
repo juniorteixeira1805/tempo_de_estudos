@@ -1,20 +1,22 @@
+<p class="text-light" hidden>Tempo estudado no mes: <b class="meumes">{{user.mes}}</b></p> 
 <div class="accordion" id="accordionExample">
   <div class="card bg-secondary">
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">
         <button class="btn btn-link btn-block text-left text-light" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Histórico <p>Tempo estudado no mes: <b class="meumes">{{user.mes}}</b></p>
+          <h4><b>Histórico</b></h4>
         </button>
       </h2>
     </div>
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div class="card-body">
         <div class="col-sm-12 text-center ">
-            <div class="card">
-            </div>
+          <p class="text-light">Tempo estudado no dia: <b class="meumes">{{user.dia}}</b></p> 
+          <p class="text-light">Tempo estudado na semana: <b class="meumes">{{user.semana}}</b></p> 
+          <p class="text-light">Tempo estudado no mes: <b class="meumes">{{user.mes}}</b></p> 
             {{#each tempos}}
-            <div class="card text-center mb-2">
-            <div class="card-header text-secondary">
+            <div class="card text-center mb-2 bg-dark">
+            <div class="card-header text-light">
                 Data: {{novaData}}
                 <svg class="bi bi-calendar3" width="25px" height="25px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
@@ -22,9 +24,9 @@
                 </svg>
             </div>
             <div class="card-body">
-                <h5 class="card-title text-secondary"><b class="iniciodeestudos">{{inicio}}</b> às {{termino}}</h5>
-                <p class="card-text text-secondary">Tempo da atividade: <b class="tempodeestudo">{{tempoEstudado}}</b> minutos</p>
-                <p class="card-text text-secondary">Atividade: <b class="tipodeatividade">{{tipo}}</b> - {{subTipo}}</p>
+                <h5 class="card-title text-light"><b class="iniciodeestudos">{{inicio}}</b> às {{termino}}</h5>
+                <p class="card-text text-light">Tempo da atividade: <b class="tempodeestudo">{{tempoEstudado}}</b> minutos</p>
+                <p class="card-text text-light">Atividade: <b class="tipodeatividade">{{tipo}}</b> - {{subTipo}}</p>
                 <form action="/authUser/deletarTempo" method="POST">
                     <input type="hidden" name="tempo_id" value="{{_id}}">
                     <input type="hidden" name="usuario_id" value="{{estudante.id}}">
@@ -53,7 +55,7 @@
     <div class="card-header" id="headingTwo">
       <h2 class="mb-0">
         <button class="btn btn-link btn-block text-left collapsed text-light" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Gráficos
+          <h4><b>Gráficos</b></h4>
         </button>
       </h2>
     </div>
@@ -79,7 +81,7 @@
     <div class="card-header" id="headingThree">
       <h5 class="mb-0">
         <button class="btn btn-link collapsed text-light" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Conquistas
+          <h4><b>Conquistas</b></h4>
         </button>
       </h5>
     </div>
@@ -99,13 +101,13 @@
           <h2 class="mt-4 text-light">Como faça para progredir?</h2>
           <p class="mt-4 text-light">Para progredir de patente, do nível 1 ao nível 6, você terá que práticar 600 minutos de atividades para cada nível. Já nas ultimas dois níveis, esse valor sobe para 700 minutos.</p>
           <h2 class="mt-4 text-light">E os avatares?</h2>
-          <p class="mt-4 text-light">Para cada nível, você ganhará um avatar que ficará no seu perfil indicando o seu nível. Entretando, caso deseje ver os avatares que você já ganhoiu basta ir em home->Perfil->Historico Pessoal->Conquistas.</p>
+          <p class="mt-4 text-light">Para cada nível, você ganhará um avatar que ficará no seu perfil indicando o seu nível. Entretando, caso deseje ver os avatares que você já ganhoiu basta ir em home->Perfil->Estátistica e Conquista->Conquistas.</p>
           <h2 class="mt-4 text-light">Por quanto tempo dura os avatares e os Níveis?</h2>
           <p class="mt-4 text-light">O sistema de Níveis dura por um mês, sempre que o mês acabar e suas horas mensais retornarem a 0, você voltará para o nível 1</p>
         </div>
         <div class="tab-pane fade bg-secondary" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         <div class="card-deck mt-4 bg-secondary">
-          <div class="card bg-dark">
+          <div class="test card bg-dark">
             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nível 1"><img src="/1.gif" class="avatar" style="width: 150px;"/></span>
             <div class="card-body text-light">
               <h5 class="card-title">Darwin Evolution</h5>
@@ -113,7 +115,7 @@
               <p class="card-text"><small class="text-muted">Todos começam com este avatar</small></p>
             </div>
           </div>
-          <div class="card bg-dark">
+          <div class="test card bg-dark">
             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nível 2"><img src="/2.gif" class="avatar" style="width: 150px;"/></span>
             <div class="card-body text-light">
               <h5 class="card-title">Einstein Relativo</h5>
@@ -121,7 +123,7 @@
               <p class="card-text"><small class="text-muted">Ganha este avatar com 600 minutos</small></p>
             </div>
           </div>
-          <div class="card bg-dark">
+          <div class="test card bg-dark">
             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nível 3"><img src="/3.gif" class="avatar" style="width: 150px;"/></span>
             <div class="card-body text-light">
               <h5 class="card-title">Issac Graviton</h5>
@@ -131,7 +133,7 @@
           </div>
         </div>
         <div class="card-deck mt-4">
-          <div class="card bg-dark">
+          <div class="test card bg-dark">
             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nivel 4"><img src="/4.gif" class="avatar" style="width: 150px;"/></span>
             <div class="card-body text-light">
               <h5 class="card-title">PitEureka</h5>
@@ -139,7 +141,7 @@
               <p class="card-text"><small class="text-muted">Ganha este avatar com 1800 minutos</small></p>
             </div>
           </div>
-          <div class="card bg-dark">
+          <div class="test card bg-dark">
             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nivel 5"><img src="/5.gif" class="avatar" style="width: 150px;"/></span>
             <div class="card-body text-light">
               <h5 class="card-title">Hawking Singular</h5>
@@ -147,7 +149,7 @@
               <p class="card-text"><small class="text-muted">Ganha este avatar com 2400 minutos</small></p>
             </div>
           </div>
-          <div class="card bg-dark">
+          <div class="test card bg-dark">
             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nivel 6"><img src="/6.gif" class="avatar" style="width: 150px;"/></span>
             <div class="card-body text-light">
               <h5 class="card-title">Pit O quadrado dos catetos</h5>
@@ -157,7 +159,7 @@
           </div>
           </div>
         <div class="card-deck mt-4">
-          <div class="card bg-dark">
+          <div class="test card bg-dark">
             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nivel 7"><img src="/7.gif" class="avatar" style="width: 150px;"/></span>
             <div class="card-body text-light">
               <h5 class="card-title">Tesla o Iluminado</h5>
@@ -165,7 +167,7 @@
               <p class="card-text"><small class="text-muted">Ganha este avatar com 3600 minutos</small></p>
             </div>
           </div>
-          <div class="card bg-dark">
+          <div class="test card bg-dark">
             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nivel 8"><img src="/8.gif" class="avatar" style="width: 150px;"/></span>
             <div class="card-body text-light">
               <h5 class="card-title">Marie Curie a mulher dos dois Nobels</h5>
@@ -294,32 +296,40 @@ const x = parseInt(document.getElementsByClassName("meumes")[0].innerText)
 
   if(x < 600){
     document.getElementsByClassName("avatar")[1].setAttribute("hidden", "true");
+    document.getElementsByClassName("test")[1].setAttribute("hidden", "true");
   }
     
   if(x < 1200){
     document.getElementsByClassName("avatar")[2].setAttribute("hidden", "true");
+    document.getElementsByClassName("test")[2].setAttribute("hidden", "true");
   }
 
     if(x < 1800){
       document.getElementsByClassName("avatar")[3].setAttribute("hidden", "true");
+      document.getElementsByClassName("test")[3].setAttribute("hidden", "true");
     }
 
     if(x < 2400){
     document.getElementsByClassName("avatar")[4].setAttribute("hidden", "true");
+    document.getElementsByClassName("test")[4].setAttribute("hidden", "true");
     }
 
     if(x < 3000){
       document.getElementsByClassName("avatar")[5].setAttribute("hidden", "true");
+      document.getElementsByClassName("test")[5].setAttribute("hidden", "true");
     }
 
     if(x < 3600){
       document.getElementsByClassName("avatar")[6].setAttribute("hidden", "true");
+      document.getElementsByClassName("test")[6].setAttribute("hidden", "true");
     }
     if(x < 4300){
       document.getElementsByClassName("avatar")[7].setAttribute("hidden", "true");
+      document.getElementsByClassName("test")[7].setAttribute("hidden", "true");
     }
     if(x > 4300){
       document.getElementsByClassName("avatar")[8].setAttribute("hidden", "true");
+      document.getElementsByClassName("test")[8].setAttribute("hidden", "true");
     }
 
 
