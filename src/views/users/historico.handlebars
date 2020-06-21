@@ -77,11 +77,13 @@
     <script type="text/javascript">
 
         var tamanho = document.getElementsByClassName("tempodeestudo").length
+        var temp_total = 0
         var temposdeaula = 0
         var temposdeestudo = 0
         var temposdeleitura = 0
         var i = 0
         while(i < tamanho){
+            temp_total = parseInt(document.getElementsByClassName("tempodeestudo")[i].innerText) + temp_total
             if(document.getElementsByClassName("tipodeatividade")[i].innerText == "Assistiu aula"){
                 temposdeaula = temposdeaula + parseInt(document.getElementsByClassName("tempodeestudo")[i].innerText)
             }
@@ -176,4 +178,8 @@ function drawBasic() {
 
       chart.draw(data, options);
     }
+
+
+
+
     </script>

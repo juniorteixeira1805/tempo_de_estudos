@@ -144,7 +144,7 @@ module.exports = {
 
         setInterval(async function(){
         let data = new Date()
-        let mesAtual = data.getDate()
+        let mesAtual = data.getMonth()
         let horaAtual = data.getHours()
 
         if(mesAtual != mesAnterior && horaAtual == "3"){

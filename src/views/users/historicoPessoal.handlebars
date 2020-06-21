@@ -1,47 +1,257 @@
-<div class="col-sm-12 text-center ">
-    <div class="card">
-        <div class="card-body text-center">
-            <h3 class="text-body">Historico:
-                <svg class="bi bi-card-list" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
-                <path fill-rule="evenodd" d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z"/>
-                <circle cx="3.5" cy="5.5" r=".5"/>
-                <circle cx="3.5" cy="8" r=".5"/>
-                <circle cx="3.5" cy="10.5" r=".5"/>
+<div class="accordion" id="accordionExample">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Histórico <p>Tempo estudado no mes: <b class="meumes">{{user.mes}}</b></p>
+        </button>
+      </h2>
+    </div>
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        <div class="col-sm-12 text-center ">
+            <div class="card">
+            </div>
+            {{#each tempos}}
+            <div class="card text-center mb-2">
+            <div class="card-header text-secondary">
+                Data: {{novaData}}
+                <svg class="bi bi-calendar3" width="25px" height="25px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+                    <path fill-rule="evenodd" d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
                 </svg>
-            </h3>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title text-secondary"><b class="iniciodeestudos">{{inicio}}</b> às {{termino}}</h5>
+                <p class="card-text text-secondary">Tempo da atividade: <b class="tempodeestudo">{{tempoEstudado}}</b> minutos</p>
+                <p class="card-text text-secondary">Atividade: <b class="tipodeatividade">{{tipo}}</b> - {{subTipo}}</p>
+                <form action="/authUser/deletarTempo" method="POST">
+                    <input type="hidden" name="tempo_id" value="{{_id}}">
+                    <input type="hidden" name="usuario_id" value="{{estudante.id}}">
+                    <input type="hidden" name="dia" value="{{estudante.dia}}">
+                    <input type="hidden" name="semana" value="{{estudante.semana}}">
+                    <input type="hidden" name="mes" value="{{estudante.mes}}">
+                    <input type="hidden" name="total" value="{{estudante.total}}">
+                    <input type="hidden" name="tempoEstudado" value="{{tempoEstudado}}"></td>
+                    <button type="submit" class="btn btn-danger">
+                        <svg class="bi bi-trash-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>  
+            </div>
+            {{else}}
+            {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Gráficos
+        </button>
+      </h2>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample" style="margin: 0 auto;">
+        <div class="card-deck border-secondary">
+            <div class="card my-2">
+                <div class="card-body col-5-sm">
+                <div id="piechart"></div>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+            <div class="card my-2">
+                <div class="card-body col-5-sm ">
+                    <div id="chart_div"></div>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
         </div>
     </div>
-    {{#each tempos}}
-    <div class="card text-center mb-2">
-    <div class="card-header text-secondary">
-        Data: {{novaData}}
-        <svg class="bi bi-calendar3" width="25px" height="25px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
-            <path fill-rule="evenodd" d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-        </svg>
+  </div>
+
+<div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Conquistas
+        </button>
+      </h5>
     </div>
-    <div class="card-body">
-        <h5 class="card-title text-secondary">{{inicio}} às {{termino}}</h5>
-        <p class="card-text text-secondary">Tempo da atividade: {{tempoEstudado}} minutos</p>
-        <p class="card-text text-secondary">Atividade: {{tipo}} - {{subTipo}}</p>
-            <form action="/authUser/deletarTempo" method="POST">
-                <input type="hidden" name="tempo_id" value="{{_id}}">
-                <input type="hidden" name="usuario_id" value="{{estudante.id}}">
-                <input type="hidden" name="dia" value="{{estudante.dia}}">
-                <input type="hidden" name="semana" value="{{estudante.semana}}">
-                <input type="hidden" name="mes" value="{{estudante.mes}}">
-                <input type="hidden" name="total" value="{{estudante.total}}">
-                <input type="hidden" name="tempoEstudado" value="{{tempoEstudado}}"></td>
-                <button type="submit" class="btn btn-danger">
-                    <svg class="bi bi-trash-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
-                    </svg>
-                </button>
-            </form>
-    </div>  
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Como funciona</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Avatares conquistados</a>
+        </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <h2>Como ganho um avatar?</h2>
+          <p></p>
+          <p></p>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <li class="list-group-item text-left"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nível 1"><img src="/1.gif" class="avatar" style="width: 150px;"/></li></span>
+        <li class="list-group-item text-left"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nível 2"><img src="/2.gif" class="avatar" style="width: 150px;"/></li></span>
+        <li class="list-group-item text-left"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nível 3"><img src="/3.gif" class="avatar" style="width: 150px;"/></li></span>
+        <li class="list-group-item text-left"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nivel 4"><img src="/4.gif" class="avatar" style="width: 150px;"/></li></span>
+        <li class="list-group-item text-left"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nivel 5"><img src="/5.gif" class="avatar" style="width: 150px;"/></li></span>
+        <li class="list-group-item text-left"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nivel 6"><img src="/6.gif" class="avatar" style="width: 150px;"/></li></span>
+        <li class="list-group-item text-left"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Nivel 7"><img src="/7.gif" class="avatar" style="width: 150px;"/></li></span>
+        </div>
+        </div>
+      </div>
     </div>
-    {{else}}
-    {{/each}}
+  </div>
 </div>
+
 </div>
+
+
+    <script type="text/javascript">
+
+    var tamanho = document.getElementsByClassName("tempodeestudo").length
+    var temp_total = 0
+    var temposdeaula = 0
+    var temposdeestudo = 0
+    var temposdeleitura = 0
+    var i = 0
+    while(i < tamanho){
+        temp_total = parseInt(document.getElementsByClassName("tempodeestudo")[i].innerText) + temp_total
+        if(document.getElementsByClassName("tipodeatividade")[i].innerText == "Assistiu aula"){
+            temposdeaula = temposdeaula + parseInt(document.getElementsByClassName("tempodeestudo")[i].innerText)
+        }
+        if(document.getElementsByClassName("tipodeatividade")[i].innerText == "Estudou"){
+            temposdeestudo = temposdeestudo + parseInt(document.getElementsByClassName("tempodeestudo")[i].innerText)
+        }
+        if(document.getElementsByClassName("tipodeatividade")[i].innerText == "Leitura"){
+            temposdeleitura = temposdeleitura + parseInt(document.getElementsByClassName("tempodeestudo")[i].innerText)
+        }
+        i++
+    }
+
+    // Load the Visualization API and the corechart package.
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+        ['Task', 'Hours per Day'],
+        ['Aula',     temposdeaula],
+        ['Estudar',      temposdeestudo],
+        ['Leitura',  temposdeleitura],
+    ]);
+
+    var options = {
+        title: 'Percentagem de min estudados em relação ao tipo de atividade'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+    chart.draw(data, options);
+    }
+
+
+    var tamanho = document.getElementsByClassName("tempodeestudo").length
+    var tempomanha = 0
+    var tempostarde = 0
+    var temposnoite = 0
+    var temposmadrugada = 0
+    var i = 0
+    while(i < tamanho){
+    if(parseInt(document.getElementsByClassName("iniciodeestudos")[i].innerText) > 0){
+        if(parseInt(document.getElementsByClassName("iniciodeestudos")[i].innerText) < 6){
+            temposmadrugada = temposmadrugada + parseInt(document.getElementsByClassName("tempodeestudo")[i].innerText)
+        }
+    }
+    if(parseInt(document.getElementsByClassName("iniciodeestudos")[i].innerText) > 5){
+        if(parseInt(document.getElementsByClassName("iniciodeestudos")[i].innerText) < 12){
+            tempomanha = tempomanha + parseInt(document.getElementsByClassName("tempodeestudo")[i].innerText)
+        }
+    }
+    if(parseInt(document.getElementsByClassName("iniciodeestudos")[i].innerText) > 11){
+        if(parseInt(document.getElementsByClassName("iniciodeestudos")[i].innerText) < 18){
+            tempostarde = tempostarde + parseInt(document.getElementsByClassName("tempodeestudo")[i].innerText)
+        }
+    }
+    if(parseInt(document.getElementsByClassName("iniciodeestudos")[i].innerText) > 17){
+        if(parseInt(document.getElementsByClassName("iniciodeestudos")[i].innerText) < 24){
+            temposnoite = temposnoite + parseInt(document.getElementsByClassName("tempodeestudo")[i].innerText)
+        }
+    }
+    i++
+    }
+
+    google.charts.load('current', {packages: ['corechart', 'bar']});
+    google.charts.setOnLoadCallback(drawBasic);
+
+    function drawBasic() {
+
+    var data = google.visualization.arrayToDataTable([
+    ['City', 'Total de min',],
+    ['Madrugada', temposmadrugada],
+    ['Manhã', tempomanha],
+    ['Tarde', tempostarde],
+    ['Noite', temposnoite],
+    ]);
+
+    var options = {
+    title: 'Total de min estudado em relação ao turno',
+    chartArea: {width: '60%'},
+    hAxis: {
+        title: 'Minutos estudados',
+        minValue: 0
+    },
+    vAxis: {
+        title: 'City'
+    }
+    };
+
+    var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+
+    chart.draw(data, options);
+    }
+
+const x = parseInt(document.getElementsByClassName("meumes")[0].innerText)
+
+
+  if(x < 600){
+    document.getElementsByClassName("avatar")[1].setAttribute("hidden", "true");
+  }
+    
+  if(x < 1200){
+    document.getElementsByClassName("avatar")[2].setAttribute("hidden", "true");
+  }
+
+    if(x < 1800){
+      document.getElementsByClassName("avatar")[3].setAttribute("hidden", "true");
+    }
+
+    if(x < 2200){
+    document.getElementsByClassName("avatar")[4].setAttribute("hidden", "true");
+    }
+
+    if(x < 2800){
+      document.getElementsByClassName("avatar")[5].setAttribute("hidden", "true");
+    }
+
+    if(x < 3400){
+      document.getElementsByClassName("avatar")[6].setAttribute("hidden", "true");
+    }
+    if(x > 4500){
+      document.getElementsByClassName("avatar")[7].setAttribute("hidden", "true");
+    }
+
+
+
+</script>
