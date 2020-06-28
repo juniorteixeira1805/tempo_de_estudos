@@ -1,0 +1,162 @@
+<div class="jumbotron jumbotron-fluid bg-secondary">
+  <div class="container">
+    <h1 class="display-4 text-center text-light mb-4">Cadastre seu artigo</h1>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active text-dark" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Descrição</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link text-dark" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Como e de onde pegar o link</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link text-dark" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Informações</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <p class="lead text-light">Aqui você pode cadastrar seu artigo e trabalho acadêmico. O artigo poderá ser simples. Você pode explicar, científicamente, qualquer assunto que sabe com a devida referência, para validar seu trabalho e não gerar nóticias falsas.</p>
+                <p class="lead text-light">Seus artigos cadastrados serão públicos e qualquer pessoa poderá ter acesso a ele. Além disso, as pessoas cadastradas na plataforma poderão indicar se gostaram ou não anonimamente.</p>
+                <p class="lead text-light">Essa funcionalidade foi implementada no intuito de levar explicaçãoes científicas para as pessoas, ou seja, fazer divulgação cientifica. Além disso, todo acadêmico já passou perrengue para fazer algum trabalho de fim de semestre e depois, nunca mais utilizou este trabalho. Sendo assim, gerando uma utilidade para esse seu trabalho que está jogado sem utilidade.</p>
+            </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <h3 class="lead text-light mt-2">É necessário alguns passos para adicionar o link do seu artigo.</h3   >
+                <ol>
+                    <li class="text-light">
+                        Seu artigo deve está em seu google drive;
+                    </li>
+                    <li class="text-light">
+                        Vá até seu artigo click com o botão direito em cima dele e selecione a opção "gerar link compartilhado";
+                    </li>
+                    <li class="text-light">
+                        Após abrir uma pequena janela, na parte inferior, selecione a opção "qualquer pessoa com link" e, ao lado, selecione a opção "Leitor";
+                    </li>
+                    <li class="text-light">
+                        Em seguida copie o link disponibilizado e cole na, aqui nesta pagina, na caixa abaixo onde pede o link do artigo.
+                    </li>
+                </ol>
+                
+            </div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <h3 class="lead text-light mt-2">É necessário algumas informações para adicionar o link do seu artigo.</h3   >
+                <ul>
+                    <li class="text-light">
+                        A disponilibidade do seu artigo na plataforma é de total responsabilidade do usuário que está disponibilizando;
+                    </li>
+                    <li class="text-light">
+                        A plataforma não se responsabiliza por a falta de referência, ou por alguma e qualquer inconsistência da mesma;
+                    </li>
+                    <li class="text-light">
+                        A plataforma não se responsabiliza, se caso, o usuário não selecionar o link "leitor" e o tenha aguma modificação;
+                    </li>
+                    <li class="text-light">
+                        Seu documento será público e qualquer pessoa poderá fazer o download de seu artigo.
+                    </li>
+                    <li class="text-light">
+                        Todos os usuarios da plataforma, poderão votar se gostou ou não do seu artigo e a quantidade de votos será disponibilizada publicamente.
+                    </li>
+                </ul>
+            </div>
+        </div>
+  </div>
+</div>
+<div class="card bg-dark text-light">
+    <div class="card-body">
+        <div class="alert alert-warning" role="alert">
+        Todos os campos são obrigatórios.
+        </div>
+        <form action="/controllerArtigo/registerArtigo" method="POST">
+            <div>
+                <label for="validationServer01">Informe a grande área</label>
+                <select class="custom-select is-valid col-sm" name="grandeArea" size="3" required>
+                    <option value="Ciências Exatas">Ciências exatas</option>
+                    <option value="Ciências Humanas">Ciências humanas</option>
+                    <option value="Ciêcias Sociais Aplicadas">Ciências sociais aplicadas</option>
+                    <option value="Ciências da Saaúde">Ciências da saúde</option>
+                </select>
+            </div>
+            <div>
+                <label for="validationServer01">Informe a área</label>
+                <select class="custom-select is-valid col-sm" name="area" size="3" required>
+                    <option value="Arquitetura e Urbanismo">Arquitetura e Urbanismo</option>
+                    <option value="Astronomia">Astronomia</option>
+                    <option value="Música">Música</option>
+                    <option value="Artes">Artes cênicas</option>
+                    <option value="Adiministração">Adiministração</option>
+                    <option value="Comunicação">Comunicação</option>
+                    <option value="Direito">Direito</option>
+                    <option value="Gastronomia">Gastronomia</option>
+                    <option value="Pedagogia">Pedagogia</option>
+                    <option value="Social">Sevirço social</option>
+                    <option value="Política">Políticas públicas</option>
+                    <option value="Engenharia Elétrica">Engenharia Elétrica</option>
+                    <option value="Engenharia Civil">Engenharia Civil</option>
+                    <option value="Engenharia Mecânica">Engenharia Mecânica</option>
+                    <option value="Engenharia da Computação">Engenharia da Computação</option>
+                    <option value="Engenharia Mecatrônica">Engenharia Mecatrônica</option>
+                    <option value="Engenharia de Materiais">Engenharia de Materiais</option>
+                    <option value="Engquimica">Engenharia Química</option>
+                    <option value="Engenharia de Produção">Engenharia de Produção</option>
+                    <option value="Engenharia Textil">Engenharia Têxtil</option>
+                    <option value="Engenharia Ambiental">Engenharia Ambiental</option>
+                    <option value="Engenharia Biomédica">Engenharia Biomédica</option>
+                    <option value="Engenharia de Telecomunicações">Ciências Telecomunicações</option>
+                    <option value="Letras">Letras</option>
+                    <option value="História">História</option>
+                    <option value="Geografia">geográfia</option>
+                    <option value="Filósofia">Filosófia</option>
+                    <option value="Ecônomia">Economia</option>
+                    <option value="Física">Física</option>
+                    <option value="Química">Química</option>
+                    <option value="Matemática">Matemática</option>
+                    <option value="Educação Física">Educaçã Física</option>
+                    <option value="Biologia">Biologia</option>
+                    <option value="Informática">Informática</option>
+                    <option value="Computação">Computação</option>
+                    <option value="Enfermagem">Enfermagem</option>
+                    <option value="Farmácia">Farmácia</option>
+                    <option value="Fisioterapia">Fisioterapia</option>
+                    <option value="Medicina">Medicina</option>
+                    <option value="Veterinaria">Medicina Veterinária</option>
+                    <option value="Nutricao">Nutrição</option>
+                    <option value="Odontologia">Odontologia</option>
+                    <option value="Psicologia">Psicologia</option>                    
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Informe o tema</label>
+                <input type="text" class="form-control" id="tema" name="tema" placeholder="Tema do seu artigo" required>
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Insira o link do seu artigo
+                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="O link deve ser do google drive. O link tem que está público e o formato deve está em PDF.">
+                    <svg class="text-info" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                    </svg>
+                </span>
+                </label>
+                <input type="text" class="form-control" id="linkDoArtigo" name="linkDoArtigo" placeholder="Link do seu artigo no google drive" required>
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Descrição do artigo
+                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Informe, brevemente, sobre o que seu artigo decorre.">
+                    <svg class="text-info" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                    </svg>
+                </span>
+                </label>
+                <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Insira a descrição aqui" required>
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Insira uma referência que possa validar seu artigo
+                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Todas as referências devem está no documento.">
+                    <svg class="text-info" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                    </svg>
+                </span>
+                </label>
+                <input type="text" class="form-control" id="link" name="referencias" placeholder="Referência" required>
+            </div>
+            <button class="btn btn-info" type="submit">Cadastrar</button>
+        </form>
+    </div>
+</div>

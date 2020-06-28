@@ -15,8 +15,10 @@ require("./config/auth")(passport)
 // importando meus packs
     const Auth = require('./controller/authController')
     const AuthUser = require('./controller/userController')
+    const contArt = require('./controller/artigoController')
     const User = require('./router/user')
     const Administradores = require('./router/admin')
+    const Artigo = require('./router/artigo')
 
 //configurações
     //sessão
@@ -64,6 +66,8 @@ require("./config/auth")(passport)
     app.use('/user', User)
     app.use('/authUser', AuthUser)
     app.use('/administradores', Administradores)
+    app.use('/artigo', Artigo)
+    app.use('/controllerArtigo', contArt)
 
 //outros
 
@@ -75,7 +79,7 @@ require("./config/auth")(passport)
     //escutando tempo para enviar email
     setInterval(function(){
         let data = new Date()
-        let email = ["juniorteixeira1805@gmail.com", "klaria6@gmail.com", "kassia.milenateixeira@gmail.com", "carolsilva58022@gmail.com", "lidineide_nunes@hotmail.com", "dayannetargino74@gmail.com", "janeirode97@gmail.com", "sayoolima@gmail.com", "diegooliveira.msi@gmail.com","aliicecs@ufrn.edu.br","leticiacruz606@gmail.com","herlanecandido_@hotmail.com","vitor3souza@gmail.com","loiolamateus7@gmail.com","helloysaregiane@gmail.com", "anaa.lusantos@gmail.com", "adelsonunes.ribeiro@hotmail.com", "marcosadriano740@gmail.com"]
+        let email = ["juniorteixeira1805@gmail.com", "klaria6@gmail.com", "kassia.milenateixeira@gmail.com", "carolsilva58022@gmail.com", "janeirode97@gmail.com", "sayoolima@gmail.com", "diegooliveira.msi@gmail.com","aliicecs@ufrn.edu.br","leticiacruz606@gmail.com","vitor3souza@gmail.com","loiolamateus7@gmail.com","helloysaregiane@gmail.com", "anaa.lusantos@gmail.com", "adelsonunes.ribeiro@hotmail.com", "marcosadriano740@gmail.com"]
         console.log("Verificando hora de mandar email: " + data.getHours())
         if(data.getHours() == "17" || data.getHours() == "23"){
         Func.enviarEmail(email, email.length)

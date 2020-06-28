@@ -2,30 +2,12 @@
 <nav class="navbar navbar-collapse navbar-dark bg-dark ">
   <ul class="nav">
     <li class="nav-item">
-      <a class="navbar-brand" href="/user/home" style="color: white;">Improdutiva Estudos LTDA</a>
-    </li>
-    <li>
-      {{#if user.privacidade}}
-      <form action="/authUser/privacidade" method="POST">
-        <button type="submit" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Privar seus dados">
-          <input type="hidden" name="priv" value="{{user.privacidade}}"></td>
-          <svg class="bi bi-unlock-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z"/>
-            <path fill-rule="evenodd" d="M8.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>
-          </svg>
-        </button>
-        </form>
-      {{else}}
-      <form action="/authUser/privacidade" method="POST">
-        <input type="hidden" name="priv" value="{{user.privacidade}}" ></td>
-        <button type="submit" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tornar seus dados publicos">
-          <svg class="bi bi-lock-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <rect width="11" height="9" x="2.5" y="7" rx="2"/>
-            <path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>
-          </svg>
-        </button>
-      </form>
-      {{/if}}
+      <a class="navbar-brand" href="/user/home" style="color: white;">
+      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+        <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+      </svg>
+      Improdutiva Estudos LTDA</a>
     </li>
   </ul>
 
@@ -43,12 +25,65 @@
     </svg></a>
     </div>
   </div>
+  </nav>
+
+  <nav class="nav navbar-collapse navbar-dark bg-secondary" style="width: 100%;">
+    <ul class="nav nav-tabs bg-secondary border-0">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Artigos</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/artigo/registrodeartigos">Registrar artigo</a>
+          <a class="dropdown-item" href="/artigo/meusArtigos">Meus artigos</a>
+          <a class="dropdown-item" href="/artigo/catalogo">Acervo de artigos</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Privacidade</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item">
+            {{#if user.privacidade}}
+            Tornar dados privados
+            <form action="/authUser/privacidade" method="POST">
+              <button style="width: 100%;" type="submit" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Privar seus dados">
+                <input type="hidden" name="priv" value="{{user.privacidade}}"></td>
+                <svg class="bi bi-unlock-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z"/>
+                  <path fill-rule="evenodd" d="M8.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>
+                </svg>
+              </button>
+              </form>
+            {{else}}
+            Tornar dados públicos
+            <form action="/authUser/privacidade" method="POST">
+              <input type="hidden" name="priv" value="{{user.privacidade}}" ></td>
+              <button style="width: 100%;" type="submit" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tornar seus dados publicos">
+                <svg class="bi bi-lock-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="11" height="9" x="2.5" y="7" rx="2"/>
+                  <path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>
+                </svg>
+              </button>
+            </form>
+            {{/if}}
+          </a>
+        </div>
+      </li>
+    </ul>
+
+  </nav>
   {{else}}
   <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="/auth/login" style="color: white;">
-      Improdutiva Estudos LTDA
-    </a>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="navbar-brand" href="/auth/login" style="color: white;">
+        Improdutiva Estudos LTDA
+      </a>
+    </li>
 
+    <li class="nav-item">
+      <a class="navbar-brand text-light" href="/artigo/catalogo">|| Acervo de artigos</a>
+    </li>
+  </ul>
     <a href="/user/registrodeusuario"><button type="submit" class="btn btn-info mt-2 align-middle">Cadastrar</button></a>
+  </nav>
   {{/if}}
-</nav>
