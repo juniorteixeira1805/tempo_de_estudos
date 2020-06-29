@@ -33,7 +33,7 @@ router.get('/areaEscolhida/:area', (req, res) => {
         })
 })
 
-router.get('/meusArtigos', (req, res) => {
+router.get('/meusArtigos', eAdmin, (req, res) => {
     Artigo.find({area: req.body.area}).sort({semana: -1}).then((artigos) => {
         res.render("./artigos/artigospublicos", {artigos: artigos})
         }).catch((err) => {
@@ -42,7 +42,7 @@ router.get('/meusArtigos', (req, res) => {
         })
 })
 
-router.get('/editarArtigo/:id', (req, res) => {
+router.get('/editarArtigo/:id',eAdmin, (req, res) => {
     Artigo.findOne({_id: req.params.id}).then((artigos) => {
         res.render("./artigos/editar", {artigos: artigos})
         }).catch((err) => {

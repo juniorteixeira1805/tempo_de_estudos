@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Improdutiva Estudos LTDA</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body class="text-info" style="background-color: #B0C4DE; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
 
@@ -43,6 +44,9 @@ $(".btn-sm").click(function()
     var emoji = $(this).text();
     $('#conteudo').val($('#conteudo').val() + emoji);
 }); 
+function onSubmit(token) {
+    document.getElementById("demo-form").submit();
+}
 </script> 
 </body>
 
