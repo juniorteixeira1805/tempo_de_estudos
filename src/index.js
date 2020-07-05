@@ -12,10 +12,15 @@ const funcdata = require("./controller/tempoController")
 const Func = require("./config/nodemailer")
 require("./config/auth")(passport)
 
+// configurando o socket.io
+const server = require('http').createServer(app)
+const io = require('socket.io')(server)
+
 // importando meus packs
     const Auth = require('./controller/authController')
     const AuthUser = require('./controller/userController')
     const contArt = require('./controller/artigoController')
+    const Coletiva = require('./controller/salaColetivaController')
     const User = require('./router/user')
     const Administradores = require('./router/admin')
     const Artigo = require('./router/artigo')
@@ -68,14 +73,17 @@ require("./config/auth")(passport)
     app.use('/administradores', Administradores)
     app.use('/artigo', Artigo)
     app.use('/controllerArtigo', contArt)
+    app.use('/salaColetiva', Coletiva)
+
+    
 
 //outros
-
     //--Funções chamadas para atualizar as horas do dia, semana e mes--//
     funcdata.verifcaDia();
     funcdata.verifcaSemana();
     funcdata.verifcaMes();
 
+    /*
     //escutando tempo para enviar email
     setInterval(function(){
         let data = new Date()
@@ -86,8 +94,24 @@ require("./config/auth")(passport)
         } }, 3600000);
         // 3600000 uma hora
 
+// configurando o socket
+    // configurando o socket
+
+        let messages = []
+
+        io.on('connection', socket => {
+
+            socket.emit('previousMessages', messages)
+
+            socket.on('sendMessage' , data => {
+                console.log(data)
+                messages.push(data)
+                socket.broadcast.emit('receivedMessage', data)
+            })
+        })
+*/
     //conectando o servidor a porta
         const PORT = process.env.PORT || 3000
-        app.listen(PORT, () => {
+        server.listen(PORT, () => {
             console.log("servidor rodando...")
         })

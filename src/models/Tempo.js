@@ -45,10 +45,13 @@ const TempoSchema = new mongoose.Schema({
 //-- Antes de salvar --//
 TempoSchema.pre('save', async function(next) {
     //-- Calculando os minutos e setando --//
+
     this.tempoEstudado = await funcdata.tempoEstudado(this.inicio, this.termino)
 
     //-- Tratando data e setando nova data --//
-    this.novaData = await funcdata.novadata(this.dateCreater)
+    if(!this.novaData){
+        this.novaData = await funcdata.novadata(this.dateCreater)
+    }
 
     next();
 })

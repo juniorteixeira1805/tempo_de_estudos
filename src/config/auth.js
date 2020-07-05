@@ -3,8 +3,6 @@ const localstrategy = require('passport-local');
 
 const mongoose = require('mongoose');
 
-const funcdata = require("../controller/tempoController") 
-
 const bct = require('bcryptjs');
 
 //carregando o modulo o user
@@ -39,18 +37,6 @@ module.exports = function(passport){
 
     //--Informa o que vai ser salvo na session--//
     passport.serializeUser((user, done) => {
-
-    //--verificação de uma nova sessão--//
-        try{
-
-            //--Atualiza o status para online--//
-            User.updateOne({_id: user.id}, {verificadorOnline: true}, function(err, res) {
-            });
-            
-    
-        } catch (err){
-            console.log("Deu algum erro ao iniciar a sessão: " + err)
-        }
         done(null, user.id);
     })
 

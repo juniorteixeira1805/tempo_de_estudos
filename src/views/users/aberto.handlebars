@@ -1,0 +1,52 @@
+<div class="card">
+    <div class="card-header">
+
+    </div>
+    <div class="card-body">
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Estudou outro dia</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/authUser/registerTempo" method="POST">
+                        <input type="hidden" name="id" value="{{user._id}}"></td>
+                        <input type="hidden" name="dia" value="{{user.dia}}"></td>
+                        <input type="hidden" name="semana" value="{{user.semana}}"></td>
+                        <input type="hidden" name="mes" value="{{user.mes}}"></td>
+                        <input type="hidden" name="total" value="{{user.total}}"></td>
+
+                        <div class="form-group text-center">
+                        <div class="mt-2">
+                        <small>Inicio: </small>
+                        <input class="col-auto" type="time" id="inicio" name="inicio" min="00:00" max="23:59" required>
+ 
+                            <small>Fim: </small>
+                            <input class="col-auto" type="time" id="termino" name="termino" min="00:00" max="23:59" required>
+                        <div class="form-group row">
+                        </div>
+                        <div class="mt-2">
+                            <small>Data:</small>
+                        <input style="width: 50%;" class="col-auto" name="novaData" type="date" value="aaaa-mm-dd" id="example-date-input">
+                        </div>                  
+                        
+                        </div>
+                        <div class="col-auto my-1">
+                            <label for="validationServer01">Informe o tipo da atividade</label>
+                            <select class="custom-select " name="tipo" size="3" required>
+                            <option value="Estudou">Estudei</option>
+                            <option value="Assistiu aula">Assisti aula</option>
+                            <option value="Leitura">Fiz uma Leitura</option>
+                            </select>
+                            <label for="validationServer01">Informe o subtipo da atividade:</label>
+                            <input type="text" class="form-control " name="subTipo" placeholder="O que leu? Qual foi a aula? O que estudou?" id="validationServer01" required>
+                        </div>
+                        </div>
+                        <button type="submit" class="btn btn-info">Salvar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -20,6 +20,7 @@
             const data = new Date(); //-- Extraindo a data de hoje --//
             
             const novoTempo = { //-- Recebendo valores --//
+                novaData: req.body.novaData, 
                 inicio: req.body.inicio, 
                 termino: req.body.termino, 
                 estudante: req.body.id,

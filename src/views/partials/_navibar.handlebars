@@ -28,16 +28,6 @@
   </nav>
 
   <nav class="nav navbar-collapse navbar-dark bg-secondary" style="width: 100%;">
-    <ul class="nav nav-tabs bg-secondary border-0">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Artigos</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="/artigo/registrodeartigos">Registrar artigo</a>
-          <a class="dropdown-item" href="/artigo/meusArtigos">Meus artigos</a>
-          <a class="dropdown-item" href="/artigo/catalogo">Acervo de artigos</a>
-        </div>
-      </li>
-
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Privacidade</a>
         <div class="dropdown-menu">
@@ -67,6 +57,29 @@
             {{/if}}
           </a>
         </div>
+      </li>
+
+    <ul class="nav nav-tabs bg-secondary border-0">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Biblioteca</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/artigo/registrodeartigos">Registrar artigo</a>
+          <a class="dropdown-item" href="/artigo/meusArtigos">Meus artigos</a>
+          <a class="dropdown-item" href="/artigo/catalogo">Acervo de artigos</a>
+          <a class="dropdown-item" href="/user/saladeleitura">Livros</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sala do tempo</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/user/pomodoro">Pomodoro</a>
+          <a class="dropdown-item" href="/user/aberto">Aberto</a>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-light" href="/user/historicoPessoal/{{user._id}}">Estátistica e Conquistas</a>
       </li>
     </ul>
 
