@@ -1,7 +1,7 @@
 const nodemailer = require("nodemailer")
-/*
+
 module.exports = {
-    enviarEmail: async function(vertordeemails, quantidadesdeemails){
+    enviarEmail: async function(vertordeemails, vertordenome, quantidadesdeemails){
         var i = 0;
         while(i < quantidadesdeemails){
             let transporter = nodemailer.createTransport({
@@ -15,11 +15,11 @@ module.exports = {
             });
             
             await transporter.sendMail({
-                from: "Improdutiva Estudos LTDA <devorion01@gmail.com>",
+                from: "e-mail marketing - improdutiva estudos LTDA <devorion01@gmail.com>",
                 to: vertordeemails[i],
-                subject: "Lembrete.",
+                subject: vertordenome[i]+", a improdutiva estudos LTDA tem novidades para você-",
                 text: "",
-                html: '<h3>Olá, estou aqui para lembrar a você que a vida não é nada fácil. </h3><p>Se você quer esse diploma ou um cargo público, não esqueça que deve sentar e estudar. Para isto, estamos aqui. Entra na plataforma e vem estudar conosco. Não esquece de colocar seu tempo, tá?</p><p><b>Mas Lembre-se, VOCÊ ESTÁ INDO BEM!<b></p><img src="https://abrilguiadoestudante.files.wordpress.com/2016/10/sofrendo-nos-estudos.gif"><a href="https://tempodeestudos--jrteixeira.repl.co/auth/login"><br><b>Improdutiva Estudos LTDA.<b/><a/>'
+                html: '<p>Olá'+vertordenome[i]+', tudo bem? Essa semana temos mais uma novidade para você em nossa plataforma, agora contamos com uma nova função para auxiliar você a manter o foco e aumentar a sua produtividade.A sala de tempo agora possui também a técnica de pomodoro e nele você pode optar pelos métodos iniciante, avançado e livre: No método iniciante, você terá 25 min de foco e 5 min para descansar. Na opção Avançado, você ficará estudando por 50 min e descansará por 10 min. Por fim, no método livre você poderá estudar o tempo que quiser e descansar  o quanto quiser, é só você mesmo registrar no temporizador o tempo que estudará e o tempo que descansará.<p>'
             }).then(message => {
                 console.log(message);
             }).catch(err => {
@@ -30,7 +30,7 @@ module.exports = {
         return true
     }
 }
-
+/*
 let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 587,

@@ -85,17 +85,18 @@ const io = require('socket.io')(server)
     funcdata.verifcaSemana();
     funcdata.verifcaMes();
 
-    /*
+    
     //escutando tempo para enviar email
     setInterval(function(){
         let data = new Date()
+        let nome = ["Junior","Aryele","Kassia","Carol","Song","Sayonnara", "Diego", "Alice", "Leticia", "Vitor", "Matheus", "Helloysa"]
         let email = ["juniorteixeira1805@gmail.com", "klaria6@gmail.com", "kassia.milenateixeira@gmail.com", "carolsilva58022@gmail.com", "janeirode97@gmail.com", "sayoolima@gmail.com", "diegooliveira.msi@gmail.com","aliicecs@ufrn.edu.br","leticiacruz606@gmail.com","vitor3souza@gmail.com","loiolamateus7@gmail.com","helloysaregiane@gmail.com", "anaa.lusantos@gmail.com", "adelsonunes.ribeiro@hotmail.com", "marcosadriano740@gmail.com"]
         console.log("Verificando hora de mandar email: " + data.getHours())
         if(data.getHours() == "17" || data.getHours() == "23"){
-        Func.enviarEmail(email, email.length)
+        Func.enviarEmail(email,nome, email.length)
         } }, 3600000);
         // 3600000 uma hora
-*/
+
 // configurando o socket
     // configurando o socket
 

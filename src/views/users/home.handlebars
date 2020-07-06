@@ -10,7 +10,7 @@
   <img class="avatar" src="" alt="ads via Carbon" border="0" style="max-width: 100px;">
   </div>
     <div class="card bg-dark text-center" style="margin: 0px;">
-    <table class="table table-dark">
+    <table class="table-responsive-sm table-dark ">
       <thead>
         <tr>
           <th scope="col">Nível</th>
@@ -355,36 +355,6 @@
     })
 */
   
-var data = new Date()
-numeroSemana =  data.getDay()
-
-const x = document.getElementsByClassName("domingoparaapagar").length
-var i = 0
-
-while(i < x){
-  if(numeroSemana == 0){
-    document.getElementsByClassName("domingoparaapagar")[i].removeAttribute("hidden")
-  }
-  if(numeroSemana == 1){
-    document.getElementsByClassName("segundaparaapagar")[i].removeAttribute("hidden")
-  }
-  if(numeroSemana == 2){
-    document.getElementsByClassName("tercaparaapagar")[i].removeAttribute("hidden")
-  }
-  if(numeroSemana == 3){
-    document.getElementsByClassName("quartaparaapagar")[i].removeAttribute("hidden")
-  }
-  if(numeroSemana == 4){
-    document.getElementsByClassName("quintaparaapagar")[i].removeAttribute("hidden")
-  }
-  if(numeroSemana == 5){
-    document.getElementsByClassName("sextaparaapagar")[i].removeAttribute("hidden")
-  }
-  if(numeroSemana == 6){
-    document.getElementsByClassName("sabadoparaapagar")[i].removeAttribute("hidden")
-  }
-  i++
-}
 
   const meumes = parseInt(document.getElementsByClassName("mes")[0].innerText)
   if(meumes <= 600){
@@ -427,5 +397,37 @@ while(i < x){
     }
   }
   }
+
+
+var data = new Date()
+numeroSemana =  data.getDay()
+
+const x = 15
+var i = 0
+
+while(i < x){
+  if(numeroSemana == 0){
+    document.getElementsByClassName("domingoparaapagar")[i].removeAttribute("hidden")
+  }
+  if(numeroSemana == 1){
+    document.getElementsByClassName("segundaparaapagar")[i].removeAttribute("hidden")
+  }
+  if(numeroSemana == 2){
+    document.getElementsByClassName("tercaparaapagar")[i].removeAttribute("hidden")
+  }
+  if(numeroSemana == 3){
+    document.getElementsByClassName("quartaparaapagar")[i].removeAttribute("hidden")
+  }
+  if(numeroSemana == 4){
+    document.getElementsByClassName("quintaparaapagar")[i].removeAttribute("hidden")
+  }
+  if(numeroSemana == 5){
+    document.getElementsByClassName("sextaparaapagar")[i].removeAttribute("hidden")
+  }
+  if(numeroSemana == 6){
+    document.getElementsByClassName("sabadoparaapagar")[i].removeAttribute("hidden")
+  }
+  i++
+}
 
 </script>
