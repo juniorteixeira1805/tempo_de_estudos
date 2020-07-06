@@ -42,6 +42,12 @@ router.get('/meusArtigos', eAdmin, (req, res) => {
         })
 })
 
+//-- Rota que renderiza a view sala de leitura --//
+router.get('/saladeleitura',eAdmin, (req, res) => {
+    console.log(req.user.name + " Esta na pagina saladeleitura")
+    res.render("./users/biblioteca")
+})
+
 router.get('/editarArtigo/:id',eAdmin, (req, res) => {
     Artigo.findOne({_id: req.params.id}).then((artigos) => {
         res.render("./artigos/editar", {artigos: artigos})

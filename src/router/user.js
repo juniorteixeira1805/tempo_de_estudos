@@ -16,11 +16,10 @@ const router = express.Router();
 
 //rota que renderiza pagina inicaial
     router.get('/home', eAdmin, async (req, res) => {
-
         //-- Passando todos os usuarios para a view --//
-          User.find({}).sort({semana: -1}).then((usuarios) => {
-            res.render("./users/home", {usuarios: usuarios})
-            console.log(req.user.name + " Esta na pagina home. IP:")
+        Atividade.find({'estudante': req.user.id}).sort({horarioInicial: 0}).then((atv, tempos) => {
+            res.render("./users/home", {atv: atv, tempos: tempos})
+            console.log(req.user.name + "Pagina home")
             }).catch((err) => {
             res.redirect("/user/home")
             console.log("deu erro: ", err)
@@ -31,16 +30,6 @@ const router = express.Router();
     router.get('/registrodeusuario', (req, res) => {
         res.render("./users/registro")
     })
-
-//-- Rota que renderiza o registro de usuario --//
-    router.get('/pomodoro', eAdmin, (req, res) => {
-        res.render("./users/pomodoro")
-    })
-
-//-- Rota que renderiza o registro de usuario --//
-router.get('/aberto', eAdmin, (req, res) => {
-    res.render("./users/aberto")
-})
 
 //-- Rora que renderiza a view de edição do usuario --//
     router.get('/editarusuario', eAdmin, (req, res) => {
@@ -63,21 +52,6 @@ router.get('/aberto', eAdmin, (req, res) => {
     })
 
 //-- Rota que renderiza o historico --//
-    router.get('/historico/:id', eAdmin, async (req, res) => {
-
-        Tempo.find({'estudante': req.params.id}).populate('estudante').sort({dateCreater: -1}).then((tempos) => {
-
-            res.render("./users/historico", {tempos: tempos})
-            console.log(req.user.name + " Esta na pagina editarusuario vizualisando o historico de " +  req.params.id)
-
-            }).catch((err) => {
-            res.redirect("/user/home")
-            console.log("deu erro: ", err)
-            })
-
-    })
-
-//-- Rota que renderiza o historico --//
     router.get('/historicoPessoal/:id', eAdmin, async (req, res) => {
 
         Tempo.find({'estudante': req.params.id}).populate('estudante').sort({dateCreater: -1}).then((tempos) => {
@@ -92,13 +66,6 @@ router.get('/aberto', eAdmin, (req, res) => {
 
     })
 
-//-- Rota que renderiza a view sala de leitura --//
-    router.get('/saladeleitura',eAdmin, (req, res) => {
-        console.log(req.user.name + " Esta na pagina saladeleitura")
-        res.render("./users/biblioteca")
-    })
-
-//--  --//
 // rota que renderiza para fazer o logout
     router.get('/logout/:id', async (req,res) => {
     //-- Atualiza o status para offline --//

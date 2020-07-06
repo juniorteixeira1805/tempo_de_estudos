@@ -24,6 +24,7 @@ const io = require('socket.io')(server)
     const User = require('./router/user')
     const Administradores = require('./router/admin')
     const Artigo = require('./router/artigo')
+    const Tempo = require('./router/tempo')
 
 //configurações
     //sessão
@@ -74,6 +75,7 @@ const io = require('socket.io')(server)
     app.use('/artigo', Artigo)
     app.use('/controllerArtigo', contArt)
     app.use('/salaColetiva', Coletiva)
+    app.use('/tempo', Tempo)
 
     
 
@@ -93,24 +95,18 @@ const io = require('socket.io')(server)
         Func.enviarEmail(email, email.length)
         } }, 3600000);
         // 3600000 uma hora
-
+*/
 // configurando o socket
     // configurando o socket
 
-        let messages = []
-
         io.on('connection', socket => {
-
-            socket.emit('previousMessages', messages)
-
             socket.on('sendMessage' , data => {
-                console.log(data)
-                messages.push(data)
                 socket.broadcast.emit('receivedMessage', data)
+                cont = false
             })
         })
-*/
-    //conectando o servidor a porta
+
+    //conectando o servidor a porta 
         const PORT = process.env.PORT || 3000
         server.listen(PORT, () => {
             console.log("servidor rodando...")

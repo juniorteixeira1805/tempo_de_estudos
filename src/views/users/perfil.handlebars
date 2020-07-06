@@ -195,11 +195,14 @@
                   <td>{{horarioTermino}}</td>
                   <td>{{atividade}}</td>
                   <td>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#atv">
+                    <form action="/authUser/deletarAtividade" method="POST">
+                    <input type="hidden" name="id" value="{{_id}}">
+                    <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#atv">
                         <svg class="bi bi-trash-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
                         </svg>
                     </button>
+                    </form>
                   </td>
                 </tr>
                 {{else}}
@@ -283,176 +286,6 @@
 
 
 <script>
-/*var tamanho = document.getElementsByClassName("mes").length
-var i = 0
-while(i < tamanho){
-
-  if(parseInt(document.getElementsByClassName("mes")[0].innerText) == "0"){
-    document.getElementsByClassName("avatar")[0].setAttribute("src", "/0.gif");
-    document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 1");
-  }
-
-  if(parseInt(document.getElementsByClassName("mes")[0].innerText) < "180"){
-    if(parseInt(document.getElementsByClassName("mes")[0].innerText) > "0"){
-        document.getElementsByClassName("avatar")[0].setAttribute("src", "/1.gif");
-        document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 2");
-      }
-    }
-  
-  if(parseInt(document.getElementsByClassName("mes")[0].innerText) < "360" ){
-    if(parseInt(document.getElementsByClassName("mes")[0].innerText) >= "180"){
-      document.getElementsByClassName("avatar")[0].setAttribute("src", "/2.gif");
-      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 3");
-    }
-  }
-
-  if(parseInt(document.getElementsByClassName("mes")[0].innerText) < "540"){
-    if(parseInt(document.getElementsByClassName("mes")[0].innerText) >= "360"){
-      document.getElementsByClassName("avatar")[0].setAttribute("src", "/3.gif");
-      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 4");
-      }
-  } 
-
-  if(parseInt(document.getElementsByClassName("mes")[0].innerText) < "720"){
-    if(parseInt(document.getElementsByClassName("mes")[0].innerText) >= "540"){
-      document.getElementsByClassName("avatar")[0].setAttribute("src", "/4.gif");
-      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 5");
-      }
-  }
-
-  if(parseInt(document.getElementsByClassName("mes")[0].innerText) < "900"){
-    if(parseInt(document.getElementsByClassName("mes")[0].innerText) >= "720"){
-      document.getElementsByClassName("avatar")[0].setAttribute("src", "/5.gif");
-      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 6");
-    }
-  } 
-  
-  if(parseInt(document.getElementsByClassName("mes")[0].innerText) < "1080"){
-    if(parseInt(document.getElementsByClassName("mes")[0].innerText) >= "900"){
-      document.getElementsByClassName("avatar")[0].setAttribute("src", "/6.gif");
-      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 7");
-    }
-  }
-
-  if(parseInt(document.getElementsByClassName("mes")[0].innerText) < "1260"){
-    if(parseInt(document.getElementsByClassName("mes")[0].innerText) >= "1080"){
-      document.getElementsByClassName("avatar")[0].setAttribute("src", "/7.gif");
-      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 8");
-    }
-  } 
-  
-  if(parseInt(document.getElementsByClassName("mes")[0].innerText) < "1440"){
-    if(parseInt(document.getElementsByClassName("mes")[0].innerText) >= "1260"){
-      document.getElementsByClassName("avatar")[0].setAttribute("src", "/8.gif");
-      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 9");
-      }
-  }
-
-  if(parseInt(document.getElementsByClassName("mes")[0].innerText) < "1620"){
-    if(parseInt(document.getElementsByClassName("mes")[0].innerText) >= "1440"){
-      document.getElementsByClassName("avatar")[0].setAttribute("src", "/9.gif");
-      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 10");
-    }
-  } 
-  
-  if(parseInt(document.getElementsByClassName("mes")[0].innerText) < "1800"){
-    if(parseInt(document.getElementsByClassName("mes")[0].innerText) >= "1620"){
-      document.getElementsByClassName("avatar")[0].setAttribute("src", "/10.gif");
-      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 11");
-    }
-  }
-
-  if(parseInt(document.getElementsByClassName("mes")[0].innerText) < "1980"){
-    if(parseInt(document.getElementsByClassName("mes")[0].innerText) >= "1800"){
-      document.getElementsByClassName("avatar")[0].setAttribute("src", "/11.gif");
-      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 12");
-    }
-  } 
-  
-  if(parseInt(document.getElementsByClassName("mes")[0].innerText) < "2160"){
-    if(parseInt(document.getElementsByClassName("mes")[0].innerText) >= "1980"){
-      document.getElementsByClassName("avatar")[0].setAttribute("src", "/12.gif");
-      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 13");
-    }
-  }
-
-  if(parseInt(document.getElementsByClassName("mes")[0].innerText) < "2340"){
-    if(parseInt(document.getElementsByClassName("mes")[0].innerText) >= "2160"){
-      document.getElementsByClassName("avatar")[0].setAttribute("src", "/13.gif");
-      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 14");
-    }
-  } 
-  
-  if(parseInt(document.getElementsByClassName("mes")[0].innerText) < "2520"){
-    if(parseInt(document.getElementsByClassName("mes")[0].innerText) >= "2340"){
-      document.getElementsByClassName("avatar")[0].setAttribute("src", "/14.gif");
-      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 15");
-    }
-  }
-
-  if(parseInt(document.getElementsByClassName("mes")[0].innerText) < "2700"){
-    if(parseInt(document.getElementsByClassName("mes")[0].innerText) >= "2520"){
-      document.getElementsByClassName("avatar")[0].setAttribute("src", "/15.gif");
-      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 16");
-    }
-  }  
-  
-  if(parseInt(document.getElementsByClassName("mes")[0].innerText) < "2880"){
-    if(parseInt(document.getElementsByClassName("mes")[0].innerText) >= "2700"){
-      document.getElementsByClassName("avatar")[0].setAttribute("src", "/16.gif");
-      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 17");
-    }
-  }
-
-  if(parseInt(document.getElementsByClassName("mes")[0].innerText) < "3060"){
-    if(parseInt(document.getElementsByClassName("mes")[0].innerText) >= "2880"){
-      document.getElementsByClassName("avatar")[0].setAttribute("src", "/17.gif");
-      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 18");
-    }
-  }
-
-  if(parseInt(document.getElementsByClassName("mes")[0].innerText) < "3240"){
-    if(parseInt(document.getElementsByClassName("mes")[0].innerText) >= "3060"){
-      document.getElementsByClassName("avatar")[0].setAttribute("src", "/18.gif");
-      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 19");
-    }
-  }
-
-  if(parseInt(document.getElementsByClassName("mes")[0].innerText) < "3420"){
-    if(parseInt(document.getElementsByClassName("mes")[0].innerText) >= "3240"){
-      document.getElementsByClassName("avatar")[0].setAttribute("src", "/19.gif");
-      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 20");
-    }
-  } 
-  
-  if(parseInt(document.getElementsByClassName("mes")[0].innerText) < "3600"){
-    if(parseInt(document.getElementsByClassName("mes")[0].innerText) >= "3420"){
-      document.getElementsByClassName("avatar")[0].setAttribute("src", "/20.gif");
-      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 21");
-    }
-  }
-
-  if(parseInt(document.getElementsByClassName("mes")[0].innerText) < "3780"){
-    if(parseInt(document.getElementsByClassName("mes")[0].innerText) >= "3600"){
-      document.getElementsByClassName("avatar")[0].setAttribute("src", "/20.gif");
-      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 22");
-    }
-  }
-
-  if(parseInt(document.getElementsByClassName("mes")[0].innerText) < "3960"){
-    if(parseInt(document.getElementsByClassName("mes")[0].innerText) >= "3780"){
-      document.getElementsByClassName("avatar")[0].setAttribute("src", "/20.gif");
-      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 23");
-    }
-  }
-
-  if(parseInt(document.getElementsByClassName("mes")[0].innerText) >= "4140"){
-      document.getElementsByClassName("avatar")[0].setAttribute("src", "/20.gif");
-      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 24");
-  }
-  i++
-        }*/
-
   const meumes = parseInt(document.getElementsByClassName("mes")[0].innerText)
   if(meumes <= 600){
       document.getElementsByClassName("avatar")[0].setAttribute("src", "/1.gif");

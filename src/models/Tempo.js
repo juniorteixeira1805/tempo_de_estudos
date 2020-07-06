@@ -40,6 +40,7 @@ const TempoSchema = new mongoose.Schema({
         type: String,
         default: "Não informado" //-- Qual foi a sub atividade --//
     }
+
 });
 
 //-- Antes de salvar --//

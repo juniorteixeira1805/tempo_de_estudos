@@ -49,6 +49,10 @@ const AtividadeSchema = new mongoose.Schema({
 
     dia: {
         type: String, 
+    },
+    status:{
+        type: Boolean, //-- Qual foi a atividade --//
+        default: false
     }
 
 });

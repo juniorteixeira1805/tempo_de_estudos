@@ -1,8 +1,217 @@
 <div class="container">
+<div class="message my-2"></div> 
+</div>
+<input id="pessoa" type="text" value="{{user.name}}" hidden>
+<div class="container">
+  <div class="container">
+<div class="bg-dark" id="carbonads">
+  <div class="card-deck" >
+  <div class="card bg-dark" style="max-width: 100px; margin: 0px;">
+  <img class="avatar" src="" alt="ads via Carbon" border="0" style="max-width: 100px;">
+  </div>
+    <div class="card bg-dark text-center" style="margin: 0px;">
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Nível</th>
+          <th scope="col">Dia</th>
+          <th scope="col">Semana</th>
+          <th scope="col">Mes</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th class="avat"></th>
+          <td>{{user.semana}}</td>
+          <td>{{user.semana}}</td>
+          <td class="mes">{{user.mes}}</td>
+          <td class="mes">{{user.total}}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
 
-<!-- Alerta para informações  -->
-  <div class="card-deck">
-    <div class="card text-center">
+</div>
+  </div>
+
+<!-- Botão para aprensetar o rank Geral  -->
+  <div class="card text-center mt-2 bg-dark mb-2">
+    <div class="card-header bg-dark">
+      <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Você pode adicionar sua atividade indo no seu perfil">
+        <button class="btn btn-light mt-2 bnt-responsive-sm btn-sm" style="margin: 0 auto;" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Atividades do dia
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+            </svg>
+        </button>
+      </span>
+    </div>
+    <div class="collapse mt-2" id="collapseExample">
+      <table class="table table-bordered table-responsive-sm table-dark text-light">
+        <thead>
+          <tr>
+            <th scope="col">Dia</th>
+            <th scope="col">Inicio</th>
+            <th scope="col">Termino</th>
+            <th scope="col">Atividade</th>
+            <th scope="col">status</th> 
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#each atv}}
+            {{#if verifSegunda}}
+            <tr class="segundaparaapagar" hidden>
+              <th scope="row">Segunda</th>
+              <td>{{horarioInicial}}</td>
+              <td>{{horarioTermino}}</td>
+              <td>{{atividade}}</td>
+              <td>
+                {{#if status}}
+                  <button type="button" class="btn btn-outline-success" disabled>Atividade concluída</button>
+                {{else}}
+              <form action="/authUser/concluiratividade" method="POST"><input type="hidden" name="id" value="{{_id}}">
+                  <button type="submit" class="btn btn-outline-light">Concluir atividade</button>
+                </form>
+                {{/if}}
+              </td>
+            </tr>
+            {{else}}
+            {{/if}}
+            {{else}}
+          {{/each}}
+            {{#each atv}}
+            {{#if verifTerca}}
+            <tr class="tercaparaapagar" hidden>
+              <th scope="row">Terça</th>
+              <td>{{horarioInicial}}</td>
+              <td>{{horarioTermino}}</td>
+              <td>{{atividade}}</td>
+              <td>
+                {{#if status}}
+                  <button type="button" class="btn btn-outline-success" disabled>Atividade concluída</button>
+                {{else}}
+              <form action="/authUser/concluiratividade" method="POST"><input type="hidden" name="id" value="{{_id}}">
+                  <button type="submit" class="btn btn-outline-light">Concluir atividade</button>
+                </form>
+                {{/if}}
+              </td>
+            </tr>
+            {{else}}
+            {{/if}}
+          {{else}}
+          {{/each}}
+            {{#each atv}}
+            {{#if verifQuarta}}
+            <tr class="quartaparaapagar" hidden>
+              <th scope="row">Quarta</th>
+              <td>{{horarioInicial}}</td>
+              <td>{{horarioTermino}}</td>
+              <td>{{atividade}}</td>
+              <td>
+                <form action="/authUser/concluiratividade" method="POST"><input type="hidden" name="id" value="{{_id}}">
+                <button type="submit" class="btn btn-outline-secondary">Concluir atividade</button>
+                </form> 
+              </td>
+            </tr>
+            {{else}}
+            {{/if}}
+          {{else}}
+          {{/each}}
+            {{#each atv}}
+            {{#if verifQuinta}}
+            <tr class="quintaparaapagar" hidden>
+              <th scope="row">Quinta</th>
+              <td>{{horarioInicial}}</td>
+              <td>{{horarioTermino}}</td>
+              <td>{{atividade}}</td>
+              <td>
+                {{#if status}}
+                  <button type="button" class="btn btn-outline-success" disabled>Atividade concluída</button>
+                {{else}}
+              <form action="/authUser/concluiratividade" method="POST"><input type="hidden" name="id" value="{{_id}}">
+                  <button type="submit" class="btn btn-outline-light">Concluir atividade</button>
+                </form>
+                {{/if}}
+              </td>
+            </tr>
+            {{else}}
+            {{/if}}
+          {{else}}
+          {{/each}}
+            {{#each atv}}
+            {{#if verifSexta}}
+            <tr class="sextaparaapagar" hidden>
+              <th scope="row">Sexta</th>
+              <td>{{horarioInicial}}</td>
+              <td>{{horarioTermino}}</td>
+              <td>{{atividade}}</td>
+              <td>
+                {{#if status}}
+                  <button type="button" class="btn btn-outline-success" disabled>Atividade concluída</button>
+                {{else}}
+              <form action="/authUser/concluiratividade" method="POST"><input type="hidden" name="id" value="{{_id}}"><input type="hidden" name="id" value="{{_id}}">
+                  <button type="submit" class="btn btn-outline-light">Concluir atividade</button>
+                </form>
+                {{/if}}
+              </td>
+            </tr>
+            {{else}}
+            {{/if}}
+            {{else}}
+          {{/each}}
+            {{#each atv}}
+            {{#if verifSabado}}
+            <tr class="sabadoparaapagar" hidden>
+              <th scope="row">Sábado</th>
+              <td>{{horarioInicial}}</td>
+              <td>{{horarioTermino}}</td>
+              <td>{{atividade}}</td>
+              <td>
+                {{#if status}}
+                  <button type="button" class="btn btn-outline-success" disabled>Atividade concluída</button>
+                {{else}}
+              <form action="/authUser/concluiratividade" method="POST"><input type="hidden" name="id" value="{{_id}}">
+                  <button type="submit" class="btn btn-outline-light">Concluir atividade</button>
+                </form>
+                {{/if}}
+              </td>
+            </tr>
+            {{else}}
+            {{/if}}
+          {{else}}
+          {{/each}}
+          {{#each atv}}
+
+            {{#if verifDomingo}}
+            <tr class="domingoparaapagar" hidden>
+              <th scope="row">Domingo</th>
+              <td>{{horarioInicial}}</td>
+              <td>{{horarioTermino}}</td>
+              <td>{{atividade}}</td>
+              <td>
+                {{#if status}}
+                  <button type="button" class="btn btn-outline-success" disabled>Atividade concluída</button>
+                {{else}}
+              <form action="/authUser/concluiratividade" method="POST"><input type="hidden" name="id" value="{{_id}}">
+                  <button type="submit" class="btn btn-outline-light">Concluir atividade</button>
+                </form>
+                {{/if}}
+              </td>
+            </tr>
+            {{else}}
+            {{/if}}
+          {{else}}
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card-deck" >
+    <div class="card text-center bg-dark text-light" >
       <img src="https://66.media.tumblr.com/05b78011f4de0577ae4cd43a683641d9/tumblr_oloxq6IIjt1vl9ohgo1_400.gifv" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title"><b>Biblioteca</b></h5>
@@ -14,7 +223,7 @@
 			</div>
     </div>
 
-    <div class="card text-center">
+    <div class="card text-center bg-dark text-light">
       <img src="https://data.whicdn.com/images/107195970/original.gif" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title"><b>Músicas para estudar</b></h5>
@@ -38,11 +247,11 @@
       </div>
     </div>
 
-    <div class="card text-center">
+    <div class="card text-center bg-dark text-light">
       <img src="https://secureservercdn.net/198.71.233.179/x92.e8b.myftpupload.com/wp-content/uploads/2019/11/ticking-clock-3.gif?time=1581368292" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title"><b>Sala do tempo</b></h5>
-        <p class="card-text">Disponibilizamos duas categorias para você salvar se tempo. Tétodo pomodoro que auxilia no aumentar a agilidade mental e a sala livre onde você pode colocar um tempo que você estudou em outro dia ou outro hórario</p>
+        <p class="card-text">Disponibilizamos duas categorias para você salvar se tempo. O método pomodoro que auxilia a aumentar a agilidade mental e a sala livre, onde você pode colocar um tempo que você estudou em outro dia ou outro hórario</p>
         <!-- Button trigger modal -->
       </div>
       <div class="card-footer text-dark">
@@ -51,148 +260,7 @@
     </div>
   </div>
 
-<!-- Botão para aprensetar o rank Geral  -->
-  <div class="card text-center mt-2">
-    <div class="card-header">
-    <button class="btn btn-secondary mt-2 bnt-responsive-sm btn-sm" style="margin: 0 auto;" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      Rank geral em relação aos minutos
-    </button>
-    </div>
-    <div class="collapse mt-2" id="collapseExample">
-  {{#if user.privacidade}}
-    <!-- Usuarios que não são privados verão está pagina-->
-      <div class="table-responsive-sm">
-        <table class="table table-borderless table-hover ">
-          <thead>
-            <tr>
-              <th scope="col">
-              <!-- Recado -->
-              <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#recado">
-                <svg class="bi bi-pencil-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                </svg>
-              </button>
-
-              </th>
-              <th scope="col"><svg class="bi bi-person-lines-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7 1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm2 9a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
-              </svg> - Nome</th>
-              <th scope="col">
-                <svg class="bi bi-book-half" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 0 0 7.5 2.5v11a.5.5 0 0 0 .854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 0 0-.799-.34 12.96 12.96 0 0 0-2.073-.609zM15 2.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.387-.023-3.426.56V2.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0 1 15 2.82z"/>
-                  <path fill-rule="evenodd" d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 0 1 8.5 2.5v11a.5.5 0 0 1-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 0 1 0 13.5v-11a.5.5 0 0 1 .276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 0 1 .22-.103 12.958 12.958 0 0 1 2.7-.869z"/>
-                </svg> - Curso</th>
-              <th scope="col">
-              <svg class="bi bi-clock-history" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
-                <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
-                <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
-              </svg> - do dia</th>
-              <th scope="col">
-                <svg class="bi bi-clock-history" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
-                  <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
-                  <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
-                </svg> - da Semana</th>
-              <th scope="col">
-                  <svg class="bi bi-clock-history" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
-                  <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
-                  <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
-                </svg> - do mês</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{#each usuarios}}
-            {{#if privacidade}} <!-- Só lista os usuarios que não são privados -->
-            <tr>
-              <td><span class="d-inline-block text-right" tabindex="0" data-toggle="tooltip" title="{{{recado}}}"><img class="rounded-circle border border-secondary" style="width: 40px; height: 40px;" src="{{foto}}"></span>
-              </td>
-              <td class="text-center"><a href="/user/historico/{{_id}}" style="text-decoration: none;"><b class="pessoas">{{name}}</b></a>
-              <span  class="tool" class="d-inline-block" tabindex="0" data-toggle="tooltip" title="">
-                <svg class="estrela" class="bi bi-star-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                </svg>
-              </span>
-              </td>
-              <td>{{curso}}</td>
-              <td>{{dia}} minutos</td>
-              <td>{{semana}} minutos</td>
-              <td>{{mes}} minutos</td>   
-              <td class="entry">{{#if verificadorOnline}}<svg class="bi bi-circle-fill" style="color: rgb(3, 247, 36);" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="5"/>
-            {{else}}<svg class="bi bi-circle-fill" style="color: rgb(81, 87, 76);" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="5"/>Offline
-            {{/if}}
-              </td>
-            </tr>
-            {{/if}}
-            {{else}}
-            {{/each}}
-          </tbody>
-        </table>
-      </div>
-
-
-  <!-- Usuarios que são privados verão esta pagina-->
-  {{else}}
-      <div class="table-responsive-sm">
-        <table class="table table-striped">
-          <h2 class="bg-secondary text-light">Seus dados</h2>
-          <thead>
-            <tr>
-              <th scope="col">
-                <svg class="bi bi-person-lines-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7 1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm2 9a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
-                </svg> - Nome
-              </th>
-              <th scope="col">
-                <svg class="bi bi-book-half" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 0 0 7.5 2.5v11a.5.5 0 0 0 .854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 0 0-.799-.34 12.96 12.96 0 0 0-2.073-.609zM15 2.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.387-.023-3.426.56V2.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0 1 15 2.82z"/>
-                  <path fill-rule="evenodd" d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 0 1 8.5 2.5v11a.5.5 0 0 1-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 0 1 0 13.5v-11a.5.5 0 0 1 .276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 0 1 .22-.103 12.958 12.958 0 0 1 2.7-.869z"/>
-                </svg> - Curso
-              </th>
-              <th scope="col">
-              <svg class="bi bi-clock-history" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
-                <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
-                <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
-              </svg> - do dia
-            </th>
-              <th scope="col">
-                <svg class="bi bi-clock-history" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
-                  <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
-                  <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
-                </svg> - da Semana
-              </th>
-              <th scope="col">
-                  <svg class="bi bi-clock-history" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
-                  <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
-                  <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
-                </svg> - do mês
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{{user.name}}</td>
-              <td>{{user.curso}}</td>
-              <td>{{user.dia}} minutos</td>
-              <td>{{user.semana}} minutos</td>
-              <td>{{user.mes}} minutos</td>   
-              <td class="entry">{{#if user.verificadorOnline}}<svg class="bi bi-circle-fill" style="color: rgb(3, 247, 36);" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="5"/>
-              {{else}}<svg class="bi bi-circle-fill" style="color: rgb(81, 87, 76);" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="5"/>Offline
-              {{/if}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-  {{/if}}
-    </div>
-  </div>
 </div>
-
 
 <!-- Modal Musica-->
 <div class="modal fade" id="musica" tabindex="-1" role="dialog" aria-labelledby="musica" aria-hidden="true">
@@ -248,7 +316,7 @@
                   <button type="button" class="btn btn-sm">😂</button>
                   <button type="button" class="btn btn-sm">😃</button>
                   <button type="button" class="btn btn-sm">😅</button>
-                  <button type="button" class="btn btn-sm">🙌</button>
+                  <button type="button" class="btn btn-sm">🙌</button> 
                   <button type="button" class="btn btn-sm">🙏</button>
                 </div>
           </div>    
@@ -260,73 +328,104 @@
     </div>
   </div>
 </div>
-
 <script>
-
-const x = document.getElementsByClassName("pessoas").length
-var i = 0
-
-while(i<x){
-  if(document.getElementsByClassName("pessoas")[i].innerText == "Alice Costa"){
-      document.getElementsByClassName("estrela")[i].style.color = "gold"
-      document.getElementsByClassName("tool")[i].setAttribute("title", "Vencedor da semana anterior");
-  }
-  else{
-    if(document.getElementsByClassName("pessoas")[i].innerText == "Amanda Caroline"){
-      document.getElementsByClassName("estrela")[i].style.color = "#C0C0C0	"
-      document.getElementsByClassName("tool")[i].setAttribute("title", "Segundo colocado na semana anterior");
-    }
-    else{
-      if(document.getElementsByClassName("pessoas")[i].innerText == "Kassia Teixeira"){
-        document.getElementsByClassName("estrela")[i].style.color = "#B8860B"
-        document.getElementsByClassName("tool")[i].setAttribute("title", "Terceiro colocado da semana anterior");
-      }
-      else{
-        document.getElementsByClassName("estrela")[i].setAttribute("hidden", "true");
-      }
-    }
-  }
-  i++
-}
-
-</script>
-
-<script>
-    /*
+//'<a class="msg">'+message+' Está online<a>'
     function render(message){
-        $('.message').append('<div>'+message.author+'<strong></strong>: '+message.message+'</div>')
-
+      $('.message').append('<div class="msg card text-center bg-secondary text-light mt-2" style="position: relative; min-width: 50%;max-width: 50%">'+message+' Está online</div>')
+       setTimeout(function(){ $('.msg').remove( ) }, 5000);
     }
+
 
     socket.on('receivedMessage', function(message) {
         render(message);
-
     })
 
+
+    if(window.navigator.onLine){
+        render( document.getElementById("pessoa").value )
+        socket.emit('sendMessage', document.getElementById("pessoa").value)
+
+    }
+
+/*
     socket.on('previousMessages', function(messages) {
         for(message of messages){
             render(message);
         }
     })
+*/
+  
+var data = new Date()
+numeroSemana =  data.getDay()
 
-    $('#chat').submit(function(event){
-        event.preventDefault();
+const x = document.getElementsByClassName("domingoparaapagar").length
+var i = 0
 
-        var author = $('input[name=username]').val()
-        var message = $('input[name=message]').val()
+while(i < x){
+  if(numeroSemana == 0){
+    document.getElementsByClassName("domingoparaapagar")[i].removeAttribute("hidden")
+  }
+  if(numeroSemana == 1){
+    document.getElementsByClassName("segundaparaapagar")[i].removeAttribute("hidden")
+  }
+  if(numeroSemana == 2){
+    document.getElementsByClassName("tercaparaapagar")[i].removeAttribute("hidden")
+  }
+  if(numeroSemana == 3){
+    document.getElementsByClassName("quartaparaapagar")[i].removeAttribute("hidden")
+  }
+  if(numeroSemana == 4){
+    document.getElementsByClassName("quintaparaapagar")[i].removeAttribute("hidden")
+  }
+  if(numeroSemana == 5){
+    document.getElementsByClassName("sextaparaapagar")[i].removeAttribute("hidden")
+  }
+  if(numeroSemana == 6){
+    document.getElementsByClassName("sabadoparaapagar")[i].removeAttribute("hidden")
+  }
+  i++
+}
 
-        if(author.length && message.length){
+  const meumes = parseInt(document.getElementsByClassName("mes")[0].innerText)
+  if(meumes <= 600){
+      document.getElementsByClassName("avatar")[0].setAttribute("src", "/1.gif");
+      document.getElementsByClassName("avat")[0].innerHTML = "Nível 1 - Darwin Evolution"
+  } else{
+    if(meumes <= 1200){
+        document.getElementsByClassName("avatar")[0].setAttribute("src", "/2.gif");
+        document.getElementsByClassName("avat")[0].innerHTML = "Nível 2 - Einstein Relativo"
+    }
+    else{
+    if(meumes <= 1800){
+      document.getElementsByClassName("avatar")[0].setAttribute("src", "/3.gif");
+      document.getElementsByClassName("avat")[0].innerHTML = "Nível 3 - Issac Graviton"
+    }else{
+    if(meumes <= 2400){
+      document.getElementsByClassName("avatar")[0].setAttribute("src", "/4.gif");
+      document.getElementsByClassName("avat")[0].innerHTML = "Nível 4 - PitEureka"
+    }else{
+    if(meumes <= 3000){
+      document.getElementsByClassName("avatar")[0].setAttribute("src", "/5.gif");
+      document.getElementsByClassName("avat")[0].innerHTML = "Nível 5 - Hawking Singular"
+    } else{
+    if(meumes <= 3600){
+      document.getElementsByClassName("avatar")[0].setAttribute("src", "/6.gif");
+      document.getElementsByClassName("avat")[0].innerHTML = "Nível 6 -Pit o quadrado dos catetos"
+    }else{
+      if(meumes <= 4300){
+      document.getElementsByClassName("avatar")[0].setAttribute = ("src", "/7.gif");
+      document.getElementsByClassName("avat")[0].innerHTML = "Nível 7 - Tesla o Iluminado"
+    }else{
+      if(meumes > 4300){
+        document.getElementsByClassName("avatar")[0].setAttribute("src", "/8.gif");
+        document.getElementsByClassName("avat")[0].innerHTML = ("Nível 8 - Marie Curie a mulher dos dois Nobels");
+       }
+    }
+    }
+    }
+    }
+    }
+  }
+  }
 
-            var messageObject = {
-                author: author,
-                message: message,
-            }
-
-            render(messageObject);
-
-            socket.emit('sendMessage', messageObject)
-        }
-
-    })
-    */
 </script>

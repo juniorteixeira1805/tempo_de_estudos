@@ -73,6 +73,7 @@
     router.post('/registerAtividade', async (req, res) => {
         try{        
             const novoTempo = { //-- Recebendo valores --//
+                status: false,
                 estudante: req.user._id, 
                 horarioInicial: req.body.horarioInicial, 
                 horarioTermino: req.body.horarioTermino,
@@ -94,6 +95,21 @@
         catch(err) {
             console.log("Deu erro: ", err)
         }
+    })
+
+    router.post('/concluiratividade', (req, res) =>{
+        try{
+            Atividade.updateOne({_id: req.body.id}, {status: true}, function(err, res) {
+                console.log("Atividade concluída")
+            });
+            req.flash("sucess_msg", "Atividade concluída")
+            res.redirect('/user/home')
+        }catch(err){
+            req.flash("error_msg", "Houve um erro ao concluir atividade")
+            res.redirect('/user/home')
+            console.log("Erro ao concluir atividade: " + err)
+        }
+
     })
 
 //--Rota para deletar usuarios do banco de dados--//

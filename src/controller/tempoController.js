@@ -4,6 +4,9 @@ const mongoose = require("mongoose")
 require('../models/User');
 const User = mongoose.model("users");
 
+const Atividade = require('../models/Atividade')
+
+
 module.exports = {
 
 //-- Função que retorna o tempo decorrido --//
@@ -98,6 +101,10 @@ module.exports = {
             console.log("o sistema verificou se mudou o dia: " + true +" às: " + horaAtual)
             await User.updateMany({dia: 0}, function(err, res) {//-- zerando as horas diarias --//
                 console.log("dia atualizado")
+            });
+
+            await Atividade.updateMany({status: false}, function(err, res) {
+                console.log("Atividades atualizadas")
             });
             diaAnterior = diaAtual;
 
