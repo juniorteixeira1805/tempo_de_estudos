@@ -47,7 +47,7 @@
                       <p class="start text-danger">A opção iniciante é para pessoas que perdem facilmente a concentração ou que não possui hábito de estudar. Iniciando está opção, você estudará 25 min e descansará 5 min. O temporizador marcará o total, ou seja, 30 min. Ao passar 25 min, um beep soará, então você deverá parar até o beep soar novamente, marcando o fim de um ciclo e, assim, poderá salvar seu tempo e reiniciar o ciclo.</p>
                       <button id="btniniciarIniciante" class="btn btn-danger" style="width: 100%;" onclick="iniciante()" >Iniciar</button>
                     </div>
-                    <form action="/authUser/registerTempo" method="POST">
+                    <form action="/authUser/registerTempoPomodoro" method="POST">
                       <input type="hidden" name="id" value="{{user._id}}"></td>
                       <input type="hidden" name="dia" value="{{user.dia}}"></td>
                       <input type="hidden" name="semana" value="{{user.semana}}"></td>
@@ -96,7 +96,7 @@
                       <p class="start text-danger">A opção Avançado é para pessoas que possuem o hábito de estudar. Iniciando está opção, estudará 50 min e descansará 10 min. O temporizador marcará o total, ou seja, 60 min. Ao passar 50 min, um beep soará, então você deverá parar até o beep soar novamente, marcando o fim de um ciclo e, assim, poderá salvar seu tempo e reiniciar o ciclo.</p>
                       <button id="btniniciarAvancado" class="btn btn-danger" style="width: 100%;" onclick="Avancado()" >Iniciar</button>
                     </div>
-                    <form action="/authUser/registerTempo" method="POST">
+                    <form action="/authUser/registerTempoPomodoro" method="POST">
                       <input type="hidden" name="id" value="{{user._id}}"></td>
                       <input type="hidden" name="dia" value="{{user.dia}}"></td>
                       <input type="hidden" name="semana" value="{{user.semana}}"></td>
@@ -147,7 +147,7 @@
                       <p class="start text-danger">Iniciando está opção, você poderá estudar o tempo que quiser e descansará o quanto quiser. O temporizador marcará o total. Ao passar o tempo que você adicionou de estudo, um beep soará, então você deverá parar até o beep soar novamente, marcando o fim de um ciclo e, assim, poderá salvar seu tempo e reiniciar o ciclo.</p>
                       <button id="btniniciarLivre" class="btn btn-danger" style="width: 100%;" onclick="Livre()" >Iniciar</button>
                     </div>
-                    <form action="/authUser/registerTempo" method="POST">
+                    <form action="/authUser/registerTempoPomodoro" method="POST">
                       <input type="hidden" name="id" value="{{user._id}}"></td>
                       <input type="hidden" name="dia" value="{{user.dia}}"></td>
                       <input type="hidden" name="semana" value="{{user.semana}}"></td>
@@ -290,7 +290,7 @@ function iniciante() {
   document.getElementById("labelAIniciante").removeAttribute("hidden");
 
 
-  var minutosToatais = 1500
+  var minutosToatais = 1800
   var segundo = 0
   var minuto = 30
 
@@ -309,7 +309,7 @@ function iniciante() {
       var minutoFinal = datafim.getMinutes()
       var fim = horaFinal.toString() + ":" + minutoFinal.toString()
       document.getElementById("fimIniciante").setAttribute("value", fim);
-      document.getElementById("fimIniciante").setAttribute("value", fim);
+      document.getElementById("fimBackiniciante").setAttribute("value", fim);
       document.getElementById("fimIniciante").removeAttribute("hidden");
       document.getElementById("fimIniciante").setAttribute("disabled", "disabled");
       document.getElementById("labelBIniciante").removeAttribute("hidden");
@@ -348,7 +348,7 @@ function Avancado() {
 
   document.getElementById("tempAvancado").removeAttribute("hidden");
   document.getElementById("inicioBackAvancado").setAttribute("value", inicio);
-  document.getElementById("inicioAvancado").setAttribute("value", inicio);
+  document.getElementById("fimBackAvancado").setAttribute("value", inicio);
   document.getElementById("inicioAvancado").removeAttribute("hidden");
   document.getElementById("inicioAvancado").setAttribute("disabled", "disabled");
   document.getElementById("labelAAvancado").removeAttribute("hidden");

@@ -49,11 +49,6 @@ TempoSchema.pre('save', async function(next) {
 
     this.tempoEstudado = await funcdata.tempoEstudado(this.inicio, this.termino)
 
-    //-- Tratando data e setando nova data --//
-    if(!this.novaData){
-        this.novaData = await funcdata.novadata(this.dateCreater)
-    }
-
     next();
 })
 
