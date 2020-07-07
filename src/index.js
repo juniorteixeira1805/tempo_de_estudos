@@ -10,29 +10,11 @@ const flash = require("connect-flash")
 const passport = require('passport')
 const funcdata = require("./controller/tempoController") 
 const Func = require("./config/nodemailer")
-const fs = require('fs')
-const https = require('https')
 require("./config/auth")(passport)
 
 // configurando o socket.io
-const server = require('https').createServer(app)
+const server = require('http').createServer(app)
 const io = require('socket.io')(server)
-
-
-var https_options = {
-
-    key: fs.readFileSync(__dirname + "/public/cert/server.key"),
-  
-    cert: fs.readFileSync(__dirname + "/public/cert/server.csr"),
-  
-    ca: [
-  
-            fs.readFileSync(__dirname + '/public/cert/ROOT'),
-  
-            fs.readFileSync(__dirname + '/public/cert/INTERMEDIATE')
-  
-         ]
-  };
 
 // importando meus packs
     const Auth = require('./controller/authController')
@@ -43,7 +25,6 @@ var https_options = {
     const Administradores = require('./router/admin')
     const Artigo = require('./router/artigo')
     const Tempo = require('./router/tempo')
-    const GetColetiva = require('./router/coletiva')
 
 //configurações
     //sessão
@@ -77,7 +58,7 @@ var https_options = {
 
     //mongoose
         mongoose.Promise = global.Promise; // evita alguns tipos de erros
-        mongoose.connect("mongodb+srv://devorion01:as123@cluster0-czhpf.mongodb.net/test?retryWrites=true&w=majority", { useFindAndModify: false }).then(() => { //cponectando ao banco de dados
+        mongoose.connect("mongodb+srv://devorion01:as123@cluster0-czhpf.mongodb.net/test?retryWrites=true&w=majority").then(() => { //cponectando ao banco de dados
             console.log("conectado ao mongo")
         }).catch((err) => {
             console.log("erro ao se conectar "+err)
@@ -95,7 +76,6 @@ var https_options = {
     app.use('/controllerArtigo', contArt)
     app.use('/salaColetiva', Coletiva)
     app.use('/tempo', Tempo)
-    app.use('/coletiva', GetColetiva)
 
     
 

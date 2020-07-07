@@ -21,8 +21,6 @@
 
             const data = new Date(); //-- Extraindo a data de hoje --//
             var nova_Data = await funcdata.novadata(data)
-
-            console.log(req.body.novaData)
     
             const novoTempo = { //-- Recebendo valores --//
                 novaData: nova_Data, 

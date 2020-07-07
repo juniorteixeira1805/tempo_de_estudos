@@ -4,16 +4,14 @@ const Schema = mongoose.Schema
 
 
 const ColetivaSchema = new mongoose.Schema({
-    estudantes: [{
-        nome : {
-            type : String,
-            required: true
-             },
-        idade : {
-            type : String,
-            required: true
-            },
-}],
+    dateCreater: {
+        type: Date, //-- Data de criação --//
+    },
+
+    estudantes: {
+        type: [Schema.Types.ObjectId], //-- Salva o id do dono do Coletiva --//
+        ref: "users"
+    },
 
 });
 

@@ -10,11 +10,8 @@ router.post('/registerColetiva', async (req, res) => {
     //--Criando novo usuario--//
     try{
         const novaColetiva = { //-- Recebendo valores --//
-            estudantes: {
-                nome: req.body.nome,
-                idade: req.body.idade,
-            }
-
+            estudantes: req.body.estudantes,
+            dateCreater: Date.now()
         }
 
         new Coletiva(novaColetiva).save().then( async () => {
@@ -35,21 +32,18 @@ router.post('/registerColetiva', async (req, res) => {
     }
 });
 
-router.post('/addMembro', async (req, res) => {
+router.post("/addMembro", async (req, res) => {
         
-        try{
-            
-            const id = req.body.id
-            console.log(id)
-            Coletiva.findOneAndUpdate({ _id: id }, {$push: { estudantes: {nome: req.body.nome, idade: req.body.idade} }}).then(() =>{}).catch((err) => {
-                console.log(err)
-            })
-            
-            console.log("adicionou membro")
-            //const id = req.params.id;
-            //await Coletiva.findOne({_id: id}, { $push: { estudantes: novoMembro } })
+    //-- Atualizando o bd User com os dados recebidos --//
 
-            //console.log("adicionou membro")
+        try{
+            const novoMembro = { //-- Recebendo valores --//
+                estudantes: req.body.estudantes,
+            }
+            const id = req.params.id;
+            await Coletiva.findOne({_id: id}, { $push: { estudantes: novoMembro } })
+
+            console.log("adicionou membro")
            // req.flash("sucess_msg", "artigo editado")
            // res.redirect("/artigo/meusArtigos")
         } catch(err){
@@ -57,6 +51,5 @@ router.post('/addMembro', async (req, res) => {
         }
 
     });
-    
 
 module.exports = router
