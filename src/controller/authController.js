@@ -22,11 +22,11 @@ const passport = require('passport')
 
             console.log(req.body.name + " Cadastrado")
             req.flash("sucess_msg", "Cadastro realizado")
-            res.redirect("/auth/login")
+            res.redirect("/")
 
         } catch(err) {
             req.flash("error_msg", "Erro ao cadastrar! Tente outro E-mail.")
-            res.redirect("/auth/login")
+            res.redirect("/")
             console.log("Deu erro ao tentar cadastrar: ", err)
         }
     });
@@ -48,7 +48,7 @@ const passport = require('passport')
                 User.deleteOne({_id: req.body.id}).then(() => { //--Procurando a collection que tem o id que vem do body (usuario)--//
                     console.log(req.user.name + " deletou sua conta")
                     req.flash("success_msg", "Conta deletada ")
-                    res.redirect("/auth/login")
+                    res.redirect("/")
                     console.log("contadeletada")
                 }).catch((err) => {
                     req.flash("error_msg", "erro ao deletar a conta. Contate-nos.")
@@ -66,7 +66,7 @@ const passport = require('passport')
     router.post('/authenticate', (req, res, next) => {
         passport.authenticate("local", {
             successRedirect: "/user/home", //caso o usuario seja autenticado
-            failureRedirect: "/auth/login", // caso não seja autenticado
+            failureRedirect: "/", // caso não seja autenticado
             failureFlash: true //ativando as mensagens flash
         })(req, res, next)
     })

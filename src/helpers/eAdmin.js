@@ -4,7 +4,7 @@ module.exports = {
             return next()
             
         }
-
-        res.redirect("/auth/login")
+        req.flash("success_msg", "Usuario não autenticado")
+        res.redirect("/")
     }
 }
