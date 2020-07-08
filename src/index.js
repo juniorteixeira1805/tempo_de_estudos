@@ -10,29 +10,13 @@ const flash = require("connect-flash")
 const passport = require('passport')
 const funcdata = require("./controller/tempoController") 
 const Func = require("./config/nodemailer")
-const fs = require('fs')
 const https = require('https')
 require("./config/auth")(passport)
 
 // configurando o socket.io
-const server = require('https').createServer(app)
+const server = require('http').createServer(app)
 const io = require('socket.io')(server)
 
-
-var https_options = {
-
-    key: fs.readFileSync(__dirname + "/public/cert/server.key"),
-  
-    cert: fs.readFileSync(__dirname + "/public/cert/server.csr"),
-  
-    ca: [
-  
-            fs.readFileSync(__dirname + '/public/cert/ROOT'),
-  
-            fs.readFileSync(__dirname + '/public/cert/INTERMEDIATE')
-  
-         ]
-  };
 
 // importando meus packs
     const Auth = require('./controller/authController')
