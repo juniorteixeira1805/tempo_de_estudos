@@ -348,7 +348,7 @@ function Avancado() {
 
   document.getElementById("tempAvancado").removeAttribute("hidden");
   document.getElementById("inicioBackAvancado").setAttribute("value", inicio);
-  document.getElementById("fimBackAvancado").setAttribute("value", inicio);
+  document.getElementById("inicioAvancado").setAttribute("value", inicio);
   document.getElementById("inicioAvancado").removeAttribute("hidden");
   document.getElementById("inicioAvancado").setAttribute("disabled", "disabled");
   document.getElementById("labelAAvancado").removeAttribute("hidden");
@@ -372,7 +372,7 @@ function Avancado() {
       var minutoFinal = datafim.getMinutes()
       var fim = horaFinal.toString() + ":" + minutoFinal.toString()
       document.getElementById("fimAvancado").setAttribute("value", fim);
-      document.getElementById("fimAvancado").setAttribute("value", fim);
+      document.getElementById("fimBackAvancado").setAttribute("value", fim);
       document.getElementById("fimAvancado").removeAttribute("hidden");
       document.getElementById("fimAvancado").setAttribute("disabled", "disabled");
       document.getElementById("labelBAvancado").removeAttribute("hidden");
