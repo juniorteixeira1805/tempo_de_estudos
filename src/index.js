@@ -10,7 +10,7 @@ const flash = require("connect-flash")
 const passport = require('passport')
 const funcdata = require("./controller/tempoController") 
 const Func = require("./config/nodemailer")
-const https = require('https')
+//const https = require('https')
 require("./config/auth")(passport)
 
 // configurando o socket.io
@@ -27,7 +27,7 @@ const io = require('socket.io')(server)
     const Administradores = require('./router/admin')
     const Artigo = require('./router/artigo')
     const Tempo = require('./router/tempo')
-    const GetColetiva = require('./router/coletiva')
+    //const GetColetiva = require('./router/coletiva')
 
 //configurações
     //sessão
@@ -79,7 +79,7 @@ const io = require('socket.io')(server)
     app.use('/controllerArtigo', contArt)
     app.use('/salaColetiva', Coletiva)
     app.use('/tempo', Tempo)
-    app.use('/coletiva', GetColetiva)
+   //app.use('/coletiva', GetColetiva)
 
     
 
