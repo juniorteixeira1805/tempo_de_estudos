@@ -1,39 +1,43 @@
-<div class="container">
-<div class="message my-2"></div> 
-</div>
 <input id="pessoa" type="text" value="{{user.name}}" hidden>
-<div class="container">
-  <div class="container">
-<div class="bg-dark" id="carbonads">
-  <div class="card-deck" >
-  <div class="card bg-dark" style="max-width: 100px; margin: 0px;">
-  <img class="avatar" src="" alt="ads via Carbon" border="0" style="max-width: 100px;">
-  </div>
-    <div class="card bg-dark text-center" style="margin: 0px;">
-    <table class="table table-responsive-sm table-dark ">
-      <thead>
-        <tr>
-          <th scope="col">Nível</th>
-          <th scope="col">Dia</th>
-          <th scope="col">Semana</th>
-          <th scope="col">Mes</th>
-          <th scope="col">Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th class="avat"></th>
-          <td>{{user.dia}}</td>
-          <td>{{user.semana}}</td>
-          <td class="mes">{{user.mes}}</td>
-          <td class="mes">{{user.total}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="toast" role="alert" data-delay="10000" aria-live="assertive" aria-atomic="true">
+      <div class="toast-body">
+        <p class="text-dark">Estamos criando novas funcionalidades para você. Mandaremos um email quando cada nova funcionalidade estiver pronta para a utilização.</p>
+        <p class="text-dark">A plataforma ainda está em fase beta, podendo assim, ocorrer erros e falhas.</p>   
+      </div>
     </div>
-  </div>
 
-</div>
+    <div class="message my-2"></div> 
+
+    <div class="container">
+      <div class="bg-dark" id="carbonads" >
+        <div class="card-deck" >
+        <div class="card bg-dark" style="max-width: 100px; margin: 0px;">
+        <img class="avatar" src="" alt="ads via Carbon" border="0" style="max-width: 100px;">
+        </div>
+          <div class="card bg-dark text-center" style="margin: 0px;">
+          <table class="table table-responsive-sm table-dark ">
+            <thead>
+              <tr>
+                <th scope="col">Nível</th>
+                <th scope="col">Dia</th>
+                <th scope="col">Semana</th>
+                <th scope="col">Mes</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="avat"></th>
+                <td>{{user.dia}}</td>
+                <td>{{user.semana}}</td>
+                <td class="mes">{{user.mes}}</td>
+                <td class="mes">{{user.total}}</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+    </div>
   </div>
 
 <!-- Botão para aprensetar o rank Geral  -->
@@ -210,12 +214,76 @@
     </div>
   </div>
 
+  <div class="card text-center mt-2 bg-dark mb-2">
+    <div class="card-header bg-dark">
+      <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Trabalhamos diariamente para ajudar você a dar um upgrade nos seus estudos. Se estamos ajudando e caso sinta vontade, ajude-nos a manter a plataforma. Clique em doar e faça sua doação.">
+        <button class="btn btn-light mt-2 bnt-responsive-sm btn-sm" style="margin: 0 auto;" type="button" data-toggle="collapse" data-target="#doar" aria-expanded="false" aria-controls="doar">
+          Doação
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+            </svg>
+        </button>
+      </span>
+    </div>
+    <div class="collapse mt-2" id="doar">
+  <div class="card-deck" >
+    <div class="card text-center bg-dark text-light" >
+      <img src="/contas/Vakinha.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><b>vakinha.com.br</b></h5>
+        <p class="card-text">É um site brasileiro destinado a financiar projetos através de doações de seus usuários online. Por ele você pode realizar um doação por Boleto, ou cartão de crédito. Só clicar no botão abaixo que já será redirecionado para realizar a doação.</p>
+          <!-- Button trigger modal -->
+      </div>
+      <div class="card-footer text-light">
+          <a href="http://vaka.me/1188322" target="_blank" class="btn btn-light" >Ir ao site</a>
+			</div>
+    </div>
+
+    <div class="card text-center bg-dark text-light">
+      <img src="/contas/picPay.jpeg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><b>PicPay</b></h5>
+        <p class="card-text">O PicPay é um aplicativo fintech capixaba disponível para download em celular Android e iPhone que funciona como uma carteira digital. Para realizar a doação é simples, basta entrar no aplicativo picPac, clicar no ícone que está na parte superior esquerda da tela e, então, apontar a câmera do seu celuar para o QRconde acima.</p>
+        <!-- Button trigger modal -->
+      </div>
+      <div class="card-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#musica">
+          Playlists
+          <svg class="bi bi-music-player" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M12 1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
+            <path fill-rule="evenodd" d="M11 3H5v3h6V3zM5 2a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H5zm3 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+            <circle cx="8" cy="11" r="1"/>
+          </svg>
+          <svg class="bi bi-music-note" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
+            <path fill-rule="evenodd" d="M9 3v10H8V3h1z"/>
+            <path d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="card text-center bg-dark text-light">
+      <img src="/contas/Nubank.jpeg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><b>NuBank</b></h5>
+        <p class="card-text">Nubank é uma empresa startup brasileira pioneira no segmento de serviços financeiros atuando no Brasil. Para realizar sua doação pela NuBank, basta entrar no aplicativo da Nubank, ir em transferir, clicar no ícone que está na parte superior direita da tela e, então, apontar a câmera do seu celuar para o QRconde acima. </p>
+        <!-- Button trigger modal -->
+      </div>
+      <div class="card-footer text-light">
+        Clique em Sala do tempo na barra superior
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+
   <div class="card-deck" >
     <div class="card text-center bg-dark text-light" >
       <img src="https://66.media.tumblr.com/05b78011f4de0577ae4cd43a683641d9/tumblr_oloxq6IIjt1vl9ohgo1_400.gifv" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title"><b>Biblioteca</b></h5>
-        <p class="card-text">Disponibilizamos uma sala para que você possa ter acesso a livros e artigos. Aqui você pode registrar seus artigos e trabalhos academicos afim de ajudar outras pessoas e fazer divulgação ciêntifica.</p>
+        <p class="card-text">Disponibilizamos uma sala para que você possa ter acesso a livros e artigos. Aqui você pode registrar seus artigos e trabalhos academicos afim de ajudar outras pessoas e realizar divulgação ciêntifica.</p>
           <!-- Button trigger modal -->
       </div>
       <div class="card-footer text-light">
@@ -260,7 +328,6 @@
     </div>
   </div>
 
-</div>
 
 <!-- Modal Musica-->
 <div class="modal fade" id="musica" tabindex="-1" role="dialog" aria-labelledby="musica" aria-hidden="true">
@@ -327,11 +394,10 @@
       </div>
     </div>
   </div>
-</div>
 <script>
 //'<a class="msg">'+message+' Está online<a>'
     function render(message){
-      $('.message').append('<div class="msg card text-center bg-secondary text-light mt-2" style="position: relative; min-width: 50%;max-width: 50%">'+message+' Está online</div>')
+      $('.message').append('<div class="msg card text-center bg-secondary text-light mt-2" style="position: relative; min-width: 20%;max-width: 35%">'+message+' Está online</div>')
        setTimeout(function(){ $('.msg').remove( ) }, 5000);
     }
 

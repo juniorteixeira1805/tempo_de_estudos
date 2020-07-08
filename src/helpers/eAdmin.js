@@ -5,7 +5,6 @@ module.exports = {
             
         }
 
-        req.flash("error_msg", "Usuario não autenticado")
         res.redirect("/auth/login")
     }
 }
