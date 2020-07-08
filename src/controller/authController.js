@@ -11,10 +11,6 @@ const router = express.Router();
 
 const passport = require('passport')
 
-//--Rota para renderizar pagina de login--(Tem que ser retirada daqui)//
-    router.get('/login', (req, res) =>{
-        res.render("./users/login")
-    });
 //-- Rota para registrar Novo Usuario--//
     router.post('/registerUser', async (req, res) => {
 

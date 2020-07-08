@@ -110,7 +110,10 @@ const io = require('socket.io')(server)
                 cont = false
             })
         })
-
+//--Rota para renderizar pagina de login--(Tem que ser retirada daqui)//
+        app.get('/', (req, res) =>{
+            res.render("./users/login")
+        });
     //conectando o servidor a porta 
         const PORT = process.env.PORT || 3000
         server.listen(PORT, () => {
