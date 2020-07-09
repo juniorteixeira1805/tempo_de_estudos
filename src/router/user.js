@@ -75,7 +75,7 @@ const router = express.Router();
             });
             req.logout()
             req.flash("sucess_msg", "Deslogado")
-            res.redirect("/auth/login")
+            res.redirect("/")
         }catch(err){
             console.log(err)
         }
