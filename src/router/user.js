@@ -31,6 +31,11 @@ const router = express.Router();
         res.render("./users/registro")
     })
 
+    //-- Rota que renderiza o registro de usuario --//
+    router.get('/suporte', eAdmin, (req, res) => {
+        res.render("./users/suporte")
+    })
+
 //-- Rora que renderiza a view de edição do usuario --//
     router.get('/editarusuario', eAdmin, (req, res) => {
         res.render("./users/editarUsuario")

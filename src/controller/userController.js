@@ -12,6 +12,9 @@
     const funcdata = require("../controller/tempoController")
 
     const Atividade = require('../models/Atividade')
+
+    const enviarEmail = require('../config/nodemailer')
+
     //-- Tratando data e setando nova data --//
 
         
@@ -126,6 +129,16 @@
         }
     })
 
+    router.post('/enviarEmail', async (req, res) => {
+        try{
+            enviarEmail.suporte(req.user.name, req.body.assunto, req.body.texto, req.user.email)
+            req.flash("sucess_msg", "Seu email foi enviado. Analisaremos o conteúdo e responderemos em até 3 dias.")
+            res.redirect('/user/suporte')
+        }catch(err){
+            req.flash("error_msg", "Houve um erro ao enviar")
+            res.redirect('/user/suporte')
+        }
+    })
 //-- Rota que registra novo tempo e adiciona novo tempo ao bd no dia, semana, mes e total do usuario --//
     router.post('/registerAtividade', async (req, res) => {
         try{        

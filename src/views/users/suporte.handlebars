@@ -1,0 +1,25 @@
+<div class="card bg-dark">
+    <div class="card-body">
+        <form action="/authUser/enviarEmail" method="POST">
+        <div class="form-group">
+            <b><label for="exampleFormControlInput1">Endereço de E-mail</label></b>
+            <input type="email" class="form-control" value="{{user.email}}" id="exampleFormControlInput1"  disabled>
+        </div>
+        <div class="form-group">
+            <b><label for="exampleFormControlSelect1">Selecione o assunto</label></b>
+            <select class="form-control" id="assunto" name="assunto">
+            <option value="Bug">Ocorrncia de Bug</option>
+            <option value="Sugestão">Sugestão</option>
+            <option value="Crítica">Crítica</option>
+            <option value="Dúvida">Dúvida</option>^
+            <option class="Outro">Outro</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <b><label for="exampleFormControlTextarea1">Digite o texto do seu E-mail (Máximo: 300 caracteres)</label></b>
+            <textarea maxlength="300" class="form-control" name="texto" id="texto" rows="3"></textarea>
+        </div>
+            <button type="submit" class="btn btn-light">Enviar</button>
+        </form>
+    </div>
+</div>

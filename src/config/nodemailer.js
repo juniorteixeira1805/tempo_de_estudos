@@ -28,7 +28,45 @@ module.exports = {
             i++
         }
         return true
+    },
+
+    suporte: async function(usuario, assunto, texto, email){
+        let transporter = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 587,
+            securet: true,
+            auth: {
+                user: "devorion01@gmail.com",
+                pass: "Noiroved@1209"
+            }
+        });
+        
+        transporter.sendMail({
+            from: "Improdutiva Estudos LTDA <devorion01@gmail.com>",
+            to: ["devorion01@gmail.com"],
+            subject: assunto,
+            text: texto+" De: "+usuario+ "; E-mail: "+email,
+            html: ''
+        }).then(message => {
+            console.log("mensagem envada ao suporte");
+        }).catch(err => {
+            console.log(err)
+        })
+
+        transporter.sendMail({
+            from: "Improdutiva Estudos LTDA <devorion01@gmail.com>",
+            to: ["aliicecs@ufrn.edu.br"],
+            subject: "Informe",
+            text: "Alice, uma mensagem de suporte foi enviado para o Devorion",
+            html: ''
+        }).then(message => {
+            console.log("mensagem envada a Alice");
+        }).catch(err => {
+            console.log(err)
+        })
     }
+
+
 }
 /*
 let transporter = nodemailer.createTransport({
