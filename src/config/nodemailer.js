@@ -5,17 +5,17 @@ module.exports = {
         var i = 0;
         while(i < quantidadesdeemails){
             let transporter = nodemailer.createTransport({
-                host: "smtp.gmail.com",
+                host: "smtp.umbler.com",
                 port: 587,
-                securet: true,
+                securet: false,
                 auth: {
-                    user: "devorion01@gmail.com",
+                    user: "devorion@estude.live",
                     pass: "Noiroved@1209"
                 }
             });
             
             await transporter.sendMail({
-                from: "e-mail marketing - improdutiva estudos LTDA <devorion01@gmail.com>",
+                from: "e-mail marketing - improdutiva estudos LTDA <devorion@estude.live>",
                 to: vertordeemails[i],
                 subject: vertordenome[i]+", a improdutiva estudos LTDA tem novidades para você-",
                 text: "",
@@ -27,23 +27,23 @@ module.exports = {
             })
             i++
         }
-        return true
+        return false
     },
 
     suporte: async function(usuario, assunto, texto, email){
         let transporter = nodemailer.createTransport({
-            host: "smtp.gmail.com",
+            host: "smtp.umbler.com",
             port: 587,
-            securet: true,
+            securet: false,
             auth: {
-                user: "devorion01@gmail.com",
+                user: "devorion@estude.live",
                 pass: "Noiroved@1209"
             }
         });
         
         transporter.sendMail({
-            from: "Improdutiva Estudos LTDA <devorion01@gmail.com>",
-            to: ["devorion01@gmail.com"],
+            from: "Improdutiva Estudos LTDA <devorion@estude.live>",
+            to: ["devorion@estude.live"],
             subject: assunto,
             text: texto+" De: "+usuario+ "; E-mail: "+email,
             html: ''
@@ -54,7 +54,7 @@ module.exports = {
         })
 
         transporter.sendMail({
-            from: "Improdutiva Estudos LTDA <devorion01@gmail.com>",
+            from: "Improdutiva Estudos LTDA <devorion@estude.live>",
             to: ["aliicecs@ufrn.edu.br"],
             subject: "Informe",
             text: "Alice, uma mensagem de suporte foi enviado para o Devorion",
@@ -68,17 +68,17 @@ module.exports = {
 
     SendCode: function(email, codigo){
         let transporter = nodemailer.createTransport({
-            host: "smtp.gmail.com",
+            host: "smtp.umbler.com",
             port: 587,
-            securet: true,
+            securet: false,
             auth: {
-                user: "devorion01@gmail.com",
+                user: "devorion@estude.live",
                 pass: "Noiroved@1209"
             }
         });
         
         transporter.sendMail({
-            from: "Improdutiva Estudos LTDA <devorion01@gmail.com>",
+            from: "Improdutiva Estudos LTDA <devorion@estude.live>",
             to: email,
             subject: "CÓDIGO DE VERIFICAÇÃO",
             text: "Seu código de validação: "+codigo,
@@ -92,17 +92,17 @@ module.exports = {
 
     SendSenha: function(email, codigo){
         let transporter = nodemailer.createTransport({
-            host: "smtp.gmail.com",
+            host: "smtp.umbler.com",
             port: 587,
-            securet: true,
+            securet: false,
             auth: {
-                user: "devorion01@gmail.com",
+                user: "devorion@estude.live",
                 pass: "Noiroved@1209"
             }
         });
         
         transporter.sendMail({
-            from: "Improdutiva Estudos LTDA <devorion01@gmail.com>",
+            from: "Improdutiva Estudos LTDA <devorion@estude.live>",
             to: email,
             subject: "NOVA SENHA",
             text: "Senha temporaria. Assim que possivel, vá em perfil -> Editar perfil e mude a senha. SENHA: "+codigo,
@@ -118,17 +118,17 @@ module.exports = {
 }
 /*
 let transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
+    host: "smtp.umbler.com",
     port: 587,
-    securet: true,
+    securet: false,
     auth: {
-        user: "devorion01@gmail.com",
+        user: "devorion@estude.live",
         pass: "Noiroved@1209"
     }
 });
 
 transporter.sendMail({
-    from: "Improdutiva Estudos LTDA <devorion01@gmail.com>",
+    from: "Improdutiva Estudos LTDA <devorion@estude.live>",
     to: ["juniorteixeira1805@gmail.com", "klaria6@gmail.com", "kassia.milenateixeira@gmail.com", "carolsilva58022@gmail.com", "janeirode97@gmail.com", "sayoolima@gmail.com", "diegooliveira.msi@gmail.com","aliicecs@ufrn.edu.br","leticiacruz606@gmail.com","vitor3souza@gmail.com","loiolamateus7@gmail.com","helloysaregiane@gmail.com", "anaa.lusantos@gmail.com", "adelsonunes.ribeiro@hotmail.com", "marcosadriano740@gmail.com"],
     subject: "Artigos e trabalhos para divulgação científica.",
     text: "",
@@ -141,17 +141,17 @@ transporter.sendMail({
 
 
 let transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
+    host: "smtp.umbler.com",
     port: 587,
-    securet: true,
+    securet: false,
     auth: {
-        user: "devorion01@gmail.com",
+        user: "devorion@estude.live",
         pass: "Noiroved@1209"
     }
 });
 
 transporter.sendMail({
-    from: "Improdutiva Estudos LTDA <devorion01@gmail.com>",
+    from: "Improdutiva Estudos LTDA <devorion@estude.live>",
     to: ["juniorteixeira1805@gmail.com", "klaria6@gmail.com", "kassia.milenateixeira@gmail.com", "carolsilva58022@gmail.com", "janeirode97@gmail.com", "sayoolima@gmail.com", "diegooliveira.msi@gmail.com","aliicecs@ufrn.edu.br","leticiacruz606@gmail.com","vitor3souza@gmail.com","loiolamateus7@gmail.com","helloysaregiane@gmail.com", "anaa.lusantos@gmail.com", "adelsonunes.ribeiro@hotmail.com", "marcosadriano740@gmail.com", "juliofreitaspro@gmail.com"],
     subject: "Lembrete",
     text: "",
