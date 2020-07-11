@@ -5,11 +5,14 @@ const Artigo = require('../models/Artigo');
 
 const router = express.Router();
 
+const enviarEmail = require('../config/nodemailer')
+
+
 router.post('/registerArtigo', async (req, res) => {
 
-    //--Criando novo usuario--//
+    //--Criando novo artigo--//
     try{
-        const novoArtigo = { //-- Recebendo valores --//
+        const novoArtigo = { //-- Criando novo objeto --//
             grandeArea: req.body.grandeArea, 
             area: req.body.area,
             tema: req.body.tema,
@@ -20,8 +23,10 @@ router.post('/registerArtigo', async (req, res) => {
             dateCreater: Date.now()
         }
 
+            //-- persistindo o objeto artigo no banco de dados --//
         new Artigo(novoArtigo).save().then( async () => {
             console.log(req.user.name + " Acresentou novo artigo")
+            enviarEmail.sendInfo(req.user.email, "Novo artigo cadastrado. "+"area: "+req.body.area)
             req.flash("sucess_msg", "Artigo cadastrado") // apresenta na tela a msg de salvo
             res.redirect("/artigo/meusArtigos") //redireciona para a pagina
         }).catch((err) => {
@@ -71,6 +76,7 @@ router.post('/deletarArtigo', (req, res) =>{
             console.log(req.user.name + " deletou um artigo")
             req.flash("sucess_msg", "Artigo deletado")
             res.redirect('/artigo/meusArtigos')
+            enviarEmail.sendInfo(req.user.email, "Você deletou um artigo.")
             if (err) return handleError("Contate o suporte. Erro ao deletar os tempos: " + err);
         });
     } catch(err){

@@ -62,7 +62,7 @@
         //-- Criando a collection --//
             new Tempo(novoTempo).save().then( async () => {
                 console.log(req.user.name + " Acresentou novo tempo")
-                req.flash("sucess_msg", "tempo salvo com sucesso") // apresenta na tela a msg de salvo
+                req.flash("sucess_msg", req.user.name+", Seu tempo foi salvo.") // apresenta na tela a msg de salvo
                 res.redirect("/user/home") //redireciona para a pagina
             }).catch((err) => {
                 console.log(err)
@@ -116,11 +116,11 @@
         //-- Criando a collection --//
             new Tempo(novoTempo).save().then( async () => {
                 console.log(req.user.name + " Acresentou novo tempo")
-                req.flash("sucess_msg", "tempo salvo com sucesso") // apresenta na tela a msg de salvo
+                req.flash("sucess_msg", req.user.name+"tempo salvo com sucesso") // apresenta na tela a msg de salvo
                 res.redirect("/user/home") //redireciona para a pagina
             }).catch((err) => {
                 console.log(err)
-                req.flash("error_msg", "Houve um erro ao salvar") // apresenta uma mensagem de erro
+                req.flash("error_msg", "Houve um erro ao salvar seu tempo") // apresenta uma mensagem de erro
                 res.redirect("/user/home") // redireciona para a pagina
             })
 

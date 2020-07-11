@@ -22,6 +22,8 @@ const { findOne } = require('../models/User');
         //--Criando novo usuario--//
         try{
             const user = await User.create(req.body);
+            //-- enviando e-mail de boas bvindas --//
+            Email.sendInfo(req.body.email, "Olá, estamos muito felizes que está no nosso time. Seja bem vindo! Lutaremos juntos para conquistar seu objeivo.")
 
             const data = new Date()
             var mile = data.getMilliseconds().toString()
@@ -33,13 +35,13 @@ const { findOne } = require('../models/User');
             await User.updateOne({email: req.body.email}, {codResete: hash}).then(() =>{}).catch((err) => {
                 console.log("erro ao salvar codigo:" + err)
             })
-
+            //-- enviando código de validação --//
             await Email.SendCode(req.body.email, hash)
 
             user.password = undefined; //-- para o que password não retorne no Json--//
 
             console.log(req.body.name + " Cadastrado")
-            req.flash("sucess_msg", "Cadastro realizado")
+            req.flash("sucess_msg", req.body.name+ ", seu cadastro foi realizado")
             res.redirect("/")
 
         } catch(err) {
@@ -49,6 +51,7 @@ const { findOne } = require('../models/User');
         }
     });
 
+//-- Rota que é chamanda quando o botão de reenviar codigo de validação é selecionado --//
     router.post('/reenvia', async(req, res) =>{
         try{
             const data = new Date()
@@ -64,7 +67,7 @@ const { findOne } = require('../models/User');
             console.log(req.body.email)
             await Email.SendCode(req.body.email, hash)
             console.log(req.user.name + " reenviou o código a email")
-            req.flash("sucess_msg", "código reenviado.")
+            req.flash("sucess_msg", req.user.name+ ", seu código foi reenviado!")
             res.redirect("/user/home")
         }catch(err){
             req.flash("error_msg", "Erro ao reenviar!.")
@@ -74,15 +77,16 @@ const { findOne } = require('../models/User');
 
     })
 
+//--Rota que é chamada para a validação do email --//
     router.post('/validaEmail', async (req, res) => {
 
         if(req.body.codigo == req.user.codResete){
             await User.updateOne({_id: req.user._id}, {validaEmail: true}).then(() =>{
                 console.log(req.user.name + " validou a email")
-                req.flash("sucess_msg", "email validado com sucesso")
+                req.flash("sucess_msg", req.user.name+ ", seu email foi  validado!")
                 res.redirect("/user/home")
             }).catch((err) => {
-                req.flash("error_msg", "Erro ao validar! Tente outro novamente.")
+                req.flash("error_msg", "Erro ao validar! Tente novamente.")
                 res.redirect("/user/home")
                 console.log("erro validar e-mail:" + err)
             })
@@ -98,6 +102,7 @@ const { findOne } = require('../models/User');
 
 //--Rota para deletar usuarios do banco de dados--//
     router.post('/deletarUser', (req, res) =>{
+        Email.sendInfo(req.body.email, "Sua conta foi deletada.")
 
         try{
             //--Deletando do banco os tempos do usuario que será deletado--//

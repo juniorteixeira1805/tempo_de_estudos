@@ -34,12 +34,16 @@ const router = express.Router();
     })
 
     //-- Rota que renderiza o registro de usuario --//
-    router.get('/suporte', eAdmin, (req, res) => {
+    router.get('/suporte', (req, res) => {
         res.render("./users/suporte")
     })
 
     router.get('/enviaEmail', (req, res) => {
         res.render("./users/informeEmail")
+    })
+
+    router.get('/equipe', (req, res) => {
+        res.render("./admin/equipe")
     })
 
 
