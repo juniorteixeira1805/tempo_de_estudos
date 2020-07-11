@@ -11,12 +11,30 @@ const router = express.Router();
 
 const passport = require('passport')
 
+const Email = require("../config/nodemailer")
+
+const bct = require('bcryptjs');
+const { findOne } = require('../models/User');
+
 //-- Rota para registrar Novo Usuario--//
     router.post('/registerUser', async (req, res) => {
 
         //--Criando novo usuario--//
         try{
             const user = await User.create(req.body);
+
+            const data = new Date()
+            var mile = data.getMilliseconds().toString()
+            console.log(mile)
+            //hasheando um numero
+            const hash = await bct.hash(mile, 5);
+            console.log(hash)
+            //Atualizando o banco de dados
+            await User.updateOne({email: req.body.email}, {codResete: hash}).then(() =>{}).catch((err) => {
+                console.log("erro ao salvar codigo:" + err)
+            })
+
+            await Email.SendCode(req.body.email, hash)
 
             user.password = undefined; //-- para o que password não retorne no Json--//
 
@@ -30,6 +48,53 @@ const passport = require('passport')
             console.log("Deu erro ao tentar cadastrar: ", err)
         }
     });
+
+    router.post('/reenvia', async(req, res) =>{
+        try{
+            const data = new Date()
+            var mile = data.getMilliseconds().toString()
+            console.log(mile)
+            //hasheando um numero
+            const hash = await bct.hash(mile, 5);
+            console.log(hash)
+            //Atualizando o banco de dados
+            await User.updateOne({email: req.body.email}, {codResete: hash}).then(() =>{}).catch((err) => {
+                console.log("erro ao salvar codigo:" + err)
+            })
+            console.log(req.body.email)
+            await Email.SendCode(req.body.email, hash)
+            console.log(req.user.name + " reenviou o código a email")
+            req.flash("sucess_msg", "código reenviado.")
+            res.redirect("/user/home")
+        }catch(err){
+            req.flash("error_msg", "Erro ao reenviar!.")
+            res.redirect("/user/home")
+            console.log("erro reenviar email:" + err)
+        }
+
+    })
+
+    router.post('/validaEmail', async (req, res) => {
+
+        if(req.body.codigo == req.user.codResete){
+            await User.updateOne({_id: req.user._id}, {validaEmail: true}).then(() =>{
+                console.log(req.user.name + " validou a email")
+                req.flash("sucess_msg", "email validado com sucesso")
+                res.redirect("/user/home")
+            }).catch((err) => {
+                req.flash("error_msg", "Erro ao validar! Tente outro novamente.")
+                res.redirect("/user/home")
+                console.log("erro validar e-mail:" + err)
+            })
+        }else{
+            req.flash("error_msg", "Código incorreto!.")
+            res.redirect("/user/home")
+            console.log("erro validar e-mail:" + err)
+        }
+    })
+    
+
+    
 
 //--Rota para deletar usuarios do banco de dados--//
     router.post('/deletarUser', (req, res) =>{

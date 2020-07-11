@@ -3,6 +3,8 @@ const express = require('express');
 
 const {eAdmin} = require("../helpers/eAdmin")
 
+const {validarEmail} = require("../helpers/eAdmin")
+
 const mongoose = require("mongoose")
 
 const User = mongoose.model("users")
@@ -15,7 +17,7 @@ const router = express.Router();
 
 
 //rota que renderiza pagina inicaial
-    router.get('/home', eAdmin, async (req, res) => {
+    router.get('/home', validarEmail, async (req, res) => {
         //-- Passando todos os usuarios para a view --//
         Atividade.find({'estudante': req.user.id}).sort({horarioInicial: 0}).then((atv, tempos) => {
             res.render("./users/home", {atv: atv, tempos: tempos})
@@ -36,6 +38,11 @@ const router = express.Router();
         res.render("./users/suporte")
     })
 
+    router.get('/enviaEmail', (req, res) => {
+        res.render("./users/informeEmail")
+    })
+
+
 //-- Rora que renderiza a view de edição do usuario --//
     router.get('/editarusuario', eAdmin, (req, res) => {
         res.render("./users/editarUsuario")
@@ -43,7 +50,7 @@ const router = express.Router();
     })
 
 //-- Rota que renderiza a view do perfil --//
-    router.get('/perfil', eAdmin, async (req, res) => {
+    router.get('/perfil', validarEmail, async (req, res) => {
 
         console.log(req.user.name + " Esta na pagina perfil")
         Atividade.find({'estudante': req.user.id}).sort({horarioInicial: 0}).then((atv) => {

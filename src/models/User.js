@@ -15,6 +15,7 @@ const UserSchema = new mongoose.Schema({
 
     curso:{
         type: String,
+        required: true
     },
 
     recado:{
@@ -27,12 +28,16 @@ const UserSchema = new mongoose.Schema({
         required: true,
     },
 
+    codResete:{
+        type: String,
+    },
+
     foto:{
         type: String,
         default: "https://i0.wp.com/www.techcult.com.br/wp-content/uploads/2017/03/perfil-twitter.png?resize=1024%2C1024&ssl=1"
     },
 
-    verificadorOnline: {//-- Parametro para a view saber se ta online --//
+    validaEmail: {//-- Parametro para a view saber se ta online --//
         type: Boolean,
         default: false
     },

@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="card bg-dark" style="box-shadow: 11px 9px 7px rgba(50, 50, 50, 0.77); margin: 0 auto;">
+        <div class="card-body">
+            <form action="/authUser/enviaCodigo" method="POST">
+            <div class="alert alert-warning" role="alert" style="text-align: center;">
+            Todos os campos com "*" são obrigatorios!
+            </div>
+                <div class="row my-4">
+                    <div class="col-sm">
+                        <label for="email" class="text-light">E-mail*</label>
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Informe o email" required>
+                    </div>
+                </div>
+
+
+                <div class="g-recaptcha" data-sitekey="your_site_key">
+                    <button type="submit" class="btn btn-secondary">Enviar</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>     
+</div>
+
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+    async defer>
+</script>
+<script type="text/javascript">
+  var onloadCallback = function() {
+    alert("grecaptcha is ready!");
+  };
+</script>

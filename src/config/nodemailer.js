@@ -64,6 +64,54 @@ module.exports = {
         }).catch(err => {
             console.log(err)
         })
+    },
+
+    SendCode: function(email, codigo){
+        let transporter = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 587,
+            securet: true,
+            auth: {
+                user: "devorion01@gmail.com",
+                pass: "Noiroved@1209"
+            }
+        });
+        
+        transporter.sendMail({
+            from: "Improdutiva Estudos LTDA <devorion01@gmail.com>",
+            to: email,
+            subject: "CÓDIGO DE VERIFICAÇÃO",
+            text: "Seu código de validação: "+codigo,
+            html: ''
+        }).then(message => {
+            console.log("Enviado email de validação");
+        }).catch(err => {
+            console.log(err)
+        })
+    },
+
+    SendSenha: function(email, codigo){
+        let transporter = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 587,
+            securet: true,
+            auth: {
+                user: "devorion01@gmail.com",
+                pass: "Noiroved@1209"
+            }
+        });
+        
+        transporter.sendMail({
+            from: "Improdutiva Estudos LTDA <devorion01@gmail.com>",
+            to: email,
+            subject: "NOVA SENHA",
+            text: "Senha temporaria. Assim que possivel, vá em perfil -> Editar perfil e mude a senha. SENHA: "+codigo,
+            html: ''
+        }).then(message => {
+            console.log("Senha enviada");
+        }).catch(err => {
+            console.log(err)
+        })
     }
 
 

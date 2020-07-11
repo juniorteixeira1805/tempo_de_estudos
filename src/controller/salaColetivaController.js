@@ -44,14 +44,8 @@ router.post('/addMembro', async (req, res) => {
             Coletiva.findOneAndUpdate({ _id: id }, {$push: { estudantes: {nome: req.body.nome, idade: req.body.idade} }}).then(() =>{}).catch((err) => {
                 console.log(err)
             })
-            
             console.log("adicionou membro")
-            //const id = req.params.id;
-            //await Coletiva.findOne({_id: id}, { $push: { estudantes: novoMembro } })
 
-            //console.log("adicionou membro")
-           // req.flash("sucess_msg", "artigo editado")
-           // res.redirect("/artigo/meusArtigos")
         } catch(err){
             console.log("Deu erro ao adicionar membro: " + err)
         }

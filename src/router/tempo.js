@@ -9,8 +9,6 @@ const User = mongoose.model("users")
 
 const Tempo = mongoose.model("tempos")
 
-const Atividade = require('../models/Atividade')
-
 const router = express.Router();
 
 //-- Rota que renderiza o registro de usuario --//

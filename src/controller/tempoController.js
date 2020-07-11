@@ -145,7 +145,7 @@ module.exports = {
         let diaAtual = data.getDate()
         let horaAtual = data.getHours()
 
-        if(diaAtual == "30" && horaAtual == "3"){
+        if(diaAtual == "1" && horaAtual == "3"){
             console.log("o sistema verificou se mudou o mes: " + true +" às: " + horaAtual)
             await User.updateMany({mes: 0}, function(err, res) {//-- zerando as horas diarias --//
                 console.log("o sistema verificou se mudou o mes: " + true +" às: " + horaAtual)

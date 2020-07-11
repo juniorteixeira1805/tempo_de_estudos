@@ -15,6 +15,9 @@
 
     const enviarEmail = require('../config/nodemailer')
 
+    const bct = require('bcryptjs');
+
+
     //-- Tratando data e setando nova data --//
 
         
@@ -139,6 +142,48 @@
             res.redirect('/user/suporte')
         }
     })
+
+    router.post('/enviaCodigo', async (req, res) => {
+        try{
+
+            function makeid() {
+                var text = "";
+                var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*()_+={}?/][";
+                
+                for (var i = 0; i < 10; i++)
+                    text += possible.charAt(Math.floor(Math.random() * possible.length));
+                
+                return text;
+                }
+                
+
+            var x = await User.findOne({email: req.body.email}, {email: req.body.email})
+
+            if(x.email == req.body.email){
+                var text =  makeid()
+                const hash = await bct.hash(text, 5);
+                await enviarEmail.SendSenha(req.body.email, text)
+                await User.updateOne({email: req.body.email}, {password: hash}, function(err, res) {
+                });
+                req.flash("sucess_msg", "Enviamos um código para seu E-mail")
+                res.redirect('/')
+            }else{
+                await enviarEmail.SendSenha(req.body.email, "Esse Email não possui cadastro. Faça seu cadastro e venha para a Improdutiva Estudos LTDA")
+                req.flash("error_msg", "Esse E-mail não possui cadastro.")
+                res.redirect('/')
+            }
+
+
+        }catch(err){
+            console.log("Erro ao mandar codigo para mudar senha: ", err)
+            req.flash("error_msg", "Houve um erro ao enviar o codigo")
+            res.redirect('/')
+        }
+    })
+
+
+
+
 //-- Rota que registra novo tempo e adiciona novo tempo ao bd no dia, semana, mes e total do usuario --//
     router.post('/registerAtividade', async (req, res) => {
         try{        
@@ -275,6 +320,10 @@
             await User.updateOne({_id: req.body.id}, {foto: req.body.foto}, function(err, res) {
             });
             await User.updateOne({_id: req.body.id}, {email: req.body.email}, function(err, res) {
+            });
+            var senha = await bct.hash(req.body.password, 5);
+            console.log(senha)
+            await User.updateOne({_id: req.body.id}, {password: senha}, function(err, res) {
             });
             console.log(req.user.name + " Editou o perfil")
             req.flash("sucess_msg", "Perfil editado")
