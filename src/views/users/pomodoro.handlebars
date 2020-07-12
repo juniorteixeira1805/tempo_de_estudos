@@ -1,10 +1,10 @@
-<div class="card">
+<div class="card bg-dark mt-2">
     <div class="card-header">
         <div class="btn-group" role="group">
-              <button id="btnGroupDrop1" type="button" class="btn btn-danger dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button id="btnGroupDrop1" type="button" class="btn btn-dark dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Metodos
               </button>
-              <button type="button" class="btn btn-danger btn-sm ml-2" data-toggle="modal" data-target="#musica">
+              <button type="button" class="btn btn-dark btn-sm ml-2" data-toggle="modal" data-target="#musica">
               Playlists
               <svg class="bi bi-music-player" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" d="M12 1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
@@ -31,21 +31,21 @@
         </div>
     </div>
     <div class="card-body" style="margin: 0 auto;">
-      <p class="text-danger">A Técnica Pomodoro é um método de gerenciamento de tempo desenvolvido por Francesco Cirillo no final dos anos 80. A técnica consiste na utilização de um cronômetro para dividir o trabalho em períodos de 25 minutos, separados por breves intervalos. A técnica deriva seu nome da palavra italiana pomodoro (tomate), como referência ao popular cronômetro gastronômico na forma dessa fruta. O método é baseado na ideia de que pausas frequentes podem aumentar a agilidade mental.</p>
+      <p class="text-light">A Técnica Pomodoro é um método de gerenciamento de tempo desenvolvido por Francesco Cirillo no final dos anos 80. A técnica consiste na utilização de um cronômetro para dividir o trabalho em períodos de 25 minutos, separados por breves intervalos. A técnica deriva seu nome da palavra italiana pomodoro (tomate), como referência ao popular cronômetro gastronômico na forma dessa fruta. O método é baseado na ideia de que pausas frequentes podem aumentar a agilidade mental.</p>
         
         <div class="container" id="exibeIniciante" hidden>
-            <div class="card-deck">
+            <div class="card-deck bg-dark text-light">
 
-                <div class="card">
-                  <div class="card-header text-center bg-danger">
+                <div class="card bg-dark text-light">
+                  <div class="card-header text-center bg-dark">
                     <div style="line-height:300px;" id="temp" hidden>
                       <b><h3 style="100%" class="text-light" id="mostrador"></h3></b>
                     </div>
                   </div>
                   <div class="card-body col-sm-10" style="margin: 0 auto;">
                     <div>
-                      <p class="start text-danger">A opção iniciante é para pessoas que perdem facilmente a concentração ou que não possui hábito de estudar. Iniciando está opção, você estudará 25 min e descansará 5 min. O temporizador marcará o total, ou seja, 30 min. Ao passar 25 min, um beep soará, então você deverá parar até o beep soar novamente, marcando o fim de um ciclo e, assim, poderá salvar seu tempo e reiniciar o ciclo.</p>
-                      <button id="btniniciarIniciante" class="btn btn-danger" style="width: 100%;" onclick="iniciante()" >Iniciar</button>
+                      <p class="start text-light">A opção iniciante é para pessoas que perdem facilmente a concentração ou que não possui hábito de estudar. Iniciando está opção, você estudará 25 min e descansará 5 min. O temporizador marcará o total, ou seja, 30 min. Ao passar 25 min, um beep soará, então você deverá parar até o beep soar novamente, marcando o fim de um ciclo e, assim, poderá salvar seu tempo e reiniciar o ciclo.</p>
+                      <button id="btniniciarIniciante" class="btn btn-light" style="width: 100%;" onclick="iniciante()" >Iniciar</button>
                     </div>
                     <form action="/authUser/registerTempoPomodoro" method="POST">
                       <input type="hidden" name="id" value="{{user._id}}"></td>
@@ -57,24 +57,24 @@
                       <input type="text" class="form-control text-center" name="termino" id="fimBackiniciante"  hidden>
                         <div class="form-row">
                             <div class="form-group mx-sm-3 mb-2" id="labelAIniciante" hidden>
-                            <small class="text-center text-danger">Horário de início:</small>
+                            <small class="text-center text-dark">Horário de início:</small>
                             <input class="text-center" type="text" id="inicioIniciante" name="inicio" value="" style="width: 30%; min-width: 50px;">
                             </div>
                             <div class="form-group mx-sm-3 mb-2" id="labelBIniciante" hidden>
-                            <small class="text-center text-danger">Horário do término:</small>
+                            <small class="text-center text-dark">Horário do término:</small>
                             <input class="text-center" type="text" id="fimIniciante" name="termino" value="" style="width: 30%;">
                             </div>
-                            <h3 id="avisoiniciante" class="text-danger"hidden>Agora, descanse!</h3>
+                            <h3 id="avisoiniciante" class="text-light"hidden>Agora, descanse!</h3>
                         </div>
                         <div id="atividadeIniciante" class="col-auto my-1" hidden>
-                          <label class="text-danger" for="validationServer01">Informe o tipo da atividade:</label>
+                          <label class="text-dark" for="validationServer01">Informe o tipo da atividade:</label>
                           <select class="custom-select" name="tipo" size="3" required>
                             <option value="Estudou">Estudei</option>
                             <option value="Leitura">Fiz uma Leitura</option>
                           </select>
-                          <label class="text-danger" for="validationServer01">Informe o subtipo da atividade:</label>
+                          <label class="text-dark" for="validationServer01">Informe o subtipo da atividade:</label>
                           <input type="text" class="form-control" name="subTipo" placeholder="O que leu? Qual foi a aula? O que estudou?" id="validationServer01" required>
-                            <button type="submit" class="btn btn-danger mt-2">Salvar</button>
+                            <button type="submit" class="btn btn-light mt-2">Salvar</button>
                         </div>
                     </form>
                   </div>
@@ -85,16 +85,16 @@
         <div class="container" id="exibeAvancado" hidden>
             <div class="card-deck">
 
-                <div class="card">
-                  <div class="card-header text-center bg-danger">
+                <div class="card bg-dark">
+                  <div class="card-header text-center bg-dark">
                     <div style="line-height:300px;" id="tempAvancado" hidden>
                       <b><h3 style="100%" class="text-light" id="mostradorAvancado"></h3></b>
                     </div>
                   </div>
                   <div class="card-body col-sm-10" style="margin: 0 auto;">
-                    <div>
-                      <p class="start text-danger">A opção Avançado é para pessoas que possuem o hábito de estudar. Iniciando está opção, estudará 50 min e descansará 10 min. O temporizador marcará o total, ou seja, 60 min. Ao passar 50 min, um beep soará, então você deverá parar até o beep soar novamente, marcando o fim de um ciclo e, assim, poderá salvar seu tempo e reiniciar o ciclo.</p>
-                      <button id="btniniciarAvancado" class="btn btn-danger" style="width: 100%;" onclick="Avancado()" >Iniciar</button>
+                    <div class="bg-dark">
+                      <p class="start text-dark">A opção Avançado é para pessoas que possuem o hábito de estudar. Iniciando está opção, estudará 50 min e descansará 10 min. O temporizador marcará o total, ou seja, 60 min. Ao passar 50 min, um beep soará, então você deverá parar até o beep soar novamente, marcando o fim de um ciclo e, assim, poderá salvar seu tempo e reiniciar o ciclo.</p>
+                      <button id="btniniciarAvancado" class="btn btn-dark" style="width: 100%;" onclick="Avancado()" >Iniciar</button>
                     </div>
                     <form action="/authUser/registerTempoPomodoro" method="POST">
                       <input type="hidden" name="id" value="{{user._id}}"></td>
@@ -106,24 +106,24 @@
                       <input type="text" class="form-control text-center" name="termino" id="fimBackAvancado"  hidden>
                         <div class="form-row">
                             <div class="form-group mx-sm-3 mb-2" id="labelAAvancado" hidden>
-                            <small class="text-center text-danger">Horário de início:</small>
+                            <small class="text-center text-dark">Horário de início:</small>
                             <input class="text-center" type="text" id="inicioAvancado" name="inicio" value="" style="width: 30%; min-width: 50px;">
                             </div>
                             <div class="form-group mx-sm-3 mb-2" id="labelBAvancado" hidden>
-                            <small class="text-center text-danger">Horário do término:</small>
+                            <small class="text-center text-dark">Horário do término:</small>
                             <input class="text-center" type="text" id="fimAvancado" name="termino" value="" style="width: 30%;">
                             </div>
-                            <h3 id="avisoavancado" class="text-danger" hidden>Agora, descanse!</h3>
+                            <h3 id="avisoavancado" class="text-dark" hidden>Agora, descanse!</h3>
                         </div>
                         <div id="atividadeAvancado" class="col-auto my-1" hidden>
-                          <label class="text-danger" for="validationServer01">Informe o tipo da atividade:</label>
+                          <label class="text-dark" for="validationServer01">Informe o tipo da atividade:</label>
                           <select class="custom-select" name="tipo" size="3" required>
                             <option value="Estudou">Estudei</option>
                             <option value="Leitura">Fiz uma Leitura</option>
                           </select>
-                          <label class="text-danger" for="validationServer01">Informe o subtipo da atividade:</label>
+                          <label class="text-dark" for="validationServer01">Informe o subtipo da atividade:</label>
                           <input type="text" class="form-control" name="subTipo" placeholder="O que leu? Qual foi a aula? O que estudou?" id="validationServer01" required>
-                            <button type="submit" class="btn btn-danger mt-2">Salvar</button>
+                            <button type="submit" class="btn btn-dark mt-2">Salvar</button>
 
                         </div>
                     </form>
@@ -137,15 +137,15 @@
             <div class="card-deck">
 
                 <div class="card">
-                  <div class="card-header text-center bg-danger">
+                  <div class="card-header text-center bg-dark">
                     <div style="line-height:300px;" id="tempLivre" hidden>
                       <b><h3 style="100%" class="text-light" id="mostradorLivre"></h3></b>
                     </div>
                   </div>
                   <div class="card-body col-sm-10" style="margin: 0 auto;">
                     <div>
-                      <p class="start text-danger">Iniciando está opção, você poderá estudar o tempo que quiser e descansará o quanto quiser. O temporizador marcará o total. Ao passar o tempo que você adicionou de estudo, um beep soará, então você deverá parar até o beep soar novamente, marcando o fim de um ciclo e, assim, poderá salvar seu tempo e reiniciar o ciclo.</p>
-                      <button id="btniniciarLivre" class="btn btn-danger" style="width: 100%;" onclick="Livre()" >Iniciar</button>
+                      <p class="start text-dark">Iniciando está opção, você poderá estudar o tempo que quiser e descansará o quanto quiser. O temporizador marcará o total. Ao passar o tempo que você adicionou de estudo, um beep soará, então você deverá parar até o beep soar novamente, marcando o fim de um ciclo e, assim, poderá salvar seu tempo e reiniciar o ciclo.</p>
+                      <button id="btniniciarLivre" class="btn btn-dark" style="width: 100%;" onclick="Livre()" >Iniciar</button>
                     </div>
                     <form action="/authUser/registerTempoPomodoro" method="POST">
                       <input type="hidden" name="id" value="{{user._id}}"></td>
@@ -154,34 +154,34 @@
                       <input type="hidden" name="mes" value="{{user.mes}}"></td>
                       <input type="hidden" name="total" value="{{user.total}}"></td>
                       <div id="mostraInicioLivre" class="form-group mx-sm-3 mb-2" hidden>
-                      <small class="text-center text-danger">Horário de início:</small>
+                      <small class="text-center text-dark">Horário de início:</small>
                       <input class="text-center" type="text" id="inicioBackLivre"  name="inicio"  style="width: 30%; min-width: 50px;">
                       </div>
                       <div id="mostrafimLivre" class="form-group mx-sm-3 mb-2"  hidden>
-                      <small class="text-center text-danger">Horário do término:</small>
+                      <small class="text-center text-dark">Horário do término:</small>
                       <input class="text-center" type="text" id="fimBackLivre" name="termino" style="width: 30%; min-width: 50px;">
                       </div>
 
                         <div class="form-row">
                           <div class="form-group mx-sm-3 mb-2" id="labelALivre">
-                            <small class="text-center text-danger">Tempo de estudo:</small>
+                            <small class="text-center text-dark">Tempo de estudo:</small>
                             <input type="number" class="form-control text-center" id="inicioLivre" min="0" max="240" placeholder="Em minutos">
                           </div>
                           <div class="form-group mx-sm-3 mb-2" id="labelBLivre">
-                            <small class="text-center text-danger">Tempo de descanso:</small>
+                            <small class="text-center text-dark">Tempo de descanso:</small>
                             <input type="number" class="form-control text-center" id="fimLivre" min="0" max="240" placeholder="Em minutos">
                           </div>
-                          <h3 id="avisoLivre" class="text-danger" hidden>Agora, descanse!</h3>
+                          <h3 id="avisoLivre" class="text-dark" hidden>Agora, descanse!</h3>
                         </div>
                         <div id="atividadeLivre" class="col-auto my-1" hidden>
-                          <label class="text-danger" for="validationServer01">Informe o tipo da atividade:</label>
+                          <label class="text-dark" for="validationServer01">Informe o tipo da atividade:</label>
                           <select class="custom-select" name="tipo" size="3" required>
                             <option value="Estudou">Estudei</option>
                             <option value="Leitura">Fiz uma Leitura</option>
                           </select>
-                          <label class="text-danger" for="validationServer01">Informe o subtipo da atividade:</label>
+                          <label class="text-dark" for="validationServer01">Informe o subtipo da atividade:</label>
                           <input type="text" class="form-control" name="subTipo" placeholder="O que leu? Qual foi a aula? O que estudou?" id="validationServer01" required>
-                            <button type="submit" class="btn btn-danger mt-2" onclick="enable()">Salvar</button>
+                            <button type="submit" class="btn btn-dark mt-2" onclick="enable()">Salvar</button>
 
                         </div>
                     </form>
@@ -197,7 +197,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title text-danger" id="exampleModalLabel">Relaxe e foque!</h5>
+        <h5 class="modal-title text-dark" id="exampleModalLabel">Relaxe e foque!</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -227,7 +227,7 @@
   </div>
 </div>
 </div>
-
+</div>
 <script>
 
 async function beepInicio(){
