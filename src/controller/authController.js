@@ -23,6 +23,7 @@ const { findOne } = require('../models/User');
         try{
             const user = await User.create(req.body);
             //-- enviando e-mail de boas bvindas --//
+            console.log(req.user.name+" foi cadastrado")
             Email.sendInfo(req.body.email, "Olá, estamos muito felizes que está no nosso time. Seja bem vindo! Lutaremos juntos para conquistar seu objeivo.")
 
             const data = new Date()

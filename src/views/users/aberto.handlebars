@@ -1,55 +1,43 @@
-<div class="card bg-dark">
-    <div class="card-header">
+<div class="container">
+    <div class="dropdown-divider"></div>
+    <h1 class="display-4 text-light">Modo Aberto</h1>
+    <div class="dropdown-divider"></div>
+    <P>O modo Aberto foi pensando para aquele momento que você estudou e não conseguiu utilizar sua sala de estudos, ou para aquele dia que você esqueceu de adicionar seu tempo. A data que você adicionar, ficará salva no histórico. Entretanto, as horas serão contabilizadas no dia atual.</P>
+    <p>Esse modo é livre, mas pedimos que use com responsabilidade e não burle. Lembre-se, a prioridade aqui é seu foco e não sua posição no rank.</p>
+    <form action="/authUser/registerTempo" method="POST">
+    <div class="dropdown-divider"></div>
+        <div class="card-deck bg-dark">
+            <div class=" card bg-dark my-4 form-group text-center">
+                <input type="hidden" name="id" value="{{user._id}}"></td>
+                <input type="hidden" name="dia" value="{{user.dia}}"></td>
+                <input type="hidden" name="semana" value="{{user.semana}}"></td>
+                <input type="hidden" name="mes" value="{{user.mes}}"></td>
+                <input type="hidden" name="total" value="{{user.total}}"></td>
+                <div class="col-sm">
+                    <p><b>Horário inicial:</b></p>
+                    <input class="col-sm-6" type="time" id="inicio" name="inicio" min="00:00" max="23:59" required>
+                    <p><b>Horário Final:</b></p>
+                    <input class="col-sm-6" type="time" id="termino" name="termino" min="00:00" max="23:59" required>
+                    <p><b>Data:</b></p>
+                    <input  class="col-sm-6" name="novaData" type="date" value="aaaa-mm-dd" id="example-date-input" required>
+                </div>                  
+            </div>
 
-    </div>
-    <div class="card-body">
-        <div class="card-deck">
-            <div class="card bg-dark">
-                <div class="card-header">
-                    <h3 class="text-center">Estudou outro dia</h3>
-                </div>
-                <div class="card-body">
-                    <form action="/authUser/registerTempo" method="POST">
-                        <input type="hidden" name="id" value="{{user._id}}"></td>
-                        <input type="hidden" name="dia" value="{{user.dia}}"></td>
-                        <input type="hidden" name="semana" value="{{user.semana}}"></td>
-                        <input type="hidden" name="mes" value="{{user.mes}}"></td>
-                        <input type="hidden" name="total" value="{{user.total}}"></td>
-
-                        <div class="form-group text-center">
-                        <div class="mt-2">
-                        <small>Inicio: </small>
-                        <input class="col-auto" type="time" id="inicio" name="inicio" min="00:00" max="23:59" required>
- 
-                            <small>Fim: </small>
-                            <input class="col-auto" type="time" id="termino" name="termino" min="00:00" max="23:59" required>
-                        <div class="form-group row">
-                        </div>
-                        <div class="mt-2">
-                            <small>Data:</small>
-                        <input style="width: 50%;" class="col-auto" name="novaData" type="date" value="aaaa-mm-dd" id="example-date-input" required>
-                        </div>                  
-                        
-                        </div>
-                        <div class="col-auto my-1">
-                            <label for="validationServer01">Informe o tipo da atividade</label>
-                            <select class="custom-select " name="tipo" size="6" required>
-                            <option value="Estudou">Estudei</option>
-                            <option value="Assistiu aula">Assisti aula</option>
-                            <option value="Leitura">Fiz uma Leitura</option>
-                            <option value="Pesquisou">Pesquisa</option>
-                            <option value="Revisou">Revisei</option>
-                            <option value="Trabalho">Trabalho</option>
-                            <option value="Exercitou">Exercicios</option>
-                            </select>
-                            <label for="validationServer01">Informe o subtipo da atividade:</label>
-                            <input type="text" class="form-control " name="subTipo" placeholder="O que leu? Qual foi a aula? O que estudou?" id="validationServer01" required>
-                        </div>
-                        </div>
-                        <button type="submit" class="btn btn-light">Salvar</button>
-                    </form>
-                </div>
+            <div class=" card bg-dark my-4">
+                <h5 for="validationServer01">Informe o tipo da atividade</h5>
+                <select class="custom-select " name="tipo" size="6" required>
+                <option value="Estudou">Estudei</option>
+                <option value="Assistiu aula">Assisti aula</option>
+                <option value="Leitura">Fiz uma Leitura</option>
+                <option value="Pesquisou">Pesquisa</option>
+                <option value="Revisou">Revisei</option>
+                <option value="Trabalho">Trabalho</option>
+                <option value="Exercitou">Exercicios</option>
+                </select>
+                <h5 for="validationServer01">Informe o subtipo da atividade:</h5>
+                <input type="text" class="form-control " name="subTipo" placeholder="O que leu? Qual foi a aula? O que estudou?" id="validationServer01" required>
+                <button type="submit" class="btn btn-light mt-2">Salvar</button>
             </div>
         </div>
-    </div>
+    </form>
 </div>
