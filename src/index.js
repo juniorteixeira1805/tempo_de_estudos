@@ -22,12 +22,12 @@ const io = require('socket.io')(server)
     const Auth = require('./controller/authController')
     const AuthUser = require('./controller/userController')
     const contArt = require('./controller/artigoController')
-    const Coletiva = require('./controller/salaColetivaController')
+    const Individual = require('./controller/salaIndividualController')
     const User = require('./router/user')
     const Administradores = require('./router/admin')
     const Artigo = require('./router/artigo')
     const Tempo = require('./router/tempo')
-    //const GetColetiva = require('./router/coletiva')
+    //const GetIndividual = require('./router/Individual')
 
 //configurações
     //sessão
@@ -77,9 +77,9 @@ const io = require('socket.io')(server)
     app.use('/administradores', Administradores)
     app.use('/artigo', Artigo)
     app.use('/controllerArtigo', contArt)
-    app.use('/salaColetiva', Coletiva)
+    app.use('/salaIndividual', Individual)
     app.use('/tempo', Tempo)
-   //app.use('/coletiva', GetColetiva)
+   //app.use('/Individual', GetIndividual)
 
     
 

@@ -1,6 +1,8 @@
 {{#if user.validaEmail}}
-<input id="pessoa" type="text" value="{{user.name}}" hidden>
 <div class="mx-4">
+  <input id="pessoa" type="text" value="{{user.name}}" hidden>
+  <h1 class="display-5">Improdutiva Estudos LTDA</h1>
+  <div class="dropdown-divider"></div>
   <div class="message my-2"></div> 
 
   <div class="card-deck">
@@ -36,13 +38,16 @@
     </div>
     <div class="card mb-3 bg-dark">
       <div class="row no-gutters">
-        <div class="col-xl-8">
-          <img src="/anime/function.gif" class="card-img" alt="...">
-        </div>
-        <div class="col-sm-4">
+        <div class="col-sm">
           <div class="card-body">
             <p class="card-text">"Se eu vi mais longe, foi por estar sobre ombros de gigantes"</p>
             <h5 class="card-title"> - sir Isaac Newton</h5>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="card-body">
+            <p class="card-text">"Acredite em si próprio e chegará um dia em que os outros não terão outra escolha senão acreditar com você."</p>
+            <h5 class="card-title"> - Cynthia Kersey</h5>
           </div>
         </div>
       </div>
@@ -225,9 +230,11 @@
   </div>
 
   <div>
-    <h3 class="text-center text-dark"><b>Parceiros educacionais</b></h3>
+  <h3 class="display-6">Parceiros Educacionais</h3>
+  <div class="dropdown-divider"></div>
   </div>
   <div class="card-deck">
+    <!--
     <div class="card mb-3 text-light bg-dark">
       <div class="row no-gutters">
         <div class="col-md-4">
@@ -242,7 +249,8 @@
         </div>
       </div>
     </div>
-    <div class="card mb-3 text-light bg-dark">
+    -->
+    <div class="card mb-3 text-light bg-dark" style="max-width: 50%;">
       <div class="row no-gutters">
         <div class="col-md-4">
           <img src="https://instagram.fnat1-1.fna.fbcdn.net/v/t51.2885-19/s150x150/95354939_167710491225743_7703660003046981632_n.jpg?_nc_ht=instagram.fnat1-1.fna.fbcdn.net&_nc_ohc=e2GvRV5V4hEAX8DG32X&oh=9eaa7447b95826b8f1f1d59fb96ba497&oe=5F31E6DD" class="card-img-top" alt="Parcerias Improdutiva Estudos LTDA">
@@ -250,7 +258,7 @@
         <div class="col-md-8">
           <div class="card-body">
             <h5 class="card-title">vestibumedmigas</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text">Instagram que dá dicas de como ter uma rotina diária de estudos.</p>
             <p class="card-text"><small class="text-muted">Instagram: <a href="hthttps://www.instagram.com/vestibumedmigas/?hl=pt-br" class="text-light">@vestibumedmigas</a></small></p>
           </div>
         </div>
@@ -309,41 +317,63 @@
       </div>
     </div>
   </div>
+</div>
 
   {{else}}
-  <div class="card">
-    <div class="card-body">
-      <h4 class="text-dark">Um código foi enviado para seu e-mail. Insira o código e confirme para utilizar a plataforma</h4>
-      <form action="/auth/validaEmail" class="form-inline" method="POST">
-      <div class="form-group mb-2">
-        <label for="staticEmail2" class="sr-only">Seu email</label>
-        <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="{{user.email}}">
-      </div>
-      <div class="form-group mx-sm-3 mb-2">
-        <label for="inputPassword2" class="sr-only">código</label>
-        <input type="text" class="form-control" name="codigo" id="inputPassword2" placeholder="Código">
-      </div>
-      <button type="submit" class="btn btn-dark mb-2">Confirmar código</button>
-    </form>
-    <h3 class="text-dark">Caso esse não for seu e-mail, delete sua conta em perfil e refaça o cadastro</h3>
-    <h3 class="text-dark">Caso o e-mail não tenha chegado, nos reporte em suporte</h3>
-      <form action="/auth/reenvia" class="form-inline" method="POST">
-        <div class="form-group mb-2">
-          <label for="staticEmail2" class="sr-only">Seu email</label>
-          <input type="text" readonly name="email" class="form-control-plaintext" id="staticEmail2" value="{{user.email}}" hidden>
-        </div>
-        <button type="submit" class="btn btn-secondary mb-2">Reenviar código</button>
-      </form>
-    </div>
-  </div>
+<div class="alert alert-danger" role="alert">
+  Caso o usuário fique 1 mês inativo, sua conta será excluida automaticamente!
 </div>
+<div class="text-center">
+  <h4 class="text-light">{{user.name}}, Um código foi enviado para seu e-mail ({{user.email}}).</h4>
+  <h3>Primeiro selecione a opção "Inscreva-se" para ativar nossa comunicação.</h3>
+  <h3 class="text-light">Após ativar a comunicação, insira o código e confirme para utilizar a plataforma</h3>
+</div>
+<!-- Estilos CSS personalizados para o formulário, se for usar seu estilo, pode apagar essa linha -->
+<link rel="stylesheet" type="text/css" href="https://novo.nitronews.com.br/assets/css/fomularios-html.css">
+<form action="https://novo.nitronews.com.br/formularios/confirmacao-formularioHTML" method="get" target="_blank" id="formIntegracaoHTML">
+	<label for="email" class="text-light">E-mail: </label>
+ 	<input type="email" name="email%%E-mail" id="email" value="{{user.email}}" disabled required>
+	<label for="nome" class="text-light">Nome: </label>
+ 	<input type="text" name="nome%%Nome" value="{{user.name}}" id="nome" disabled required>
+	<!-- Não apagar as linhas abaixo -->
+	<input type="hidden" name="chave[]" value="Luw5">
+	<input type="hidden" name="cliente" value="Improdutiva Estudos">
+	<input type="hidden" name="urlretorno" value="">
+	<input type="submit" name="enviar" value="inscreva-se">
+</form>
+
+<div class="text-center">
+    <form action="/auth/validaEmail" class="text-center" method="POST" >
+    <div class="col-sm-2 text-center" style="margin: 0 auto;">
+      <label for="staticEmail2" class="sr-only">Seu email</label>
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="{{user.email}}" hidden>
+    </div>
+    <div class="form-group col-sm-11 text-center" style="margin: 0 auto;">
+      <p>código</p>
+      <input type="text" class="form-control" name="codigo" id="inputPassword2" placeholder="Código">
+    </div>
+    <button type="submit" class="btn btn-light my-2">Confirmar código</button>
+  </form>
+  <h3 class="text-light">Caso esse não for seu e-mail, delete sua conta em perfil e refaça o cadastro.</h3>
+  <h3 class="text-light">Caso o e-mail não tenha chegado, verifique sua internet e reenvie o código.</h3>
+    <form action="/auth/reenvia" class="form-inline" method="POST">
+      <div class="col-sm-6 text-center" style="margin: 0 auto;">
+        <label for="staticEmail2" class="sr-only">Seu email</label>
+        <input type="text" readonly name="email" class="form-control-plaintext" id="staticEmail2" value="{{user.email}}" hidden>
+        <button type="submit" class="btn btn-light mt-4">Reenviar código</button>
+      </div>
+    </form>
+</div>
+
+
+
 
 
   {{/if}}
 <script>
 //'<a class="msg">'+message+' Está online<a>'
     function render(message){
-      $('.message').append('<div class="msg card text-center bg-secondary text-light mt-2" style="position: relative; min-width: 20%;max-width: 35%">'+message+' Está online</div>')
+      $('.message').append('<div class="msg card text-center bg-light text-dark mt-2" style="position: relative; min-width: 20%;max-width: 35%">'+message+' Está online</div>')
        setTimeout(function(){ $('.msg').remove( ) }, 5000);
     }
 

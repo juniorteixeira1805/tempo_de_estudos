@@ -1,0 +1,61 @@
+<!-- Button trigger modal -->
+  <div class="container">
+    <h1 class="display-4">Notas</h1>
+      <div class="dropdown-divider"></div>
+      <p>Adicione aqui suas notas e lembretes.</p>
+    <div class="dropdown-divider"></div>
+    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#staticBackdrop">
+    Adicionar nova nota
+    </button>
+    <div class="card-deck my-4">
+    {{#each sala}}
+        {{#each notas}}
+        <div class="col-sm" style="min-width: 300px;">
+            <div class="toast bg-dark mt-2 text-center" role="alert" aria-live="assertive" aria-atomic="true" data-delay="9999999999"style="min-width:200">
+                <div class="toast-body">
+                    {{corpo}}
+                </div>
+                <div class="toast-footer">
+                    <form action="/salaIndividual/removeNota" method="POST">
+                    <input name="id" value="{{id}}" hidden>
+                    <button type="submit" class="btn btn-danger mb-2">
+                        <svg class="bi bi-trash-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                        </svg>
+                    </button>
+                    </form>
+                </div>
+            </div>         
+        </div>
+        {{/each}}
+    {{/each}}
+    </div>
+  </div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-secondary">
+      <div class="modal-header ">
+        <h5 class="modal-title" id="staticBackdropLabel">Informe o texto da nota</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/salaIndividual/addNota" method="POST">
+        <div class="modal-body">
+            <div class="form-group sm">
+                <input name="id" value="{{id}}" hidden>
+                <label for="exampleFormControlTextarea1">Informe a nota</label>
+                <textarea class="form-control" name="corpo" id="exampleFormControlTextarea1" rows="3" required></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-light">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

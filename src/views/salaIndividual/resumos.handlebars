@@ -1,0 +1,72 @@
+<!-- Button trigger modal -->
+  <div class="container">
+    <h1 class="display-4">Resumos</h1>
+        <div class="dropdown-divider"></div>
+        <p>Richard Feynman (1918-1988), ganhador do Prêmio Nobel de Física em 1965, desenvolveu uma tecnica para aprimorar a capacidade de memorização e apredizagem em 4 passos.</p>
+        <p>Escolha um conceit. Qualquer um que preferir. Pode ser um de macroeconomia, economia doméstica ou qualquer coisa que vier a cabeça. Seja química ou culinária, ou primeiro uma e depois a outra. E anote o conceito - o mais importante aí é desenvolver o raciocínio.</p>
+        <p>Escreva-o como se estivesse ensinando uma criança. Redija, então, tudo o sabe sobre esse conceito. Mas atenção: você precisa fazer isso da maneira mais simples possível. Escreva como se estivesse explicando para uma criança - ainda que isso pareça absurdo e desnecessário, é um passo muito importante.</p>
+        <p>Volte no tema e pesquise sobre ele No. passo anterior, provavelmente você encontrou lacunas no seu conhecimento. Coisas que você esqueceu e que não conseguiu explicar. E esse é o momento em que você começa realmente a aprender. Volte à fonte de informações sobre esse tema e pesquise o que ainda falta entender. E, quando você achar que cada subtema está claro, tente escrever no papel a explicação para ele de uma maneira que até uma criança entenderia.</p>
+        <p> Revise e simplifique ainda mais. Depois de passar por todas essas etapas, revise o que escreveu e simplifique. Certifique-se novamente de que não usou nenhum jargão associado com o tema que está te intrigando. Leia tudo em voz alta. Preste atenção para perceber se está tudo exposto da maneira mais clara possível. Se a explicação não for simples ou se soar confusa, interprete isso como um sinal de que você não está entendendo algo.</p>
+        <div class="dropdown-divider"></div>
+    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#staticBackdrop">
+    Adicionar novo Resumo
+    </button>
+    <div class="card-deck my-4">
+    {{#each sala}}
+        {{#each resumos}}
+        <div class="col-sm-12">
+            <div class="toast bg-dark mt-2 text-center" role="alert" aria-live="assertive" aria-atomic="true" data-delay="9999999999"style="min-width:100%">
+                <div class="toast-header">
+                  <strong class="mr-auto ">Titulo: {{titulo}}</strong>
+                </div>
+                <div class="toast-body">
+                <div class="dropdown-divider"></div>
+                    {{corpo}}
+                <div class="dropdown-divider"></div>
+                </div>
+                <div class="toast-footer">
+                    <form action="/salaIndividual/removeResumo" method="POST">
+                    <input name="id" value="{{id}}" hidden>
+                    <button type="submit" class="btn btn-danger mb-2">
+                        <svg class="bi bi-trash-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                        </svg>
+                    </button>
+                    </form>
+                </div>
+            </div>         
+        </div>
+        {{/each}}
+    {{/each}}
+    </div>
+  </div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-secondary">
+      <div class="modal-header ">
+        <h5 class="modal-title" id="staticBackdropLabel">Informe o texto da nota</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/salaIndividual/addResumo" method="POST">
+        <div class="modal-body">
+            <div class="form-group sm">
+                <input name="id" value="{{id}}" hidden>
+                <label for="name" class="text-light">Titulo*</label>
+                <input type="text" name="titulo" id="name" class="form-control" placeholder="Informe o nome e sobrenome" required>
+                <label for="exampleFormControlTextarea1">Resumo</label>
+                <textarea class="form-control" name="corpo" id="exampleFormControlTextarea1" rows="3" required></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-light">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -24,9 +24,17 @@
 //-- Rota que registra novo tempo e adiciona novo tempo ao bd no dia, semana, mes e total do usuario --//
     router.post('/registerTempo', async (req, res) => {
         try{
+            function FormatarData(data) {
+                var ano  = data.split("-")[0];
+                  var mes  = data.split("-")[1];
+                  var dia  = data.split("-")[2];
+              
+                return dia + '/' + ("0"+mes).slice(-2) + '/' + (ano)
+                // Utiliza o .slice(-2) para garantir o formato com 2 digitos.
+              }
 
-            const data = new Date(); //-- Extraindo a data de hoje --//
-            var nova_Data = await funcdata.novadata(data)
+              console.log(req.body.novaData)
+            var nova_Data = await FormatarData(req.body.novaData)
     
             const novoTempo = { //-- Recebendo valores --//
                 novaData: nova_Data, 
@@ -34,7 +42,7 @@
                 termino: req.body.termino, 
                 estudante: req.body.id,
                 tipo: req.body.tipo,
-                dateCreater: data,
+                dateCreater: new Date(),
                 subTipo: req.body.subTipo,
             }
 

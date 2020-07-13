@@ -15,9 +15,33 @@ const Atividade = require('../models/Atividade')
 
 const router = express.Router();
 
+//-- Rota que renderiza o registro de usuario --//
+router.get('/registrodeusuario', (req, res) => {
+    res.render("./users/registro")
+})
+
+//-- Rota para renderizar tela de suporte --//
+router.get('/suporte', (req, res) => {
+    res.render("./users/suporte")
+})
+
+//-- Rota para renderizar tela de recuperar senha --//
+router.get('/enviaEmail', (req, res) => {
+    res.render("./users/informeEmail")
+})
+
+//-- Rota para renderizar tela da equipe --//
+
+router.get('/equipe', (req, res) => {
+    res.render("./admin/equipe")
+})
 
 //rota que renderiza pagina inicaial
     router.get('/home', validarEmail, async (req, res) => {
+        await User.updateOne({_id: req.user._id},{dataVizualização: new Date()}, function(err, res) {
+            console.log("Atividades atualizadas")
+        });
+        
         //-- Passando todos os usuarios para a view --//
         Atividade.find({'estudante': req.user.id}).sort({horarioInicial: 0}).then((atv, tempos) => {
             res.render("./users/home", {atv: atv, tempos: tempos})
@@ -27,23 +51,6 @@ const router = express.Router();
             console.log("deu erro: ", err)
             })
 
-    })
-//-- Rota que renderiza o registro de usuario --//
-    router.get('/registrodeusuario', (req, res) => {
-        res.render("./users/registro")
-    })
-
-    //-- Rota que renderiza o registro de usuario --//
-    router.get('/suporte', (req, res) => {
-        res.render("./users/suporte")
-    })
-
-    router.get('/enviaEmail', (req, res) => {
-        res.render("./users/informeEmail")
-    })
-
-    router.get('/equipe', (req, res) => {
-        res.render("./admin/equipe")
     })
 
 

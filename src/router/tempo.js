@@ -9,11 +9,61 @@ const User = mongoose.model("users")
 
 const Tempo = mongoose.model("tempos")
 
+const Sala = mongoose.model("individuais")
+
 const router = express.Router();
 
 //-- Rota que renderiza o registro de usuario --//
-    router.get('/pomodoro', eAdmin, (req, res) => {
-        res.render("./users/pomodoro")
+    router.get('/salaIndividual', eAdmin, (req, res) => {
+        
+        Sala.findOne({responsavel: req.user.id}).then((sala) => {
+
+            res.render("./salaIndividual/salaIndividual", {sala: sala})
+            console.log(req.user.name + "Está em sua sala")
+
+            }).catch((err) => {
+            res.redirect("/user/home")
+            console.log("deu erro: ", err)
+            })
+    })
+
+    router.get('/notas', eAdmin, (req, res) => {
+        
+        Sala.findOne({responsavel: req.user.id}).then((sala) => {
+
+            res.render("./salaIndividual/notas", {sala: sala})
+            console.log(req.user.name + "Está em sua sala")
+
+            }).catch((err) => {
+            res.redirect("/user/home")
+            console.log("deu erro: ", err)
+            })
+    })
+
+    router.get('/resumos', eAdmin, (req, res) => {
+        
+        Sala.findOne({responsavel: req.user.id}).then((sala) => {
+
+            res.render("./salaIndividual/resumos", {sala: sala})
+            console.log(req.user.name + "Está em sua sala")
+
+            }).catch((err) => {
+            res.redirect("/user/home")
+            console.log("deu erro: ", err)
+            })
+    })
+
+    router.get('/metas', eAdmin, (req, res) => {
+        
+        Sala.findOne({responsavel: req.user.id}).then((sala) => {
+
+            res.render("./salaIndividual/metas", {sala: sala})
+            console.log(req.user.name + "Está em sua sala")
+
+            }).catch((err) => {
+            res.redirect("/user/home")
+            console.log("deu erro: ", err)
+            })
     })
 
 //-- Rota que renderiza o registro de usuario --//

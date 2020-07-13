@@ -99,11 +99,11 @@ module.exports = {
         transporter.sendMail({
             from: "Improdutiva Estudos LTDA <devorion@estude.live>",
             to: email,
-            subject: "NOVA SENHA",
+            subject: "SAUDAÇÕES, AMIGO.",
             text: text,
             html: ''
         }).then(message => {
-            console.log("Senha enviada: "+message);
+            console.log(message);
         }).catch(err => {
             console.log(err)
         })
