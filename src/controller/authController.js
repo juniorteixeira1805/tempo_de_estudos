@@ -23,17 +23,20 @@ const { findOne } = require('../models/User');
         try{
             const user = await User.create(req.body);
             //-- enviando e-mail de boas bvindas --//
-            console.log(req.user.name+" foi cadastrado")
             Email.sendInfo(req.body.email, "Olá, estamos muito felizes que está no nosso time. Seja bem vindo! Lutaremos juntos para conquistar seu objeivo.")
 
-            const data = new Date()
-            var mile = data.getMilliseconds().toString()
-            console.log(mile)
-            //hasheando um numero
-            const hash = await bct.hash(mile, 5);
-            console.log(hash)
+            function makeid() {
+                var text = "";
+                var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                
+                for (var i = 0; i < 5; i++)
+                    text += possible.charAt(Math.floor(Math.random() * possible.length));
+                
+                return text;
+                }
+                var hash = makeid()
             //Atualizando o banco de dados
-            await User.updateOne({email: req.body.email}, {codResete: hash}).then(() =>{}).catch((err) => {
+            await User.updateOne({email: req.body.email}, {codResete: hash}).then(() =>{console.log("código salvo")}).catch((err) => {
                 console.log("erro ao salvar codigo:" + err)
             })
             //-- enviando código de validação --//
@@ -41,8 +44,8 @@ const { findOne } = require('../models/User');
 
             user.password = undefined; //-- para o que password não retorne no Json--//
 
-            console.log(req.body.name + " Cadastrado")
-            req.flash("sucess_msg", req.body.name+ ", seu cadastro foi realizado")
+            console.log("Nova Usuario cadastrado")
+            req.flash("sucess_msg", "Seu cadastro foi realizado")
             res.redirect("/")
 
         } catch(err) {
@@ -55,17 +58,20 @@ const { findOne } = require('../models/User');
 //-- Rota que é chamanda quando o botão de reenviar codigo de validação é selecionado --//
     router.post('/reenvia', async(req, res) =>{
         try{
-            const data = new Date()
-            var mile = data.getMilliseconds().toString()
-            console.log(mile)
-            //hasheando um numero
-            const hash = await bct.hash(mile, 5);
-            console.log(hash)
+            function makeid() {
+                var text = "";
+                var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                
+                for (var i = 0; i < 5; i++)
+                    text += possible.charAt(Math.floor(Math.random() * possible.length));
+                
+                return text;
+                }
+                var hash = makeid()
             //Atualizando o banco de dados
             await User.updateOne({email: req.body.email}, {codResete: hash}).then(() =>{}).catch((err) => {
                 console.log("erro ao salvar codigo:" + err)
             })
-            console.log(req.body.email)
             await Email.SendCode(req.body.email, hash)
             console.log(req.user.name + " reenviou o código a email")
             req.flash("sucess_msg", req.user.name+ ", seu código foi reenviado!")

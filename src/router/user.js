@@ -39,7 +39,7 @@ router.get('/equipe', (req, res) => {
 //rota que renderiza pagina inicaial
     router.get('/home', validarEmail, async (req, res) => {
         await User.updateOne({_id: req.user._id},{dataVizualização: new Date()}, function(err, res) {
-            console.log("Atividades atualizadas")
+            console.log(req.user.name + " atualizou a data de presença no site")
         });
         
         //-- Passando todos os usuarios para a view --//

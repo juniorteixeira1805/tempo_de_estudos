@@ -21,7 +21,7 @@ module.exports = function(passport){
 
         //--Verificando a existencia do usuario--//
             if(!user){
-                return done(null, false, {message: "Esta conta não existe"});
+                return done(null, false, {message: "Está conta não existe"});
             }
 
         //--Verificando a se a senha está correta--//
