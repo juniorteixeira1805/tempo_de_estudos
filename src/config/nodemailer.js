@@ -1,6 +1,7 @@
 const nodemailer = require("nodemailer")
 
 module.exports = {
+    //-- Esta função é responsavel por mandar o e-mail do usuario para o suporte --//
     suporte: async function(usuario, assunto, texto, email){
         let transporter = nodemailer.createTransport({
             host: "smtp.umbler.com",
@@ -12,6 +13,7 @@ module.exports = {
             }
         });
         
+        //-- Enviando o e-mail do usuario para o email do devorion --//
         transporter.sendMail({
             from: "Improdutiva Estudos LTDA <devorion@estude.live>",
             to: ["devorion@estude.live"],
@@ -24,6 +26,7 @@ module.exports = {
             console.log(err)
         })
 
+        //-- Enviando o e-mail de notificação para Alice --//
         transporter.sendMail({
             from: "Improdutiva Estudos LTDA <devorion@estude.live>",
             to: ["aliicecs@ufrn.edu.br"],
@@ -37,6 +40,7 @@ module.exports = {
         })
     },
 
+    //-- Esta função é responsavel por mandar o e-mail com o codigo de validação quando um usuario novo é cadastrado --//
     SendCode: function(email, codigo){
         let transporter = nodemailer.createTransport({
             host: "smtp.umbler.com",
@@ -61,6 +65,7 @@ module.exports = {
         })
     },
 
+    //-- Esta função é responsavel por mandar o e-mail com uma nova senha para o usuario, quando solicitado --//
     SendSenha: function(email, codigo){
         let transporter = nodemailer.createTransport({
             host: "smtp.umbler.com",
@@ -85,6 +90,7 @@ module.exports = {
         })
     },
 
+    //-- Esta função é responsavel por mandar o e-mail especifico de um determinado evento --//
     sendInfo: function(email, text){
         let transporter = nodemailer.createTransport({
             host: "smtp.umbler.com",

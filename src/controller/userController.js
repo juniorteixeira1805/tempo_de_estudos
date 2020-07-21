@@ -1,42 +1,21 @@
-//-- Importações --//
+//-- Importando modulos --//
     const express = require('express');
-
-    const Tempo = require('../models/Tempo');
-
-    const User = require('../models/User');
-
     const router = express.Router();
-
-    const {eAdmin} = require("../helpers/eAdmin")
-
-    const funcdata = require("../controller/tempoController")
-
+    const Tempo = require('../models/Tempo');
+    const User = require('../models/User');
     const Atividade = require('../models/Atividade')
-
+    const funcdata = require("../controller/tempoController")
     const enviarEmail = require('../config/nodemailer')
-
     const bct = require('bcryptjs');
-
-
-    //-- Tratando data e setando nova data --//
-
         
-//-- Rota que registra novo tempo e adiciona novo tempo ao bd no dia, semana, mes e total do usuario --//
+//-- Rota que registra novo tempo pelo metodo aberto --//
     router.post('/registerTempo', async (req, res) => {
         try{
-            function FormatarData(data) {
-                var ano  = data.split("-")[0];
-                  var mes  = data.split("-")[1];
-                  var dia  = data.split("-")[2];
-              
-                return dia + '/' + ("0"+mes).slice(-2) + '/' + (ano)
-                // Utiliza o .slice(-2) para garantir o formato com 2 digitos.
-              }
+        //-- transformando a data do formato americano para o formato Brasileiro --//
+            var nova_Data = await funcdata.FormatarData(req.body.novaData)
 
-              console.log(req.body.novaData)
-            var nova_Data = await FormatarData(req.body.novaData)
-    
-            const novoTempo = { //-- Recebendo valores --//
+        //-- criando objeto --//
+            const novoTempo = {
                 novaData: nova_Data, 
                 inicio: req.body.inicio, 
                 termino: req.body.termino, 
@@ -46,9 +25,11 @@
                 subTipo: req.body.subTipo,
             }
 
-        //-- Somando minutos ao dia --//
+        //-- Calculando a quantidade de minutos estudados --//
             minutosNoDia = funcdata.tempoEstudado(req.body.inicio, req.body.termino)
-            minutosTotalNoDia = parseInt(minutosNoDia) + parseInt(req.body.dia)        
+
+        //-- Somando minutos ao dia --// 
+            minutosTotalNoDia = parseInt(minutosNoDia) + parseInt(req.body.dia)   
             await User.updateOne({_id: req.body.id}, {dia: minutosTotalNoDia}, function(err, res) {
             });
 
@@ -67,41 +48,41 @@
             await User.updateOne({_id: req.body.id}, {total: minutosTotalNoTotal}, function(err, res) {
             });
 
-        //-- Criando a collection --//
+        //-- persistindo no banco de dados --//
             new Tempo(novoTempo).save().then( async () => {
-                console.log(req.user.name + " Acresentou novo tempo")
+                console.log(req.user.name + ", Acresentou novo tempo")
                 req.flash("sucess_msg", req.user.name+", Seu tempo foi salvo.") // apresenta na tela a msg de salvo
                 res.redirect("/user/home") //redireciona para a pagina
             }).catch((err) => {
-                console.log(err)
+                console.log("erro ao acrescentar tempo: " +err)
                 req.flash("error_msg", "Houve um erro ao salvar") // apresenta uma mensagem de erro
                 res.redirect("/user/home") // redireciona para a pagina
             })
-
-
-        }
-        
-        catch(err) {
-            console.log("Deu erro: ", err)
+        } catch(err) {
+            console.log("erro ao acrescentar tempo: " +err)
+            req.flash("error_msg", "Houve um erro ao salvar") // apresenta uma mensagem de erro
+            res.redirect("/user/home") // redireciona para a pagina
         }
     })
 
+//-- Rota que registra novo tempo pelo metodo pomodoro --//
     router.post('/registerTempoPomodoro', async (req, res) => {
         try{
-
-            const data = new Date(); //-- Extraindo a data de hoje --//    
-            const novoTempo = { //-- Recebendo valores --//
+        //-- Criando objeto --//
+            const novoTempo = {
                 novaData: req.body.novaData, 
                 inicio: req.body.inicio, 
                 termino: req.body.termino, 
                 estudante: req.body.id,
                 tipo: req.body.tipo,
-                dateCreater: data,
+                dateCreater: new Date(),
                 subTipo: req.body.subTipo,
             }
 
-        //-- Somando minutos ao dia --//
+        //-- Calculando a quantidade de minutos estudados --//
             minutosNoDia = funcdata.tempoEstudado(req.body.inicio, req.body.termino)
+
+        //-- Somando minutos ao dia --//
             minutosTotalNoDia = parseInt(minutosNoDia) + parseInt(req.body.dia)        
             await User.updateOne({_id: req.body.id}, {dia: minutosTotalNoDia}, function(err, res) {
             });
@@ -127,62 +108,66 @@
                 req.flash("sucess_msg", req.user.name+"tempo salvo com sucesso") // apresenta na tela a msg de salvo
                 res.redirect("/user/home") //redireciona para a pagina
             }).catch((err) => {
-                console.log(err)
+                console.log("Erro ao salvar tempo pelo método pomodoro"+err)
                 req.flash("error_msg", "Houve um erro ao salvar seu tempo") // apresenta uma mensagem de erro
                 res.redirect("/user/home") // redireciona para a pagina
             })
-
-
-        }
-        
-        catch(err) {
-            console.log("Deu erro: ", err)
+        } catch(err) {
+            console.log("Erro ao salvar tempo pelo método pomodoro"+err)
+            req.flash("error_msg", "Houve um erro ao salvar seu tempo") // apresenta uma mensagem de erro
+            res.redirect("/user/home") // redireciona para a pagina
         }
     })
 
+//-- rota responsavel por enviar email ao suporte --//
     router.post('/enviarEmail', async (req, res) => {
         try{
+        //-- neviando email --//
             enviarEmail.suporte(req.user.name, req.body.assunto, req.body.texto, req.user.email)
-            req.flash("sucess_msg", "Seu email foi enviado. Analisaremos o conteúdo e responderemos em até 3 dias.")
+
+            req.flash("sucess_msg", req.user.name + ", seu email foi enviado. Analisaremos o conteúdo e responderemos em até 3 dias.")
             res.redirect('/user/suporte')
         }catch(err){
-            req.flash("error_msg", "Houve um erro ao enviar")
+            req.flash("error_msg", req.user.name + ", houve um erro ao enviar")
             res.redirect('/user/suporte')
         }
     })
 
+//-- rota responsavel por enviar uma nova senha para o usuario --//
     router.post('/enviaCodigo', async (req, res) => {
         try{
-
+        //-- função responsavel por gerar nova senha aleatoria --//
             function makeid() {
                 var text = "";
                 var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*()_+={}?/][";
-                
                 for (var i = 0; i < 10; i++)
                     text += possible.charAt(Math.floor(Math.random() * possible.length));
-                
+
                 return text;
-                }
+            }
                 
-
+        //-- verificando se existe no sistema o e-mail informado pelo usuario --//
             var x = await User.findOne({email: req.body.email}, {email: req.body.email})
-
             if(x.email == req.body.email){
+            //-- recebendo senha aleatoria --//
                 var text =  makeid()
+
+            //-- hasheando a senha para salva no banco de dados --//
                 const hash = await bct.hash(text, 5);
                 await enviarEmail.SendSenha(req.body.email, text)
                 await User.updateOne({email: req.body.email}, {password: hash}, function(err, res) {
                 });
-                req.flash("sucess_msg", "Enviamos um código para seu E-mail")
+
+                req.flash("sucess_msg", "Enviamos uma nova senha para seu E-mail")
                 res.redirect('/')
-            }else{
+            } else{
                 await enviarEmail.SendSenha(req.body.email, "Esse Email não possui cadastro. Faça seu cadastro e venha para a Improdutiva Estudos LTDA")
                 req.flash("error_msg", "Esse E-mail não possui cadastro.")
                 res.redirect('/')
             }
-
-
-        }catch(err){
+        } catch(err){
+        //-- Enviando email de convite para usuario que não possui cadastro --//
+            await enviarEmail.SendSenha(req.body.email, "Esse Email não possui cadastro. Faça seu cadastro e venha para a Improdutiva Estudos LTDA")
             console.log("Erro ao mandar codigo para mudar senha: ", err)
             req.flash("error_msg", "Houve um erro ao enviar o codigo")
             res.redirect('/')
@@ -190,12 +175,11 @@
     })
 
 
-
-
 //-- Rota que registra novo tempo e adiciona novo tempo ao bd no dia, semana, mes e total do usuario --//
     router.post('/registerAtividade', async (req, res) => {
         try{        
-            const novoTempo = { //-- Recebendo valores --//
+        //-- Criando objeto --//
+            const novoTempo = {
                 status: false,
                 estudante: req.user._id, 
                 horarioInicial: req.body.horarioInicial, 
@@ -204,33 +188,36 @@
                 dia: req.body.dia,
             }
 
-        //-- Criando a collection --//
+        //-- Persistindo no banco de dados --//
             new Atividade(novoTempo).save().then( async () => {
                 console.log(req.user.name + " Acresentou novo atividade ao Cronograma")
                 req.flash("sucess_msg", "atividade salvo com sucesso") // apresenta na tela a msg de salvo
                 res.redirect("/user/perfil") //redireciona para a pagina
             }).catch((err) => {
-                console.log(err)
+                console.log("Houve um erro ao salvar uma nova atividade"+err)
                 req.flash("error_msg", "Houve um erro ao salvar") // apresenta uma mensagem de erro
                 res.redirect("/user/perfil") // redireciona para a pagina
             })
-        }
-        catch(err) {
-            console.log("Deu erro: ", err)
+        } catch(err) {
+            console.log("Houve um erro ao salvar uma nova atividade"+err)
+            req.flash("error_msg", "Houve um erro ao salvar") // apresenta uma mensagem de erro
+            res.redirect("/user/perfil") // redireciona para a pagina
         }
     })
 
+//-- Rota responsavel por concluir uma atividade --//
     router.post('/concluiratividade', (req, res) =>{
         try{
+        //-- mudando o status no banco de dados para true --//
             Atividade.updateOne({_id: req.body.id}, {status: true}, function(err, res) {
-                console.log("Atividade concluída")
+                console.log(req.user.name + " concluio uma atividade.")
             });
             req.flash("sucess_msg", "Atividade concluída")
             res.redirect('/user/home')
         }catch(err){
+            console.log(req.user.name + "Erro ao concluir atividade: " + err)
             req.flash("error_msg", "Houve um erro ao concluir atividade")
             res.redirect('/user/home')
-            console.log("Erro ao concluir atividade: " + err)
         }
 
     })
@@ -241,86 +228,79 @@
         try{
             //--Deletando do banco os tempos do usuario que será deletado--//
             Atividade.deleteOne({ _id: req.body.id }, function (err) { //procurando todas as collections que tem o id que vem do body (usuario) como estudante
-                console.log(req.user.name + " deletou os tempos")
+                console.log(req.user.name + " deletou uma atividade")
                 res.redirect('/user/perfil')
                 if (err) return handleError("Contate o suporte. Erro ao deletar os tempos: " + err);
             });
         } catch(err){
-            console.log("erro:" + err)
+            console.log(req.user.name + " Erro ao deletar atividade: " + err)
+            req.flash("error_msg", "Houve um erro ao deletar a atividade")
             res.redirect('/user/perfil')
         }
-
     });
 
-//--Rota para deletar usuarios do banco de dados--//
+//--Rota para deletar tempo do banco de dados--//
     router.post('/deletarTempo', async (req, res) =>{
-
         try{
+        //-- diminuindo minutos ao dia --//
+            var dia = parseInt(req.body.dia) - parseInt(req.body.tempoEstudado)
+            User.updateOne({_id: req.body.usuario_id}, {dia: dia}, function(err, res) {
+            });
 
-                //-- diminuindo minutos ao dia --//
-                var dia = parseInt(req.body.dia) - parseInt(req.body.tempoEstudado)
-                User.updateOne({_id: req.body.usuario_id}, {dia: dia}, function(err, res) {
-                });
+        //-- diminuindo minutos a semana --//
+            var semana = parseInt(req.body.semana) - parseInt(req.body.tempoEstudado)       
+            User.updateOne({_id: req.body.usuario_id}, {semana: semana}, function(err, res) {
+            });
 
-                //-- diminuindo minutos a semana --//
-                var semana = parseInt(req.body.semana) - parseInt(req.body.tempoEstudado)       
-                User.updateOne({_id: req.body.usuario_id}, {semana: semana}, function(err, res) {
-                });
+        //-- diminuindo minutos so mes --//
+            var mes = parseInt(req.body.mes) - parseInt(req.body.tempoEstudado)       
+            User.updateOne({_id: req.body.usuario_id}, {mes: mes}, function(err, res) {
+            });
 
-                //-- diminuindo minutos so mes --//
-                var mes = parseInt(req.body.mes) - parseInt(req.body.tempoEstudado)       
-                User.updateOne({_id: req.body.usuario_id}, {mes: mes}, function(err, res) {
-                });
-
-                //--  diminuindo minutos ao total --//
-                var total = parseInt(req.body.total) - parseInt(req.body.tempoEstudado)        
-                User.updateOne({_id: req.body.usuario_id}, {total: total}, function(err, res) {
-                });
+        //--  diminuindo minutos ao total --//
+            var total = parseInt(req.body.total) - parseInt(req.body.tempoEstudado)        
+            User.updateOne({_id: req.body.usuario_id}, {total: total}, function(err, res) {
+            });
                
-                //--Deletando do banco os tempos do usuario que será deletado--//                
-                Tempo.deleteOne({_id: req.body.tempo_id}).then(() => { //--Procurando a collection que tem o id que vem do body (usuario)--//
-                    console.log(req.user.name + " deletou seu tempo")
-                    req.flash("success_msg", "Tempo deletada.")
-                    res.redirect("/user/home")
-                    console.log(req.user.name + " deletou o tempo")
-                }).catch((err) => {
-                    req.flash("error_msg", "erro ao deletar a conta. Contate-nos.")
-                    res.redirect("/user/perfil")
-                    console.log(err)
-                });
-
+        //--Deletando do banco os tempos do usuario que será deletado--//                
+            Tempo.deleteOne({_id: req.body.tempo_id}).then(() => { //--Procurando a collection que tem o id que vem do body (usuario)--//
+                console.log(req.user.name + " deletou seu tempo")
+                req.flash("success_msg", "Tempo deletada.")
+                res.redirect("/user/home")
+            }).catch((err) => {
+                req.flash("error_msg", "erro ao deletar seu tempo. Contate-nos.")
+                res.redirect("/user/perfil")
+                console.log(err)
+            });
 
         } catch(err){
-            console.log("erro ao deletar os tempos do banco de: " + req.user.name + err)
+            req.flash("error_msg", "erro ao deletar seu tempo. Contate-nos.")
+            res.redirect("/user/perfil")
+            console.log("erro ao deletar o tempo do banco de: " + req.user.name + err)
         }
-
     });
 
 //-- Rota para registrar recado --//
     router.post('/registerRecado', async (req, res) => {
         try{        
             //-- Atualizando recado --//
-            await User.updateOne({_id: req.body.id}, {recado: req.body.recado}, function(err, res) {
+            await User.updateOne({_id: req.body.id}, {recado: req.body.recado}, function(err, res) {});
 
-            });
             console.log(req.user.name + " Registrou recado")
             req.flash("sucess_msg", "Seu recado foi salvo.") // apresenta na tela a msg de salvo
             res.redirect("/user/home") //redireciona para a pagina
 
-        }
-        
-        catch(err) {
+        } catch(err) {
             req.flash("error_msg", "Houve um erro ao salvar") // apresenta uma mensagem de erro
             res.redirect("/user/home")
-            console.log("Deu erro: ", err)
+            console.log("Deu erro ao salvar recado: ", err)
         }
     })
 
 //-- Rota para editar perfil --//
-    router.post("/editPerfil", eAdmin, async (req, res) => {
-        
-    //-- Atualizando o bd User com os dados recebidos --//
+    router.post("/editPerfil", async (req, res) => {
         try{
+        //-- Atualizando o bd User com os dados recebidos --//
             await User.updateOne({_id: req.body.id}, {name: req.body.name}, function(err, res) {
             });
             await User.updateOne({_id: req.body.id},{curso: req.body.curso}, function(err, res) {
@@ -330,16 +310,16 @@
             await User.updateOne({_id: req.body.id}, {email: req.body.email}, function(err, res) {
             });
             var senha = await bct.hash(req.body.password, 5);
-            console.log(senha)
             await User.updateOne({_id: req.body.id}, {password: senha}, function(err, res) {
             });
+
             console.log(req.user.name + " Editou o perfil")
             req.flash("sucess_msg", "Perfil editado")
             res.redirect("/user/home")
+
         } catch(err){
             console.log("Deu erro ao editar o perfil "+ req.user.name + err)
         }
-
     })
 
 //-- Rota para mudar a privacidade --//

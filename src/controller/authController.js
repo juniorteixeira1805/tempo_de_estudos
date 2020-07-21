@@ -1,93 +1,98 @@
 //--Importando os modulos--//
-const express = require('express');
+    const express = require('express');
 
-const User = require('../models/User');
+    const User = require('../models/User');
 
-const Tempo = require('../models/Tempo');
+    const Tempo = require('../models/Tempo');
 
-const Atividade = require('../models/Atividade');
+    const Atividade = require('../models/Atividade');
 
-const router = express.Router();
+    const SalaIndividual = require('../models/salaIndividual');
 
-const passport = require('passport')
+    const router = express.Router();
 
-const Email = require("../config/nodemailer")
+    const passport = require('passport')
 
-const bct = require('bcryptjs');
-const { findOne } = require('../models/User');
+    const Email = require("../config/nodemailer")
 
 //-- Rota para registrar Novo Usuario--//
     router.post('/registerUser', async (req, res) => {
-
-        //--Criando novo usuario--//
+    //--Criando novo usuario--//
         try{
             const user = await User.create(req.body);
             //-- enviando e-mail de boas bvindas --//
             Email.sendInfo(req.body.email, "Olá, estamos muito felizes que está no nosso time. Seja bem vindo! Lutaremos juntos para conquistar seu objeivo.")
 
+            //-- Esta função é responsavel por gerar um código aleatorio que é o código de validação--//
             function makeid() {
                 var text = "";
                 var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-                
                 for (var i = 0; i < 5; i++)
                     text += possible.charAt(Math.floor(Math.random() * possible.length));
-                
                 return text;
                 }
-                var hash = makeid()
+            var hash = makeid()
+
             //Atualizando o banco de dados
-            await User.updateOne({email: req.body.email}, {codResete: hash}).then(() =>{console.log("código salvo")}).catch((err) => {
-                console.log("erro ao salvar codigo:" + err)
+            await User.updateOne({email: req.body.email}, {codResete: hash}).then(() =>{
+                console.log("Código de validação salvo no banco de dados")
+            }).catch((err) => {
+                console.log("erro ao salvar codigo de validação: " + err)
             })
             //-- enviando código de validação --//
             await Email.SendCode(req.body.email, hash)
 
             user.password = undefined; //-- para o que password não retorne no Json--//
 
-            console.log("Nova Usuario cadastrado")
+            console.log("Novo Usuario cadastrado")
             req.flash("sucess_msg", "Seu cadastro foi realizado")
             res.redirect("/")
 
         } catch(err) {
             req.flash("error_msg", "Erro ao cadastrar! Tente outro E-mail.")
             res.redirect("/")
-            console.log("Deu erro ao tentar cadastrar: ", err)
+            console.log("Deu erro ao tentar cadastrar um novo usuario: ", err)
         }
     });
 
 //-- Rota que é chamanda quando o botão de reenviar codigo de validação é selecionado --//
     router.post('/reenvia', async(req, res) =>{
         try{
+         //-- Esta função é responsavel por gerar um código aleatorio que é o código de validação--//
             function makeid() {
                 var text = "";
                 var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-                
                 for (var i = 0; i < 5; i++)
                     text += possible.charAt(Math.floor(Math.random() * possible.length));
-                
                 return text;
                 }
-                var hash = makeid()
-            //Atualizando o banco de dados
-            await User.updateOne({email: req.body.email}, {codResete: hash}).then(() =>{}).catch((err) => {
-                console.log("erro ao salvar codigo:" + err)
+            var hash = makeid()
+            
+            //-- Atualizando o banco de dados --//
+            await User.updateOne({email: req.body.email}, {codResete: hash}).then(() =>{
+                console.log("Salvo novo codígo de validação")
+            }).catch((err) => {
+                console.log("erro ao salvar novo código de validação codigo:" + err)
             })
+
+            //-- Enviando novo e-mail com novo código de validação --//
             await Email.SendCode(req.body.email, hash)
-            console.log(req.user.name + " reenviou o código a email")
+            console.log(req.user.name + " reenviou o código de validação ao email")
             req.flash("sucess_msg", req.user.name+ ", seu código foi reenviado!")
             res.redirect("/user/home")
+
         }catch(err){
-            req.flash("error_msg", "Erro ao reenviar!.")
+            req.flash("error_msg", "Erro ao reenviar o novo código de validação.")
             res.redirect("/user/home")
             console.log("erro reenviar email:" + err)
         }
-
     })
 
 //--Rota que é chamada para a validação do email --//
     router.post('/validaEmail', async (req, res) => {
-
+    //-- verifica se o código que vem do corpo é igual ao código no Banco de dados --//
         if(req.body.codigo == req.user.codResete){
+        //-- atualiza o campo validaEmail para true --//
             await User.updateOne({_id: req.user._id}, {validaEmail: true}).then(() =>{
                 console.log(req.user.name + " validou a email")
                 req.flash("sucess_msg", req.user.name+ ", seu email foi  validado!")
@@ -109,32 +114,43 @@ const { findOne } = require('../models/User');
 
 //--Rota para deletar usuarios do banco de dados--//
     router.post('/deletarUser', (req, res) =>{
-        Email.sendInfo(req.body.email, "Sua conta foi deletada.")
-
+        //-- Deletando os dados do usuario --//
         try{
-            //--Deletando do banco os tempos do usuario que será deletado--//
+        //--Deletando do banco os tempos do usuario que será deletado--//
             Tempo.deleteMany({ estudante: req.body.id }, function (err) { //procurando todas as collections que tem o id que vem do body (usuario) como estudante
                 console.log(req.user.name + " deletou os tempos")
                 if (err) return handleError("Contate o suporte. Erro ao deletar os tempos: " + err);
+            });
 
+        //--Deletando do banco as atividades do usuario que será deletado--//
             Atividade.deleteMany({ estudante: req.body.id }, function (err) { //procurando todas as collections que tem o id que vem do body (usuario) como estudante
                 console.log(req.user.name + " deletou as atividades")
             })
 
-                //--Deletando usuario do banco de dados--//
-                User.deleteOne({_id: req.body.id}).then(() => { //--Procurando a collection que tem o id que vem do body (usuario)--//
-                    console.log(req.user.name + " deletou sua conta")
-                    req.flash("success_msg", "Conta deletada ")
-                    res.redirect("/")
-                    console.log("contadeletada")
-                }).catch((err) => {
-                    req.flash("error_msg", "erro ao deletar a conta. Contate-nos.")
-                    res.redirect("/user/perfil")
-                    console.log(err)
-                });
+        //--Deletando do banco a sala individual do usuario que será deletado--//
+            SalaIndividual.deleteOne({ responsavel: req.body.id }, function (err) { //procurando todas as collections que tem o id que vem do body (usuario) como estudante
+                console.log(req.user.name + " deletou as sua sala individual")
+            })
+
+        //--Deletando usuario do banco de dados--//
+            User.deleteOne({_id: req.body.id}).then(() => { //--Procurando a collection que tem o id que vem do body (usuario)--//
+                console.log(req.user.name + " deletou sua conta")
+                req.flash("success_msg", "Conta deletada ")
+                res.redirect("/")
+                console.log("contadeletada")
+            }).catch((err) => {
+                req.flash("error_msg", "erro ao deletar a conta. Contate-nos.")
+                res.redirect("/user/perfil")
+                console.log(err)
             });
+
+        //-- enviando e-mail informando que a conta foi deletada --//
+            Email.sendInfo(req.body.email, "Sua conta foi deletada.")
+
         } catch(err){
             console.log("erro ao deletar os tempos do banco de: " + req.user.name + err)
+            req.flash("error_msg", "erro ao deletar a conta. Contate-nos.")
+            res.redirect("/user/perfil")
         }
 
     });

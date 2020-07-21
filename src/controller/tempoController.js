@@ -9,6 +9,16 @@ const Atividade = require('../models/Atividade')
 
 module.exports = {
 
+//-- Função que retorna a data em formato americano para o formato brasileiro --//
+    FormatarData: function(data) {
+        var ano  = data.split("-")[0];
+        var mes  = data.split("-")[1];
+         var dia  = data.split("-")[2];
+      
+        return dia + '/' + ("0"+mes).slice(-2) + '/' + (ano)
+        // Utiliza o .slice(-2) para garantir o formato com 2 digitos.
+      },
+
 //-- Função que retorna o tempo decorrido --//
     tempoEstudado: function(inicio, fim){
 
