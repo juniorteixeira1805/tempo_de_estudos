@@ -66,6 +66,10 @@ const router = express.Router();
             })
     })
 
+    router.get('/escrever', eAdmin,  (req, res) => {
+        res.render("./salaIndividual/escreveresumo")
+    })
+
 //-- Rota que renderiza o registro de usuario --//
     router.get('/aberto', eAdmin, (req, res) => {
         res.render("./users/aberto")

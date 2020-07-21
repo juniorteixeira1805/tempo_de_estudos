@@ -39,6 +39,7 @@ const router = express.Router();
     router.post('/addResumo', async (req, res) => {
     //-- adicionando novo resumo --//
         try{
+            console.log(req.body.corpo)
             var data = new Date()
         //-- adidiconando um novo elemento ao array --//
             Individual.findOneAndUpdate({ responsavel: req.user._id }, {$push: { resumos: {titulo: req.body.titulo ,corpo: req.body.corpo, dateCreater: data} }}).then(() =>{

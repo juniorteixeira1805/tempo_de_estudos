@@ -1,0 +1,24 @@
+<div class="mx-4">
+    <form action="/salaIndividual/addResumo" method="POST">
+        <div class="form-group sm">
+            <input name="id" value="{{id}}" hidden>
+            <label for="name" class="text-light">Tag*</label>
+            <input type="text" name="tag" id="tag" class="form-control my-1" placeholder="Tag é um grupo identificador. Exemplo: Português" required>
+            <label for="name" class="text-light">Titulo*</label>
+            <input type="text" name="titulo" id="name" class="form-control my-1" placeholder="Titulo do resumo" required>
+            <label for="corpo">Corpo*</label>
+            <textarea maxlength="500" class="form-control" name="corpo" id="corpo" rows="15" required>Escreva aqui o resumo</textarea>
+            <button type="submit" class="btn btn-light my-1">Salvar</button>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script>
+<script type="text/javascript">
+        bkLib.onDomLoaded(function() { nicEditors.allTextAreas() }); // convert all text areas to rich text editor on that page
+
+        bkLib.onDomLoaded(function() {
+             new nicEditor().panelInstance('corpo');
+        }); // convert text area with id area1 to rich text editor.
+
+</script>

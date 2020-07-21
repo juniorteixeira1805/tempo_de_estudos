@@ -17,6 +17,9 @@ const IndividualSchema = new mongoose.Schema({
         dateCreater : {
             type : Date,
              },
+        tag : {
+            type : String,
+        },
         titulo : {
             type : String,
             },
