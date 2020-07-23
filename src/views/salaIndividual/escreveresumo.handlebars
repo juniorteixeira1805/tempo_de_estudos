@@ -1,13 +1,25 @@
 <div class="mx-4">
+    <div class="alert alert-primary" role="alert">
+    Os campos que possuem '*' são obrigatórios.
+    </div>
     <form action="/salaIndividual/addResumo" method="POST">
         <div class="form-group sm">
-            <input name="id" value="{{id}}" hidden>
-            <label for="name" class="text-light">Tag*</label>
-            <input type="text" name="tag" id="tag" class="form-control my-1" placeholder="Tag é um grupo identificador. Exemplo: Português" required>
+            <div class="row">
+                <div class="col">
+                    <label for="name" class="text-light">Tag*</label>
+                    <input type="text" name="tag" class="form-control" placeholder="Tag é um grupo identificador. Exemplo: Português" required>
+                </div>
+                <div class="col">
+                    <label for="name" class="text-light">Assunto*</label>
+                    <input type="text" name="assunto" class="form-control" placeholder="Sobre qual assunto será o resumo" required>
+                </div>
+            </div>
             <label for="name" class="text-light">Titulo*</label>
-            <input type="text" name="titulo" id="name" class="form-control my-1" placeholder="Titulo do resumo" required>
+            <input type="text" name="titulo" id="name" class="form-control my-1" placeholder="Qual o titulo do resumo" required>
             <label for="corpo">Corpo*</label>
-            <textarea maxlength="500" class="form-control" name="corpo" id="corpo" rows="15" required>Escreva aqui o resumo</textarea>
+            <textarea maxlength="5000" class="form-control" name="corpo" id="corpo" rows="30" required>Escreva aqui o seu resumo. (max caracteres: 5000)</textarea>
+            <label for="name" class="text-light">Referências</label>
+            <input type="text" name="ref" id="name" class="form-control my-1" placeholder="referencia sobre o que escreveu. Pode ser link de sites, documentos, videos ou até mesmo livros.">
             <button type="submit" class="btn btn-light my-1">Salvar</button>
         </div>
     </form>

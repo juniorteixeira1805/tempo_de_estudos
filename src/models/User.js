@@ -69,6 +69,7 @@ const UserSchema = new mongoose.Schema({
         type: Number, //-- minutos totais --//
         default: 0
     },
+
 });
 
 //-- Tratar antes de salvar --//

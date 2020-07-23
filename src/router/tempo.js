@@ -53,6 +53,21 @@ const router = express.Router();
             })
     })
 
+    router.get('/escrever', eAdmin,  (req, res) => {
+        res.render("./salaIndividual/escreveresumo")
+    })
+
+    router.get('/ler/:id', eAdmin,  (req, res) => {
+        console.log(req.params.id)
+        Sala.findOne({responsavel: req.user._id, resumos: {_id: req.params.id}}).then((resumo) => {
+            res.render("./salaIndividual/ler", {resumo: resumo})
+            console.log(req.user.name + " está lendo um de seus resumos")
+            }).catch((err) => {
+            res.redirect("/user/home")
+            console.log("deu erro: ", err)
+            })
+    })
+
     router.get('/metas', eAdmin, (req, res) => {
         
         Sala.findOne({responsavel: req.user.id}).then((sala) => {
@@ -64,10 +79,6 @@ const router = express.Router();
             res.redirect("/user/home")
             console.log("deu erro: ", err)
             })
-    })
-
-    router.get('/escrever', eAdmin,  (req, res) => {
-        res.render("./salaIndividual/escreveresumo")
     })
 
 //-- Rota que renderiza o registro de usuario --//

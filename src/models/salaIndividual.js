@@ -13,21 +13,6 @@ const IndividualSchema = new mongoose.Schema({
         type: String,
     },
 
-    resumos: [{
-        dateCreater : {
-            type : Date,
-             },
-        tag : {
-            type : String,
-        },
-        titulo : {
-            type : String,
-            },
-        corpo : {
-            type : String,
-            }
-    }],
-
     notas: [{
         dateCreater : {
             type : Date,
@@ -39,34 +24,8 @@ const IndividualSchema = new mongoose.Schema({
     }],
 
     metas: [{
-        dateCreater : {
-            type : Date,
-            },
-        dataMeta : {
-            type : String,
-            },
-        atividade : {
-            type : String,
-            },
-        status : {
-            type : Boolean,
-            default: false
-            }
-    }],
-
-    flashcards: [{
-        dateCreater : {
-            type : Date,
-            },
-        assunto : {
-            type : String,
-            },
-        pergunta : {
-            type : String,
-            },
-        resposta : {
-            type : String,
-            }
+        type: Schema.Types.ObjectId, //-- Salva o id do dono da atividade --//
+        ref: "metas"
     }],
 
 });
