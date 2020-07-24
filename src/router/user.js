@@ -9,8 +9,6 @@ const mongoose = require("mongoose")
 
 const User = mongoose.model("users")
 
-const Tempo = mongoose.model("tempos")
-
 const Atividade = require('../models/Atividade')
 
 const router = express.Router();
@@ -73,7 +71,7 @@ router.get('/equipe', (req, res) => {
             })
 
     })
-
+/*
 //-- Rota que renderiza o historico --//
     router.get('/historicoPessoal/:id', eAdmin, async (req, res) => {
 
@@ -88,7 +86,7 @@ router.get('/equipe', (req, res) => {
             })
 
     })
-
+*/
 // rota que renderiza para fazer o logout
     router.get('/logout/:id', async (req,res) => {
     //-- Atualiza o status para offline --//

@@ -8,11 +8,6 @@
     <div class="dropdown-divider"></div>
         <div class="card-deck bg-dark">
             <div class=" card bg-dark my-4 form-group text-center">
-                <input type="hidden" name="id" value="{{user._id}}"></td>
-                <input type="hidden" name="dia" value="{{user.dia}}"></td>
-                <input type="hidden" name="semana" value="{{user.semana}}"></td>
-                <input type="hidden" name="mes" value="{{user.mes}}"></td>
-                <input type="hidden" name="total" value="{{user.total}}"></td>
                 <div class="col-sm">
                     <p><b>Horário inicial:</b></p>
                     <input class="col-sm-6" type="time" id="inicio" name="inicio" min="00:00" max="23:59" required>
@@ -25,13 +20,11 @@
 
             <div class=" card bg-dark my-4">
                 <h5 for="validationServer01">Informe o tipo da atividade</h5>
-                <select class="custom-select " name="tipo" size="6" required>
+                <select class="custom-select " name="tipo" size="5" required>
                 <option value="Estudou">Estudei</option>
                 <option value="Assistiu aula">Assisti aula</option>
                 <option value="Leitura">Fiz uma Leitura</option>
                 <option value="Pesquisou">Pesquisa</option>
-                <option value="Revisou">Revisei</option>
-                <option value="Trabalho">Trabalho</option>
                 <option value="Exercitou">Exercicios</option>
                 </select>
                 <h5 for="validationServer01">Informe o subtipo da atividade:</h5>

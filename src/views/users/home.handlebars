@@ -9,7 +9,7 @@
     <div class="card mb-3 bg-dark">
       <div class="row no-gutters">
         <div class="col-md-4">
-        <img class="avatar" src="" alt="Estudos LTDA" border="0" style="width: 70%;" >
+        <img class="avatar" src="" alt="Estudos LTDA" border="0" style="max-width: 50%%;" >
         </div>
         <div class="col-md-8">
           <table class="table table-responsive-sm table-dark align-middle" style="width: 100%;">
@@ -20,35 +20,29 @@
                 <th scope="col">Dia</th>
                 <th scope="col">Semana</th>
                 <th scope="col">Mes</th>
+                <th scope="col">Aulas</th>
+                <th scope="col">Estudos</th>
+                <th scope="col">Pesquisa</th>
+                <th scope="col">Leitura</th>
+                <th scope="col">Exercicios</th>
                 <th scope="col">Total</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th class="avat"></th>
-                <td>{{user.dia}}</td>
-                <td>{{user.semana}}</td>
-                <td class="mes">{{user.mes}}</td>
-                <td class="mes">{{user.total}}</td>
+                <td>{{user.historico.dia}}</td>
+                <td>{{user.historico.semana}}</td>
+                <td class="mes">{{user.historico.mes}}</td>
+                <td class="">{{user.historico.totalAula}}</td>
+                <td class="">{{user.historico.totalEstudo}}</td>
+                <td class="">{{user.historico.totalPesquisa}}</td>
+                <td class="">{{user.historico.totalLeitura}}</td>
+                <td class="">{{user.historico.totalExercicio}}</td>
+                <td class="">{{user.historico.total}}</td>
               </tr>
             </tbody>
           </table>
-        </div>
-      </div>
-    </div>
-    <div class="card mb-3 bg-dark">
-      <div class="row no-gutters">
-        <div class="col-sm">
-          <div class="card-body">
-            <p class="card-text">"Se eu vi mais longe, foi por estar sobre ombros de gigantes"</p>
-            <h5 class="card-title"> - sir Isaac Newton</h5>
-          </div>
-        </div>
-        <div class="col-sm">
-          <div class="card-body">
-            <p class="card-text">"Acredite em si próprio e chegará um dia em que os outros não terão outra escolha senão acreditar com você."</p>
-            <h5 class="card-title"> - Cynthia Kersey</h5>
-          </div>
         </div>
       </div>
     </div>

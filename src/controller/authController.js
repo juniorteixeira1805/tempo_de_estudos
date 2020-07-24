@@ -3,8 +3,6 @@
 
     const User = require('../models/User');
 
-    const Tempo = require('../models/Tempo');
-
     const Atividade = require('../models/Atividade');
 
     const SalaIndividual = require('../models/salaIndividual');
@@ -116,12 +114,6 @@
     router.post('/deletarUser', (req, res) =>{
         //-- Deletando os dados do usuario --//
         try{
-        //--Deletando do banco os tempos do usuario que será deletado--//
-            Tempo.deleteMany({ estudante: req.body.id }, function (err) { //procurando todas as collections que tem o id que vem do body (usuario) como estudante
-                console.log(req.user.name + " deletou os tempos")
-                if (err) return handleError("Contate o suporte. Erro ao deletar os tempos: " + err);
-            });
-
         //--Deletando do banco as atividades do usuario que será deletado--//
             Atividade.deleteMany({ estudante: req.body.id }, function (err) { //procurando todas as collections que tem o id que vem do body (usuario) como estudante
                 console.log(req.user.name + " deletou as atividades")

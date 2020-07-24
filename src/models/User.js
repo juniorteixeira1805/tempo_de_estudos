@@ -1,24 +1,43 @@
 const mongoose = require('mongoose')
 const bcrypt = require("bcryptjs");
 
+const Schema = mongoose.Schema
+
+
 const UserSchema = new mongoose.Schema({
     dataVizualização:{
         type: Date
     },
+
     name: {
         type: String,
-        required: true,
-    },
-
-    email: {
-        type: String,
-        unique: true,
         required: true,
     },
 
     curso:{
         type: String,
         required: true
+    },
+
+    cidade: {
+        type: String,
+        default: "Não informado."
+    },
+
+    bio: {
+        type: String,
+        default: "Não informado."
+    },
+
+    objetivo: {
+        type: String,
+        default: "Não informado."
+    },
+
+    email: {
+        type: String,
+        unique: true,
+        required: true,
     },
 
     recado:{
@@ -31,10 +50,6 @@ const UserSchema = new mongoose.Schema({
         required: true,
     },
 
-    codResete:{
-        type: String,
-    },
-
     foto:{
         type: String,
         default: "https://i0.wp.com/www.techcult.com.br/wp-content/uploads/2017/03/perfil-twitter.png?resize=1024%2C1024&ssl=1"
@@ -45,31 +60,116 @@ const UserSchema = new mongoose.Schema({
         default: false
     },
 
+    codResete:{
+        type: String,
+    },
+
     privacidade: {
-        type: Boolean, //-- Parametro para a view saber a privacidade --//
-        default: true
+        resumos: {
+            type: Boolean, //-- Parametro para a view saber a privacidade --//
+            default: true
+        },
+
+        metas: {
+            type: Boolean, //-- Parametro para a view saber a privacidade --//
+            default: true
+        },
+
+        sobre: {
+            type: Boolean, //-- Parametro para a view saber a privacidade --//
+            default: true
+        },
+
+        rank: {
+            type: Boolean, //-- Parametro para a view saber a privacidade --//
+            default: true
+        },
     },
 
-    dia: {
-        type: Number, //-- minutos diarios --//
-        default: 0
+    historico: {
+        dia: {
+            type: Number, //-- minutos diarios --//
+            default: 0
+        },
+    
+        semana: {
+            type: Number, //-- minutos semanais --//
+            default: 0
+        },
+    
+        mes: {
+            type: Number, //-- minutos semanais --//
+            default: 0
+        },
+    
+        total: {
+            type: Number, //-- minutos totais --//
+            default: 0
+        },
+
+        totalAula: {
+            type: Number, //-- minutos totais --//
+            default: 0
+        },
+
+        totalEstudo: {
+            type: Number, //-- minutos totais --//
+            default: 0
+        },
+
+        totalLeitura: {
+            type: Number, //-- minutos totais --//
+            default: 0
+        },
+
+        totalPesquisa: {
+            type: Number, //-- minutos totais --//
+            default: 0
+        },
+
+        totalExercicio: {
+            type: Number, //-- minutos totais --//
+            default: 0
+        },
     },
 
-    semana: {
-        type: Number, //-- minutos semanais --//
-        default: 0
-    },
+    tempos : [{
+        dateCreater: {
+            type: Date, //-- Data de criação --//
+        },
+    
+        novaData: {
+            type: String, //-- Data tratada para a view --//
+        },
+    
+        inicio: {
+            type: String, //-- A hora inicial --//
+            default: 0
+        },
+    
+        termino: {
+            type: String, //-- Hora final --//
+            default: 0
+        },
+    
+        tempoEstudado: {
+            type: Number, //-- Minutos totais --//
+            default: 0
+        },
+    
+        tipo:{
+            type: String, //-- Qual foi a atividade --//
+        },
+    
+        subTipo:{
+            type: String,
+            default: "Não informado" //-- Qual foi a sub atividade --//
+        },
 
-    mes: {
-        type: Number, //-- minutos semanais --//
-        default: 0
-    },
-
-    total: {
-        type: Number, //-- minutos totais --//
-        default: 0
-    },
-
+        metodo:{
+            type: String, //-- Qual foi a atividade --//
+        }
+    }],
 });
 
 //-- Tratar antes de salvar --//

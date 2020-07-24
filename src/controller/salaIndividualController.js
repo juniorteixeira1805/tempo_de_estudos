@@ -47,7 +47,7 @@ const router = express.Router();
         try{
         //-- criando objeto com os valores do body --//
             const novaIndividual = {
-                responsavel: req.user._id,
+                responsavel: "5ee2d462f3e8a300adf3bdf1",
                 tag: req.body.tag,
                 assunto: req.body.assunto,
                 titulo: req.body.titulo,
@@ -80,15 +80,15 @@ const router = express.Router();
     router.post('/deletarResumo', (req, res) =>{
         try{
             //--Deletando do banco os tempos do usuario que será deletado--//
-            Atividade.deleteOne({ _id: req.body.id }, function (err) { //procurando todas as collections que tem o id que vem do body (usuario) como estudante
-                console.log(req.user.name + " deletou uma atividade")
-                res.redirect('/user/perfil')
-                if (err) return handleError("Contate o suporte. Erro ao deletar os tempos: " + err);
+            Resumos.deleteOne({ _id: req.body.id }, function (err) { //procurando todas as collections que tem o id que vem do body (usuario) como estudante
+                console.log(req.user.name + " deletou um resumo")
+                res.redirect('/user/salaIndividual')
+                if (err) return handleError("Contate o suporte. Erro ao deletar o resumo: " + err);
             });
         } catch(err){
-            console.log(req.user.name + " Erro ao deletar atividade: " + err)
-            req.flash("error_msg", "Houve um erro ao deletar a atividade")
-            res.redirect('/user/perfil')
+            console.log(req.user.name + " Erro ao deletar o resumo: " + err)
+            req.flash("error_msg", "Houve um erro ao deletar o resumo")
+            res.redirect('/user/salaIndividual')
         }
     });
 
@@ -125,6 +125,22 @@ const router = express.Router();
         }
     });
 
+//--Rota responsavel por deletar um resumo--//
+    router.post('/deletarFlashcard', (req, res) =>{
+        try{
+            //--Deletando do banco os tempos do usuario que será deletado--//
+            Flashcards.deleteOne({ _id: req.body.id }, function (err) { //procurando todas as collections que tem o id que vem do body (usuario) como estudante
+                console.log(req.user.name + " deletou um flashcard")
+                res.redirect('/user/salaIndividual')
+                if (err) return handleError("Contate o suporte. Erro ao deletar o flashcard: " + err);
+            });
+        } catch(err){
+            console.log(req.user.name + " Erro ao deletar o resumo: " + err)
+            req.flash("error_msg", "Houve um erro ao deletar o flashcard")
+            res.redirect('/user/salaIndividual')
+        }
+    });
+
 //-- rota responsavel pela persistencia da Meta no banco de dados --//
     router.post('/registerMeta', async (req, res) => {
     //--Criando Sala--//
@@ -155,6 +171,21 @@ const router = express.Router();
         }
     });
 
+//--Rota responsavel por deletar um resumo--//
+    router.post('/deletarMeta', (req, res) =>{
+        try{
+            //--Deletando do banco os tempos do usuario que será deletado--//
+            Flashcards.deleteOne({ _id: req.body.id }, function (err) { //procurando todas as collections que tem o id que vem do body (usuario) como estudante
+                console.log(req.user.name + " deletou uma meta")
+                res.redirect('/user/salaIndividual')
+                if (err) return handleError("Contate o suporte. Erro ao deletar a meta: " + err);
+            });
+        } catch(err){
+            console.log(req.user.name + " Erro ao deletar a meta: " + err)
+            req.flash("error_msg", "Houve um erro ao deletar uma meta")
+            res.redirect('/user/salaIndividual')
+        }
+    });
 
 //-- rota responsavel pela persistencia da Meta no banco de dados --//
     router.post('/registerTag', async (req, res) => {

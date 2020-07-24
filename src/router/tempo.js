@@ -7,8 +7,6 @@ const mongoose = require("mongoose")
 
 const User = mongoose.model("users")
 
-const Tempo = mongoose.model("tempos")
-
 const Sala = mongoose.model("individuais")
 
 const router = express.Router();
@@ -87,6 +85,7 @@ const router = express.Router();
     })
 
 //-- Rota que renderiza o historico --//
+/*
     router.get('/historico/:id', eAdmin, async (req, res) => {
 
         Tempo.find({'estudante': req.params.id}).populate('estudante').sort({dateCreater: -1}).then((tempos) => {
@@ -100,7 +99,7 @@ const router = express.Router();
             })
 
     })
-
+*/
     router.get('/rank', eAdmin, async (req, res) => {
         //-- Passando todos os usuarios para a view --//
           User.find({}).sort({semana: -1}).then((usuarios) => {

@@ -7,8 +7,6 @@ const mongoose = require("mongoose")
 
 const User = mongoose.model("users")
 
-const Tempo = mongoose.model("tempos")
-
 const Atividade = require('../models/Atividade')
 
 const router = express.Router();

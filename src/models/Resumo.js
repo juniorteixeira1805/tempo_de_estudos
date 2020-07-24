@@ -6,7 +6,7 @@ const Schema = mongoose.Schema
 const ResumoSchema = new mongoose.Schema({
 
     dateCreater : {
-        type : Date,
+        type : String,
     },
 
     responsavel:{
