@@ -35,6 +35,11 @@ const ResumoSchema = new mongoose.Schema({
         type : String,
     },
 
+    privacidade: {
+        type : Boolean,
+        default: true
+    }
+
 });
 
 

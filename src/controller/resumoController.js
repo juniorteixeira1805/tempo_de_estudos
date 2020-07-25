@@ -58,55 +58,6 @@ const router = express.Router();
         }
     });
 
-//-- rota responsavel pela persistencia do resumo no banco de dados --//
-    router.post('/registerResumo', async (req, res) => {
-    //--Criando Sala--//
-        try{
-        //-- criando objeto com os valores do body --//
-            const novaIndividual = {
-                responsavel: req.user._id,
-                tag: req.body.tag,
-                assunto: req.body.assunto,
-                titulo: req.body.titulo,
-                corpo: req.body.corpo,
-                ref: req.body.ref,
-                dateCreater: Func.novadata(new Date()),
-                privacidade: req.body.privacidade
-            }
-
-        //-- persistindo no banco --//
-            new Resumos(novaIndividual).save().then( async () => {
-            //-- Somando minutos ao dia --// 
-                minutosTotalNoDia = await 0 + parseInt(req.user.historico.dia)  
-                minutosTotalNoSemana = await 0 + parseInt(req.user.historico.semana)
-                minutosTotalNoMes = await 0 + parseInt(req.user.historico.mes)        
-                minutosTotalNoTotal = await 0 + parseInt(req.user.historico.total)
-            //--  somando minutos ao total --//
-                totalEstudo = await 0 + parseInt(req.user.historico.totalEstudo)
-                totalAula = await 0 + parseInt(req.user.historico.totalAula)
-                totalLeitura = await 0 + parseInt(req.user.historico.totalLeitura)
-                totalPesquisa = await 0 + parseInt(req.user.historico.totalPesquisa)
-                totalExercicio = await 0 + parseInt(req.user.historico.totalExercicio)
-                pontos = req.user.historico.neutrinos + 30
-                await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: pontos}}}).then((req, res) => {}).catch((err) => {})
-
-                console.log(req.user.name+" Criou um novo resumo")
-                req.flash("sucess_msg", req.user.name+ ", seu resumo foi cadastrado") // apresenta na tela a msg de salvo
-                res.redirect("/tempo/salaIndividual") //redireciona para a pagina
-            }).catch((err) => {
-                console.log("erro ao criar seu resumo: "+err)
-                req.flash("error_msg",req.user.name + "Houve um erro ao cadastrar seu resumo. Entre em contato pelo suporte.") // apresenta uma mensagem de erro
-                res.redirect("/user/salaIndividual") // redireciona para a pagina
-            })
-
-
-        } catch(err) {
-            console.log("erro ao criar flashcard: "+err)
-            req.flash("error_msg",req.user.name + "Houve um erro ao cadastrar seu flashcard. Entre em contato pelo suporte.") // apresenta uma mensagem de erro
-            res.redirect("/user/salaIndividual") // redireciona para a pagina
-        }
-    });
-
 //--Rota responsavel por deletar um resumo--//
     router.post('/deletarResumo', (req, res) =>{
         try{
