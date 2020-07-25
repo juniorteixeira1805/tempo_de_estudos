@@ -14,7 +14,7 @@ const ResumoSchema = new mongoose.Schema({
         ref: "users"
     },
 
-    Tag : {
+    tag : {
         type: Schema.Types.ObjectId, //-- Salva o id do dono da atividade --//
         ref: "tags"
     },
@@ -34,11 +34,6 @@ const ResumoSchema = new mongoose.Schema({
     ref : {
         type : String,
     },
-
-    privacidade: {
-        type : Boolean,
-        default: true
-    }
 
 });
 

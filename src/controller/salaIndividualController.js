@@ -6,6 +6,7 @@ const Flashcards = require('../models/Flshcard');
 const Resumos = require('../models/Resumo');
 const Metas = require('../models/Meta');
 const Tag = require('../models/Tag');
+const User = require('../models/User');
 
 const Func = require('./tempoController')
 
@@ -38,57 +39,6 @@ const router = express.Router();
             console.log("erro ao cadastrar sala: "+err)
             req.flash("error_msg",req.user.name + "Houve um erro ao cadastrar sua sala. Entre em contato pelo suporte.") // apresenta uma mensagem de erro
             res.redirect("/user/home") // redireciona para a pagina
-        }
-    });
-
-//-- rota responsavel pela persistencia do resumo no banco de dados --//
-    router.post('/registerResumo', async (req, res) => {
-    //--Criando Sala--//
-        try{
-        //-- criando objeto com os valores do body --//
-            const novaIndividual = {
-                responsavel: "5ee2d462f3e8a300adf3bdf1",
-                tag: req.body.tag,
-                assunto: req.body.assunto,
-                titulo: req.body.titulo,
-                corpo: req.body.corpo,
-                ref: req.body.ref,
-                dateCreater: Func.novadata(new Date()),
-                privacidade: req.body.privacidade
-            }
-
-        //-- persistindo no banco --//
-            new Resumos(novaIndividual).save().then( async () => {
-                console.log(req.user.name+" Criou um novo resumo")
-                req.flash("sucess_msg", req.user.name+ ", seu resumo foi cadastrado") // apresenta na tela a msg de salvo
-                res.redirect("/tempo/salaIndividual") //redireciona para a pagina
-            }).catch((err) => {
-                console.log("erro ao criar seu resumo: "+err)
-                req.flash("error_msg",req.user.name + "Houve um erro ao cadastrar seu resumo. Entre em contato pelo suporte.") // apresenta uma mensagem de erro
-                res.redirect("/user/salaIndividual") // redireciona para a pagina
-            })
-
-
-        } catch(err) {
-            console.log("erro ao criar flashcard: "+err)
-            req.flash("error_msg",req.user.name + "Houve um erro ao cadastrar seu flashcard. Entre em contato pelo suporte.") // apresenta uma mensagem de erro
-            res.redirect("/user/salaIndividual") // redireciona para a pagina
-        }
-    });
-
-//--Rota responsavel por deletar um resumo--//
-    router.post('/deletarResumo', (req, res) =>{
-        try{
-            //--Deletando do banco os tempos do usuario que será deletado--//
-            Resumos.deleteOne({ _id: req.body.id }, function (err) { //procurando todas as collections que tem o id que vem do body (usuario) como estudante
-                console.log(req.user.name + " deletou um resumo")
-                res.redirect('/user/salaIndividual')
-                if (err) return handleError("Contate o suporte. Erro ao deletar o resumo: " + err);
-            });
-        } catch(err){
-            console.log(req.user.name + " Erro ao deletar o resumo: " + err)
-            req.flash("error_msg", "Houve um erro ao deletar o resumo")
-            res.redirect('/user/salaIndividual')
         }
     });
 
@@ -184,34 +134,6 @@ const router = express.Router();
             console.log(req.user.name + " Erro ao deletar a meta: " + err)
             req.flash("error_msg", "Houve um erro ao deletar uma meta")
             res.redirect('/user/salaIndividual')
-        }
-    });
-
-//-- rota responsavel pela persistencia da Meta no banco de dados --//
-    router.post('/registerTag', async (req, res) => {
-    //--Criando Sala--//
-        try{
-        //-- criando objeto com os valores do body --//
-            const novaIndividual = {
-                tags: req.body.tags,
-            }
-
-        //-- persistindo no banco --//
-            new Tag(novaIndividual).save().then( async () => {
-                console.log(" Criou nova tag")
-                req.flash("sucess_msg",  ", sua tag foi cadastrada") // apresenta na tela a msg de salvo
-                res.redirect("/tempo/salaIndividual") //redireciona para a pagina
-            }).catch((err) => {
-                console.log("erro ao criar tag: "+err)
-                req.flash("error_msg", "Houve um erro ao cadastrar sua tag. Entre em contato pelo suporte.") // apresenta uma mensagem de erro
-                res.redirect("/user/salaIndividual") // redireciona para a pagina
-            })
-
-
-        } catch(err) {
-            console.log("erro ao criar tag: "+err)
-            req.flash("error_msg",req.user.name + "Houve um erro ao cadastrar sua meta. Entre em contato pelo suporte.") // apresenta uma mensagem de erro
-            res.redirect("/user/salaIndividual") // redireciona para a pagina
         }
     });
 

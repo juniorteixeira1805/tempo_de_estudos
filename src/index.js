@@ -21,9 +21,12 @@ const io = require('socket.io')(server)
     const Auth = require('./controller/authController')
     const AuthUser = require('./controller/userController')
     const Individual = require('./controller/salaIndividualController')
+    const ResumoPost = require('./controller/resumoController')
+    const ResumoGet = require('./router/resumo')
     const User = require('./router/user')
     const Administradores = require('./router/admin')
     const Tempo = require('./router/tempo')
+const Resumo = require('./models/Resumo')
     //const GetIndividual = require('./router/Individual')
 
 //configurações
@@ -74,6 +77,8 @@ const io = require('socket.io')(server)
     app.use('/administradores', Administradores)
     app.use('/salaIndividual', Individual)
     app.use('/tempo', Tempo)
+    app.use('/resumo', ResumoGet)
+    app.use('/resumoP', ResumoPost)
    //app.use('/Individual', GetIndividual)
 
     

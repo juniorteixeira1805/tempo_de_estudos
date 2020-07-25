@@ -59,34 +59,19 @@ router.get('/equipe', (req, res) => {
     })
 
 //-- Rota que renderiza a view do perfil --//
-    router.get('/perfil', validarEmail, async (req, res) => {
+    router.get('/meuperfil', validarEmail, async (req, res) => {
 
         console.log(req.user.name + " Esta na pagina perfil")
         Atividade.find({'estudante': req.user.id}).sort({horarioInicial: 0}).then((atv) => {
 
-            res.render("./users/perfil", {atv: atv})
+            res.render("./users/meuPerfil", {atv: atv})
             }).catch((err) => {
             res.redirect("/user/home")
             console.log("deu erro: ", err)
             })
 
     })
-/*
-//-- Rota que renderiza o historico --//
-    router.get('/historicoPessoal/:id', eAdmin, async (req, res) => {
 
-        Tempo.find({'estudante': req.params.id}).populate('estudante').sort({dateCreater: -1}).then((tempos) => {
-
-            res.render("./users/historicoPessoal", {tempos: tempos})
-            console.log(req.user.name + " Esta na pagina editarusuario vizualisando o historico de " +  req.params.id)
-
-            }).catch((err) => {
-            res.redirect("/user/home")
-            console.log("deu erro: ", err)
-            })
-
-    })
-*/
 // rota que renderiza para fazer o logout
     router.get('/logout/:id', async (req,res) => {
     //-- Atualiza o status para offline --//

@@ -2,12 +2,19 @@
     <div class="alert alert-primary" role="alert">
     Os campos que possuem '*' são obrigatórios.
     </div>
-    <form action="/salaIndividual/addResumo" method="POST">
+    <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Adicionar tag não existente.">
+        <a href="/resumo/adicionar-tag" type="button" target="_blank" class="btn btn-outline-light my-1">Adicionar tag</a>
+    </span>
+    <form action="/resumoP/registerResumo" method="POST">
         <div class="form-group sm">
             <div class="row">
                 <div class="col">
-                    <label for="name" class="text-light">Tag*</label>
-                    <input type="text" name="tag" class="form-control" placeholder="Tag é um grupo identificador. Exemplo: Português" required>
+                <label for="exampleFormControlSelect1">Tag</label>
+                    <select class="form-control" name="tag" id="exampleFormControlSelect1">
+                        {{#each tag}}
+                            <option value="{{{_id}}}">{{tags}}</option>
+                        {{/each}}
+                    </select>                
                 </div>
                 <div class="col">
                     <label for="name" class="text-light">Assunto*</label>

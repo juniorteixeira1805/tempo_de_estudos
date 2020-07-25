@@ -131,6 +131,11 @@ const UserSchema = new mongoose.Schema({
             type: Number, //-- minutos totais --//
             default: 0
         },
+
+        neutrinos: {
+            type: Number,
+            default: 0
+        }
     },
 
     tempos : [{
@@ -182,16 +187,6 @@ const UserSchema = new mongoose.Schema({
         if(this.foto == ""){
             this.foto = "https://i0.wp.com/www.techcult.com.br/wp-content/uploads/2017/03/perfil-twitter.png?resize=1024%2C1024&ssl=1"
         }
-
-    //-- Salvando a data atual para zerar dia, semana e mes --//
-        var dataCriada = new Date()
-        var diaDaSemana =  dataCriada.getDay()
-        var aux = 7 - diaDaSemana
-    //-- Setando dia, semana e mes --//
-        this.semanaAnterior = aux + diaDaSemana
-
-        this.diaAnterior = dataCriada.getDate()
-        this.mesAnterior = dataCriada.getMonth()+1
 
         next();
     })

@@ -16,7 +16,7 @@
       <img class="rounded-circle" style="width: 25px; height: 25px;" src="{{user.foto}}"> - {{user.name}}
     </button>
     <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="/user/perfil">Perfil</a>
+      <a class="dropdown-item" href="/user/meuPerfil">Perfil</a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="/user/suporte">Suporte</a>
       <div class="dropdown-divider"></div>
@@ -63,16 +63,6 @@
 
     <ul class="nav nav-tabs bg-secondary border-0">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Biblioteca</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="/artigo/registrodeartigos">Registrar artigo</a>
-          <a class="dropdown-item" href="/artigo/meusArtigos">Meus artigos</a>
-          <a class="dropdown-item" href="/artigo/catalogo">Acervo de artigos</a>
-          <a class="dropdown-item" href="/artigo/saladeleitura">Livros</a>
-        </div>
-      </li>
-
-      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Minhas salas</a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="/tempo/salaIndividual">Minha Sala de estudo</a>
@@ -81,9 +71,6 @@
         </div>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link text-light" href="/user/historicoPessoal/{{user._id}}">Estátistica e Conquistas</a>
-      </li>
       <li class="nav-item">
         <a class="nav-link text-light" href="/tempo/rank">Rank Geral</a>
       </li>
@@ -97,10 +84,6 @@
       <a class="navbar-brand" href="/" style="color: white;">
         Improdutiva Estudos LTDA
       </a>
-    </li>
-
-    <li class="nav-item">
-      <a class="navbar-brand text-light" href="/artigo/catalogo">|| Acervo de artigos</a>
     </li>
   </ul>
     <a href="/user/registrodeusuario"><button type="submit" class="btn btn-info mt-2 align-middle">Cadastrar</button></a>

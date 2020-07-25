@@ -4,6 +4,8 @@ const TagSchema = new mongoose.Schema({
 
     tags : {
         type : String,
+        required: true,
+        unique: true
     },
 
 });
