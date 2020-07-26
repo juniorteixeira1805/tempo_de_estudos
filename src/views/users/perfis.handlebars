@@ -5,14 +5,18 @@
         <img src="{{{users.foto}}}" class="card-img-top border border-secondary rounded-circle" style="width: 45%;">
       </div>
         <ul class="list-group list-group-flush text-light" style="border: none;">
-          <li class="list-group-item text-center bg-secondary" style="border: none;"><h5 class="card-title">{{users.name}}</h5></li>
-          <li class="list-group-item text-center bg-secondary"style="border: none;"><b class="card-title">Neutrinos: {{users.historico.neutrinos}}</b></li>
-          <li class="list-group-item text-center bg-secondary"style="border: none;"><p class="card-text">email:{{#if users.privacidade.sobre}} {{users.email}} {{else}} Privado {{/if}}</p></li>
-          <li class="list-group-item text-center bg-secondary" style="border: none;"><p class="card-text">Curso: {{#if users.privacidade.sobre}} {{users.curso}} {{else}} Privado {{/if}}</p></li>
-          <li class="list-group-item text-center bg-secondary" style="border: none;"><p class="card-text">Cidade: {{#if users.privacidade.sobre}} {{users.cidade}} {{else}} Privado {{/if}}</p></li>
-          <li class="list-group-item text-center bg-secondary" style="border: none;"><p class="card-text">Recado: {{#if users.privacidade.sobre}} {{users.recado}} {{else}} Privado {{/if}}</li>
-          <li class="list-group-item text-center bg-secondary" style="border: none;"><p class="card-text">Bio: {{#if users.privacidade.sobre}} {{users.bio}} {{else}} Privado {{/if}}</p></li>
-          <li class="list-group-item text-center bg-secondary" style="border: none;"><p class="card-text">Objetivo: {{#if users.privacidade.sobre}} {{users.objetivo}} {{else}} Privado {{/if}}</p></li>
+          <li class="list-group-item text-center bg-transparent" style="border: none;"><h5 class="card-title">{{users.name}}</h5></li>
+          <li class="list-group-item text-center bg-transparent"style="border: none;"><b class="card-title">Neutrinos: {{users.historico.neutrinos}}</b>
+            <div class="spinner-grow spinner-grow-sm text-info" role="status">
+              <span class="sr-only"></span>
+            </div>
+          </li>
+          <li class="list-group-item text-center bg-transparent"style="border: none;"><p class="card-text">email:{{#if users.privacidade.sobre}} {{users.email}} {{else}} Privado {{/if}}</p></li>
+          <li class="list-group-item text-center bg-transparent" style="border: none;"><p class="card-text">Curso: {{#if users.privacidade.sobre}} {{users.curso}} {{else}} Privado {{/if}}</p></li>
+          <li class="list-group-item text-center bg-transparent" style="border: none;"><p class="card-text">Cidade: {{#if users.privacidade.sobre}} {{users.cidade}} {{else}} Privado {{/if}}</p></li>
+          <li class="list-group-item text-center bg-transparent" style="border: none;"><p class="card-text">Recado: {{#if users.privacidade.sobre}} {{users.recado}} {{else}} Privado {{/if}}</li>
+          <li class="list-group-item text-center bg-transparent" style="border: none;"><p class="card-text">Bio: {{#if users.privacidade.sobre}} {{users.bio}} {{else}} Privado {{/if}}</p></li>
+          <li class="list-group-item text-center bg-transparent" style="border: none;"><p class="card-text">Objetivo: {{#if users.privacidade.sobre}} {{users.objetivo}} {{else}} Privado {{/if}}</p></li>
         </ul>
     </div>
     <div class="col-sm-5 mb-4">
@@ -25,7 +29,7 @@
         </a>
         <div class="media-body">
           <h3 class="ml-1">Histórico</h3>
-          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+          Através do histórico você pode acompanhar aqui como está indo a rotina de estudos do seu amigo, o que ele anda fazendo com o seu tempo, as coisas que ele anda estudando e etc. 
         </div>
       </div>
       <div class="dropdown-divider"></div>
@@ -37,7 +41,7 @@
         </a>
         <div class="media-body">
           <h3 class="ml-1">Resumos</h3>
-          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+          Os resumos servem para ajudar a assimilar o que foi lido e também para organizar o conteúdo que foi estudando, fazendo com que melhore a capacidade de síntese e compreensão. Aqui você pode visualizar os resumos feitos pelos seus amigos, talvez algum possa ser de grande ajuda para você.
         </div>
       </div>
       <div class="dropdown-divider"></div>
@@ -49,7 +53,7 @@
         </a>
         <div class="media-body">
           <h3 class="ml-1">Metas</h3>
-          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+          Traçar metas é importante para manter o foco em algo desejado. Que tal  acompanhar as metas traçadas pelo seu amigo?
         </div>
       </div>
       <div class="dropdown-divider"></div>
@@ -63,7 +67,7 @@
         </a>
         <div class="media-body">
           <h3 class="ml-1">Evolução</h3>
-          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+          Que tal saber como anda a evolução do seu amigo? Aqui você pode saber como anda o desempenho do seu amigo, podendo ver o tempo usado em cada atividade.
         </div>
       </div>
       <div class="dropdown-divider"></div>
@@ -75,7 +79,7 @@
         </a>
         <div class="media-body">
           <h3 class="ml-1">Conquistas</h3>
-          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+          Através das conquistas você pode acompanhar como anda o progresso dos seus amigos, ver quais avatares seu amigo já conquistou, qual a habilidade que ele possuí, etc.
         </div>
       </div>
     </div>

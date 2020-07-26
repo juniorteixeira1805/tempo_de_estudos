@@ -13,6 +13,11 @@ const Atividade = require('../models/Atividade')
 
 const router = express.Router();
 
+//--Rota para renderizar pagina de login//
+    router.get('/login', (req, res) =>{
+        res.render("./users/login")
+    });
+
 //-- Rota que renderiza o registro de usuario --//
 router.get('/registrodeusuario', (req, res) => {
     res.render("./users/registro")

@@ -65,16 +65,6 @@ const UserSchema = new mongoose.Schema({
     },
 
     privacidade: {
-        resumos: {
-            type: Boolean, //-- Parametro para a view saber a privacidade --//
-            default: true
-        },
-
-        metas: {
-            type: Boolean, //-- Parametro para a view saber a privacidade --//
-            default: true
-        },
-
         sobre: {
             type: Boolean, //-- Parametro para a view saber a privacidade --//
             default: true
@@ -175,6 +165,11 @@ const UserSchema = new mongoose.Schema({
             type: String, //-- Qual foi a atividade --//
         }
     }],
+
+    resumos: {
+        type: Number,
+        default: 0
+    }
 });
 
 //-- Tratar antes de salvar --//

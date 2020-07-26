@@ -41,6 +41,9 @@ const router = express.Router();
                 pontos = req.user.historico.neutrinos + 30
                 await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: pontos}}}).then((req, res) => {}).catch((err) => {})
 
+                let rsm = req.user.resumos + 1
+                await User.findOneAndUpdate({_id: req.user._id}, {resumos: rsm}).then((req, res) => {}).catch((err) => {})
+
                 console.log(req.user.name+" Criou um novo resumo")
                 req.flash("sucess_msg", req.user.name+ ", seu resumo foi cadastrado") // apresenta na tela a msg de salvo
                 res.redirect("/tempo/salaIndividual") //redireciona para a pagina
@@ -77,6 +80,9 @@ const router = express.Router();
                 pontos = req.user.historico.pts - 30
                 await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, pts: pontos}}}).then((req, res) => {}).catch((err) => {})
                 
+                let rsm = req.user.resumos - 1
+                await User.findOneAndUpdate({_id: req.user._id}, {resumos: rsm}).then((req, res) => {}).catch((err) => {})
+
                 console.log(req.user.name + " deletou um resumo")
                 res.redirect('/resumo/meus-resumos')
             }).catch((err) => {

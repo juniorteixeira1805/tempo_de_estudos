@@ -28,8 +28,7 @@ const io = require('socket.io')(server)
     const User = require('./router/user')
     const Administradores = require('./router/admin')
     const Tempo = require('./router/tempo')
-const Resumo = require('./models/Resumo')
-    //const GetIndividual = require('./router/Individual')
+    const Rank = require('./router/ranks')
 
 //configurações
     //sessão
@@ -83,6 +82,7 @@ const Resumo = require('./models/Resumo')
     app.use('/resumoP', ResumoPost)
     app.use('/meta', MetaGet)
     app.use('/metaP', MetaPost)
+    app.use('/rank', Rank)
    //app.use('/Individual', GetIndividual)
 
     
@@ -104,7 +104,7 @@ const Resumo = require('./models/Resumo')
         })
 //--Rota para renderizar pagina de login--(Tem que ser retirada daqui)//
         app.get('/', (req, res) =>{
-            res.render("./users/login")
+            res.render("./visitantes/pagInicial")
         });
     //conectando o servidor a porta 
         const PORT = process.env.PORT || 3000
