@@ -22,9 +22,7 @@
       </tr>
     </thead>
     <tbody>
-      {{resumos.Tags}}
-      {{resumos.Tag}}
-      {{resumo.Tag.tags}}
+
   {{#each resumos}}
         <tr class="text-center">
           <th scope="row">{{tag.tags}}</th>
@@ -46,7 +44,7 @@
   </table>
 </div>   
 
-<!--       <form action="/salaIndividual/removeResumo" method="POST">
+<!-- <form action="/salaIndividual/removeResumo" method="POST">
         <input name="id" value="{{id}}" hidden>
         <button type="submit" class="btn btn-danger mb-2">
             <svg class="bi bi-trash-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

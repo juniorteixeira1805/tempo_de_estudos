@@ -1,9 +1,8 @@
 //--Importando os modulos--//
 const express = require('express');
 
-const Flashcards = require('../models/Flshcard');
+const User = require('../models/User');
 const Metas = require('../models/Meta');
-
 
 const Func = require('./tempoController')
 
@@ -23,6 +22,7 @@ const router = express.Router();
 
         //-- persistindo no banco --//
             new Metas(novaIndividual).save().then( async () => {
+                await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dataCreter: new Date(), evento: "Adicionou nova meta", name: req.body.name, foto: req.body.foto, subtitulo: req.body.titulo, metodo: "", inicio: "", termino: "", neutrinosGerado: 0}}}).then((req, res) => {}).catch((err) => {})
                 console.log(req.user.name+" Criou nova Meta")
                 req.flash("sucess_msg", req.user.name+ ", sua meta foi cadastrada") // apresenta na tela a msg de salvo
                 res.redirect("/meta/minhas-metas") //redireciona para a pagina

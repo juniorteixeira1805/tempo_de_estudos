@@ -1,0 +1,28 @@
+<div class="mx-4">
+    <table class="table table-bordered col-sm-10  table-dark" style="margin: 0 auto;">
+    <thead>
+      <tr class="text-center">
+        <th scope="col-1"></th>
+        <th scope="col">Nome</th>
+        <th scope="col">Curso</th>
+        <th scope="col">Total estudado</th>
+      </tr>
+    </thead>
+    <tbody>
+  {{#each usuarios}}
+        <tr class="text-center">
+          <th scope="row"><img class="rounded-circle border border-secondary" style="width: 40px; height: 40px;" src="{{foto}}" alt=""></th>
+          <td>{{name}}</td>
+          <td>{{curso}}</td>
+          <td>{{historico.total}} min</td>
+          <td>
+            <form action="/turmaP/addAmigo" method="POST">
+                <input type="text" name="id" value="{{_id}}" hidden>
+                <button type="submit" class="btn btn-success mx-3 my-1">Enturmar</button>
+            </form>
+          </td>
+        </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</div>

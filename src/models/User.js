@@ -166,6 +166,23 @@ const UserSchema = new mongoose.Schema({
         }
     }],
 
+    turma : [{
+        type: Schema.Types.ObjectId, //-- Salva o id do dono da atividade --//
+        ref: "users",
+    }],
+
+    meusEventos: [{
+        dataCreter:{ type: Date},
+        name:{ type: String},
+        foto:{ type: String},
+        evento:{ type: String},
+        subevento:{type: String},
+        metodo:{type: String},
+        inicio:{type: String},
+        termino:{type: String},
+        neutrinosGerado:{type: Number},
+    }],
+
     resumos: {
         type: Number,
         default: 0

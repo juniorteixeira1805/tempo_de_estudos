@@ -40,7 +40,7 @@ const router = express.Router();
                 totalExercicio = await 0 + parseInt(req.user.historico.totalExercicio)
                 pontos = req.user.historico.neutrinos + 30
                 await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: pontos}}}).then((req, res) => {}).catch((err) => {})
-
+                await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dataCreter: new Date(), evento: "Redigiu um novo resumo", name: req.body.name, foto: req.body.foto, subtitulo: req.body.titulo, metodo: "", inicio: "", termino: "", neutrinosGerado: 30}}}).then((req, res) => {}).catch((err) => {})
                 let rsm = req.user.resumos + 1
                 await User.findOneAndUpdate({_id: req.user._id}, {resumos: rsm}).then((req, res) => {}).catch((err) => {})
 
@@ -79,7 +79,7 @@ const router = express.Router();
                 totalExercicio = await 0 + parseInt(req.user.historico.totalExercicio)
                 pontos = req.user.historico.pts - 30
                 await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, pts: pontos}}}).then((req, res) => {}).catch((err) => {})
-                
+                await User.findOneAndUpdate({ _id: req.user._id },{ $pull: { meusEventos: { _id: req.body.id }}}).then((req, res) => {}).catch((err) => {})
                 let rsm = req.user.resumos - 1
                 await User.findOneAndUpdate({_id: req.user._id}, {resumos: rsm}).then((req, res) => {}).catch((err) => {})
 

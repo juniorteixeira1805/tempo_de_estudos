@@ -46,8 +46,9 @@ router.get('/equipe', (req, res) => {
         });
         
         //-- Passando todos os usuarios para a view --//
-        Atividade.find({'estudante': req.user.id}).sort({horarioInicial: 0}).then((atv, tempos) => {
-            res.render("./users/home", {atv: atv, tempos: tempos})
+        User.find({_id: req.user._id}).populate('turma').sort({dateCreater: 0}).then((amigos) => {
+            
+            res.render("./users/home", {amigos: amigos})
             console.log(req.user.name + "Pagina home")
             }).catch((err) => {
             res.redirect("/user/home")

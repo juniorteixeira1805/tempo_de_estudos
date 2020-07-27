@@ -1,4 +1,30 @@
 {{#if user.validaEmail}}
+
+<div class="card-deck bg-dark mx-5">
+{{#each amigos}}
+{{#each turma}}
+{{#each meusEventos}}
+<div class="col-sm-12 m-0 p-0">
+  <div class="card bg-transparent m-0 p-0">
+    <div class="card-header bg-light">
+      <img src="{{foto}}" class="rounded mr-2" alt="..." style="width: 40px; height: 40px;">
+      <strong class="mr-auto">{{name}}</strong>
+      <small class="text-muted">{{dataCreater}}</small>
+    </div>
+    <div class="card-body text-light bg-transparent">
+      <p>{{evento}}</p>
+      <p>{{subtitulo}}</p>
+      <p>{{inicio}} às {{termino}}</p>
+      <p>{{metodo}}</p>
+      <p>Neutrinos gerados pela atividade: {{neutrinosGerado}}</p>
+    </div>
+  </div>
+</div>
+{{/each}}
+{{/each}}
+{{/each}}
+</div>
+
 <div class="mx-4">
   <input id="pessoa" type="text" value="{{user.name}}" hidden>
   <h1 class="display-5">Improdutiva Estudos LTDA</h1>
@@ -8,8 +34,8 @@
   <div class="card-deck">
     <div class="card mb-3 bg-dark">
       <div class="row no-gutters">
-        <div class="col-md-4">
-        <img class="avatar" src="" alt="Estudos LTDA" border="0" style="max-width: 50%%;" >
+        <div class="col-sm-2">
+        <img class="avatar" src="" alt="Estudos LTDA" border="0" style="max-width: 80%;" >
         </div>
         <div class="col-md-8">
           <table class="table table-responsive-sm table-dark align-middle" style="width: 100%;">
