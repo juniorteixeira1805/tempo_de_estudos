@@ -74,6 +74,12 @@ const UserSchema = new mongoose.Schema({
             type: Boolean, //-- Parametro para a view saber a privacidade --//
             default: true
         },
+
+        busca: {
+            type: Boolean, //-- Parametro para a view saber a privacidade --//
+            default: true
+        },
+
     },
 
     historico: {
@@ -172,7 +178,7 @@ const UserSchema = new mongoose.Schema({
     }],
 
     meusEventos: [{
-        dataCreter:{ type: Date},
+        dateCreater:{ type: Date},
         name:{ type: String},
         foto:{ type: String},
         evento:{ type: String},

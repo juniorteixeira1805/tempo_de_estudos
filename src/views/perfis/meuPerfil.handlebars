@@ -1,0 +1,184 @@
+<div class="mx-2">
+  <div class="row">
+    <div class="col-sm-4 mb-4" style="">
+      <div class="col-sm text-center">
+        <img src="{{{user.foto}}}" class="card-img-top border border-secondary rounded-circle" style="width: 45%;">
+      </div>
+        <ul class="list-group list-group-flush " style="border: none;">
+          <li class="list-group-item text-center bg-transparent" style="border: none;"><h5 class="card-title">{{user.name}}</h5></li>
+          <li class="list-group-item text-center bg-transparent"style="border: none;"><b class="card-title">Neutrinos: {{user.historico.neutrinos}}</b>
+            <div class="spinner-grow spinner-grow-sm text-info" role="status">
+              <span class="sr-only"></span>
+            </div>
+          </li>
+          <li class="list-group-item text-center bg-transparent"style="border: none;"><p class="card-text">email:{{#if user.privacidade.sobre}} {{user.email}} {{else}} Privado {{/if}}</p></li>
+          <li class="list-group-item text-center bg-transparent" style="border: none;"><p class="card-text">Curso: {{#if user.privacidade.sobre}} {{user.curso}} {{else}} Privado {{/if}}</p></li>
+          <li class="list-group-item text-center bg-transparent" style="border: none;"><p class="card-text">Cidade: {{#if user.privacidade.sobre}} {{user.cidade}} {{else}} Privado {{/if}}</p></li>
+          <li class="list-group-item text-center bg-transparent" style="border: none;"><p class="card-text">Recado: {{#if user.privacidade.sobre}} {{user.recado}} {{else}} Privado {{/if}}</li>
+          <li class="list-group-item text-center bg-transparent" style="border: none;"><p class="card-text">Bio: {{#if user.privacidade.sobre}} {{user.bio}} {{else}} Privado {{/if}}</p></li>
+          <li class="list-group-item text-center bg-transparent" style="border: none;"><p class="card-text">Objetivo: {{#if user.privacidade.sobre}} {{user.objetivo}} {{else}} Privado {{/if}}</p></li>
+        </ul>
+    </div>
+    <div class="col-sm-5 mb-4">
+      <a href="/perfis/historico/{{user._id}}" class="text-dark">
+        <div class="media">
+            <svg class="text-secondary" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-inboxes-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M.125 11.17A.5.5 0 0 1 .5 11H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0 .5.5 0 0 1 .5-.5h5.5a.5.5 0 0 1 .496.562l-.39 3.124A1.5 1.5 0 0 1 14.117 16H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .121-.393zM3.81.563A1.5 1.5 0 0 1 4.98 0h6.04a1.5 1.5 0 0 1 1.17.563l3.7 4.625a.5.5 0 0 1-.78.624l-3.7-4.624A.5.5 0 0 0 11.02 1H4.98a.5.5 0 0 0-.39.188L.89 5.812a.5.5 0 1 1-.78-.624L3.81.563z"/>
+              <path fill-rule="evenodd" d="M.125 5.17A.5.5 0 0 1 .5 5H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0A.5.5 0 0 1 10 5h5.5a.5.5 0 0 1 .496.562l-.39 3.124A1.5 1.5 0 0 1 14.117 10H1.883A1.5 1.5 0 0 1 .394 8.686l-.39-3.124a.5.5 0 0 1 .121-.393z"/>
+            </svg>
+          <div class="media-body">
+            <h3 class="ml-1"><b>Histórico</b></h3>
+            <p>Veja seu historico de tempos.</p>
+          </div>
+        </div>
+      </a>
+      <div class="dropdown-divider"></div>
+      <a href="/perfis/cronograma" class="text-dark">
+      <div class="media">
+          <svg class="text-secondary" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-file-text-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M12 1H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zM5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
+          </svg>
+        <div class="media-body">
+          <h3 class="ml-1"><b>Cronograma</b></h3>
+          <p class="">Monte seu Cronograma semanal.</p>
+        </div>
+      </div>
+      </a>
+      <div class="dropdown-divider"></div>
+      <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Está funcionalidade estará disponivel em breve.">
+        <div class="media">
+          <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-graph-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h1v16H0V0zm1 15h15v1H1v-1z"/>
+            <path fill-rule="evenodd" d="M14.39 4.312L10.041 9.75 7 6.707l-3.646 3.647-.708-.708L7 5.293 9.959 8.25l3.65-4.563.781.624z"/>
+            <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4h-3.5a.5.5 0 0 1-.5-.5z"/>
+          </svg>
+          <div class="media-body">
+            <h3 class="ml-1"><b>Evolução</b></h3>
+            Que tal saber como anda a evolução do seu amigo? Aqui você pode saber como anda o desempenho do seu amigo, podendo ver o tempo usado em cada atividade.
+          </div>
+        </div>
+      </span>
+      <div class="dropdown-divider"></div>
+      <a href="/perfis/conquistas/{{user._id}}" class="text-dark">
+        <div class="media">
+            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-gem" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6l3-4zm11.386 3.785l-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004l.961-2.989H4.186l.963 2.995 5.704-.006zM5.47 5.495l5.062-.005L8 13.366 5.47 5.495zm-1.371-.999l-.78-2.422-1.818 2.425 2.598-.003zM1.499 5.5l2.92-.003 2.193 6.82L1.5 5.5zm7.889 6.817l2.194-6.828 2.929-.003-5.123 6.831z"/>
+            </svg>
+          <div class="media-body">
+            <h3 class="ml-1"><b>Conquistas</b></h3>
+            Através das conquistas você pode acompanhar como anda o progresso dos seus amigos, ver quais avatares seu amigo já conquistou, qual a habilidade que ele possuí, etc.
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+<div class="modal fade" id="musica" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-danger" id="exampleModalLabel">Tem certeza que deseja fazer isso?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="text-danger">Caso selecione a opção deletar, todos seus dados serão perdidos.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <form action="/auth/deletaruser" method="POST">
+            <input type="hidden" name="id" value="{{user._id}}">
+            <button type="submit" class="btn btn-danger">Deletar</button>
+        </form>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="cronograma" tabindex="-1" role="dialog" aria-labelledby="cronograma" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h5 class="modal-title" id="exampleModalLabel">Adicione atividade ao seu Cronograma</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body ">
+        <form action="/authuser/registerAtividade" method="POST">
+            <div class="form-group">
+              <small>Inicio da atividade: </small>
+              <input class="col-auto" type="time" id="horarioInicial" name="horarioInicial" min="00:00" max="23:59" required>
+              <small>Fim da atividade: </small>
+              <input class="col-auto" type="time" id="horarioTermino" name="horarioTermino" min="00:00" max="23:59" required>
+              <label for="validationServer01">Informe o que vai fazer nesse horário:</label>
+                <input type="text" class="form-control is-valid" name="atividade" placeholder="O que vai fazer neste horário" id="atividade" required>
+              <div class="col-auto my-1">
+                <label for="validationServer01">Informe o dia da semana</label>
+                <select class="custom-select is-valid" name="dia" size="3" required>
+                  <option value="segunda">Segunda</option>
+                  <option value="terca">Terça</option>
+                  <option value="quarta">Quarta</option>
+                  <option value="quinta">Quinta</option>
+                  <option value="sexta">Sexta</option>
+                  <option value="sabado">Sábado</option>
+                  <option value="domingo">Domingo</option>
+                </select>
+              </div>
+            </div>
+          <button type="submit" class="btn btn-info col-auto">Salvar</button>
+          <button type="button" class="btn btn-secondary text-center" data-dismiss="modal">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+<script>
+  const meumes = parseInt(document.getElementsByClassName("mes")[0].innerText)
+  if(meumes <= 600){
+      document.getElementsByClassName("avatar")[0].setAttribute("src", "/1.gif");
+      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 1 - Darwin Evolution");
+  } else{
+    if(meumes <= 1200){
+        document.getElementsByClassName("avatar")[0].setAttribute("src", "/2.gif");
+        document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 2 - Einstein Relativo");
+    }
+    else{
+    if(meumes <= 1800){
+      document.getElementsByClassName("avatar")[0].setAttribute("src", "/3.gif");
+      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 3 - Issac Graviton");
+    }else{
+    if(meumes <= 2400){
+      document.getElementsByClassName("avatar")[0].setAttribute("src", "/4.gif");
+      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 4 - PitEureka");
+    }else{
+    if(meumes <= 3000){
+      document.getElementsByClassName("avatar")[0].setAttribute("src", "/5.gif");
+      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 5 - Hawking Singular");
+    } else{
+    if(meumes <= 3600){
+      document.getElementsByClassName("avatar")[0].setAttribute("src", "/6.gif");
+      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 6 -Pit o quadrado dos catetos");
+    }else{
+      if(meumes <= 4300){
+      document.getElementsByClassName("avatar")[0].setAttribute("src", "/7.gif");
+      document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 7 - Tesla o Iluminado");
+    }else{
+      if(meumes > 4300){
+        document.getElementsByClassName("avatar")[0].setAttribute("src", "/8.gif");
+        document.getElementsByClassName("avat")[0].setAttribute("title", "Nível 8 - Marie Curie a mulher dos dois Nobels");
+       }
+    }
+    }
+    }
+    }
+    }
+  }
+  }
+
+</script>

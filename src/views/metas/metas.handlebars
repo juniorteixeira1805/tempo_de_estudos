@@ -14,7 +14,7 @@
                 <div class="toast-header">
                   <strong class="mr-auto">Data meta: {{dataMeta}}</strong>
                 </div>
-                <div class="toast-body">
+                <div class="toast-body text-light ">
                   <p>{{atividade}}</p>
                   <p>privacidade: {{privacidade}}</p>
                 </div>
@@ -42,7 +42,7 @@
   <div class="modal-dialog">
     <div class="modal-content bg-secondary">
       <div class="modal-header ">
-        <h5 class="modal-title" id="staticBackdropLabel">Informe o texto da nota</h5>
+        <h5 class="modal-title text-light" id="staticBackdropLabel">Informe o texto da nota</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -51,15 +51,15 @@
         <div class="modal-body">
             <div class="form-group sm">
                 <div class="mt-2">
-                    <label for="example-date-input">Data para atingir a meta</label>
+                    <label for="example-date-input" class="text-light">Data para atingir a meta</label>
                     <input name="dataMeta" type="date" value="aaaa-mm-dd" id="example-date-input" required>
                 </div>   
-                <label for="exampleFormControlTextarea1">Meta</label>
+                <label for="exampleFormControlTextarea1" class="text-light">Meta</label>
                 <input class="form-control" name="atividade" placeholder="Qual a meta que almeja." id="atividade" rows="3">
                 <div class="custom-control custom-checkbox">
                   <input type="checkbox" class="custom-control-input" name="privacidade" value="true" id="customCheck1">
                   <label class="custom-control-label" for="customCheck1">
-                    <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Selecionando essa opção, só você verá essa meta.">
+                    <span class="d-inline-block text-light" tabindex="0" data-toggle="tooltip" title="Selecionando essa opção, só você verá essa meta.">
                       Tornar essa meta privada
                       <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
@@ -70,7 +70,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="submit" class="btn btn-light">Salvar</button>
+            <button type="submit" class="btn btn-success text-light">Salvar</button>
         </div>
       </form>
     </div>

@@ -15,9 +15,9 @@
       <img class="rounded-circle" style="width: 25px; height: 25px;" src="{{user.foto}}"> - {{user.name}}
     </button>
     <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="/user/meuPerfil">Perfil</a>
+      <a class="dropdown-item" href="/perfis/meuPerfil">Perfil</a>
       <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="">Configurações</a>
+      <a class="dropdown-item" href="/config/config">Config</a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="/user/suporte">Suporte</a>
       <div class="dropdown-divider"></div>
@@ -31,7 +31,6 @@
 </nav>
 
 <nav class="nav navbar-collapse shadow-sm mb-5 small" style="width: 100%; background-color: #C0C0C0;">
-  <img class="text-ligh" src="/backgrounds/logo.png" alt="" class="d-block w-100" style="width: 100px;">
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle text-dark" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><b>Playlist</b>
     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-music-note" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -103,10 +102,9 @@
   </nav>
 
   <nav class="nav navbar-collapse navbar-dark  sticky-top small" style="width: 100%; background-color: #C0C0C0;">
-    <img class="text-ligh" src="/backgrounds/logo.png" alt="" class="d-block w-100" style="width: 100px;">
     <ul class="nav nav-tabs bg-transparent border-0">
       <li class="nav-item">
-        <a class="nav-link text-dark" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Playlist
+        <a class="nav-link text-dark" href="#playlist" role="button" aria-haspopup="true" aria-expanded="false">Playlist
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-music-note" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
           <path fill-rule="evenodd" d="M9 3v10H8V3h1z"/>
@@ -120,11 +118,7 @@
       </li>
 
       <li class="nav-item dropdown">
-        <a class="nav-link text-dark" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Salas de estudo</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link text-dark" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ranks</a>
+        <a class="nav-link text-dark" href="#salas" role="button" aria-haspopup="true" aria-expanded="false">Salas de estudo</a>
       </li>
     </ul>
   </nav>

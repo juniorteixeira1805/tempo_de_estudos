@@ -7,16 +7,39 @@ const User = require('../models/User');
 router.post('/addAmigo', async (req, res) => {
     try{
         //-- persistindo no banco de dados --//
-        await User.findOneAndUpdate({ _id: req.user._id }, {$push: { turma: req.body.id} }).then(async () =>{
-        console.log(req.user.name+ ", enturmou novo amigo")
-        req.flash("sucess_msg", req.user.name+ ", Você enturmou um novo amigo a sua galera") // apresenta na tela a msg de salvo
-        res.redirect("/turma/adicionar-amigo") //redireciona para a pagina
-    }).catch((err) => {
-        console.log("erro ao cadastrar meta: "+ err)
-        req.flash("error_msg",req.user.name + "Houve um erro ao enturmar seu amigo. Entre em contato pelo suporte.") // apresenta uma mensagem de erro
-        res.redirect("/turma/adicionar-amigo") // redireciona para a pagina
-    })
 
+        var amigosIds =  await (await User.findOne({_id: req.user._id}).select('turma'))
+        var vetorIds = amigosIds.turma
+        var tam = vetorIds.length
+        console.log(vetorIds[0])
+        console.log(tam)
+        var i = 0
+        var verif = true
+
+        while(i<tam){
+            if(vetorIds[i] == req.body.id){
+                verif = false
+                break
+            }
+            i++
+        }
+        console.log(verif)
+
+        if(verif){
+            await User.findOneAndUpdate({ _id: req.user._id }, {$push: { turma: req.body.id} }).then(async () =>{
+                console.log(req.user.name+ ", enturmou novo amigo")
+                req.flash("sucess_msg", req.user.name+ ", Você enturmou um novo amigo a sua galera") // apresenta na tela a msg de salvo
+                res.redirect("/turma/adicionar-amigo") //redireciona para a pagina
+            }).catch((err) => {
+                console.log("erro ao cadastrar meta: "+ err)
+                req.flash("error_msg",req.user.name + "Houve um erro ao enturmar seu amigo. Entre em contato pelo suporte.") // apresenta uma mensagem de erro
+                res.redirect("/turma/adicionar-amigo") // redireciona para a pagina
+            })
+        }else{
+            console.log("erro ao enturmar amigo: " )
+            req.flash("error_msg", "Este amigo já está na sua turma.") // apresenta uma mensagem de erro
+            res.redirect("/turma/adicionar-amigo") // redireciona para a pagina
+        }
     } catch(err) {
         console.log("erro ao acrescentar tempo: " +err)
         req.flash("error_msg", "Houve um erro ao salvar") // apresenta uma mensagem de erro

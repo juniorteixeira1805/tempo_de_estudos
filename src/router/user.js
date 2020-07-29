@@ -9,7 +9,10 @@ const mongoose = require("mongoose")
 
 const User = mongoose.model("users")
 
-const Atividade = require('../models/Atividade')
+const Atividade = mongoose.model("atividades")
+
+
+
 
 const router = express.Router();
 
@@ -41,19 +44,63 @@ router.get('/equipe', (req, res) => {
 
 //rota que renderiza pagina inicaial
     router.get('/home', validarEmail, async (req, res) => {
-        await User.updateOne({_id: req.user._id},{dataVizualização: new Date()}, function(err, res) {
-            console.log(req.user.name + " atualizou a data de presença no site")
-        });
-        
-        //-- Passando todos os usuarios para a view --//
-        User.find({_id: req.user._id}).populate('turma').sort({dateCreater: 0}).then((amigos) => {
+
+        try{
+            //-- atualizando a data de vizita do usuario --//
+            await User.updateOne({_id: req.user._id},{dataVizualização: new Date()}, function(err, res) {
+                console.log(req.user.name + " atualizou a data de presença no site")
+            });
+
+            //-- peganndo o id dos amigos --//
+            var amigosIds =  await (await User.findOne({_id: req.user._id}))
             
-            res.render("./users/home", {amigos: amigos})
-            console.log(req.user.name + "Pagina home")
-            }).catch((err) => {
-            res.redirect("/user/home")
-            console.log("deu erro: ", err)
-            })
+            //-- transformando m vetor de ids --//
+            var vetorIds = amigosIds.turma
+            var tam = vetorIds.length
+            var i = 0
+            var amigosReais = []
+
+            //-- pegando os vetores com o eventos dos amigos --//
+            while(i < tam){
+                amigosReais.push(await User.findOne({_id: vetorIds[i]}).select('meusEventos'))
+                i++
+            }
+
+            i=0
+            var j=0
+            //-- pegando a a quantidade de vetores detro do vetor --//
+            var tamanhoAmigos = amigosReais.length
+            var tamanhoEvento = 0
+            var todosEventos = []
+/*
+            console.log(amigosReais[0].meusEventos.length)
+            console.log(amigosReais[0].meusEventos)
+            console.log(amigosReais[1].meusEventos.length)
+            console.log(amigosReais[1].meusEventos[0])
+            
+*/          
+        //-- parte responsavel por pegar todos os objetos "meusEventos" e concatenar no vetor todosEventos --//
+            while(i < tamanhoAmigos){
+                tamanhoEvento = amigosReais[i].meusEventos.length
+                while(j < tamanhoEvento){
+                    todosEventos.push(amigosReais[i].meusEventos[j])
+                    j++
+                }
+                j=0
+                i++
+            }
+        //-- ordenando todos os eventos --//
+            todosEventos.sort()
+        
+        //-- Pega todas as atividades --//
+        var atividades = (await (Atividade.find({estudante: req.user._id})))
+        
+                 
+            res.render("./users/home", {eventos: todosEventos, atv: atividades})
+        } catch (err){
+            res.render("./users/home")
+            console.log("Erro: " + err)
+        }
 
     })
 
@@ -62,20 +109,6 @@ router.get('/equipe', (req, res) => {
     router.get('/editarusuario', eAdmin, (req, res) => {
         res.render("./users/editarUsuario")
         console.log(req.user.name + " Esta na pagina editarusuario")
-    })
-
-//-- Rota que renderiza a view do perfil --//
-    router.get('/meuperfil', validarEmail, async (req, res) => {
-
-        console.log(req.user.name + " Esta na pagina perfil")
-        Atividade.find({'estudante': req.user.id}).sort({horarioInicial: 0}).then((atv) => {
-
-            res.render("./users/meuPerfil", {atv: atv})
-            }).catch((err) => {
-            res.redirect("/user/home")
-            console.log("deu erro: ", err)
-            })
-
     })
 
 // rota que renderiza para fazer o logout
@@ -87,7 +120,7 @@ router.get('/equipe', (req, res) => {
             });
             req.logout()
             req.flash("sucess_msg", "Deslogado")
-            res.redirect("/")
+            res.redirect("/user/login")
         }catch(err){
             console.log(err)
         }

@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="card bg-dark" style="box-shadow: 11px 9px 7px rgba(50, 50, 50, 0.77); margin: 0 auto;">
+    <div class="card bg-dark col-sm-8" style="box-shadow: 11px 9px 7px rgba(50, 50, 50, 0.77); margin: 0 auto;">
         <div class="card-body">
             <form action="/auth/registerUser" method="POST">
             <div class="alert alert-warning" role="alert" style="text-align: center;">
@@ -8,14 +8,29 @@
                 <div class="row my-4">
                     <div class="col-sm">
                         <label for="name" class="text-light">Nome e Sobrenome*</label>
-                        <input type="text" name="name" id="name" class="form-control" placeholder="Informe o nome e sobrenome" required>
+                        <input type="text" name="name" id="name" class="form-control" placeholder="Ex.: Monica Geller" required>
+                    </div>
+                        <div class="col-sm">
+                        <label for="cidade" class="text-light">Cidade</label>
+                        <input type="text" name="cidade" id="cidade" class="form-control" placeholder="Ex.: Cidade/Estado" required>
+                    </div>
+                </div>
+
+                <div class="row my-4">
+                    <div class="col-sm">
+                        <label for="bio" class="text-light">Bio</label>
+                        <textarea class="form-control" name="bio" id="bio" placeholder="O que você tem a dizer sobre você?" rows="3"></textarea>
+                    </div>
+                    <div class="col-sm">
+                        <label for="objetivo" class="text-light">Objetivo</label>
+                        <textarea class="form-control" id="objetivo" name="objetivo" placeholder="Motivo pelo qual estuda?" rows="3"></textarea>
                     </div>
                 </div>
 
                 <div class="row my-4">
                     <div class="col-sm">
                         <label for="email" class="text-light">Curso*</label>
-                        <input type="text" name="curso" id="curso" class="form-control" placeholder="Informe o curso ou se concurseira(o)" required>
+                        <input type="text" name="curso" id="curso" class="form-control" placeholder="Informe o curso ou se é concurseira(o)" required>
                     </div>
                 </div>
 
@@ -29,7 +44,7 @@
                 <div class="row my-4">
                     <div class="col-sm">
                         <label for="email" class="text-light">E-mail*</label>
-                        <input type="email" name="email" id="email" class="form-control" placeholder="Informe o email" required>
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Ex.: Ross@gmail.com" required>
                     </div>
                 </div>
 
@@ -40,7 +55,7 @@
                     </div>
                 </div>
                 <div class="g-recaptcha" data-sitekey="your_site_key">
-                    <button type="submit" class="btn btn-secondary">Cadastrar</button>
+                    <button type="submit" class="btn btn-success text-light">Cadastrar</button>
                 </div>
                 
             </form>

@@ -1,9 +1,9 @@
 <div class="container my-5 text-center">
-<div class="alert alert-info" role="alert">
+<div class="alert alert-warning" role="alert">
 	A plataforma está na versão betá (na fase de testes) até o 31/12/2020.
 </div>
 	<div class="card-deck col-sm-4" style="margin: 0 auto;">
-		<div class="card" style="box-shadow: 11px 9px 7px rgba(50, 50, 50, 0.77);">
+		<div class="card bg-dark" style="box-shadow: 11px 9px 7px rgba(50, 50, 50, 0.77);">
 			<img src="https://images.pexels.com/photos/714701/pexels-photo-714701.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="card-img-top" alt="...">
 			<div class="card-body">
 				<form action="/auth/authenticate" method="POST">
@@ -14,13 +14,13 @@
 						<input type="password" class="form-control" name="password" id="password" placeholder="Senha">
 						</div>
 					<div class="text-center">
-					<button type="submit" class="btn btn-dark mt-2 align-middle">Login</button>
+					<button type="submit" class="btn btn-light text-dark mt-2 align-middle">Login</button>
 					</div>
 				</form>
 			<p class="card-text"></p>
 			</div>
 			<div class="card-footer">
-			<small class="text-muted"><a href="/user/enviaEmail">Esqueci minha senha</a></small>
+			<small class="text-muted"><a href="/user/enviaEmail" class="text-light">Esqueci minha senha</a></small>
 			</div>
 		</div>
 	</div>

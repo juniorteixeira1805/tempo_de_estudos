@@ -27,10 +27,13 @@ const io = require('socket.io')(server)
     const MetaGet = require('./router/metas')
     const TurmaPost = require('./controller/turmaController')
     const TurmaGet = require('./router/turma')
+    const ConfigPost = require('./controller/configControler')
+    const ConfigGet = require('./router/config')
     const User = require('./router/user')
     const Administradores = require('./router/admin')
     const Tempo = require('./router/tempo')
     const Rank = require('./router/ranks')
+    const Perfis = require('./router/perfis')
 
 //configurações
     //sessão
@@ -87,6 +90,9 @@ const io = require('socket.io')(server)
     app.use('/rank', Rank)
     app.use('/turma', TurmaGet)
     app.use('/turmaP', TurmaPost)
+    app.use('/config', ConfigGet)
+    app.use('/configP', ConfigPost)
+    app.use('/perfis', Perfis)
    //app.use('/Individual', GetIndividual)
 
     

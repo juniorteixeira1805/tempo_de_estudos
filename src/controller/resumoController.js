@@ -22,12 +22,14 @@ const router = express.Router();
                 corpo: req.body.corpo,
                 ref: req.body.ref,
                 dateCreater: Func.novadata(new Date()),
-                privacidade: req.body.privacidade
+                privacidade: (req.body.privacidade == "true")
             }
 
         //-- persistindo no banco --//
             new Resumos(novaIndividual).save().then( async () => {
             //-- Somando minutos ao dia --// 
+
+            if(req.body.privacidade == "false"){
                 minutosTotalNoDia = await 0 + parseInt(req.user.historico.dia)  
                 minutosTotalNoSemana = await 0 + parseInt(req.user.historico.semana)
                 minutosTotalNoMes = await 0 + parseInt(req.user.historico.mes)        
@@ -40,13 +42,35 @@ const router = express.Router();
                 totalExercicio = await 0 + parseInt(req.user.historico.totalExercicio)
                 pontos = req.user.historico.neutrinos + 30
                 await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: pontos}}}).then((req, res) => {}).catch((err) => {})
-                await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dataCreter: new Date(), evento: "Redigiu um novo resumo", name: req.body.name, foto: req.body.foto, subtitulo: req.body.titulo, metodo: "", inicio: "", termino: "", neutrinosGerado: 30}}}).then((req, res) => {}).catch((err) => {})
+                await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(), evento: "Redigiu um novo resumo", name: req.user.name, foto: req.user.foto, subtitulo: req.body.titulo, metodo: "", inicio: "", termino: "", neutrinosGerado: 30}}}).then((req, res) => {}).catch((err) => {})
                 let rsm = req.user.resumos + 1
                 await User.findOneAndUpdate({_id: req.user._id}, {resumos: rsm}).then((req, res) => {}).catch((err) => {})
 
                 console.log(req.user.name+" Criou um novo resumo")
                 req.flash("sucess_msg", req.user.name+ ", seu resumo foi cadastrado") // apresenta na tela a msg de salvo
                 res.redirect("/tempo/salaIndividual") //redireciona para a pagina
+            } else {
+                minutosTotalNoDia = await 0 + parseInt(req.user.historico.dia)  
+                minutosTotalNoSemana = await 0 + parseInt(req.user.historico.semana)
+                minutosTotalNoMes = await 0 + parseInt(req.user.historico.mes)        
+                minutosTotalNoTotal = await 0 + parseInt(req.user.historico.total)
+            //--  somando minutos ao total --//
+                totalEstudo = await 0 + parseInt(req.user.historico.totalEstudo)
+                totalAula = await 0 + parseInt(req.user.historico.totalAula)
+                totalLeitura = await 0 + parseInt(req.user.historico.totalLeitura)
+                totalPesquisa = await 0 + parseInt(req.user.historico.totalPesquisa)
+                totalExercicio = await 0 + parseInt(req.user.historico.totalExercicio)
+                pontos = req.user.historico.neutrinos + 0
+                await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: pontos}}}).then((req, res) => {}).catch((err) => {})
+                await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(), evento: "Redigiu um novo resumo", name: req.user.name, foto: req.user.foto, subtitulo: req.body.titulo, metodo: "", inicio: "", termino: "", neutrinosGerado: 30}}}).then((req, res) => {}).catch((err) => {})
+                let rsm = req.user.resumos + 1
+                await User.findOneAndUpdate({_id: req.user._id}, {resumos: rsm}).then((req, res) => {}).catch((err) => {})
+
+                console.log(req.user.name+" Criou um novo resumo")
+                req.flash("sucess_msg", req.user.name+ ", seu resumo foi cadastrado") // apresenta na tela a msg de salvo
+                res.redirect("/tempo/salaIndividual") //redireciona para a pagina
+            }
+
             }).catch((err) => {
                 console.log("erro ao criar seu resumo: "+err)
                 req.flash("error_msg",req.user.name + "Houve um erro ao cadastrar seu resumo. Entre em contato pelo suporte.") // apresenta uma mensagem de erro

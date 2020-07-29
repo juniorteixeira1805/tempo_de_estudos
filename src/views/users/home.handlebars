@@ -1,81 +1,10 @@
 {{#if user.validaEmail}}
-
-<div class="card-deck bg-dark mx-5">
-{{#each amigos}}
-{{#each turma}}
-{{#each meusEventos}}
-<div class="col-sm-12 m-0 p-0">
-  <div class="card bg-transparent m-0 p-0">
-    <div class="card-header bg-light">
-      <img src="{{foto}}" class="rounded mr-2" alt="..." style="width: 40px; height: 40px;">
-      <strong class="mr-auto">{{name}}</strong>
-      <small class="text-muted">{{dataCreater}}</small>
-    </div>
-    <div class="card-body text-light bg-transparent">
-      <p>{{evento}}</p>
-      <p>{{subtitulo}}</p>
-      <p>{{inicio}} às {{termino}}</p>
-      <p>{{metodo}}</p>
-      <p>Neutrinos gerados pela atividade: {{neutrinosGerado}}</p>
-    </div>
-  </div>
-</div>
-{{/each}}
-{{/each}}
-{{/each}}
-</div>
-
-<div class="mx-4">
-  <input id="pessoa" type="text" value="{{user.name}}" hidden>
-  <h1 class="display-5">Improdutiva Estudos LTDA</h1>
+<div class="container">
+<div class="row">
+  <div class="col-sm-4">
+  <h1 class="display-5">Meus dados</h1>
   <div class="dropdown-divider"></div>
-  <div class="message my-2"></div> 
 
-  <div class="card-deck">
-    <div class="card mb-3 bg-dark">
-      <div class="row no-gutters">
-        <div class="col-sm-2">
-        <img class="avatar" src="" alt="Estudos LTDA" border="0" style="max-width: 80%;" >
-        </div>
-        <div class="col-md-8">
-          <table class="table table-responsive-sm table-dark align-middle" style="width: 100%;">
-          <h3 class="card-title align-middle text-center">Meus dados</h3>
-            <thead>
-              <tr>
-                <th scope="col">Nível</th>
-                <th scope="col">Dia</th>
-                <th scope="col">Semana</th>
-                <th scope="col">Mes</th>
-                <th scope="col">Aulas</th>
-                <th scope="col">Estudos</th>
-                <th scope="col">Pesquisa</th>
-                <th scope="col">Leitura</th>
-                <th scope="col">Exercicios</th>
-                <th scope="col">Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th class="avat"></th>
-                <td>{{user.historico.dia}}</td>
-                <td>{{user.historico.semana}}</td>
-                <td class="mes">{{user.historico.mes}}</td>
-                <td class="">{{user.historico.totalAula}}</td>
-                <td class="">{{user.historico.totalEstudo}}</td>
-                <td class="">{{user.historico.totalPesquisa}}</td>
-                <td class="">{{user.historico.totalLeitura}}</td>
-                <td class="">{{user.historico.totalExercicio}}</td>
-                <td class="">{{user.historico.total}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-<!-- Botão para aprensetar o rank Geral  -->
   <div class="card text-center mt-2 bg-dark mb-2">
     <div class="card-header bg-dark">
       <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Você pode adicionar sua atividade indo no seu perfil">
@@ -88,22 +17,19 @@
       </span>
     </div>
     <div class="collapse mt-2" id="collapseExample">
-      <table class="table table-bordered table-responsive-sm table-dark text-light">
+      <table class="table table-bordered table-responsive table-dark text-light">
         <thead>
           <tr>
-            <th scope="col">Dia</th>
             <th scope="col">Inicio</th>
             <th scope="col">Termino</th>
             <th scope="col">Atividade</th>
             <th scope="col">status</th> 
           </tr>
         </thead>
-
         <tbody>
           {{#each atv}}
             {{#if verifSegunda}}
             <tr class="segundaparaapagar" hidden>
-              <th scope="row">Segunda</th>
               <td>{{horarioInicial}}</td>
               <td>{{horarioTermino}}</td>
               <td>{{atividade}}</td>
@@ -124,7 +50,6 @@
             {{#each atv}}
             {{#if verifTerca}}
             <tr class="tercaparaapagar" hidden>
-              <th scope="row">Terça</th>
               <td>{{horarioInicial}}</td>
               <td>{{horarioTermino}}</td>
               <td>{{atividade}}</td>
@@ -145,14 +70,17 @@
             {{#each atv}}
             {{#if verifQuarta}}
             <tr class="quartaparaapagar" hidden>
-              <th scope="row">Quarta</th>
               <td>{{horarioInicial}}</td>
               <td>{{horarioTermino}}</td>
               <td>{{atividade}}</td>
               <td>
-                <form action="/authUser/concluiratividade" method="POST"><input type="hidden" name="id" value="{{_id}}">
-                <button type="submit" class="btn btn-outline-secondary">Concluir atividade</button>
-                </form> 
+                {{#if status}}
+                  <button type="button" class="btn btn-outline-success" disabled>Atividade concluída</button>
+                {{else}}
+              <form action="/authUser/concluiratividade" method="POST"><input type="hidden" name="id" value="{{_id}}">
+                  <button type="submit" class="btn btn-outline-light">Concluir atividade</button>
+                </form>
+                {{/if}}
               </td>
             </tr>
             {{else}}
@@ -162,7 +90,6 @@
             {{#each atv}}
             {{#if verifQuinta}}
             <tr class="quintaparaapagar" hidden>
-              <th scope="row">Quinta</th>
               <td>{{horarioInicial}}</td>
               <td>{{horarioTermino}}</td>
               <td>{{atividade}}</td>
@@ -183,7 +110,6 @@
             {{#each atv}}
             {{#if verifSexta}}
             <tr class="sextaparaapagar" hidden>
-              <th scope="row">Sexta</th>
               <td>{{horarioInicial}}</td>
               <td>{{horarioTermino}}</td>
               <td>{{atividade}}</td>
@@ -204,7 +130,6 @@
             {{#each atv}}
             {{#if verifSabado}}
             <tr class="sabadoparaapagar" hidden>
-              <th scope="row">Sábado</th>
               <td>{{horarioInicial}}</td>
               <td>{{horarioTermino}}</td>
               <td>{{atividade}}</td>
@@ -226,7 +151,6 @@
 
             {{#if verifDomingo}}
             <tr class="domingoparaapagar" hidden>
-              <th scope="row">Domingo</th>
               <td>{{horarioInicial}}</td>
               <td>{{horarioTermino}}</td>
               <td>{{atividade}}</td>
@@ -248,143 +172,86 @@
       </table>
     </div>
   </div>
-      <!--
-  <div>
-  <h3 class="display-6">Parceiros Educacionais</h3>
-  <div class="dropdown-divider"></div>
-  </div>
 
-  <div class="card-deck">
-
-    <div class="card mb-3 text-light bg-dark">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <img src="https://instagram.fnat1-1.fna.fbcdn.net/v/t51.2885-15/e35/106206824_149694123358085_3977527074746532917_n.jpg?_nc_ht=instagram.fnat1-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=U8dSLSm5R24AX_Dak8t&oh=a8c810756bdc9d6ce67d1a338ca4ba5b&oe=5F350020" class="card-img-top" alt="Parcerias Improdutivas Estudos LtDA">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Eqacionar</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Instagram: <a href="https://www.instagram.com/eqacionar/?hl=pt-br" class="text-light">@Eqacionar</a></small></p>
-          </div>
-        </div>
-      </div>
+  <div class="card mb-3 bg-dark">
+    <div class="col-sm">
+      <img class="avatar" src="" alt="Estudos LTDA" style="width: 50%;" >
+      <li class="list-group-item  bg-transparent"style="border: none; m-0 p-0"><p class="avat m-0 p-0 text-light"></p></li>
     </div>
-
-    <div class="card mb-3 text-light bg-dark" style="max-width: 50%;">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <img src="https://instagram.fnat1-1.fna.fbcdn.net/v/t51.2885-19/s150x150/95354939_167710491225743_7703660003046981632_n.jpg?_nc_ht=instagram.fnat1-1.fna.fbcdn.net&_nc_ohc=e2GvRV5V4hEAX8DG32X&oh=9eaa7447b95826b8f1f1d59fb96ba497&oe=5F31E6DD" class="card-img-top" alt="Parcerias Improdutiva Estudos LTDA">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">vestibumedmigas</h5>
-            <p class="card-text">Instagram que dá dicas de como ter uma rotina diária de estudos.</p>
-            <p class="card-text"><small class="text-muted">Instagram: <a href="hthttps://www.instagram.com/vestibumedmigas/?hl=pt-br" class="text-light">@vestibumedmigas</a></small></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-    -->
-  <div class="card text-center mt-2 bg-dark mb-2">
-    <div class="card-header bg-dark">
-      <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Trabalhamos diariamente para ajudar você a dar um upgrade nos seus estudos. Se estamos ajudando e caso sinta vontade, ajude-nos a manter a plataforma. Clique em doar e faça sua doação.">
-        <button class="btn btn-light mt-2 bnt-responsive-sm btn-sm" style="margin: 0 auto;" type="button" data-toggle="collapse" data-target="#doar" aria-expanded="false" aria-controls="doar">
-          Doação
-            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-            </svg>
-        </button>
-      </span>
-    </div>
-    <div class="collapse mt-2" id="doar">
-      <div class="card-deck" >
-        <div class="card text-center bg-dark text-light" >
-          <img src="/contas/Vakinha.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title"><b>vakinha.com.br</b></h5>
-            <p class="card-text">É um site brasileiro destinado a financiar projetos através de doações de seus usuários online. Por ele você pode realizar um doação por Boleto, ou cartão de crédito. Só clicar no botão abaixo que já será redirecionado para realizar a doação.</p>
-              <!-- Button trigger modal -->
-          </div>
-          <div class="card-footer text-light">
-              <h6><a href="http://vaka.me/1188322" target="_blank" class="btn btn-light" >Ir ao site</a></h6>
-              <b>Agradecemos sua colaboração <span style='font-size:20; color: red;'>&#9829;</span></b>
-          </div>
-        </div>
-        <div class="card text-center bg-dark text-light">
-          <img src="/contas/picPay.jpeg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title"><b>PicPay</b></h5>
-            <p class="card-text">O PicPay é um aplicativo fintech capixaba disponível para download em celular Android e iPhone que funciona como uma carteira digital. Para realizar a doação é simples, basta entrar no aplicativo picPac, clicar no ícone que está na parte superior esquerda da tela e, então, apontar a câmera do seu celuar para o QRcode acima.</p>
-            <!-- Button trigger modal -->
-          </div>
-          <div class="card-footer">
-              <b>Agradecemos sua colaboração <span style='font-size:20; color: red;'>&#9829;</span></b>
-          </div>
-        </div>
-
-        <div class="card text-center bg-dark text-light">
-          <img src="/contas/Nubank.jpeg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title"><b>NuBank</b></h5>
-            <p class="card-text">Nubank é uma empresa startup brasileira pioneira no segmento de serviços financeiros atuando no Brasil. Para realizar sua doação pela NuBank, basta entrar no aplicativo da Nubank, ir em transferir, clicar no ícone que está na parte superior direita da tela e, então, apontar a câmera do seu celuar para o QRcode acima. </p>
-            <!-- Button trigger modal -->
-          </div>
-          <div class="card-footer text-light">
-            <b>Agradecemos sua colaboração <span style='font-size:20; color: red;'>&#9829;</span></b>
-          </div>
-        </div>
-      </div>
+    <div class="col-sm text-light mb-4" style="">
+        <ul class="list-group list-group-flush " style="border: none;">
+          <li class="list-group-item  bg-transparent"style="border: none;"><b class="card-title">Neutrinos: {{user.historico.neutrinos}}</b>
+            <div class="spinner-grow spinner-grow-sm text-info" role="status">
+              <span class="sr-only"></span>
+            </div>
+          </li>
+          <li class="list-group-item  bg-transparent"style="border: none;"><p class="">Minutos do Dia: <b>{{user.historico.dia}}</b></p></li>
+          <li class="list-group-item  bg-transparent"style="border: none;"><p class="">Minutos da Semana: <b>{{user.historico.semana}}</b></p></li>
+          <li class="list-group-item  bg-transparent"style="border: none;"><p class="">Minutos do Mês: <b class="mes">{{user.historico.mes}}</b></p></li>
+          <li class="list-group-item  bg-transparent"style="border: none;"><p class="">Minutos de Aula: <b>{{user.historico.totalAula}}</b></p></li>
+          <li class="list-group-item  bg-transparent"style="border: none;"><p class="">Minutos do Estudo: <b>{{user.historico.totaEstudo}}</b></p></li>
+          <li class="list-group-item  bg-transparent"style="border: none;"><p class="">Minutos do Leitura: <b>{{user.historico.totalLeitura}}</b></p></li>
+          <li class="list-group-item  bg-transparent"style="border: none;"><p class="">Minutos do Pesquisa: <b>{{user.historico.totalPesquisa}}</b></p></li>
+          <li class="list-group-item  bg-transparent"style="border: none;"><p class="">Minutos do Exercicio: <b>{{user.historico.totalExercicio}}</b></p></li>
+          <li class="list-group-item  bg-transparent"style="border: none;"><p class="">Total de resumos: <b>{{user.resumos}}</b></p></li>
+        </ul>
     </div>
   </div>
 </div>
+<div class="col-sm-8" style="margin: 0 auto;">
+   <h1 class="display-5">Feed da turma</h1>
+<div class="dropdown-divider"></div>
+  {{#each eventos}}
+    <div class="evento col-sm-12 m-0 p-0 my-2">
+      <div class="card bg-transparent m-0 p-0">
+        <div class="card-header bg-light">
+          <img src="{{foto}}" class="rounded mr-2" alt="..." style="width: 40px; height: 40px;">
+          <strong class="mr-auto text-dark">{{name}}</strong>
+          <small class="text-muted">{{dateCreater}}</small>
+        </div>
+        <div class="card-body text-dark bg-transparent">
+          <p class="m-0 p-0">Atividade: {{evento}}</p>
+          <p class="m-0 p-0">Subatividade: {{subevento}}</p>
+          <p class="m-0 p-0">Hoarario da atividade: {{inicio}} - {{termino}}</p>
+          <p class="m-0 p-0">Metodo: {{metodo}}</p>
+          <p class="m-0 p-0">Neutrinos gerados pela atividade: {{neutrinosGerado}}</p>
+        </div>
+      </div>
+    </div>
+{{/each}}
+
+</div>
+</div>
+</div>
+
+
 
   {{else}}
-<div class="alert alert-danger" role="alert">
-  Caso o usuário fique 1 mês inativo, sua conta será excluida automaticamente!
-</div>
-<div class="text-center">
-  <h4 class="text-light">{{user.name}}, Um código foi enviado para seu e-mail ({{user.email}}).</h4>
-  <h3>Primeiro selecione a opção "Inscreva-se" para ativar nossa comunicação.</h3>
-  <h3 class="text-light">Após ativar a comunicação, insira o código e confirme para utilizar a plataforma</h3>
-</div>
-<!-- Estilos CSS personalizados para o formulário, se for usar seu estilo, pode apagar essa linha -->
-<link rel="stylesheet" type="text/css" href="https://novo.nitronews.com.br/assets/css/fomularios-html.css">
-<form action="https://novo.nitronews.com.br/formularios/confirmacao-formularioHTML" method="get" target="_blank" id="formIntegracaoHTML">
-	<label for="email" class="text-light">E-mail: </label>
- 	<input type="email" name="email%%E-mail" id="email" value="{{user.email}}" disabled required>
-	<label for="nome" class="text-light">Nome: </label>
- 	<input type="text" name="nome%%Nome" value="{{user.name}}" id="nome" disabled required>
-	<!-- Não apagar as linhas abaixo -->
-	<input type="hidden" name="chave[]" value="Luw5">
-	<input type="hidden" name="cliente" value="Improdutiva Estudos">
-	<input type="hidden" name="urlretorno" value="">
-	<input type="submit" name="enviar" value="inscreva-se">
-</form>
-
-<div class="text-center">
-    <form action="/auth/validaEmail" class="text-center" method="POST" >
-    <div class="col-sm-2 text-center" style="margin: 0 auto;">
-      <label for="staticEmail2" class="sr-only">Seu email</label>
-      <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="{{user.email}}" hidden>
+  <div class="container text-center">
+    <div class="alert text-center alert-danger" role="alert">
+      Caso o usuário fique 1 mês inativo, sua conta será excluida automaticamente!
     </div>
-    <div class="form-group col-sm-11 text-center" style="margin: 0 auto;">
-      <p>código</p>
-      <input type="text" class="form-control" name="codigo" id="inputPassword2" placeholder="Código">
-    </div>
-    <button type="submit" class="btn btn-light my-2">Confirmar código</button>
-  </form>
-  <h3 class="text-light">Caso esse não for seu e-mail, delete sua conta em perfil e refaça o cadastro.</h3>
-  <h3 class="text-light">Caso o e-mail não tenha chegado, verifique sua internet e reenvie o código.</h3>
-    <form action="/auth/reenvia" class="form-inline" method="POST">
-      <div class="col-sm-6 text-center" style="margin: 0 auto;">
-        <label for="staticEmail2" class="sr-only">Seu email</label>
-        <input type="text" readonly name="email" class="form-control-plaintext" id="staticEmail2" value="{{user.email}}" hidden>
-        <button type="submit" class="btn btn-light mt-4">Reenviar código</button>
-      </div>
-    </form>
-</div>
+    <p>Saudações pequena(o) garfanhoto. resta só mais um passo para você utilizar a plataforma. Eviamos um código para a validação do seu e-mail. Insira o códico na caixa de texto abaixo e selecione a opção "Confirmar código".</p>
+        <form action="/auth/validaEmail" class="text-center" method="POST" >
+        <div class="col-sm-2 text-center" style="margin: 0 auto;">
+          <label for="staticEmail2" class="sr-only">Seu email</label>
+          <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="{{user.email}}" hidden>
+        </div>
+        <div class="form-group col-sm-4 text-center" style="margin: 0 auto;">
+          <a for="codigo"><b>Código:</b></a>
+          <input type="text" class="form-control" name="codigo" id="codigo" placeholder="Insira seu código aqui.">
+        </div>
+        <button type="submit" class="btn btn-success text-light my-2">Confirmar código</button>
+      </form>
+      <h3 class="text-dark"><b>Caso o e-mail não tenha chegado, verifique sua internet e reenvie o código.</b></h3>
+        <form action="/auth/reenvia" class="form-inline" method="POST">
+          <div class="col-sm-6 text-center" style="margin: 0 auto;">
+            <label for="staticEmail2" class="sr-only">Seu email</label>
+            <input type="text" readonly name="email" class="form-control-plaintext" id="staticEmail2" value="{{user.email}}" hidden>
+            <button type="submit" class="btn btn-success text-light mt-4">Reenviar código</button>
+          </div>
+        </form>
+  </div>
 
 
 
@@ -392,33 +259,6 @@
 
   {{/if}}
 <script>
-//'<a class="msg">'+message+' Está online<a>'
-    function render(message){
-      $('.message').append('<div class="msg card text-center bg-light text-dark mt-2" style="position: relative; min-width: 20%;max-width: 35%">'+message+' Está online</div>')
-       setTimeout(function(){ $('.msg').remove( ) }, 5000);
-    }
-
-
-    socket.on('receivedMessage', function(message) {
-        render(message);
-    })
-
-
-    if(window.navigator.onLine){
-        render( document.getElementById("pessoa").value )
-        socket.emit('sendMessage', document.getElementById("pessoa").value)
-
-    }
-
-/*
-    socket.on('previousMessages', function(messages) {
-        for(message of messages){
-            render(message);
-        }
-    })
-*/
-  
-
   const meumes = parseInt(document.getElementsByClassName("mes")[0].innerText)
   if(meumes <= 600){
       document.getElementsByClassName("avatar")[0].setAttribute("src", "/1.gif");

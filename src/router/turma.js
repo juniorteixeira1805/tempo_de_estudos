@@ -5,7 +5,7 @@ const {eAdmin} = require("../helpers/eAdmin")
 
 const mongoose = require("mongoose");
 
-const User = mongoose.model("users")
+const User = require('../models/User')
 
 
 const router = express.Router();

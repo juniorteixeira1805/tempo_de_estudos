@@ -1,13 +1,16 @@
 <div class="card bg-dark col-sm-10"style="margin: 0 auto;">
     <div class="card-body">
+    <div class="alert text-center alert-warning" role="alert">
+    Os campos que possuem '*' são obrigatórios.
+    </div>
         <form action="/authUser/enviarEmail" method="POST">
         <div class="form-group">
             <b><label for="exampleFormControlInput1">Endereço de E-mail</label></b>
             <input type="email" class="form-control" value="{{user.email}}" id="exampleFormControlInput1"  disabled>
         </div>
         <div class="form-group">
-            <b><label for="exampleFormControlSelect1">Selecione o assunto</label></b>
-            <select class="form-control" id="assunto" size="3" name="assunto">
+            <b><label for="exampleFormControlSelect1">Assunto*</label></b>
+            <select class="form-control" id="assunto" size="3" name="assunto" required>
             <option value="Bug">Problemas</option>
             <option value="Sugestão">Sugestão</option>
             <option value="Crítica">Crítica</option>
@@ -16,10 +19,10 @@
             </select>
         </div>
         <div class="form-group">
-            <b><label for="exampleFormControlTextarea1">Digite o texto do seu E-mail (Máximo: 300 caracteres)</label></b>
-            <textarea maxlength="300" class="form-control" name="texto" id="texto" rows="3"></textarea>
+            <b><label for="exampleFormControlTextarea1">Texto*</label></b>
+            <textarea maxlength="300" class="form-control" placeholder="(Máximo: 300 caracteres)" name="texto" id="texto" rows="3" required></textarea>
         </div>
-            <button type="submit" class="btn btn-light">Enviar</button>
+            <button type="submit" class="btn btn-success text-light">Enviar</button>
         </form>
     </div>
 </div>

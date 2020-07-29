@@ -1,0 +1,123 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 " >
+            <div class="col-sm my-4">
+                <a href="/user/editarusuario" class="btn btn-light mx-1">
+                <svg class="bi bi-pencil-square" width="15px" height="15px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                </svg> Editar perfil</a>
+
+                <button type="button" class="btn my-4 mx-1 text-light" data-toggle="modal" data-target="#musica" style="background-color: #FA8072;">
+                Excluir conta
+                    <svg class="bi bi-trash-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                    </svg>
+                </button>
+                <form action="/configP/privacidade" method="POST">
+                    <fieldset class="form-group">
+                        <div class="row">
+                        <legend class="col-form-label col-sm pt-0"> Privacidade do rank:
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="rank" id="rank" value="true" {{#if user.privacidade.rank}} {{else}}checked {{/if}}>
+                                    <label class="form-check-label" for="rank">
+                                    Ativar
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="rank" id="rank2" value="false" {{#if user.privacidade.rank}} checked {{else}} {{/if}}>
+                                    <label class="form-check-label" for="rank2">
+                                    Desativar
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <div class="row">
+                        <legend class="col-form-label col-sm pt-0"> Privacidade sobre minhas informações
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="sobre" id="sobre" value="true" {{#if user.privacidade.sobre}} {{else}}checked {{/if}}>
+                                    <label class="form-check-label" for="sobre">
+                                    Ativar
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="sobre" id="sobre2" value="false" {{#if user.privacidade.sobre}} checked {{else}} {{/if}}>
+                                    <label class="form-check-label" for="sobre2">
+                                    Desativar
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                   <fieldset class="form-group">
+                        <div class="row">
+                        <legend class="col-form-label col-sm pt-0"> Privacidade sobre buscas
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="busca" id="buscas" value="true" {{#if user.privacidade.busca}} {{else}}checked {{/if}}>
+                                    <label class="form-check-label" for="buscas">
+                                    Ativar
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="busca" id="buscas2" value="false" {{#if user.privacidade.busca}} checked {{else}} {{/if}}>
+                                    <label class="form-check-label" for="buscas2">
+                                    Desativar
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <button type="submit" style="width: 100%;" class="btn btn-success text-light">Salvar</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <h1 class="display-5">Privacidade</h1>
+            <div class="dropdown-divider"></div>
+                <ul class="mt-5">
+                    <li>
+                        <h4>Pravacidade de rank</h4>
+                        <p>Ativando está opção, o usuario ocutará seu perfil de todos os rank da plataforma.</p>
+                    </li>
+                    <li>
+                        <h4>Pravacidade sobre minhas informações</h4>
+                        <p>Ativando está opção, o usuario ocutará do seu perfil as informações pessoais do usuario.</p>
+                    </li>
+                    <li>
+                        <h4>Pravacidade de busca</h4>
+                        <p>Ativando está opção, o usuario ocutará seu perfil da busca para ser enturmado.</p>
+                    </li>
+                </ul>
+        </div>
+    </div>
+    <div class="dropdown-divider"></div>
+</div>
+
+
+<div class="modal fade" id="musica" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="color: #FA8072;" id="exampleModalLabel">Tem certeza que deseja fazer isso?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="" style="color: #FA8072;">Caso selecione a opção deletar, todos seus dados serão perdidos.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <form action="/auth/deletarUser" method="POST">
+            <input type="hidden" name="id" value="{{user._id}}">
+            <button type="submit" class="btn text-light" style="background-color: #FA8072;">Deletar</button>
+        </form>
+        </div>
+    </div>
+  </div>
+</div>

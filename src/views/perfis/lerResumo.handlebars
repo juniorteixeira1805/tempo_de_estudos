@@ -1,0 +1,22 @@
+<div class="textosEmString" hidden>{{resumo.corpo}}</div>
+<div class="container">
+  <div class="text-center">
+    <h4>Assunto: <b>{{resumo.assunto}}</b></h4>
+    <h3>{{resumo.titulo}}</h3>
+  </div>
+  <div class="textosEmHtml">{{resumo.corpo}}</div>
+  <div class="col-sm">
+
+  </div>
+</div> 
+
+
+<script>
+  const x = document.getElementsByClassName("textosEmString").length
+  var resumosEmString = document.getElementsByClassName("textosEmString")
+  var i = 0;
+  while(i<x){
+    document.getElementsByClassName("textosEmHtml")[i].innerHTML = document.getElementsByClassName("textosEmString")[i].innerText
+    i++;
+  }
+</script>

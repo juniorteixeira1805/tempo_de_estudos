@@ -1,0 +1,32 @@
+<div class="mx-4 text-center">
+    <h3 class="ml-1"><b>Histórico</b></h3>
+    <div class="dropdown-divider col-sm-10" style="margin: 0 auto;"></div>
+    <table class="table table-bordered col-sm-10  table-dark mt-4" style="margin: 0 auto;">
+    <thead>
+      <tr class="text-center">
+        <th scope="col-1">Tempo estudado</th>
+        <th scope="col">Inicio</th>
+        <th scope="col">Termino</th>
+        <th scope="col">Atividade</th>
+        <th scope="col">SubAtividade</th>
+        <th scope="col">Método</th>
+        <th scope="col">Data</th>
+      </tr>
+    </thead>
+    <tbody>
+{{#each users}}
+    {{#each tempos}}
+        <tr class="text-center">
+            <td>{{tempoEstudado}}</td>
+            <td>{{inicio}}</td>
+            <td>{{termino}}</td>
+            <td>{{tipo}}</td>
+            <td>{{subTipo}}</td>
+            <td>{{metodo}}</td>
+            <td>{{novaData}}</td>
+        </tr>
+    {{/each}}
+    {{/each}}
+    </tbody>
+  </table>
+</div>

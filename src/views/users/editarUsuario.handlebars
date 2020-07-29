@@ -1,51 +1,63 @@
 <div class="row">
-    <div class="col-sm"></div>
-    <div class="col-sm-10">
-        <div class="card bg-dark" style="box-shadow: 11px 9px 7px rgba(50, 50, 50, 0.77);">
-            <div class="card-body">
-                <form action="/authUser/editPerfil" method="POST">
-                <div class="alert alert-warning" role="alert" style="text-align: center;">
-                Todos os campos com "*" são obrigatorios!
-                </div>
-                    <div class="row my-4">
-                        <div class="col-sm">
-                            <label for="name" class="text-muted">Nome e Sobrenome*</label>
-                            <input type="name" name="name" id="name" class="form-control" value="{{user.name}}" placeholder="Informe o nome e sobrenome">
-                        </div>
-                    </div>
-
-                    <div class="row my-4">
-                        <div class="col-sm">
-                            <label for="email" class="text-muted">Curso*</label>
-                            <input type="text" name="curso" id="curso" class="form-control" value="{{user.curso}}" placeholder="Informe o curso ou se concurseira(o)">
-                        </div>
-                    </div>
-
-                    <div class="row my-4">
-                        <div class="col-sm">
-                            <label class="text-muted">Insira um endereço de uma foto</label>
-                            <input type="text" name="foto" id="foto" class="form-control" value="{{user.foto}}" placeholder="Insira um url de uma foto de uma rede social">
-                        </div>
-                    </div>
-
-                    <div class="row my-4">
-                        <div class="col-sm">
-                            <label for="email" class="text-muted">E-mail*</label>
-                            <input type="email" name="email" id="email" class="form-control" value="{{user.email}}" placeholder="Informe o email">
-                        </div>
-                    </div>
-                    <input type="hidden" name="id" value="{{user._id}}">
-
-                    <div class="row my-4">
-                        <div class="col-sm">
-                            <label for="password" class="text-light">Senha*</label>
-                            <input type="password" name="password" id="password" class="form-control" placeholder="Informe a senha" required>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-outline-light">Cadastrar</button>
-                </form>
+    <div class="card bg-dark col-sm-8" style="box-shadow: 11px 9px 7px rgba(50, 50, 50, 0.77); margin: 0 auto;">
+        <div class="card-body">
+            <form action="/authUser/editPerfil" method="POST">
+            <div class="alert alert-warning" role="alert" style="text-align: center;">
+            Todos os campos com "*" são obrigatorios!
             </div>
-        </div>     
-    </div>
-    <div class="col-sm"></div>
+                <div class="row my-4">
+                    <div class="col-sm">
+                        <label for="name" class="text-light">Nome e Sobrenome*</label>
+                        <input type="text" name="name" id="name" value="{{user.name}}"  class="form-control" placeholder="Ex.: Monica Geller" required>
+                    </div>
+                        <div class="col-sm">
+                        <label for="cidade" class="text-light">Cidade</label>
+                        <input type="text" name="cidade" id="cidade" value="{{user.cidade}}"  class="form-control" placeholder="Ex.: Cidade/Estado" required>
+                    </div>
+                </div>
+
+                <div class="row my-4">
+                    <div class="col-sm">
+                        <label for="bio" class="text-light">Bio</label>
+                        <textarea class="form-control" name="bio" value="{{user.bio}}"  id="bio" placeholder="O que você tem a dizer sobre você?" rows="3"></textarea>
+                    </div>
+                    <div class="col-sm">
+                        <label for="objetivo" class="text-light">Objetivo</label>
+                        <textarea class="form-control" id="objetivo" value="{{user.objetivo}}"  name="objetivo" placeholder="Motivo pelo qual estuda?" rows="3"></textarea>
+                    </div>
+                </div>
+
+                <div class="row my-4">
+                    <div class="col-sm">
+                        <label for="email" class="text-light">Curso*</label>
+                        <input type="text" name="curso" id="curso" value="{{user.curso}}"  class="form-control" placeholder="Informe o curso ou se é concurseira(o)" required>
+                    </div>
+                </div>
+
+                <div class="row my-4">
+                    <div class="col-sm">
+                        <label class="text-light">Insira um endereço de uma foto</label>
+                        <input type="text" name="foto" id="foto" value="{{user.foto}}"  class="form-control" placeholder="Insira um url de uma foto de uma rede social">
+                    </div>
+                </div>
+
+                <div class="row my-4">
+                    <div class="col-sm">
+                        <label for="email" class="text-light">E-mail*</label>
+                        <input type="email" name="email" id="email" value="{{user.email}}"  class="form-control" placeholder="Ex.: Ross@gmail.com" required>
+                    </div>
+                </div>
+
+                <div class="row my-4">
+                    <div class="col-sm">
+                        <label for="password" class="text-light">Senha*</label>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Informe a senha" required>
+                    </div>
+                </div>
+                    <button type="submit" class="btn btn-success text-light">Cadastrar</button>
+                
+            </form>
+        </div>
+    </div>     
 </div>
+

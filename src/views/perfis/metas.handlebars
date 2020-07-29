@@ -1,0 +1,22 @@
+<!-- Button trigger modal -->
+  <div class="container text-center">
+    <h3 >Metas</h3>
+    <div class="dropdown-divider"></div>
+      <div class="card-deck my-2">
+        {{#each metas}}
+        {{#if privacidade}}
+            {{else}}
+            <div class="col-sm">
+                <div class="toast bg-dark" role="alert" aria-live="assertive" aria-atomic="true" data-delay="9999999999">
+                <div class="toast-header">
+                  <strong class="mr-auto">Data meta: {{dataMeta}}</strong>
+                </div>
+                <div class="toast-body text-light ">
+                  <p>{{atividade}}</p>
+                </div>
+              </div>         
+            </div>
+            {{/if}}
+          {{/each}}
+      </div>
+  </div>

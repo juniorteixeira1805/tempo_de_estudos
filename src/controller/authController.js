@@ -2,10 +2,10 @@
     const express = require('express');
 
     const User = require('../models/User');
-
     const Atividade = require('../models/Atividade');
-
     const SalaIndividual = require('../models/salaIndividual');
+    const Resumos = require('../models/Resumo');
+    const Metas = require('../models/Meta');
 
     const router = express.Router();
 
@@ -118,6 +118,16 @@
             Atividade.deleteMany({ estudante: req.body.id }, function (err) { //procurando todas as collections que tem o id que vem do body (usuario) como estudante
                 console.log(req.user.name + " deletou as atividades")
             })
+
+        //--Deletando do banco as atividades do usuario que será deletado--//
+        Resumos.deleteMany({ estudante: req.body.id }, function (err) { //procurando todas as collections que tem o id que vem do body (usuario) como estudante
+            console.log(req.user.name + " deletou as Resumos")
+        })
+
+        //--Deletando do banco as atividades do usuario que será deletado--//
+        Metas.deleteMany({ estudante: req.body.id }, function (err) { //procurando todas as collections que tem o id que vem do body (usuario) como estudante
+            console.log(req.user.name + " deletou as Metas")
+        })
 
         //--Deletando do banco a sala individual do usuario que será deletado--//
             SalaIndividual.deleteOne({ responsavel: req.body.id }, function (err) { //procurando todas as collections que tem o id que vem do body (usuario) como estudante
