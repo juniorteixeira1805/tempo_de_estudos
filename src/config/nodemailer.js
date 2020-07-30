@@ -16,7 +16,7 @@ module.exports = {
         //-- Enviando o e-mail do usuario para o email do devorion --//
         transporter.sendMail({
             from: "Improdutiva Estudos LTDA <devorion@estude.live>",
-            to: ["devorion@estude.live"],
+            to: ["devorion@gmail.com"],
             subject: assunto,
             text: texto+" De: "+usuario+ "; E-mail: "+email,
             html: ''
