@@ -109,7 +109,7 @@ module.exports = {
 
         if(horaAtual == "3"){
             console.log("o sistema verificou se mudou o dia: " + true +" às: " + horaAtual)
-            await User.updateMany({dia: 0}, function(err, res) {//-- zerando as horas diarias --//
+            await User.updateMany({historico: {dia: 0}}, function(err, res) {//-- zerando as horas diarias --//
                 console.log("dia atualizado")
             });
 
@@ -136,7 +136,7 @@ module.exports = {
 
         if(diaDaSemana == "1" && horaAtual == "3"){
             console.log("o sistema verificou se mudou a semana: " + true +" às: " + horaAtual)
-            await User.updateMany({semana: 0}, function(err, res) {
+            await User.updateMany({historico: {semana: 0}}, function(err, res) {
                 console.log("A semana foi atualizada")
             });
 
@@ -157,7 +157,7 @@ module.exports = {
 
         if(diaAtual == "1" && horaAtual == "3"){
             console.log("o sistema verificou se mudou o mes: " + true +" às: " + horaAtual)
-            await User.updateMany({mes: 0}, function(err, res) {//-- zerando as horas diarias --//
+            await User.updateMany({historico: {mes: 0}}, function(err, res) {//-- zerando as horas diarias --//
                 console.log("o sistema verificou se mudou o mes: " + true +" às: " + horaAtual)
             });
 
