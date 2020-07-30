@@ -1,4 +1,10 @@
 <div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/user/home">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Rank geral</li>
+    </ol>
+  </nav>
   {{#if user.privacidade.rank}}
     <!-- Usuarios que não são privados verão está pagina-->
       <div class="table-responsive-sm text-center">

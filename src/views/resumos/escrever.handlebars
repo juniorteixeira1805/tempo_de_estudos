@@ -1,9 +1,17 @@
 <div class="mx-4">
+    <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/user/home">Home</a></li>
+        <li class="breadcrumb-item"><a href="/tempo/salaIndividual">Minha sala de estudos</a></li>
+        <li class="breadcrumb-item"><a href="/resumo/meus-resumos">Meus resumos</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Escreve novo resumo</li>
+    </ol>
+    </nav>
     <div class="alert text-center alert-warning" role="alert">
     Os campos que possuem '*' são obrigatórios.
     </div>
     <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Adicionar tag não existente.">
-        <a href="/resumo/adicionar-tag" type="button" target="_blank" class="btn btn-outline-light my-1">Adicionar tag</a>
+        <a href="/resumo/adicionar-tag" type="button" target="_blank" class="btn btn-outline-dark my-1">Adicionar tag</a>
     </span>
     <form action="/resumoP/registerResumo" method="POST">
         <div class="form-group sm">
@@ -17,11 +25,11 @@
                     </select>                
                 </div>
                 <div class="col">
-                    <label for="name" class="text-light">Assunto*</label>
+                    <label for="name" class="text-dark">Assunto*</label>
                     <input type="text" name="assunto" class="form-control" placeholder="Sobre qual assunto será o resumo" required>
                 </div>
             </div>
-            <label for="name" class="text-light">Titulo*</label>
+            <label for="name" class="text-dark">Titulo*</label>
             <input type="text" name="titulo" id="name" class="form-control my-1" placeholder="Qual o titulo do resumo" required>
             <label for="corpo">Corpo*</label>
             <div class="bg-dark text-light">
