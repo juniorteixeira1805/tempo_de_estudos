@@ -103,15 +103,6 @@ const io = require('socket.io')(server)
     funcdata.verifcaSemana();
     funcdata.verifcaMes();
 
-// configurando o socket
-    // configurando o socket
-
-        io.on('connection', socket => {
-            socket.on('sendMessage' , data => {
-                socket.broadcast.emit('receivedMessage', data)
-                cont = false
-            })
-        })
 //--Rota para renderizar pagina de login--(Tem que ser retirada daqui)//
         app.get('/', (req, res) =>{
             res.render("./visitantes/pagInicial")
