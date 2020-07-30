@@ -22,7 +22,7 @@ const router = express.Router();
 
         //-- persistindo no banco --//
             new Metas(novaIndividual).save().then( async () => {
-                await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(), evento: "Adicionou nova meta", name: req.user.name, foto: req.user.foto, subtitulo: req.body.titulo, metodo: "", inicio: "", termino: "", neutrinosGerado: 0}}}).then((req, res) => {}).catch((err) => {})
+                await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(), evento: "Adicionou nova meta", name: req.user.name, foto: req.user.foto, subevento: req.body.titulo, metodo: "Tentar", inicio: "--:--", termino: "--:--", neutrinosGerado: 0}}}).then((req, res) => {}).catch((err) => {})
                 console.log(req.user.name+" Criou nova Meta")
                 req.flash("sucess_msg", req.user.name+ ", sua meta foi cadastrada") // apresenta na tela a msg de salvo
                 res.redirect("/meta/minhas-metas") //redireciona para a pagina

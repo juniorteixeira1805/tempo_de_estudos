@@ -350,7 +350,7 @@
         //-- Persistindo no banco de dados --//
             new Atividade(novoTempo).save().then( async () => {
                 //-- registrando evento --//
-                await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(), evento: "adicionou nova atividade ao seu cronograma", name: req.user.name, foto: req.user.foto, subevento: "", metodo: "", inicio: "", termino: "", neutrinosGerado: 0}}}).then((req, res) => {}).catch((err) => {})
+                await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(), evento: "adicionou nova atividade ao seu cronograma", name: req.user.name, foto: req.user.foto, subevento: "", metodo: "", inicio: "--:--", termino: "--:--", neutrinosGerado: 0}}}).then((req, res) => {}).catch((err) => {})
                 console.log(req.user.name + " Acresentou novo atividade ao Cronograma")
                 req.flash("sucess_msg", "atividade salvo com sucesso") // apresenta na tela a msg de salvo
                 res.redirect("/perfis/cronograma") //redireciona para a pagina
@@ -386,7 +386,7 @@
                 //-- adicionando os posntos aos neutrinos --//
                 await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: pontos}}}).then((req, res) => {}).catch((err) => {})
                 //-- registrando evento --//
-                await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(), evento: "Concluio atividade de seu cronograma", name: req.user.name, foto: req.user.foto, subevento: "", metodo: "", inicio: "", termino: "", neutrinosGerado: 3}}}).then((req, res) => {}).catch((err) => {})
+                await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(), evento: "Concluio atividade de seu cronograma", name: req.user.name, foto: req.user.foto, subevento: "", metodo: "", inicio: "--:--", termino: "--:--", neutrinosGerado: 3}}}).then((req, res) => {}).catch((err) => {})
                 console.log(req.user.name + " concluio uma atividade.")
                 req.flash("sucess_msg", "Atividade concluída. Você ganhou:" +pontos+" pontos")
                 
@@ -421,7 +421,7 @@
             await User.updateOne({_id: req.user._id}, {recado: req.body.recado}, function(err, res) {});
 
             //-- registrando evento --//
-            await User.findOneAndUpdate({_id: req.user._id}, {$set: {meusEventos: {dateCreater: new Date(), evento: "Registrou um novo recado", name: req.user.name, foto: req.user.foto, subevento: "", metodo: "", inicio: "", termino: "", neutrinosGerado: 0}}}).then((req, res) => {}).catch((err) => {})
+            await User.findOneAndUpdate({_id: req.user._id}, {$set: {meusEventos: {dateCreater: new Date(), evento: "Registrou um novo recado", name: req.user.name, foto: req.user.foto, subevento: "", metodo: "", inicio: "--:--", termino: "--:--", neutrinosGerado: 0}}}).then((req, res) => {}).catch((err) => {})
 
             console.log(req.user.name + " Registrou recado")
             req.flash("sucess_msg", "Seu recado foi salvo.") // apresenta na tela a msg de salvo
