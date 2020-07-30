@@ -217,12 +217,14 @@
         <div class="card-body text-dark bg-transparent">
           <p class="m-0 p-0">Atividade: {{evento}}</p>
           <p class="m-0 p-0">Subatividade: {{subevento}}</p>
-          <p class="m-0 p-0">Hoarario da atividade: {{inicio}} - {{termino}}</p>
-          <p class="m-0 p-0">Metodo: {{metodo}}</p>
+          <p class="m-0 p-0">Horário da atividade: {{inicio}} - {{termino}}</p>
+          <p class="m-0 p-0">Método: {{metodo}}</p>
           <p class="m-0 p-0">Neutrinos gerados pela atividade: {{neutrinosGerado}}</p>
         </div>
       </div>
     </div>
+{{else}}
+<div class="alert alert-warning text-center">Enturme um amigo para acompanhar sua rotina de estudos. Barra superior -> Turma -> Enturma novo amigo</div>
 {{/each}}
 
 </div>
