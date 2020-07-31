@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>CodePen - A Pen by  Jesus Soto</title>
-  <link rel="stylesheet" href="./system/style.css">
 <style>
   @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300);
 /*
@@ -1640,7 +1639,7 @@ body {
         </div>
       </div>
     </div>
-    <div class="neutrinos"hidden>3000</div>
+    <div class="neutrinos"hidden>{{user.historico.neutrinos}}</div>
   </body>
 <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
@@ -1691,7 +1690,6 @@ body {
 nav = document.getElementsByClassName("remov")
 nav[0].setAttribute("hidden", "hidden")
 nav[1].setAttribute("hidden", "hidden")
-nav[2].setAttribute("hidden", "hidden")
 
 const meumes = parseInt(document.getElementsByClassName("neutrinos")[0].innerText)
   if(meumes > 250){
