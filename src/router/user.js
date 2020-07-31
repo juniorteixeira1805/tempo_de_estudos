@@ -21,10 +21,20 @@ const router = express.Router();
         res.render("./users/login")
     });
 
-        //--Rota para renderizar pagina de login//
-        router.get('/conquistas', eAdmin , (req, res) =>{
-            res.render("./visitantes/index")
-        });
+//--Rota para renderizar pagina de login//
+    router.get('/conquistas', eAdmin , (req, res) =>{
+        res.render("./visitantes/conquistas")
+    });
+
+//--Rota para renderizar pagina de login//
+    router.get('/sistema-solar', eAdmin , (req, res) =>{
+        res.render("./visitantes/index")
+    });
+
+//--Rota para renderizar pagina de login//
+    router.get('/planetas', eAdmin , (req, res) =>{
+        res.render("./visitantes/planetas")
+    });
 
 //-- Rota que renderiza o registro de usuario --//
 router.get('/registrodeusuario', (req, res) => {

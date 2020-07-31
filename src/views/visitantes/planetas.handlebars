@@ -1,0 +1,34 @@
+<script>
+nav = document.getElementsByClassName("remov")
+nav[0].setAttribute("hidden", "hidden")
+nav[1].setAttribute("hidden", "hidden")
+</script>
+
+
+<iframe src="http://repositorioimg.devorion.repl.co/" title="description" style="border: none; width: 100%; height: 700px;">
+<div class="neutrinos">1500</div>
+<script>
+  const meumes = parseInt(document.getElementsByClassName("neutrinos")[0].innerText)
+  if(meumes > 250){
+      document.getElementsByClassName("planet2")[0].removeAttribute("disabled", "disabled");
+  } 
+    if((meumes > 499)){
+        document.getElementsByClassName("planet3")[0].removeAttribute("disabled", "disabled");
+    
+    }
+    if(meumes > 749){
+      document.getElementsByClassName("planet4")[0].removeAttribute("disabled", "disabled");
+    }
+    if(meumes > 999){
+      document.getElementsByClassName("planet5")[0].removeAttribute("disabled", "disabled");
+    }
+    if(meumes > 1499){
+      document.getElementsByClassName("planet6")[0].removeAttribute("disabled", "disabled");
+    } 
+    if(meumes > 1999){
+      document.getElementsByClassName("planet7")[0].removeAttribute("disabled", "disabled");
+    }
+      if(meumes > 2999){
+      document.getElementsByClassName("planet8")[0].removeAttribute("disabled", "disabled");
+    }
+  </script>
