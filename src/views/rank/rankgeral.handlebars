@@ -5,6 +5,40 @@
       <li class="breadcrumb-item active" aria-current="page">Rank geral</li>
     </ol>
   </nav>
+  <!-- Small modal -->
+  <button type="button" class="btn btn-dark my-2" data-toggle="modal" data-target=".bd-example-modal-lg">Como funciona</button>
+
+  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content bg-dark text-light">
+        <div class="container">
+          <h1>Sistema de Neutrinos</h1>
+          <p>A classificação do rank geral é dado conforme a quantidade de Neutrinos dos participantes. Quannto mais Neutrinos o participante tiver, melhor colocado ele estará.</p>
+          <p>Este sistema funciona da seguinte forma:</p>
+          <ul>
+            <li>
+              <p>Quantidade de minutos estudados e de aula é dividido por 10. EX: Estudou/AssistiuAula 100 minutos, a quantidade de Neutrinos recebidos será 100/10 = 10 Neutrinos</p>
+            </li>
+            <li>
+              <p>Quantidade de minutos de Leitura e de pesquisa é dividido por 6. EX: Leu/Pesquisou 100 minutos, a quantidade de Neutrinos recebidos será 100/10 = 16,67 Neutrinos</p>
+            </li>
+            <li>
+              <p>Quantidade de minutos de Exercicios é dividido por 4. EX: Leu/ 100 minutos, a quantidade de Neutrinos recebidos será 100/10 = 25 Neutrinos</p>
+            </li>
+          </ul>
+          <h3>Outras atividade que geram Neutrinos</h3>
+          <ul>
+            <li>
+              <p><b>Resumos:</b> A cada resumo NÃO PRIVADO vale 30 Neutrinos</p>
+            </li>
+            <li>
+              <p><b>Concluir atividade diária:</b> A cada atividade diária concluida vale 3 Neutrinos</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
   {{#if user.privacidade.rank}}
     <!-- Usuarios que não são privados verão está pagina-->
       <div class="table-responsive-sm text-center">

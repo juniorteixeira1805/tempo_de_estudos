@@ -21,6 +21,11 @@ const router = express.Router();
         res.render("./users/login")
     });
 
+        //--Rota para renderizar pagina de login//
+        router.get('/conquistas', eAdmin , (req, res) =>{
+            res.render("./visitantes/index")
+        });
+
 //-- Rota que renderiza o registro de usuario --//
 router.get('/registrodeusuario', (req, res) => {
     res.render("./users/registro")
@@ -120,7 +125,7 @@ router.get('/equipe', (req, res) => {
             });
             req.logout()
             req.flash("sucess_msg", "Deslogado")
-            res.redirect("/user/login")
+            res.redirect("/")
         }catch(err){
             console.log(err)
         }
