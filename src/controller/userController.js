@@ -446,6 +446,12 @@
             });
             await User.updateOne({_id: req.user._id}, {email: req.body.email}, function(err, res) {
             });
+            await User.updateOne({_id: req.user._id}, {bio: req.body.bio}, function(err, res) {
+            });
+            await User.updateOne({_id: req.user._id}, {cidade: req.body.cidade}, function(err, res) {
+            });
+            await User.updateOne({_id: req.user._id}, {objetivo: req.body.objetivo}, function(err, res) {
+            });
             var senha = await bct.hash(req.body.password, 5);
             await User.updateOne({_id: req.user._id}, {password: senha}, function(err, res) {
             });
