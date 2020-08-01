@@ -1,5 +1,7 @@
 //--Importando os modulos--//
     const express = require('express');
+    const multer = require("multer");
+    const path = require("path");
 
     const User = require('../models/User');
     const Atividade = require('../models/Atividade');
@@ -12,6 +14,26 @@
     const passport = require('passport')
 
     const Email = require("../config/nodemailer")
+
+
+    const storage = multer.diskStorage({
+        destination: function(req, file, cb) {
+            cb(null, "./public/uploads/")
+        },
+
+        filename: function(req, file, cb) {
+            var caminho = file.originalname + Date.now() + path.extname(file.originalname)
+            cb(null, caminho)
+            var desti = "/uploads/" + caminho
+            User.findOneAndUpdate({_id: req.user._id}, {foto: desti}).then((req, res) => {}).catch((err) => {})
+        }
+    })
+
+    const upload = multer({storage})
+
+    router.post("/addFoto", upload.single("foto"), async(req, res) => {
+        res.redirect("/perfis/meuperfil")
+    })
 
 //-- Rota para registrar Novo Usuario--//
     router.post('/registerUser', async (req, res) => {

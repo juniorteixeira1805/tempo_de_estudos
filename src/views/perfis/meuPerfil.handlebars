@@ -12,6 +12,15 @@
       <div class="col-sm text-center">
         <img src="{{{user.foto}}}" class="card-img-top border border-secondary rounded-circle" style="width: 45%;">
       </div>
+      <div class="text-center">
+        <form action="/auth/addFoto" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="exampleFormControlFile1">Editar avatar</label>
+            <input type="file" name="foto" class="form-control-file" id="exampleFormControlFile1">
+            <button type="submit" class="btn btn-light">Salvar</button>
+          </div>
+        </form>
+      </div>
         <ul class="list-group list-group-flush " style="border: none;">
           <li class="list-group-item text-center bg-transparent" style="border: none;"><h5 class="card-title">{{user.name}}</h5></li>
           <li class="list-group-item text-center bg-transparent"style="border: none;"><b class="card-title">Neutrinos: {{user.historico.neutrinos}}</b>
