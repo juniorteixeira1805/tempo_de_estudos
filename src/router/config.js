@@ -3,11 +3,9 @@ const router = express.Router();
 
 const {eAdmin} = require("../helpers/eAdmin")
 
-const mongoose = require("mongoose")
-const User = mongoose.model("users")
-
 
 router.get('/config', eAdmin, (req, res) => {
+    console.log(req.user.name + " está na sala de configurações.")
         res.render("./users/config")
         console.log(req.user.name + "Em configurações")
     })

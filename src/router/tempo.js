@@ -31,7 +31,7 @@ const router = express.Router();
         Sala.findOne({responsavel: req.user.id}).then((sala) => {
 
             res.render("./salaIndividual/notas", {sala: sala})
-            console.log(req.user.name + "Está em sua sala")
+            console.log(req.user.name + "Está em sua sala de notas")
 
             }).catch((err) => {
             res.redirect("/user/home")
@@ -42,6 +42,7 @@ const router = express.Router();
 
 //-- Rota que renderiza o registro de usuario --//
     router.get('/aberto', eAdmin, (req, res) => {
+        console.log(req.user.name + " está na sala do tempo.")
         res.render("./users/aberto")
     })
 

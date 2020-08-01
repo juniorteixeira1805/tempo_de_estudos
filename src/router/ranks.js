@@ -15,7 +15,7 @@ const router = express.Router();
         try{
             User.find({}).sort({historico: 1}).sort({mes: 1}).then((usuarios) => {
                 res.render("./rank/rankTempo", {usuarios: usuarios})
-                console.log(req.user.name + " Esta na pagina de rankGeral")
+                console.log(req.user.name + " Esta na pagina por tempo")
                 }).catch((err) => {
                 res.redirect("/user/home")
                 console.log(req.user.name +" deu erro ao entrar no rank por tempo: ", err)

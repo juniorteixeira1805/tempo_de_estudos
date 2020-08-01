@@ -28,7 +28,7 @@ const router = express.Router();
         User.find({_id: req.user._id}).populate('turma').sort({dateCreater: 0}).then((amigos) => {
             
             res.render("./turma/minhaturma", {amigos: amigos})
-            console.log(req.user.name + "Pagina home")
+            console.log(req.user.name + "Pagina da sua turma")
             }).catch((err) => {
             res.redirect("/user/home")
             console.log("deu erro: ", err)
