@@ -99,7 +99,7 @@ module.exports = {
     
         return datadeRecebimento
     },
-
+/*
 //-- Função que verifica o dia se o dia mudou e set 0 na variavel dia do banco de dados --//
     verifcaDia: async function(){ 
 
@@ -109,7 +109,7 @@ module.exports = {
 
         if(horaAtual == "3"){
             console.log("o sistema verificou se mudou o dia: " + true +" às: " + horaAtual)
-            await User.updateMany({historico: {dia: 0}}, function(err, res) {//-- zerando as horas diarias --//
+            await User.updateMany({$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: req.user.user}}}, function(err, res) {//-- zerando as horas diarias --//
                 console.log("dia atualizado")
             });
 
@@ -167,19 +167,5 @@ module.exports = {
         },3600000)
         // hora 3600000
     },
-
-    /*verificaStatus: function(user){
-
-            if(user){
-                console.log("o sistema verificou se mudou o status: " + true)
-                User.updateOne({_id: user.id}, {verificadorOnline: true}, function(err, res) {
-                });
-
-            }else{
-                console.log("o sistema verificou se mudou o status: " + false)
-                User.updateOne({_id: user.id}, {verificadorOnline: false}, function(err, res) {
-                });
-            }
-
-    }*/
+    */
 }

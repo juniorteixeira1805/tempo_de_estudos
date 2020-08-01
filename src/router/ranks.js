@@ -13,7 +13,7 @@ const router = express.Router();
     router.get('/por-tempo', eAdmin, async (req, res) => {
         //-- Passando todos os usuarios para a view --//
         try{
-            User.find({}).sort({historico: -1}).sort({dia: -1}).then((usuarios) => {
+            User.find({}).sort({historico: 1}).sort({mes: 1}).then((usuarios) => {
                 res.render("./rank/rankTempo", {usuarios: usuarios})
                 console.log(req.user.name + " Esta na pagina de rankGeral")
                 }).catch((err) => {
@@ -30,7 +30,7 @@ const router = express.Router();
     router.get('/geral', eAdmin, async (req, res) => {
         //-- Passando todos os usuarios para a view --//
         try{
-            User.find({}).sort({historico: -1}).sort({neutrinos: -1}).then((usuarios) => {
+            User.find({}).sort({historico: 1}).sort({neutrinos: 1}).then((usuarios) => {
                 res.render("./rank/rankgeral", {usuarios: usuarios})
                 console.log(req.user.name + " Esta na pagina de rankGeral")
                 }).catch((err) => {
