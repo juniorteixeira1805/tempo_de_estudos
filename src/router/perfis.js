@@ -24,9 +24,9 @@ router.get('/meuperfil', eAdmin, async (req, res) => {
 
 //-- Rota que renderiza o historico --//
 router.get('/perfil/:id', eAdmin, async (req, res) => {
-    User.findOne({ _id: req.params.id}).sort({dateCreater: -1}).then((users) => {
+    await User.findOne({ _id: req.params.id}).then((users) => {
         res.render("./perfis/perfis", {users: users})
-        console.log(req.user.name + " Esta vizualisando o historico de " +  req.params.id)
+        console.log(req.user.name + " Esta vizualisando o historico de " +  req.params.id + users)
 
         }).catch((err) => {
         res.redirect("/user/home")

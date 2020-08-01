@@ -87,13 +87,7 @@ router.get('/equipe', (req, res) => {
             var tamanhoAmigos = amigosReais.length
             var tamanhoEvento = 0
             var todosEventos = []
-/*
-            console.log(amigosReais[0].meusEventos.length)
-            console.log(amigosReais[0].meusEventos)
-            console.log(amigosReais[1].meusEventos.length)
-            console.log(amigosReais[1].meusEventos[0])
-            
-*/          
+     
         //-- parte responsavel por pegar todos os objetos "meusEventos" e concatenar no vetor todosEventos --//
             while(i < tamanhoAmigos){
                 tamanhoEvento = amigosReais[i].meusEventos.length
@@ -105,7 +99,18 @@ router.get('/equipe', (req, res) => {
                 i++
             }
         //-- ordenando todos os eventos --//
-            todosEventos.sort()
+        function comparar(a, b) {
+            if (a.dateCreater > b.dateCreater ) {
+
+              return -1;
+            }
+            if (a.dateCreater < b.dateCreater ) {
+              return 1;
+            }
+            // a deve ser igual a b
+          }
+            todosEventos.sort(comparar)
+
         
         //-- Pega todas as atividades --//
         var atividades = (await (Atividade.find({estudante: req.user._id})))
