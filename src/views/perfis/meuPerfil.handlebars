@@ -1,3 +1,4 @@
+<style></style>
 <div class="container">
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -10,30 +11,23 @@
   <div class="row">
     <div class="col-sm-4 mb-4" style="">
       <div class="col-sm text-center">
-        <img src="{{{user.foto}}}" class="card-img-top border border-secondary rounded-circle" style="width: 45%;">
+        <a href="/dist/index.html">
+        <img src="{{{user.foto}}}" class="card-img-top border border-secondary rounded-circle" style="width: 150px; height: 150px;">
+      </a>
       </div>
-      <div class="text-center">
-        <form action="/auth/addFoto" method="POST" enctype="multipart/form-data">
-          <div class="form-group">
-            <label for="exampleFormControlFile1">Editar avatar</label>
-            <input type="file" name="foto" class="form-control-file" id="exampleFormControlFile1">
-            <button type="submit" class="btn btn-light">Salvar</button>
-          </div>
-        </form>
-      </div>
-        <ul class="list-group list-group-flush " style="border: none;">
-          <li class="list-group-item text-center bg-transparent" style="border: none;"><h5 class="card-title">{{user.name}}</h5></li>
-          <li class="list-group-item text-center bg-transparent"style="border: none;"><b class="card-title">Neutrinos: {{user.historico.neutrinos}}</b>
+        <ul class="list-group list-group-flush m-0 p-0" style="border: none;">
+          <li class="list-group-item text-center bg-transparent m-0 p-0" style="border: none;"><h5 class="card-title">{{user.name}}</h5></li>
+          <li class="list-group-item text-center bg-transparent m-1 p-1"style="border: none;"><b class="card-title">Neutrinos: {{user.historico.neutrinos}}</b>
             <div class="spinner-grow spinner-grow-sm text-info" role="status">
               <span class="sr-only"></span>
             </div>
           </li>
-          <li class="list-group-item text-center bg-transparent"style="border: none;"><p class="card-text">email:{{#if user.privacidade.sobre}} {{user.email}} {{else}} Privado {{/if}}</p></li>
-          <li class="list-group-item text-center bg-transparent" style="border: none;"><p class="card-text">Curso: {{#if user.privacidade.sobre}} {{user.curso}} {{else}} Privado {{/if}}</p></li>
-          <li class="list-group-item text-center bg-transparent" style="border: none;"><p class="card-text">Cidade: {{#if user.privacidade.sobre}} {{user.cidade}} {{else}} Privado {{/if}}</p></li>
-          <li class="list-group-item text-center bg-transparent" style="border: none;"><p class="card-text">Recado: {{#if user.privacidade.sobre}} {{user.recado}} {{else}} Privado {{/if}}</li>
-          <li class="list-group-item text-center bg-transparent" style="border: none;"><p class="card-text">Bio: {{#if user.privacidade.sobre}} {{user.bio}} {{else}} Privado {{/if}}</p></li>
-          <li class="list-group-item text-center bg-transparent" style="border: none;"><p class="card-text">Objetivo: {{#if user.privacidade.sobre}} {{user.objetivo}} {{else}} Privado {{/if}}</p></li>
+          <li class="list-group-item text-center bg-transparent m-1 p-0"style="border: none;"><p class="card-text">email:{{#if user.privacidade.sobre}} {{user.email}} {{else}} Privado {{/if}}</p></li>
+          <li class="list-group-item text-center bg-transparent m-1 p-0" style="border: none;"><p class="card-text">Curso: {{#if user.privacidade.sobre}} {{user.curso}} {{else}} Privado {{/if}}</p></li>
+          <li class="list-group-item text-center bg-transparent m-1 p-0" style="border: none;"><p class="card-text">Cidade: {{#if user.privacidade.sobre}} {{user.cidade}} {{else}} Privado {{/if}}</p></li>
+          <li class="list-group-item text-center bg-transparent m-1 p-0" style="border: none;"><p class="card-text">Recado: {{#if user.privacidade.sobre}} {{user.recado}} {{else}} Privado {{/if}}</li>
+          <li class="list-group-item text-center bg-transparent m-1 p-0 " style="border: none;"><p class="card-text">Bio: {{#if user.privacidade.sobre}} {{user.bio}} {{else}} Privado {{/if}}</p></li>
+          <li class="list-group-item text-center bg-transparent m-1 p-0" style="border: none;"><p class="card-text">Objetivo: {{#if user.privacidade.sobre}} {{user.objetivo}} {{else}} Privado {{/if}}</p></li>
           <li class="text-center"><a class=" text-dark" href="/config/config"><b>Configurações da conta
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tools" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" d="M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z"/>
@@ -42,7 +36,7 @@
           </b></a></li>
         </ul>
     </div>
-    <div class="col-sm-5 mb-4">
+    <div class="col-sm-5 mt-4">
       <a href="/perfis/historico/{{user._id}}" class="text-dark">
         <div class="media">
             <svg class="text-secondary" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-inboxes-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -55,7 +49,7 @@
           </div>
         </div>
       </a>
-      <div class="dropdown-divider"></div>
+      <div class="dropdown-divider mb-3"></div>
       <a href="/perfis/cronograma" class="text-dark">
       <div class="media">
           <svg class="text-secondary" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-file-text-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -67,7 +61,7 @@
         </div>
       </div>
       </a>
-      <div class="dropdown-divider"></div>
+      <div class="dropdown-divider mb-3"></div>
       <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Está funcionalidade estará disponivel em breve.">
         <div class="media">
           <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-graph-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -77,11 +71,11 @@
           </svg>
           <div class="media-body">
             <h3 class="ml-1"><b>Evolução</b></h3>
-            
+            Funcionalidade em andamento.
           </div>
         </div>
       </span>
-      <div class="dropdown-divider"></div>
+      <div class="dropdown-divider mb-3"></div>
       <a href="/user/conquistas" class="text-dark">
         <div class="media">
             <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-gem" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

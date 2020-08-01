@@ -2,7 +2,6 @@
     const express = require('express');
     const multer = require("multer");
     const path = require("path");
-
     const User = require('../models/User');
     const Atividade = require('../models/Atividade');
     const SalaIndividual = require('../models/salaIndividual');
@@ -26,7 +25,7 @@
             var caminho = file.originalname + Date.now() + path.extname(file.originalname)
             cb(null, caminho)
             var desti = "/uploads/" + caminho
-            User.findOneAndUpdate({_id: req.user._id}, {foto: desti}).then((req, res) => {}).catch((err) => {})
+            User.updateOne({_id: req.user._id}, {foto: desti}).then((req, res) => {}).catch((err) => {})
         }
     })
 
