@@ -350,7 +350,6 @@
         //-- Persistindo no banco de dados --//
             new Atividade(novoTempo).save().then( async () => {
                 //-- registrando evento --//
-                await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(), evento: "adicionou nova atividade ao seu cronograma", name: req.user.name, foto: req.user.foto, subevento: "", metodo: "", inicio: "--:--", termino: "--:--", neutrinosGerado: 0}}}).then((req, res) => {}).catch((err) => {})
                 console.log(req.user.name + " Acresentou novo atividade ao Cronograma")
                 req.flash("sucess_msg", "atividade salvo com sucesso") // apresenta na tela a msg de salvo
                 res.redirect("/perfis/cronograma") //redireciona para a pagina

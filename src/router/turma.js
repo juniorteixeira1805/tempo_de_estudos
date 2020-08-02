@@ -12,12 +12,13 @@ const router = express.Router();
 
 //--Rota para renderizar pagina de login//
     router.get('/adicionar-amigo', eAdmin, (req, res) =>{
-
-        User.find({}).sort({name: 0}).then(async (usuarios) => {
-            res.render("./turma/addamigo", {usuarios: usuarios})
-            console.log(req.user.name + "Pagina de adicionar amigos")
+        User.find({email: req.query.email}).then(async (usuarios) => {
+                req.flash("sucess_msg", "Encontrado resultado  da busca.") // apresenta na tela a msg de salvo
+                res.render("./turma/addamigo", {usuarios: usuarios})
+                console.log(req.user.name + "Pagina de adicionar amigos")
         }).catch((err) => {
-            res.render("./users/home")
+            req.flash("Houve um erro ao listar o usuario. Entre em contato com o suporte.") // apresenta uma mensagem de erro
+            res.render("./turma/minhaturma")
         })
         
     });
