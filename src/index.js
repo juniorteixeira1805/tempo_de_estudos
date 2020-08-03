@@ -53,7 +53,10 @@ const io = require('socket.io')(server)
             res.locals.error_msg = req.flash("error_msg") //variavel global para mensagem de erro para ser exibida
             res.locals.error = req.flash("error")
             res.locals.user = req.user || null;
-            next()
+            if ((req.headers["x-forwarded-proto"] || "").endsWith("http")) //Checa se o protocolo informado nos headers é HTTP
+                res.redirect(`https://${req.hostname}${req.url}`); //Redireciona pra HTTPS
+            else //Se a requisição já é HTTPS
+                next();
         })
 
     //body-parser
@@ -107,6 +110,7 @@ const io = require('socket.io')(server)
         app.get('/', (req, res) =>{
             res.render("./visitantes/pagInicial")
         });
+        
     //conectando o servidor a porta 
         const PORT = process.env.PORT || 3000
         server.listen(PORT, () => {

@@ -5,12 +5,13 @@
       <li class="breadcrumb-item active" aria-current="page">Minha turma</li>
     </ol>
   </nav>
-  <form class="form-inline my-2" name="email" action="/turma/adicionar-amigo" method="GET">
-    <input class="form-control mr-sm-2 col-6" name="email" type="search" placeholder="Adicione o E-mail para adicionar novo amigo" aria-label="Search" required>
-    <button class="btn btn-dark my-2 my-sm-0" type="submit">Procurar</button>
+  <h3 for="email" class="text-dark">Procurar novo amigo: </h3>
+  <form class="form-inline mb-2" name="email" action="/turma/adicionar-amigo" method="GET">
+    <input class="form-control col-sm-6" id="email" name="email" type="search" placeholder="Ex.: joeytribbiani@gmail.com" aria-label="Search" required>
+    <button class="btn btn-dark mx-2 my-sm-0" type="submit">Procurar</button>
   </form>
   <div class="table-responsive-sm text-center">
-    <table class="tatable table-dark table-hover col-sm-12 mt-2">
+    <table class="table table-dark table-hover">
     <thead class="mb-2">
       <tr class="text-center">
         <th scope="col-1"></th>

@@ -164,7 +164,7 @@
                 console.log("contadeletada")
             }).catch((err) => {
                 req.flash("error_msg", "erro ao deletar a conta. Contate-nos.")
-                res.redirect("/user/perfil")
+                res.redirect("/perfis/perfil")
                 console.log(err)
             });
 

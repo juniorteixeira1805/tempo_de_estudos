@@ -77,9 +77,14 @@ router.get('/equipe', (req, res) => {
 
             //-- pegando os vetores com o eventos dos amigos --//
             while(i < tam){
-                amigosReais.push(await User.findOne({_id: vetorIds[i]}).select('meusEventos'))
+                verf = (await User.findOne({_id: vetorIds[i]}).select('meusEventos'))
+                console.log(verf)
+                if(!(verf == null)){
+                    amigosReais.push(await User.findOne({_id: vetorIds[i]}).select('meusEventos'))
+                } 
                 i++
             }
+
 
             i=0
             var j=0
