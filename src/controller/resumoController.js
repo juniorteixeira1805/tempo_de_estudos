@@ -103,6 +103,14 @@ const router = express.Router();
                 totalExercicio = await 0 + parseInt(req.user.historico.totalExercicio)
                 pontos = req.user.historico.pts - 30
                 await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, pts: pontos}}}).then((req, res) => {}).catch((err) => {})
+                //-- verificando quantos eventos tem --//
+                var eventos = await User.findOne({_id: req.user._id}).select('meusEventos')
+                eventos = eventos.meusEventos
+                var tam = eventos.length
+                //-- se tiver mais que 4 eventos o ultimo evento será removido  --//
+                if(tam > 4){
+                    await User.findOneAndUpdate({_id: req.user._id}, { $pop: { "meusEventos" : -1 } }).then((req, res) => {console.log("deu certo")}).catch((err) => {console.log(err)})
+                }
                 await User.findOneAndUpdate({ _id: req.user._id },{ $pull: { meusEventos: { _id: req.body.id }}}).then((req, res) => {}).catch((err) => {})
                 let rsm = req.user.resumos - 1
                 await User.findOneAndUpdate({_id: req.user._id}, {resumos: rsm}).then((req, res) => {}).catch((err) => {})

@@ -22,6 +22,14 @@ const router = express.Router();
 
         //-- persistindo no banco --//
             new Metas(novaIndividual).save().then( async () => {
+                //-- verificando quantos eventos tem --//
+                var eventos = await User.findOne({_id: req.user._id}).select('meusEventos')
+                eventos = eventos.meusEventos
+                var tam = eventos.length
+                //-- se tiver mais que 4 eventos o ultimo evento será removido  --//
+                if(tam > 4){
+                    await User.findOneAndUpdate({_id: req.user._id}, { $pop: { "meusEventos" : -1 } }).then((req, res) => {console.log("deu certo")}).catch((err) => {console.log(err)})
+                }
                 await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(), evento: "Adicionou nova meta", name: req.user.name, foto: req.user.foto, subevento: req.body.titulo, metodo: "Tentar", inicio: "--:--", termino: "--:--", neutrinosGerado: 0}}}).then((req, res) => {}).catch((err) => {})
                 console.log(req.user.name+" Criou nova Meta")
                 req.flash("sucess_msg", req.user.name+ ", sua meta foi cadastrada") // apresenta na tela a msg de salvo

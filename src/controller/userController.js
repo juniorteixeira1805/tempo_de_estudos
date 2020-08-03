@@ -25,6 +25,15 @@
                 minutosTotalNoMes = await tempoTotalEstudado + parseFloat(req.user.historico.mes)        
                 minutosTotalNoTotal = await tempoTotalEstudado + parseFloat(req.user.historico.total)
 
+            //-- verificando quantos eventos tem --//
+                var eventos = await User.findOne({_id: req.user._id}).select('meusEventos')
+                eventos = eventos.meusEventos
+                var tam = eventos.length
+                //-- se tiver mais que 4 eventos o ultimo evento será removido  --//
+                if(tam > 4){
+                    await User.findOneAndUpdate({_id: req.user._id}, { $pop: { "meusEventos" : -1 } }).then((req, res) => {console.log("deu certo")}).catch((err) => {console.log(err)})
+                }
+
                 if(req.body.tipo == "Estudou"){
                 //--  somando minutos ao total --//
                 totalEstudo = await tempoTotalEstudado + parseFloat(req.user.historico.totalEstudo)
@@ -116,6 +125,14 @@
                 minutosTotalNoSemana = await tempoTotalEstudado + parseFloat(req.user.historico.semana)
                 minutosTotalNoMes = await tempoTotalEstudado + parseFloat(req.user.historico.mes)        
                 minutosTotalNoTotal = await tempoTotalEstudado + parseFloat(req.user.historico.total)
+            //-- verificando quantos eventos tem --//
+                var eventos = await User.findOne({_id: req.user._id}).select('meusEventos')
+                eventos = eventos.meusEventos
+                var tam = eventos.length
+            //-- se tiver mais que 4 eventos o ultimo evento será removido  --//
+                if(tam > 4){
+                    await User.findOneAndUpdate({_id: req.user._id}, { $pop: { "meusEventos" : -1 } }).then((req, res) => {console.log("deu certo")}).catch((err) => {console.log(err)})
+                }
 
                 if(req.body.tipo == "Estudou"){
                 //--  somando minutos ao total --//
@@ -384,6 +401,14 @@
                 pontos = req.user.historico.neutrinos + 3
                 //-- adicionando os posntos aos neutrinos --//
                 await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: pontos}}}).then((req, res) => {}).catch((err) => {})
+                //-- verificando quantos eventos tem --//
+                var eventos = await User.findOne({_id: req.user._id}).select('meusEventos')
+                eventos = eventos.meusEventos
+                var tam = eventos.length
+                //-- se tiver mais que 4 eventos o ultimo evento será removido  --//
+                if(tam > 4){
+                    await User.findOneAndUpdate({_id: req.user._id}, { $pop: { "meusEventos" : -1 } }).then((req, res) => {console.log("deu certo")}).catch((err) => {console.log(err)})
+                }
                 //-- registrando evento --//
                 await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(), evento: "Concluio atividade de seu cronograma", name: req.user.name, foto: req.user.foto, subevento: "", metodo: "", inicio: "--:--", termino: "--:--", neutrinosGerado: 3}}}).then((req, res) => {}).catch((err) => {})
                 console.log(req.user.name + " concluio uma atividade.")
@@ -418,9 +443,6 @@
         try{        
             //-- Atualizando recado --//
             await User.updateOne({_id: req.user._id}, {recado: req.body.recado}, function(err, res) {});
-
-            //-- registrando evento --//
-            await User.findOneAndUpdate({_id: req.user._id}, {$set: {meusEventos: {dateCreater: new Date(), evento: "Registrou um novo recado", name: req.user.name, foto: req.user.foto, subevento: "", metodo: "", inicio: "--:--", termino: "--:--", neutrinosGerado: 0}}}).then((req, res) => {}).catch((err) => {})
 
             console.log(req.user.name + " Registrou recado")
             req.flash("sucess_msg", "Seu recado foi salvo.") // apresenta na tela a msg de salvo
