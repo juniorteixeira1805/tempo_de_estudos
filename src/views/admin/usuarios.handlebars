@@ -1,14 +1,51 @@
-{{#each usuarios}}
-<p>{{this.name}}</p>
 
-{{else}}
+<div class="container">
+    <h2>Usuário e e-mail</h2>
+    {{#each usuarios}}
+    <div class="my-2">
+        <a>{{name}} {{email}}</a>
+    </div>
+    {{/each}}
 
+    <h2>Usuário e ultima data de entrada</h2>
+    {{#each usuarios}}
+    <div class="user my-2">
+        <a>{{name}} <b class="newDate"></b> <b class="data" hidden>{{dataVizualização}}</b></a>
+    </div>
+    {{/each}}
+</div>
 
-{{/each}}
-{{#each usuarios}}
-<p>{{this.email}}</p>
+<script>  
+    function novadata(data){
+        
+        var recebimento = new Date(data) //-- Criando data do momento --//
+        var dia = ( recebimento.getDate()).toString() //-- extraindo o dia da data criada --//
 
-{{else}}
+    //-- Acrescentando os 0 para quando tiver um algarismo --//
+        if(dia < 10){
+            dia = "0" + dia
+        }
+        var mes = (1 + recebimento.getMonth()).toString()
+        if(mes < 10){
+            mes = "0" + mes
+        }
 
+    //-- Extraindo o ano --//
+        var ano = recebimento.getFullYear().toString()
+        
+    
+        var datadeRecebimento = dia + "/" + mes + "/" + ano //-- Juntando tudo --//
+    
+        return datadeRecebimento
+    }
 
-{{/each}}
+    const quantUser = document.getElementsByClassName("user").length
+    var novaData = ""
+    i = 0
+
+    while(i<quantUser){
+        novaData = novadata(document.getElementsByClassName("data")[i].innerHTML)
+        document.getElementsByClassName("newDate")[i].innerHTML = novaData
+        i++
+    }
+</script>

@@ -13,7 +13,7 @@ const router = express.Router();
     router.get('/por-tempo', eAdmin, async (req, res) => {
         //-- Passando todos os usuarios para a view --//
         try{
-            User.find({}).sort({'historico.neutrinos' : 'desc'}).then((usuarios) => {
+            User.find({}).sort({'historico.mes' : 'desc'}).then((usuarios) => {
                 res.render("./rank/rankTempo", {usuarios: usuarios})
                 console.log(req.user.name + " Esta na pagina por tempo")
                 }).catch((err) => {

@@ -1,155 +1,125 @@
-<style></style>
 <div class="container">
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/user/home">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Meu perfil</li>
-  </ol>
-</nav>
-</div>
-<div class="mx-2">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-dark">
+      <li class="breadcrumb-item"><a class="text-light" href="/user/home">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Meu perfil</li>
+    </ol>
+  </nav>
   <div class="row">
-    <div class="col-sm-4 mb-4" style="">
+    <div class="col-sm-4 mb-4">
       <div class="col-sm text-center">
         <a href="/dist/index.html">
         <img src="{{{user.foto}}}" class="card-img-top border border-secondary rounded-circle" style="width: 150px; height: 150px;">
       </a>
       </div>
-        <ul class="list-group list-group-flush m-0 p-0" style="border: none;">
-          <li class="list-group-item text-center bg-transparent m-0 p-0" style="border: none;"><h5 class="card-title">{{user.name}}</h5></li>
-          <li class="list-group-item text-center bg-transparent m-1 p-1"style="border: none;"><b class="card-title">Neutrinos: {{user.historico.neutrinos}}</b>
-            <div class="spinner-grow spinner-grow-sm text-info" role="status">
-              <span class="sr-only"></span>
-            </div>
-          </li>
-          <li class="list-group-item text-center bg-transparent m-1 p-0"style="border: none;"><p class="card-text">email:{{#if user.privacidade.sobre}} {{user.email}} {{else}} Privado {{/if}}</p></li>
-          <li class="list-group-item text-center bg-transparent m-1 p-0" style="border: none;"><p class="card-text">Curso: {{#if user.privacidade.sobre}} {{user.curso}} {{else}} Privado {{/if}}</p></li>
-          <li class="list-group-item text-center bg-transparent m-1 p-0" style="border: none;"><p class="card-text">Cidade: {{#if user.privacidade.sobre}} {{user.cidade}} {{else}} Privado {{/if}}</p></li>
-          <li class="list-group-item text-center bg-transparent m-1 p-0" style="border: none;"><p class="card-text">Recado: {{#if user.privacidade.sobre}} {{user.recado}} {{else}} Privado {{/if}}</li>
-          <li class="list-group-item text-center bg-transparent m-1 p-0 " style="border: none;"><p class="card-text">Bio: {{#if user.privacidade.sobre}} {{user.bio}} {{else}} Privado {{/if}}</p></li>
-          <li class="list-group-item text-center bg-transparent m-1 p-0" style="border: none;"><p class="card-text">Objetivo: {{#if user.privacidade.sobre}} {{user.objetivo}} {{else}} Privado {{/if}}</p></li>
-          <li class="text-center"><a class=" text-dark" href="/config/config"><b>Configurações da conta
-            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tools" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" d="M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z"/>
-              <path fill-rule="evenodd" d="M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"/>
-            </svg>
-          </b></a></li>
-        </ul>
-    </div>
-    <div class="col-sm-5 mt-4">
-      <a href="/perfis/historico/{{user._id}}" class="text-dark">
-        <div class="media">
-            <svg class="text-secondary" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-inboxes-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" d="M.125 11.17A.5.5 0 0 1 .5 11H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0 .5.5 0 0 1 .5-.5h5.5a.5.5 0 0 1 .496.562l-.39 3.124A1.5 1.5 0 0 1 14.117 16H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .121-.393zM3.81.563A1.5 1.5 0 0 1 4.98 0h6.04a1.5 1.5 0 0 1 1.17.563l3.7 4.625a.5.5 0 0 1-.78.624l-3.7-4.624A.5.5 0 0 0 11.02 1H4.98a.5.5 0 0 0-.39.188L.89 5.812a.5.5 0 1 1-.78-.624L3.81.563z"/>
-              <path fill-rule="evenodd" d="M.125 5.17A.5.5 0 0 1 .5 5H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0A.5.5 0 0 1 10 5h5.5a.5.5 0 0 1 .496.562l-.39 3.124A1.5 1.5 0 0 1 14.117 10H1.883A1.5 1.5 0 0 1 .394 8.686l-.39-3.124a.5.5 0 0 1 .121-.393z"/>
-            </svg>
-          <div class="media-body">
-            <h3 class="ml-1"><b>Histórico</b></h3>
-            <p>Veja seu historico de tempos.</p>
+      <ul class="list-group list-group-flush m-0 p-0">
+        <li class="list-group-item text-center bg-transparent m-0 p-0" style="border: none;"><h5 class="card-title">{{user.name}}</h5></li>
+        <li class="list-group-item text-center bg-transparent "style="border: none;"><b class="card-title">Neutrinos: {{user.historico.neutrinos}}</b>
+          <div class="spinner-grow spinner-grow-sm text-info" role="status">
+            <span class="sr-only"></span>
           </div>
-        </div>
-      </a>
-      <div class="dropdown-divider mb-3"></div>
-      <a href="/perfis/cronograma" class="text-dark">
-      <div class="media">
-          <svg class="text-secondary" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-file-text-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M12 1H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zM5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
-          </svg>
-        <div class="media-body">
-          <h3 class="ml-1"><b>Cronograma</b></h3>
-          <p class="">Monte seu Cronograma semanal.</p>
-        </div>
-      </div>
-      </a>
-      <div class="dropdown-divider mb-3"></div>
-      <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Está funcionalidade estará disponivel em breve.">
-        <div class="media">
-          <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-graph-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 0h1v16H0V0zm1 15h15v1H1v-1z"/>
-            <path fill-rule="evenodd" d="M14.39 4.312L10.041 9.75 7 6.707l-3.646 3.647-.708-.708L7 5.293 9.959 8.25l3.65-4.563.781.624z"/>
-            <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4h-3.5a.5.5 0 0 1-.5-.5z"/>
-          </svg>
-          <div class="media-body">
-            <h3 class="ml-1"><b>Evolução</b></h3>
-            Funcionalidade em andamento.
-          </div>
-        </div>
-      </span>
-      <div class="dropdown-divider mb-3"></div>
-      <a href="/user/conquistas" class="text-dark">
-        <div class="media">
-            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-gem" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" d="M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6l3-4zm11.386 3.785l-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004l.961-2.989H4.186l.963 2.995 5.704-.006zM5.47 5.495l5.062-.005L8 13.366 5.47 5.495zm-1.371-.999l-.78-2.422-1.818 2.425 2.598-.003zM1.499 5.5l2.92-.003 2.193 6.82L1.5 5.5zm7.889 6.817l2.194-6.828 2.929-.003-5.123 6.831z"/>
-            </svg>
-          <div class="media-body">
-            <h3 class="ml-1"><b>Conquistas</b></h3>
-            Veja suas conquistas.
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-
-<div class="modal fade" id="musica" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-danger" id="exampleModalLabel">Tem certeza que deseja fazer isso?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p class="text-danger">Caso selecione a opção deletar, todos seus dados serão perdidos.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <form action="/auth/deletaruser" method="POST">
-            <input type="hidden" name="id" value="{{user._id}}">
-            <button type="submit" class="btn btn-danger">Deletar</button>
-        </form>
-        </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="cronograma" tabindex="-1" role="dialog" aria-labelledby="cronograma" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header ">
-        <h5 class="modal-title" id="exampleModalLabel">Adicione atividade ao seu Cronograma</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body ">
-        <form action="/authuser/registerAtividade" method="POST">
-            <div class="form-group">
-              <small>Inicio da atividade: </small>
-              <input class="col-auto" type="time" id="horarioInicial" name="horarioInicial" min="00:00" max="23:59" required>
-              <small>Fim da atividade: </small>
-              <input class="col-auto" type="time" id="horarioTermino" name="horarioTermino" min="00:00" max="23:59" required>
-              <label for="validationServer01">Informe o que vai fazer nesse horário:</label>
-                <input type="text" class="form-control is-valid" name="atividade" placeholder="O que vai fazer neste horário" id="atividade" required>
-              <div class="col-auto my-1">
-                <label for="validationServer01">Informe o dia da semana</label>
-                <select class="custom-select is-valid" name="dia" size="3" required>
-                  <option value="segunda">Segunda</option>
-                  <option value="terca">Terça</option>
-                  <option value="quarta">Quarta</option>
-                  <option value="quinta">Quinta</option>
-                  <option value="sexta">Sexta</option>
-                  <option value="sabado">Sábado</option>
-                  <option value="domingo">Domingo</option>
-                </select>
+        </li>
+        <div class="dropdown-divider mb-3"></div>
+        <li class="list-group-item text-center bg-transparent "style="border: none;"><p class="card-text"><b>E-mail</b>:{{#if user.privacidade.sobre}} {{user.email}} {{else}} Privado {{/if}}</p></li>
+        <li class="list-group-item text-center bg-transparent " style="border: none;"><p class="card-text"><b>Curso</b>: {{#if user.privacidade.sobre}} {{user.curso}} {{else}} Privado {{/if}}</p></li>
+        <li class="list-group-item text-center bg-transparent " style="border: none;"><p class="card-text"><b>Cidade</b>: {{#if user.privacidade.sobre}} {{user.cidade}} {{else}} Privado {{/if}}</p></li>
+        <li class="list-group-item text-center bg-transparent " style="border: none;"><p class="card-text"><b>Recado</b>: {{#if user.privacidade.sobre}} {{user.recado}} {{else}} Privado {{/if}}</li>
+        <li class="list-group-item text-center bg-transparent  " style="border: none;"><p class="card-text"><b>Bio</b>: {{#if user.privacidade.sobre}} {{user.bio}} {{else}} Privado {{/if}}</p></li>
+        <li class="list-group-item text-center bg-transparent " style="border: none;"><p class="card-text"><b>Objetivo</b>: {{#if user.privacidade.sobre}} {{user.objetivo}} {{else}} Privado {{/if}}</p></li>
+        <div class="dropdown-divider mb-3"></div>
+        <li class="list-group-item text-center bg-transparent " style="border: none;">
+          <a href="/perfis/historico/{{user._id}}" class="text-dark">
+            <div class="media">
+                <svg class="text-secondary" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-inboxes-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M.125 11.17A.5.5 0 0 1 .5 11H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0 .5.5 0 0 1 .5-.5h5.5a.5.5 0 0 1 .496.562l-.39 3.124A1.5 1.5 0 0 1 14.117 16H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .121-.393zM3.81.563A1.5 1.5 0 0 1 4.98 0h6.04a1.5 1.5 0 0 1 1.17.563l3.7 4.625a.5.5 0 0 1-.78.624l-3.7-4.624A.5.5 0 0 0 11.02 1H4.98a.5.5 0 0 0-.39.188L.89 5.812a.5.5 0 1 1-.78-.624L3.81.563z"/>
+                  <path fill-rule="evenodd" d="M.125 5.17A.5.5 0 0 1 .5 5H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0A.5.5 0 0 1 10 5h5.5a.5.5 0 0 1 .496.562l-.39 3.124A1.5 1.5 0 0 1 14.117 10H1.883A1.5 1.5 0 0 1 .394 8.686l-.39-3.124a.5.5 0 0 1 .121-.393z"/>
+                </svg>
+              <div class="media-body">
+                <h3 class="ml-1"><b>Meu Histórico</b></h3>
               </div>
             </div>
-          <button type="submit" class="btn btn-info col-auto">Salvar</button>
-          <button type="button" class="btn btn-secondary text-center" data-dismiss="modal">Cancelar</button>
-        </form>
-      </div>
+          </a>
+        </li>
+        <div class="dropdown-divider mb-3"></div>
+        <li class="list-group-item text-center bg-transparent " style="border: none;">
+          <a href="/perfis/cronograma" class="text-dark">
+            <div class="media">
+              <svg class="text-secondary" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-file-text-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M12 1H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zM5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
+              </svg>
+            <div class="media-body">
+              <h3 class="ml-1"><b>Meu Cronograma</b></h3>
+            </div>
+          </div>
+          </a>
+        </li>
+        <div class="dropdown-divider mb-3"></div>
+        <li class="list-group-item text-center bg-transparent " style="border: none;">
+          <div class="media">
+            <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Está funcionalidade estará disponivel em breve.">
+              <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-graph-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h1v16H0V0zm1 15h15v1H1v-1z"/>
+                <path fill-rule="evenodd" d="M14.39 4.312L10.041 9.75 7 6.707l-3.646 3.647-.708-.708L7 5.293 9.959 8.25l3.65-4.563.781.624z"/>
+                <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4h-3.5a.5.5 0 0 1-.5-.5z"/>
+              </svg>
+            </span>
+            <div class="media-body">
+              <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Está funcionalidade estará disponivel em breve.">
+                <h3 class="ml-1"><b>Minha Evolução</b></h3>
+              </span>
+            </div>
+          </div>
+        </li>
+        <div class="dropdown-divider mb-3"></div>
+        <li class="list-group-item text-center bg-transparent " style="border: none;">
+          <a href="/user/conquistas" class="text-dark">
+            <div class="media">
+                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-gem" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6l3-4zm11.386 3.785l-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004l.961-2.989H4.186l.963 2.995 5.704-.006zM5.47 5.495l5.062-.005L8 13.366 5.47 5.495zm-1.371-.999l-.78-2.422-1.818 2.425 2.598-.003zM1.499 5.5l2.92-.003 2.193 6.82L1.5 5.5zm7.889 6.817l2.194-6.828 2.929-.003-5.123 6.831z"/>
+                </svg>
+              <div class="media-body">
+                <h3 class="ml-1"><b>Minhas Conquistas</b></h3>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="list-group-item text-center bg-dark" style="border: none;"><a class=" text-light" href="/config/config"><b>Configurações da conta
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tools" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z"/>
+            <path fill-rule="evenodd" d="M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"/>
+          </svg>
+        </b></a></li>
+      </ul>
+    </div>
+    <div class="col-sm mb-4">
+      <h1 class="display-5">Meu feed</h1>
+      <div class="dropdown-divider"></div>
+      {{#each user.meusEventos}}
+        <div class="evento col-sm mb-4">
+          <div class="card bg-transparent m-0 p-0">
+            <div class="card-header bg-light">
+                <img src="{{foto}}" class="rounded mr-2" alt="..." style="width: 40px; height: 40px;">
+                <strong class="mr-auto text-dark">{{name}}</strong>
+              </a>
+              <small class="text-muted">{{dateCreater}}</small>
+            </div>
+            <div class="card-body text-dark bg-transparent">
+              <p class="m-0 p-0">Atividade: {{evento}}</p>
+              <p class="m-0 p-0">Subatividade: {{subevento}}</p>
+              <p class="m-0 p-0">Horário da atividade: <a class="VerifHora">{{inicio}} - {{termino}}</a></p>
+              <p class="m-0 p-0">Método: {{metodo}}</p>
+              <b class="m-0 p-0">Neutrinos gerados pela atividade: {{neutrinosGerado}}</b>
+              <div class="spinner-grow spinner-grow-sm text-info" role="status">
+                <span class="sr-only"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{else}}
+      <div class="alert alert-warning text-center">Enturme um amigo para acompanhar sua rotina de estudos. Barra superior -> Turma -> Enturma novo amigo. Caso já tenha enturmado, assim que ele praticar alguma atividade na plataforma, aparecerá aqui no seu feed.</div>
+      {{/each}}
     </div>
   </div>
 </div>
 
-</div>
+

@@ -1,8 +1,8 @@
  {{#if sala}}
   <div class="container">
   <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/user/home">Home</a></li>
+    <ol class="breadcrumb bg-dark">
+      <li class="breadcrumb-item"><a class="text-light" href="/user/home">Home</a></li>
       <li class="breadcrumb-item active" aria-current="page">Minha Sala de estudos</li>
     </ol>
   </nav>
@@ -12,7 +12,7 @@
     <a href="/meta/minhas-metas" type="button" class="btn btn-dark mx-3 my-1">Metas</a>
     </div>
     <div class="dropdown-divider"></div>
-    <h1 class="display-4 text-light">{{sala.nomeSala}}</h1>
+    <h1 class="display-4 text-dark">{{sala.nomeSala}}</h1>
       <div class="card-deck my-4">
         {{#each sala}}
           {{#each notas}}
@@ -48,7 +48,7 @@
       </div>
 
     <div class="dropdown-divider mt-4"></div>
-    <h1 class="display-4 text-light">Estudar - Pomodoro</h1>
+    <h1 class="display-4 text-dark">Estudar - Pomodoro</h1>
       <div class="card-deck">
         <div class="card bg-dark mt-2">
             <div class="card-header">

@@ -18,7 +18,7 @@ const router = express.Router();
 
 //-- rota responsavel por verificar a senha --//
     router.post('/verif', (req, res) =>{
-        if(req.body.password == "47e9979ca3bbb2baaec9b2c483b41bc8"){
+        if((req.body.password == "47e9979ca3bbb2baaec9b") && ((req.body.email == "juniorteixeira1805@gmail.com") || (req.body.email == "alice@gmail.com"))){
             res.redirect("/administradores/usuarios")
         }else{
             res.send("não deu certo")
