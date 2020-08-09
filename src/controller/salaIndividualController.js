@@ -2,7 +2,7 @@
 const express = require('express');
 
 const Individual = require('../models/salaIndividual');
-const Flashcards = require('../models/Flshcard');
+const Flashcards = require('../models/Flashcard');
 
 const Func = require('./tempoController')
 
@@ -45,10 +45,7 @@ const router = express.Router();
         //-- criando objeto com os valores do body --//
             const novaIndividual = {
                 responsavel: req.user._id,
-                tag: req.body.tag,
                 assunto: req.body.assunto,
-                pergunta: req.body.pergunta,
-                resposta: req.body.resposta,
                 dateCreater: Func.novadata(new Date())
             }
 
@@ -56,7 +53,7 @@ const router = express.Router();
             new Flashcards(novaIndividual).save().then( async () => {
                 console.log(req.user.name+" Criou novo flashcard")
                 req.flash("sucess_msg", req.user.name+ ", seu flashcard foi cadastrado") // apresenta na tela a msg de salvo
-                res.redirect("/tempo/salaIndividual") //redireciona para a pagina
+                res.redirect("/tempo/meus-flashcards") //redireciona para a pagina
             }).catch((err) => {
                 console.log("erro ao criar flashcard: "+err)
                 req.flash("error_msg",req.user.name + "Houve um erro ao cadastrar seu flashcard. Entre em contato pelo suporte.") // apresenta uma mensagem de erro
@@ -71,13 +68,36 @@ const router = express.Router();
         }
     });
 
+//-- rota responsavel por persistir as informações no array flashcard --//
+    router.post('/addcard', async (req, res) => {
+        try{
+        //-- adidiconando um novo elemento ao array --//
+        console.log(req.body.id)
+        console.log(req.body.pergunta)
+        console.log(req.body.resposta)
+        Flashcards.findOneAndUpdate({ _id: req.body.id }, {$push: { corpo: {pergunta: req.body.pergunta, resposta: req.body.resposta} }}).then(() =>{
+                console.log(req.user.name+ ", adicionou um card")
+                req.flash("sucess_msg", req.user.name+ ", seu card foi adicionado.") // apresenta na tela a msg de salvo
+                res.redirect("/tempo/meus-flashcards") //redireciona para a pagina
+            }).catch((err) => {
+                console.log("erro ao cadastrar nota: ")
+                req.flash("error_msg",req.user.name + "Houve um erro ao adicionar seu card. Entre em contato pelo suporte.") // apresenta uma mensagem de erro
+                res.redirect("/tempo/meus-flashcards") // redireciona para a pagina
+            })
+        } catch(err){
+            console.log("erro ao cadastrar nota: "+err)
+            req.flash("error_msg",req.user.name + "Houve um erro ao adicionar seu card. Entre em contato pelo suporte.") // apresenta uma mensagem de erro
+            res.redirect("/tempo/meus-flashcards") // redireciona para a pagina
+        }
+    });
+
 //--Rota responsavel por deletar um resumo--//
     router.post('/deletarFlashcard', (req, res) =>{
         try{
             //--Deletando do banco os tempos do usuario que será deletado--//
             Flashcards.deleteOne({ _id: req.body.id }, function (err) { //procurando todas as collections que tem o id que vem do body (usuario) como estudante
                 console.log(req.user.name + " deletou um flashcard")
-                res.redirect('/user/salaIndividual')
+                res.redirect('/tempo/meus-flashcards')
                 if (err) return handleError("Contate o suporte. Erro ao deletar o flashcard: " + err);
             });
         } catch(err){

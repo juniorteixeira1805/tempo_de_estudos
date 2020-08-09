@@ -1,0 +1,69 @@
+<style>
+.row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.card {
+  perspective: 100%;
+  text-transform: uppercase;
+  position: relative;
+  min-width: 300px;
+  min-height: 300px;
+}
+.card__side {
+  border-radius: 5px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all .8s ease;
+  backface-visibility: hidden;
+}
+.card__side--back {
+  transform: rotateY(180deg);
+}
+.card:active .card__side--front {
+  transform: rotateY(-180deg);
+}
+
+.card:active .card__side--back {
+  transform: rotateY(0);
+}
+
+</style>
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-dark">
+      <li class="breadcrumb-item"><a class="text-light" href="/user/home">Home</a></li>
+      <li class="breadcrumb-item"><a class="text-light" href="/tempo/salaIndividual">Minha Sala de estudos</a></li>
+      <li class="breadcrumb-item text-light" href="/tempo/meus-flashcards">Meus flashcards</li>
+      <li class="breadcrumb-item active" aria-current="page">Utilizar flashcards</li>
+    </ol>
+  </nav>
+  <p>Aqui são exibidos todos os seus cards mostrando a face da pergunto. Clicando e segurando em algum flashcard, ele virará para a face da resposta.</p>
+  <div class="dropdown-divider"></div>
+  <div class="row text-center">
+      {{#each card.corpo}}
+          <div class="card col-sm-5 mx-2 my-4" style="background-color: #C0C0C0;">
+          <div class="card__side card__side--front bg-secondary">
+              <h4>{{pergunta}}</h4>
+          </div>
+          <div class="card__side card__side--back card__side--back bg-dark">
+              <h4 class="text-light">{{resposta}}</h4>
+          </div>
+          
+          </div>
+      {{/each}}
+  </div>
+</div>

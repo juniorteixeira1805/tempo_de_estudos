@@ -112,8 +112,9 @@ router.get('/equipe', (req, res) => {
               return 1;
             }
             // a deve ser igual a b
-          }
-            todosEventos.sort(comparar)
+        }
+        
+        todosEventos.sort(comparar)
 
         
         //-- Pega todas as atividades --//

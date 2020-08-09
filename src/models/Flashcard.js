@@ -14,22 +14,20 @@ const FlashcardSchema = new mongoose.Schema({
         ref: "users"
     },
 
-    Tag : {
-        type: Schema.Types.ObjectId, //-- Salva o id do dono da atividade --//
-        ref: "tags"
-    },
-
-    Assunto : {
+    assunto : {
         type : String,
     },
 
-    pergunta : {
-        type : String,
-    },
+    corpo: [{
+        pergunta : {
+            type : String,
+        },
+    
+        resposta : {
+            type : String,
+        },
+    }]
 
-    resposta : {
-        type : String,
-    },
 
 });
 
