@@ -16,12 +16,12 @@ module.exports = {
         //-- Enviando o e-mail do usuario para o email do devorion --//
         transporter.sendMail({
             from: "Improdutiva Estudos LTDA <devorion@estude.live>",
-            to: ["devorion@gmail.com"],
+            to: ["devorion01@gmail.com"],
             subject: assunto,
             text: texto+" De: "+usuario+ "; E-mail: "+email,
             html: ''
         }).then(message => {
-            console.log("mensagem envada ao suporte");
+            console.log("mensagem envada ao suporte" + message);
         }).catch(err => {
             console.log(err)
         })
