@@ -7,19 +7,17 @@ const mongoose = require("mongoose")
 
 const User = mongoose.model("users")
 
-const Atividade = require('../models/Atividade')
-
 const router = express.Router();
 
 //-- rota responsavel por renderizar a tela de login dos adm --//
-    router.get('/loginG', (req, res) =>{
+    router.get('/login', (req, res) =>{
         res.render("./admin/loginG")
     });
 
 //-- rota responsavel por verificar a senha --//
     router.post('/verif', (req, res) =>{
-        if((req.body.password == "47e9979ca3bbb2baaec9b") && ((req.body.email == "juniorteixeira1805@gmail.com") || (req.body.email == "alice@gmail.com"))){
-            res.redirect("/administradores/usuarios")
+        if((req.body.password == "Noiroved@1209") && ((req.body.email == "devorion01@gmail.com"))){
+            res.redirect("/adm/usuarios")
         }else{
             res.send("não deu certo")
         }

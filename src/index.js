@@ -83,7 +83,7 @@ const io = require('socket.io')(server)
     app.use('/auth', Auth) // fixamos o prefixo "/admin" para o grupo de rotas admin
     app.use('/user', User)
     app.use('/authUser', AuthUser)
-    app.use('/administradores', Administradores)
+    app.use('/adm', Administradores)
     app.use('/salaIndividual', Individual)
     app.use('/tempo', Tempo)
     app.use('/resumo', ResumoGet)

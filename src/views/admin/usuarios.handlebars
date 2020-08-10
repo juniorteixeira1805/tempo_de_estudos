@@ -1,19 +1,46 @@
 
 <div class="container">
-    <h2>Usuário e e-mail</h2>
     {{#each usuarios}}
-    <div class="my-2">
-        <a>{{name}} {{email}}</a>
-    </div>
+        <div class="user my-2" hidden>
+            <b class="data" >{{dataVizualização}}</b></a>
+        </div>
     {{/each}}
-
-    <h2>Usuário e ultima data de entrada</h2>
-    {{#each usuarios}}
-    <div class="user my-2">
-        <a>{{name}} <b class="newDate"></b> <b class="data" hidden>{{dataVizualização}}</b></a>
+    <div class="table-responsive-sm text-center">
+        <table class="table table-dark table-hover">
+          <thead>
+            <tr>
+                <th scope="col">
+                Nome
+                </th>
+              <th scope="col">
+                 E-mail
+              </th>
+              <th scope="col">
+               Ultima data de entrada
+               </th>
+              <th scope="col">
+                Dias de inatividade
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-text-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M2 3a2 2 0 0 1 2-2h5.293a1 1 0 0 1 .707.293L13.707 5a1 1 0 0 1 .293.707V13a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3zm7 2V2l4 4h-3a1 1 0 0 1-1-1zM4.5 8a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+          {{#each usuarios}}
+            <tr class="cor">
+              <td >{{name}}</td>
+              <td>{{email}}</td>
+              <td><b class="newDate"></b></td>
+              <td><b class="faltante"></b></td>   
+            </tr>
+          {{/each}}
+          </tbody>
+        </table>
     </div>
-    {{/each}}
 </div>
+
+
 
 <script>  
     function novadata(data){
@@ -44,8 +71,22 @@
     i = 0
 
     while(i<quantUser){
+        data = new Date
+        hoje = data.getDate() + (data.getMonth() * 30)
+        data = new Date(document.getElementsByClassName("data")[i].innerHTML)
+        diaDaVizualização = data.getDate() + (data.getMonth() * 30)
+        quantDiasSemEntrar = hoje - diaDaVizualização
+
+        if(quantDiasSemEntrar > 10 && quantDiasSemEntrar < 20){
+            document.getElementsByClassName("cor")[i].style.color = "orange"
+        }
+
+        if(quantDiasSemEntrar > 20){
+            document.getElementsByClassName("cor")[i].style.color = "red"
+        }
         novaData = novadata(document.getElementsByClassName("data")[i].innerHTML)
         document.getElementsByClassName("newDate")[i].innerHTML = novaData
+        document.getElementsByClassName("faltante")[i].innerHTML = quantDiasSemEntrar
         i++
     }
 </script>
