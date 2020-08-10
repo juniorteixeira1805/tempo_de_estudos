@@ -27,9 +27,10 @@ const router = express.Router();
 
         //-- persistindo no banco --//
             new Resumos(novaIndividual).save().then( async () => {
-            //-- Somando minutos ao dia --// 
+            //-- Somando minutos ao dia --//
+            console.log(req.body.privacidade == undefined)
 
-            if(req.body.privacidade == "false"){
+            if(req.body.privacidade == undefined){
                 minutosTotalNoDia = await 0 + parseInt(req.user.historico.dia)  
                 minutosTotalNoSemana = await 0 + parseInt(req.user.historico.semana)
                 minutosTotalNoMes = await 0 + parseInt(req.user.historico.mes)        
@@ -40,7 +41,7 @@ const router = express.Router();
                 totalLeitura = await 0 + parseInt(req.user.historico.totalLeitura)
                 totalPesquisa = await 0 + parseInt(req.user.historico.totalPesquisa)
                 totalExercicio = await 0 + parseInt(req.user.historico.totalExercicio)
-                pontos = req.user.historico.neutrinos + 30
+                pontos = parseInt(req.user.historico.neutrinos) + 30
                 await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: pontos}}}).then((req, res) => {}).catch((err) => {})
                 await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(), evento: "Redigiu um novo resumo", name: req.user.name, foto: req.user.foto, subevento: req.body.titulo, metodo: "Escrita", inicio: "--:--", termino: "--:--", neutrinosGerado: 30}}}).then((req, res) => {}).catch((err) => {})
                 let rsm = req.user.resumos + 1

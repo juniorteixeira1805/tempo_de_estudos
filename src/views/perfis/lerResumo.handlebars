@@ -1,25 +1,25 @@
 <div class="container">
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/user/home">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Perfil</li>
-    <li class="breadcrumb-item active" aria-current="page">Resumos</li>
-    <li class="breadcrumb-item active" aria-current="page">Ler resumos</li>
-  </ol>
-</nav>
-</div>
-<div class="textosEmString" hidden>{{resumo.corpo}}</div>
-<div class="container">
-  <div class="text-center">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-dark">
+      <li class="breadcrumb-item"><a class="text-light" href="/user/home">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Perfil</li>
+      <li class="breadcrumb-item active" aria-current="page">Resumos</li>
+      <li class="breadcrumb-item active" aria-current="page">Ler resumos</li>
+    </ol>
+  </nav>
+  <div class="textosEmString" hidden>{{resumo.corpo}}</div>
+  <div class="">
     <h4>Assunto: <b>{{resumo.assunto}}</b></h4>
+  </div>
+    <div class="dropdown-divider mb-4"></div>
+  <div class="text-center">
     <h3>{{resumo.titulo}}</h3>
   </div>
   <div class="textosEmHtml">{{resumo.corpo}}</div>
-  <div class="col-sm">
+  <div class="dropdown-divider"></div>
+  <div class="textosEmHtml"><b>Referência: </b><a target="_blank" href="{{{resumo.ref}}}">{{resumo.ref}}</a></div>
 
-  </div>
-</div> 
-
+</div>
 
 <script>
   const x = document.getElementsByClassName("textosEmString").length
