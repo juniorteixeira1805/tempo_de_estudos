@@ -54,7 +54,7 @@ const io = require('socket.io')(server)
             res.locals.error = req.flash("error")
             res.locals.user = req.user || null;
             if ((req.headers["x-forwarded-proto"] || "").endsWith("http")) //Checa se o protocolo informado nos headers é HTTP
-                res.redirect(`https://${req.hostname}${req.url}`); //Redireciona pra HTTPS
+                res.redirect(`https://${req.hostname}${req.url}`); //Redireciona para HTTPS
             else //Se a requisição já é HTTPS
                 next();
         })
@@ -102,7 +102,7 @@ const io = require('socket.io')(server)
 
 //outros
     //--Funções chamadas para atualizar as horas do dia, semana e mes--//
-    // funcdata.verifcaDia();
+    //funcdata.verifcaDia()
     // funcdata.verifcaSemana();
     // funcdata.verifcaMes();
 

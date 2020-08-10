@@ -1,5 +1,6 @@
 const express = require('express');
 const User = require('../models/User');
+const Dia = require('../models/Dia');
 const router = express.Router();
 
 //-- Rota para mudar a privacidade --//
@@ -23,5 +24,18 @@ router.post('/privacidade', async (req, res) => {
 
 
 })
+
+    router.post('/registerDia', async (req, res) => {
+        const novoDia = {
+            dataAtual: new Date
+        }
+
+    //-- persistindo no banco --//
+        new Dia(novoDia).save().then( async () => {
+            console.log(" Criou novo dia")
+        }).catch((err) => {
+            console.log("erro ao criar dia: "+err)
+        })
+    })
 
 module.exports = router

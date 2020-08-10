@@ -1,10 +1,11 @@
 //-- Importação --//
 const mongoose = require("mongoose")
-
-require('../models/User');
-const User = mongoose.model("users");
-
-const Atividade = require('../models/Atividade')
+require('../models/Dia')
+require('../models/Atividade')
+require('../models/User')
+const Dia = mongoose.model("dias")
+const User = mongoose.model("users")
+const Atividade =  mongoose.model("atividades")
 
 
 module.exports = {
@@ -103,26 +104,35 @@ module.exports = {
 //-- Função que verifica o dia se o dia mudou e set 0 na variavel dia do banco de dados --//
     verifcaDia: async function(){ 
 
+        var dataBD = await Dia.findOne({_id: "5f30b457509764126095e6d7"})
+        
         setInterval( async function(){
-        let data = new Date()
-        let horaAtual = data.getHours()
+        let data = await new Date()
+        let dataAtual = await data.getDate()
 
-        if(horaAtual == "3"){
-            console.log("o sistema verificou se mudou o dia: " + true +" às: " + horaAtual)
-            await User.updateMany({$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: req.user.user}}}, function(err, res) {//-- zerando as horas diarias --//
+        console.log("data de hoje: " + dataAtual)
+        console.log("data do BD: " + dataBD.dataAtual)
+
+        if(dataAtual != dataBD){
+            console.log("o sistema verificou se mudou o dia: " + true +" às: " )
+            await User.updateMany({historico: {dia: 0}}, function(err, res) {//-- zerando as horas diarias --//
                 console.log("dia atualizado")
             });
 
             await Atividade.updateMany({status: false}, function(err, res) {
                 console.log("Atividades atualizadas")
             });
-            diaAnterior = diaAtual;
+
+            await Atividade.updateMany({dataAtual: new Date}, function(err, res) {
+                console.log("Atividades atualizadas")
+            });
+
 
 
         }else{
             console.log("o sistema verificou se mudou o dia: " + false +" às: " + horaAtual)
         }
-        },3600000)
+        },5000)
     
     },
 
