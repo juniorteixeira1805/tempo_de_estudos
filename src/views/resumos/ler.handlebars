@@ -8,11 +8,16 @@
 </nav>
 <div class="textosEmString" hidden>{{resumo.corpo}}</div>
 <div class="container">
-  <div class="text-center">
+  <div class="">
     <h4>Assunto: <b>{{resumo.assunto}}</b></h4>
+  </div>
+    <div class="dropdown-divider mb-4"></div>
+  <div class="text-center">
     <h3>{{resumo.titulo}}</h3>
   </div>
   <div class="textosEmHtml">{{resumo.corpo}}</div>
+  <div class="dropdown-divider"></div>
+  <div class="textosEmHtml"><b>Referência: </b><a target="_blank" href="{{{resumo.ref}}}">{{resumo.ref}}</a></div>
   <div class="col-sm">
     <form class="mt-4 text-right col-sm" action="/resumoP/deletarResumo" method="POST">
       <input type="" name="id" value="{{resumo._id}}" hidden>
