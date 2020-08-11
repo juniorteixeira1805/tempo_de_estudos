@@ -410,7 +410,7 @@
                     await User.findOneAndUpdate({_id: req.user._id}, { $pop: { "meusEventos" : -1 } }).then((req, res) => {console.log("deu certo")}).catch((err) => {console.log(err)})
                 }
                 //-- registrando evento --//
-                await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(), evento: "Concluio atividade de seu cronograma", name: req.user.name, foto: req.user.foto, subevento: "", metodo: "", inicio: "--:--", termino: "--:--", neutrinosGerado: 3}}}).then((req, res) => {}).catch((err) => {})
+                await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(), evento: "Concluio atividade de seu cronograma", name: req.user.name, foto: req.user.foto, subevento: "", metodo: "", inicio: req.body.horarioInicial, termino: req.body.horarioTermino, neutrinosGerado: 3}}}).then((req, res) => {}).catch((err) => {})
                 console.log(req.user.name + " concluio uma atividade.")
                 req.flash("sucess_msg", "Atividade concluída. Você ganhou:" +pontos+" pontos")
                 

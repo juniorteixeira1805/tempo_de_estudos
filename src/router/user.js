@@ -116,6 +116,10 @@ router.get('/equipe', (req, res) => {
         
         todosEventos.sort(comparar)
 
+        while(todosEventos.length>20){
+            todosEventos.pop()
+        }
+
         
         //-- Pega todas as atividades --//
         var atividades = (await (Atividade.find({estudante: req.user._id})))
