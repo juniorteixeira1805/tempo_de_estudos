@@ -1,33 +1,33 @@
 <div class="container">
 <nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/user/home">Home</a></li>
+  <ol class="breadcrumb bg-dark">
+    <li class="breadcrumb-item"><a class="text-light" href="/user/home">Home</a></li>
     <li class="breadcrumb-item active" aria-current="page">Perfil</li>
   </ol>
 </nav>
-</div>
-<div class="mx-2">
   <div class="row">
-    <div class="col-sm-4 mb-4" style="">
-      <div class="col-sm text-center">
-        <img src="{{{users.foto}}}" class="card-img-top border border-secondary rounded-circle" style="width: 150px; height: 150px;">
-      </div>
-        <ul class="list-group list-group-flush " style="border: none;">
-          <li class="list-group-item text-center bg-transparent" style="border: none;"><h5 class="card-title">{{users.name}}</h5></li>
-          <li class="list-group-item text-center bg-transparent"style="border: none;"><b class="card-title">Neutrinos: {{users.historico.neutrinos}}</b>
-            <div class="spinner-grow spinner-grow-sm text-info" role="status">
-              <span class="sr-only"></span>
-            </div>
-          </li>
-          <li class="list-group-item text-center bg-transparent"style="border: none;"><p class="card-text">email:{{#if users.privacidade.sobre}} {{users.email}} {{else}} Privado {{/if}}</p></li>
-          <li class="list-group-item text-center bg-transparent" style="border: none;"><p class="card-text">Curso: {{#if users.privacidade.sobre}} {{users.curso}} {{else}} Privado {{/if}}</p></li>
-          <li class="list-group-item text-center bg-transparent" style="border: none;"><p class="card-text">Cidade: {{#if users.privacidade.sobre}} {{users.cidade}} {{else}} Privado {{/if}}</p></li>
-          <li class="list-group-item text-center bg-transparent" style="border: none;"><p class="card-text">Recado: {{#if users.privacidade.sobre}} {{users.recado}} {{else}} Privado {{/if}}</li>
-          <li class="list-group-item text-center bg-transparent" style="border: none;"><p class="card-text">Bio: {{#if users.privacidade.sobre}} {{users.bio}} {{else}} Privado {{/if}}</p></li>
-          <li class="list-group-item text-center bg-transparent" style="border: none;"><p class="card-text">Objetivo: {{#if users.privacidade.sobre}} {{users.objetivo}} {{else}} Privado {{/if}}</p></li>
-        </ul>
+    <div class="col-sm mb-4">
+      <div class="col-sm-8 text-center">
+        <div class="col-sm">
+          <img src="{{{users.foto}}}" class="card-img-top border border-secondary rounded-circle" style="width: 150px; height: 150px;">
+        </div>
+          <ul class="list-group list-group-flush" style="border: none;">
+            <li class="list-group-item bg-transparent" style="border: none;"><h5 class="card-title">{{users.name}}</h5></li>
+            <li class="list-group-item bg-transparent"style="border: none;"><b class="card-title">Neutrinos: {{users.historico.neutrinos}}</b>
+              <div class="spinner-grow spinner-grow-sm text-info" role="status">
+                <span class="sr-only"></span>
+              </div>
+            </li>
+            <li class="list-group-item bg-transparent"style="border: none;"><p class="card-text">email:{{#if users.privacidade.sobre}} {{users.email}} {{else}} Privado {{/if}}</p></li>
+            <li class="list-group-item bg-transparent" style="border: none;"><p class="card-text">Curso: {{#if users.privacidade.sobre}} {{users.curso}} {{else}} Privado {{/if}}</p></li>
+            <li class="list-group-item bg-transparent" style="border: none;"><p class="card-text">Cidade: {{#if users.privacidade.sobre}} {{users.cidade}} {{else}} Privado {{/if}}</p></li>
+            <li class="list-group-item bg-transparent" style="border: none;"><p class="card-text">Recado: {{#if users.privacidade.sobre}} {{users.recado}} {{else}} Privado {{/if}}</li>
+            <li class="list-group-item bg-transparent" style="border: none;"><p class="card-text">Bio: {{#if users.privacidade.sobre}} {{users.bio}} {{else}} Privado {{/if}}</p></li>
+            <li class="list-group-item bg-transparent" style="border: none;"><p class="card-text">Objetivo: {{#if users.privacidade.sobre}} {{users.objetivo}} {{else}} Privado {{/if}}</p></li>
+          </ul>
+        </div>
     </div>
-    <div class="col-sm-5 mb-4">
+    <div class="col-sm mb-4">
       <a href="/perfis/historico/{{users._id}}" class="text-dark">
         <div class="media">
             <svg class="text-secondary" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-inboxes-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -92,68 +92,4 @@
       </a>
     </div>
   </div>
-
-<div class="modal fade" id="musica" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-danger" id="exampleModalLabel">Tem certeza que deseja fazer isso?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p class="text-danger">Caso selecione a opção deletar, todos seus dados serão perdidos.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <form action="/auth/deletarusers" method="POST">
-            <input type="hidden" name="id" value="{{users._id}}">
-            <button type="submit" class="btn btn-danger">Deletar</button>
-        </form>
-        </div>
-    </div>
-  </div>
 </div>
-
-<div class="modal fade" id="cronograma" tabindex="-1" role="dialog" aria-labelledby="cronograma" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header ">
-        <h5 class="modal-title" id="exampleModalLabel">Adicione atividade ao seu Cronograma</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body ">
-        <form action="/authusers/registerAtividade" method="POST">
-            <div class="form-group">
-              <small>Inicio da atividade: </small>
-              <input class="col-auto" type="time" id="horarioInicial" name="horarioInicial" min="00:00" max="23:59" required>
-              <small>Fim da atividade: </small>
-              <input class="col-auto" type="time" id="horarioTermino" name="horarioTermino" min="00:00" max="23:59" required>
-              <label for="validationServer01">Informe o que vai fazer nesse horário:</label>
-                <input type="text" class="form-control is-valid" name="atividade" placeholder="O que vai fazer neste horário" id="atividade" required>
-              <div class="col-auto my-1">
-                <label for="validationServer01">Informe o dia da semana</label>
-                <select class="custom-select is-valid" name="dia" size="3" required>
-                  <option value="segunda">Segunda</option>
-                  <option value="terca">Terça</option>
-                  <option value="quarta">Quarta</option>
-                  <option value="quinta">Quinta</option>
-                  <option value="sexta">Sexta</option>
-                  <option value="sabado">Sábado</option>
-                  <option value="domingo">Domingo</option>
-                </select>
-              </div>
-            </div>
-          <button type="submit" class="btn btn-info col-auto">Salvar</button>
-          <button type="button" class="btn btn-secondary text-center" data-dismiss="modal">Cancelar</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-</div>
-
