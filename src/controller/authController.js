@@ -65,7 +65,7 @@
             user.password = undefined; //-- para o que password não retorne no Json--//
 
             console.log("Novo Usuario cadastrado")
-            req.flash("sucess_msg", "Seu cadastro foi realizado")
+            req.flash("sucess_msg", "Você foi cadastrado, para utilizar a plataforma, você deve validar seu e-mail. Faça o login e informe o código que enviamos para seu e-mail.")
             res.redirect("/")
 
         } catch(err) {

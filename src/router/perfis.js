@@ -50,6 +50,19 @@ router.get('/perfil/:id', eAdmin, async (req, res) => {
     })
 
 //-- Rota que renderiza o historico --//
+    router.get('/meu-historico', eAdmin, async (req, res) => {
+        User.findOne({ _id: req.user._id}).sort({dateCreater: -1}).select('tempos').then((users) => {
+            res.render("./perfis/historico", {users: users})
+            console.log(req.user.name + " Esta vizualisando o historico de " +  req.params.id)
+
+            }).catch((err) => {
+            res.redirect("/perfis/meuperfil")
+            console.log("deu erro: ", err)
+            })
+
+    })
+
+//-- Rota que renderiza o historico --//
     router.get('/resumos/:id', eAdmin, async (req, res) => {
         Resumo.find({ responsavel: req.params.id}).sort({dateCreater: -1}).populate('tag').then((resumos) => {
             res.render("./perfis/resumos", {resumos: resumos})
