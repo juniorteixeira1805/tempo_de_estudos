@@ -7,7 +7,7 @@
   </nav>
   <!-- Small modal -->
   <button type="button" class="btn btn-dark my-2" data-toggle="modal" data-target=".bd-example-modal-lg">Como funciona</button>
-
+  <p>Só são exibidos no rank os participantes que não são privados e que possuem mais de 6 neutrinos.</p>
   <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content bg-dark text-light">
@@ -84,15 +84,15 @@
           <tbody>
           {{#each usuarios}}
             {{#if privacidade.rank}} <!-- Só lista os usuarios que não são privados -->
-            <tr>
+            <tr class="linha ">
               <td><span class="d-inline-block text-right" tabindex="0" data-toggle="tooltip" title="{{{recado}}}"><img class="rounded-circle border border-secondary" style="width: 40px; height: 40px;" src="{{foto}}"></span>
               </td>
               <td class="text-center"><a href="/perfis/perfil/{{_id}}" style="text-decoration: none;"><b class="pessoas text-light">{{name}}</b></a>
               </td>
               <td>{{curso}}</td>
-              <td>{{historico.neutrinos}}</td>
+              <td class="neutrinos">{{historico.neutrinos}}</td>
               <td>{{historico.total}} minutos</td>
-              <td>{{resumos}}</td>   
+              <td class="resumos">{{resumos}}</td>   
             </tr>
             {{else}}
             {{/if}}
@@ -141,3 +141,17 @@
     </div>
   </div>
 </div>
+
+<script>
+  const quantLinha = document.getElementsByClassName("linha").length
+  var i = 0
+  var neutrinos = 0
+
+  while(i < quantLinha){
+    neutrinos = document.getElementsByClassName("neutrinos")[i].innerText
+    if(neutrinos < 6){
+      document.getElementsByClassName("linha")[i].setAttribute("hidden", "hidden")
+    }
+    i++
+  }
+</script>

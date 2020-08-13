@@ -7,6 +7,7 @@
   </nav>
   {{#if user.privacidade.rank}}
     <!-- Usuarios que não são privados verão está pagina-->
+      <p>Só são exibidos no rank os participantes que não são privados e que possuem mais de 60 minutos de atividades mensal.</p>
       <div class="table-responsive-sm text-center">
         <table class="table table-dark table-hover text-light">
           <thead>
@@ -52,7 +53,7 @@
           <tbody>
           {{#each usuarios}}
             {{#if privacidade.rank}} <!-- Só lista os usuarios que não são privados -->
-            <tr>
+            <tr class="linha">
               <td><span class="d-inline-block text-right" tabindex="0" data-toggle="tooltip" title="{{{recado}}}"><img class="rounded-circle border border-secondary" style="width: 40px; height: 40px;" src="{{foto}}"></span>
               </td>
               <td class="text-center"><a href="/perfis/perfil/{{_id}}" style="text-decoration: none;"><b class="pessoas text-light">{{name}}</b></a>
@@ -60,7 +61,7 @@
               <td>{{curso}}</td>
               <td>{{historico.dia}} minutos</td>
               <td>{{historico.semana}} minutos</td>
-              <td>{{historico.mes}} minutos</td>   
+              <td><a class="minutos">{{historico.mes}}</a> minutos</td>   
             </tr>
             {{/if}}
           {{else}}
@@ -107,3 +108,17 @@
     </div>
   </div>
 </div>
+
+<script>
+  const quantLinha = document.getElementsByClassName("linha").length
+  var i = 0
+  var minutos = 0
+
+  while(i < quantLinha){
+    minutos = document.getElementsByClassName("minutos")[i].innerText
+    if(minutos < 60){
+      document.getElementsByClassName("linha")[i].setAttribute("hidden", "hidden")
+    }
+    i++
+  }
+</script>
