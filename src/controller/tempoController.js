@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 require('../models/Dia')
 require('../models/Atividade')
 require('../models/User')
-const Dia = mongoose.model("dias")
+const Dia = mongoose.model("datas")
 const User = mongoose.model("users")
 const Atividade =  mongoose.model("atividades")
 
@@ -42,41 +42,6 @@ module.exports = {
         return tempoTotal;
     },
 
-//-- Que retorna o nome do dia da semana --//
-    diadasemana: function(data){
-        var recebimento = new Date(data)
-    
-        var diadasemana = recebimento.getDay().toString()
-    
-        if(diadasemana == 0){
-            return "Segunda-feira"
-        }
-    
-        if(diadasemana == 1){
-            return "Terça-feira"
-        }
-    
-        if(diadasemana == 2){
-            return "Quarta-feira"
-        }
-    
-        if(diadasemana == 3){
-            return "Quinta-feira"
-        }
-    
-        if(diadasemana == 4){
-            return "Sexta-feira"
-        }
-    
-        if(diadasemana == 5){
-            return "Sabado"
-        }
-    
-        if(diadasemana == 6){
-            return "Domingo"
-        }
-    },
-
 //-- Função que retorna data no formato dd/mm/aaaa --//
     novadata: function(data){
         
@@ -100,82 +65,87 @@ module.exports = {
     
         return datadeRecebimento
     },
-/*
+
 //-- Função que verifica o dia se o dia mudou e set 0 na variavel dia do banco de dados --//
-    verifcaDia: async function(){ 
+    verifcaData: async function(){ 
 
-        var dataBD = await Dia.findOne({_id: "5f30b457509764126095e6d7"})
-        
-        setInterval( async function(){
-        let data = await new Date()
-        let dataAtual = await data.getDate()
+    //-- buscando dados do BD --//
+        var dataBD = await Dia.findOne({_id: "5f34abe096fdf21c40800d40"})
+        var diaBD = dataBD.dia
 
-        console.log("data de hoje: " + dataAtual)
-        console.log("data do BD: " + dataBD.dataAtual)
+    //-- buscando data atual --//
+        var data = new Date
+        var diaAtual = data.getDate()
+        var semanaAtual = data.getDay()
 
-        if(dataAtual != dataBD){
-            console.log("o sistema verificou se mudou o dia: " + true +" às: " )
-            await User.updateMany({historico: {dia: 0}}, function(err, res) {//-- zerando as horas diarias --//
-                console.log("dia atualizado")
+    //-- função que verifica quando o servidor é iniciado --//
+        if(diaAtual != diaBD){
+            if(semanaAtual == "7"){
+                await User.updateMany({$set: {'historico.semana': 0}}, function(err, res) {//-- zerando as horas diarias --//
+                    console.log("Zerando semanas...")
+                });
+            }
+
+            if(diaAtual == "1"){
+                await User.updateMany({$set: {'historico.mes': 0}}, function(err, res) {//-- zerando as horas diarias --//
+                    console.log("Zerando meses...")
+                });
+                await User.updateMany({$set: {'historico.neutrinos': 0}}, function(err, res) {//-- zerando as horas diarias --//
+                    console.log("Zerando neutrinos...")
+                });
+            }
+
+            await User.updateMany({$set: {'historico.dia': 0}}, function(err, res) {//-- zerando as horas diarias --//
+                console.log("zerando dias...")
             });
 
             await Atividade.updateMany({status: false}, function(err, res) {
-                console.log("Atividades atualizadas")
+                console.log("Atividades atualizadas.")
             });
 
-            await Atividade.updateMany({dataAtual: new Date}, function(err, res) {
-                console.log("Atividades atualizadas")
-            });
-
-
-
-        }else{
-            console.log("o sistema verificou se mudou o dia: " + false +" às: " + horaAtual)
-        }
-        },5000)
-    
-    },
-
-//-- Função que verifica se a semana passou, mas não está funcionando --//
-    verifcaSemana: async function(){
-
-        setInterval( async function(){
-        let data = new Date()
-        let diaDaSemana = data.getDay()
-        let horaAtual = data.getHours()
-
-        if(diaDaSemana == "1" && horaAtual == "3"){
-            console.log("o sistema verificou se mudou a semana: " + true +" às: " + horaAtual)
-            await User.updateMany({historico: {semana: 0}}, function(err, res) {
-                console.log("A semana foi atualizada")
-            });
-
-        }else{
-            console.log("o sistema verificou se mudou a semana: " + false +" às: " + horaAtual)
-        }
-        },3600000)        
-
-    },
-
-//-- Função que verifica o mes, mas ainda esta em teste --//
-    verifcaMes: async function(){
-
-        setInterval(async function(){
-        let data = new Date()
-        let diaAtual = data.getDate()
-        let horaAtual = data.getHours()
-
-        if(diaAtual == "1" && horaAtual == "3"){
-            console.log("o sistema verificou se mudou o mes: " + true +" às: " + horaAtual)
-            await User.updateMany({historico: {mes: 0}}, function(err, res) {//-- zerando as horas diarias --//
-                console.log("o sistema verificou se mudou o mes: " + true +" às: " + horaAtual)
+            await Dia.updateMany({dia: diaAtual}, function(err, res) {
+                console.log("Dia do BD atualizado.")
             });
 
         }else{
             console.log("o sistema verificou se mudou o dia: " + false)
         }
-        },3600000)
-        // hora 3600000
+
+        //-- função que verifica periodicamente --//
+        setInterval( async function(){
+     //-- função que verifica quando o servidor é iniciado --//
+        if(diaAtual != diaBD){
+            if(semanaAtual == "7"){
+                await User.updateMany({$set: {'historico.semana': 0}}, function(err, res) {//-- zerando as horas diarias --//
+                    console.log("Zerando semanas...")
+                });
+            }
+
+            if(diaAtual == "1"){
+                await User.updateMany({$set: {'historico.mes': 0}}, function(err, res) {//-- zerando as horas diarias --//
+                    console.log("Zerando meses...")
+                });
+                await User.updateMany({$set: {'historico.neutrinos': 0}}, function(err, res) {//-- zerando as horas diarias --//
+                    console.log("Zerando neutrinos...")
+                });
+            }
+
+            await User.updateMany({$set: {'historico.dia': 0}}, function(err, res) {//-- zerando as horas diarias --//
+                console.log("zerando dias...")
+            });
+
+            await Atividade.updateMany({status: false}, function(err, res) {
+                console.log("Atividades atualizadas.")
+            });
+
+            await Dia.updateMany({dia: diaAtual}, function(err, res) {
+                console.log("Dia do BD atualizado.")
+            });
+
+        }else{
+            console.log("o sistema verificou se mudou o dia: " + false)
+        }
+        },60000)
+    
     },
-    */
 }

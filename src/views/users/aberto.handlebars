@@ -8,23 +8,23 @@
     <div class="dropdown-divider"></div>
     <h1 class="display-4 text-dark">Modo Aberto</h1>
     <div class="dropdown-divider"></div>
-    <P>O modo Aberto foi pensando para aquele momento que você estudou e não conseguiu utilizar sua sala de estudos, ou para aquele dia que você esqueceu de adicionar seu tempo. A data que você adicionar, ficará salva no histórico. Entretanto, as horas serão contabilizadas no dia atual.</P>
+    <P>O modo Aberto foi pensando para aquele momento que você estudou e não conseguiu utilizar sua sala de estudos, ou para aquele dia que você esqueceu de adicionar seu tempo. <b>CASO A DATA DE ESTUDO NÃO SEJA A DATA DO DIA ATUAL, AS HORAS NÃO SERÃO CONTABILIZADAS NO DIA ATUAL, MAS SERÁ CONTABILIZADA NA SEMANA, MÊS E NO SEU HISTÓRICO.</b></P>
     <p>Esse modo é livre, mas pedimos que use com responsabilidade e não burle. Lembre-se, a prioridade aqui é seu foco e não sua posição no rank.</p>
     <form action="/authUser/registerTempo" method="POST">
     <div class="dropdown-divider"></div>
         <div class="card-deck bg-dark">
-            <div class=" card bg-dark my-4 form-group text-center">
+            <div class=" card bg-dark text-light my-4 form-group text-center">
                 <div class="col-sm">
                     <p><b>Horário inicial:</b></p>
                     <input class="col-sm-6" type="time" id="inicio" name="inicio" min="00:00" max="23:59" required>
                     <p><b>Horário Final:</b></p>
                     <input class="col-sm-6" type="time" id="termino" name="termino" min="00:00" max="23:59" required>
-                    <p><b>Data:</b></p>
+                    <p><b>Data de estudo:</b></p>
                     <input  class="col-sm-6" name="novaData" type="date" value="aaaa-mm-dd" id="example-date-input" required>
                 </div>                  
             </div>
 
-            <div class=" card bg-dark my-4">
+            <div class="text-light card bg-dark my-4">
                 <h5 for="validationServer01">Informe o tipo da atividade</h5>
                 <select class="custom-select " name="tipo" size="5" required>
                 <option value="Estudou">Estudei</option>

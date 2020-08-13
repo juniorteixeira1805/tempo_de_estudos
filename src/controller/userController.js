@@ -9,9 +9,21 @@
         
 //-- Rota que registra novo tempo pelo metodo aberto --//
     router.post('/registerTempo', async (req, res) => {
-        try{
         //-- transformando a data do formato americano para o formato Brasileiro --//
-            var nova_Data = await funcdata.FormatarData(req.body.novaData)
+        var nova_Data = await funcdata.FormatarData(req.body.novaData)
+        var data_hoje = await funcdata.novadata(new Date)
+        if(nova_Data > data_hoje){
+            console.log(req.user.name + " tentou acrescentear uma data maior que a data de hoje.")
+            req.flash("error_msg", "A data de estudos não pode ser menor que a data atual.") // apresenta uma mensagem de erro
+            res.redirect("/tempo/aberto") // redireciona para a pagina
+        } else {
+        try{
+        //-- verifica se o incio é maior que o termino --//
+            if(req.body.inicio > req.body.termino){
+                console.log(req.user.name + " tentou acrescentear um inicio maior que o termino.")
+                req.flash("error_msg", "O início não pode ser maior que o término. (Caso tenha ultrapassado meia noite, insira dois tempos. Um do início até meia noite e outro de meia noite até o término.") // apresenta uma mensagem de erro
+                res.redirect("/tempo/aberto") // redireciona para a pagina
+            } else{
 
         //-- Calculando a quantidade de minutos estudados --//
             tempoTotalEstudado = await funcdata.tempoEstudado(req.body.inicio, req.body.termino)
@@ -19,8 +31,13 @@
         //-- persistindo no banco de dados --//
             await User.findOneAndUpdate({ _id: req.user._id }, {$push: { tempos: {dateCreater: new Date(), novaData: nova_Data, inicio: req.body.inicio, termino: req.body.termino, tempoEstudado: tempoTotalEstudado, tipo: req.body.tipo, subTipo: req.body.subTipo, metodo: "Aberto"} }}).then(async () =>{
 
-            //-- Somando minutos ao dia --// 
+            //-- Somando minutos ao dia --//
+            if(nova_Data != data_hoje){
+                minutosTotalNoDia = 0 + parseFloat(req.user.historico.dia)
+            } else{
                 minutosTotalNoDia = await parseFloat(tempoTotalEstudado) + parseFloat(req.user.historico.dia)  
+            }
+
                 minutosTotalNoSemana = await tempoTotalEstudado + parseFloat(req.user.historico.semana)
                 minutosTotalNoMes = await tempoTotalEstudado + parseFloat(req.user.historico.mes)        
                 minutosTotalNoTotal = await tempoTotalEstudado + parseFloat(req.user.historico.total)
@@ -95,17 +112,19 @@
             console.log(req.user.name+ ", cadastrou novo tempo")
             req.flash("sucess_msg", req.user.name+ ", seu tempo foi cadastrado") // apresenta na tela a msg de salvo
             res.redirect("/tempo/aberto") //redireciona para a pagina
+            
         }).catch((err) => {
             console.log("erro ao cadastrar meta: "+ err)
             req.flash("error_msg",req.user.name + "Houve um erro ao cadastrar seu tempo. Entre em contato pelo suporte.") // apresenta uma mensagem de erro
-            res.redirect("/user/aberto") // redireciona para a pagina
+            res.redirect("/tempo/aberto") // redireciona para a pagina
         })
-
+    }
         } catch(err) {
             console.log("erro ao acrescentar tempo: " +err)
             req.flash("error_msg", "Houve um erro ao salvar") // apresenta uma mensagem de erro
-            res.redirect("/user/aberto") // redireciona para a pagina
+            res.redirect("/tempo/aberto") // redireciona para a pagina
         }
+    }
     })
 
 //-- Rota que registra novo tempo pelo metodo pomodoro --//
@@ -219,7 +238,6 @@
                 minutosTotalNoSemana = await parseFloat(req.user.historico.semana) - parseFloat(req.body.tempoEstudado)
                 minutosTotalNoMes = await parseFloat(req.user.historico.mes) - parseFloat(req.body.tempoEstudado)
                 //-- deletando evento --//
-                await User.findOneAndUpdate({ _id: req.user._id },{ $pull: { meusEventos: { _id: req.body.id }}}).then((req, res) => {}).catch((err) => {})
 
                 if(req.body.tipo == "Estudou"){
                 //--  somando minutos ao total --//

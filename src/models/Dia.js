@@ -1,14 +1,21 @@
 const mongoose = require('mongoose')
 
-const DiaSchema = new mongoose.Schema({
+const DataSchema = new mongoose.Schema({
 
-    dataAtual : {
-        type : Date,
+    dia : {
+        type : String,
     },
 
+    diaDaSemana : {
+        type : String,
+    },
+
+    mes : {
+        type : String,
+    },
 });
 
 
-const Dia = mongoose.model('dias', DiaSchema);
+const Data = mongoose.model('datas', DataSchema);
 
-module.exports = Dia;
+module.exports = Data;

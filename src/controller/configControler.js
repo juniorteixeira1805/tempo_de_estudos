@@ -26,12 +26,18 @@ router.post('/privacidade', async (req, res) => {
 })
 
     router.post('/registerDia', async (req, res) => {
-        const novoDia = {
-            dataAtual: new Date
+        var data = await new Date
+        var day = await data.getDate()
+        var dayS = await data.getDay()
+        var m = await (parseInt(data.getMonth()) + 1).toString()
+        const novData = {
+            dia: day,
+            diaDaSemana: dayS,
+            mes: m,
         }
 
     //-- persistindo no banco --//
-        new Dia(novoDia).save().then( async () => {
+        new Dia(novData).save().then( async () => {
             console.log(" Criou novo dia")
         }).catch((err) => {
             console.log("erro ao criar dia: "+err)
