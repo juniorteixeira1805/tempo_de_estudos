@@ -33,7 +33,7 @@
 
             //-- Somando minutos ao dia --//
             if(nova_Data != data_hoje){
-                minutosTotalNoDia = 0 + parseFloat(req.user.historico.dia)
+                minutosTotalNoDia = await 0 + parseFloat(req.user.historico.dia)
             } else{
                 minutosTotalNoDia = await parseFloat(tempoTotalEstudado) + parseFloat(req.user.historico.dia)  
             }
@@ -44,8 +44,8 @@
 
             //-- verificando quantos eventos tem --//
                 var eventos = await User.findOne({_id: req.user._id}).select('meusEventos')
-                eventos = eventos.meusEventos
-                var tam = eventos.length
+                eventos = await eventos.meusEventos
+                var tam = await eventos.length
                 //-- se tiver mais que 4 eventos o ultimo evento será removido  --//
                 if(tam > 4){
                     await User.findOneAndUpdate({_id: req.user._id}, { $pop: { "meusEventos" : -1 } }).then((req, res) => {}).catch((err) => {console.log(err)})
@@ -58,7 +58,7 @@
                 totalLeitura = await 0 + parseFloat(req.user.historico.totalLeitura)
                 totalPesquisa = await 0 + parseFloat(req.user.historico.totalPesquisa)
                 totalExercicio = await 0 + parseFloat(req.user.historico.totalExercicio)
-                pontos = parseFloat(req.user.historico.neutrinos) + parseFloat(((tempoTotalEstudado)/10).toFixed(2))
+                pontos = await parseFloat(req.user.historico.neutrinos) + parseFloat(((tempoTotalEstudado)/10).toFixed(2))
                 await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: pontos}}}).then((req, res) => {}).catch((err) => {})
                 
                 await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(),name: req.user.name, foto: req.user.foto, evento: req.body.tipo, subevento: req.body.subTipo, metodo: "Aberto", inicio: req.body.inicio, termino: req.body.termino, neutrinosGerado: (parseFloat(tempoTotalEstudado)/10).toFixed(2)}}}).then((req, res) => {}).catch((err) => {console.log(err)})
@@ -70,7 +70,7 @@
                         totalLeitura = await 0 + parseFloat(req.user.historico.totalLeitura)
                         totalPesquisa = await 0 + parseFloat(req.user.historico.totalPesquisa)
                         totalExercicio = await 0 + parseFloat(req.user.historico.totalExercicio)
-                        pontos = parseFloat(req.user.historico.neutrinos) + parseFloat((((tempoTotalEstudado)/10).toFixed(2)))
+                        pontos = await parseFloat(req.user.historico.neutrinos) + parseFloat((((tempoTotalEstudado)/10).toFixed(2)))
                         await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: pontos}}}).then((req, res) => {}).catch((err) => {})
                         await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(),name: req.user.name, foto: req.user.foto, evento: req.body.tipo, subevento: req.body.subTipo, metodo: "Aberto", inicio: req.body.inicio, termino: req.body.termino, neutrinosGerado: (parseFloat(tempoTotalEstudado)/10).toFixed(2)}}}).then((req, res) => {}).catch((err) => {console.log(err)})                    } else{
                         if(req.body.tipo == "Leitura"){
@@ -80,7 +80,7 @@
                             totalLeitura = await tempoTotalEstudado + parseFloat(req.user.historico.totalLeitura)
                             totalPesquisa = await 0 + parseFloat(req.user.historico.totalPesquisa)
                             totalExercicio = await 0 + parseFloat(req.user.historico.totalExercicio)
-                            pontos = parseFloat(req.user.historico.neutrinos) + parseFloat(((tempoTotalEstudado)/6).toFixed(2))
+                            pontos = await parseFloat(req.user.historico.neutrinos) + parseFloat(((tempoTotalEstudado)/6).toFixed(2))
                             await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: pontos}}}).then((req, res) => {}).catch((err) => {})
                             await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(),name: req.user.name, foto: req.user.foto, evento: req.body.tipo, subevento: req.body.subTipo, metodo: "Aberto", inicio: req.body.inicio, termino: req.body.termino, neutrinosGerado: (parseFloat(tempoTotalEstudado)/6).toFixed(2)}}}).then((req, res) => {}).catch((err) => {console.log(err)})                        } else{
                             if(req.body.tipo == "Pesquisou"){
@@ -90,7 +90,7 @@
                                 totalLeitura = await 0 + parseFloat(req.user.historico.totalLeitura)
                                 totalPesquisa = await tempoTotalEstudado + parseFloat(req.user.historico.totalPesquisa)
                                 totalExercicio = await 0 + parseFloat(req.user.historico.totalExercicio)
-                                pontos = parseFloat(req.user.historico.neutrinos) + parseFloat(((tempoTotalEstudado)/6).toFixed(2))
+                                pontos = await parseFloat(req.user.historico.neutrinos) + parseFloat(((tempoTotalEstudado)/6).toFixed(2))
                                 await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: pontos}}}).then((req, res) => {}).catch((err) => {})
                                 await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(),name: req.user.name, foto: req.user.foto, evento: req.body.tipo, subevento: req.body.subTipo, metodo: "Aberto", inicio: req.body.inicio, termino: req.body.termino, neutrinosGerado: (parseFloat(tempoTotalEstudado)/6).toFixed(2)}}}).then((req, res) => {}).catch((err) => {console.log(err)})                            } else{
                                 if(req.body.tipo == "Exercitou"){
@@ -100,7 +100,7 @@
                                     totalLeitura = await 0 + parseFloat(req.user.historico.totalLeitura)
                                     totalPesquisa = await 0 + parseFloat(req.user.historico.totalPesquisa)
                                     totalExercicio = await tempoTotalEstudado + parseFloat(req.user.historico.totalExercicio)
-                                    pontos = parseFloat(req.user.historico.neutrinos) + parseFloat(((tempoTotalEstudado)/4).toFixed(2))
+                                    pontos = await parseFloat(req.user.historico.neutrinos) + parseFloat(((tempoTotalEstudado)/4).toFixed(2))
                                     await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: pontos}}}).then((req, res) => {}).catch((err) => {})
                                     await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(),name: req.user.name, foto: req.user.foto, evento: req.body.tipo, subevento: req.body.subTipo, metodo: "Aberto", inicio: req.body.inicio, termino: req.body.termino, neutrinosGerado: (parseFloat(tempoTotalEstudado)/4).toFixed(2)}}}).then((req, res) => {}).catch((err) => {console.log(err)})                                
                                 }    
@@ -146,8 +146,8 @@
                 minutosTotalNoTotal = await tempoTotalEstudado + parseFloat(req.user.historico.total)
             //-- verificando quantos eventos tem --//
                 var eventos = await User.findOne({_id: req.user._id}).select('meusEventos')
-                eventos = eventos.meusEventos
-                var tam = eventos.length
+                eventos = await eventos.meusEventos
+                var tam = await eventos.length
             //-- se tiver mais que 4 eventos o ultimo evento será removido  --//
                 if(tam > 4){
                     await User.findOneAndUpdate({_id: req.user._id}, { $pop: { "meusEventos" : -1 } }).then((req, res) => {}).catch((err) => {console.log(err)})
@@ -160,7 +160,7 @@
                 totalLeitura = await 0 + parseFloat(req.user.historico.totalLeitura)
                 totalPesquisa = await 0 + parseFloat(req.user.historico.totalPesquisa)
                 totalExercicio = await 0 + parseFloat(req.user.historico.totalExercicio)
-                pontos = parseFloat(req.user.historico.neutrinos) + parseFloat(((tempoTotalEstudado)/10).toFixed(2))
+                pontos = await parseFloat(req.user.historico.neutrinos) + parseFloat(((tempoTotalEstudado)/10).toFixed(2))
                 await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: pontos}}}).then((req, res) => {}).catch((err) => {})
                 await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(),name: req.user.name, foto: req.user.foto, evento: req.body.tipo, subevento: req.body.subTipo, metodo: "Pomodoro", inicio: req.body.inicio, termino: req.body.termino, neutrinosGerado: (parseFloat(tempoTotalEstudado)/10).toFixed(2)}}}).then((req, res) => {}).catch((err) => {console.log(err)})
                 } else{
@@ -171,7 +171,7 @@
                         totalLeitura = await 0 + parseFloat(req.user.historico.totalLeitura)
                         totalPesquisa = await 0 + parseFloat(req.user.historico.totalPesquisa)
                         totalExercicio = await 0 + parseFloat(req.user.historico.totalExercicio)
-                        pontos = parseFloat(req.user.historico.neutrinos) + parseFloat(((tempoTotalEstudado)/10).toFixed(2))
+                        pontos = await parseFloat(req.user.historico.neutrinos) + parseFloat(((tempoTotalEstudado)/10).toFixed(2))
                         await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: pontos}}}).then((req, res) => {}).catch((err) => {})
                         await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(),name: req.user.name, foto: req.user.foto, evento: req.body.tipo, subevento: req.body.subTipo, metodo: "Pomodoro", inicio: req.body.inicio, termino: req.body.termino, neutrinosGerado: (parseFloat(tempoTotalEstudado)/10).toFixed(2)}}}).then((req, res) => {}).catch((err) => {console.log(err)})
                     } else{
@@ -182,7 +182,7 @@
                             totalLeitura = await tempoTotalEstudado + parseFloat(req.user.historico.totalLeitura)
                             totalPesquisa = await 0 + parseFloat(req.user.historico.totalPesquisa)
                             totalExercicio = await 0 + parseFloat(req.user.historico.totalExercicio)
-                            pontos = parseFloat(req.user.historico.neutrinos) + parseFloat(((tempoTotalEstudado)/6).toFixed(2))
+                            pontos = await parseFloat(req.user.historico.neutrinos) + parseFloat(((tempoTotalEstudado)/6).toFixed(2))
                             await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: pontos}}}).then((req, res) => {}).catch((err) => {})
                             await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(),name: req.user.name, foto: req.user.foto, evento: req.body.tipo, subevento: req.body.subTipo, metodo: "Pomodoro", inicio: req.body.inicio, termino: req.body.termino, neutrinosGerado: (parseFloat(tempoTotalEstudado)/6).toFixed(2)}}}).then((req, res) => {}).catch((err) => {console.log(err)})
                         } else{
@@ -193,7 +193,7 @@
                                 totalLeitura = await 0 + parseFloat(req.user.historico.totalLeitura)
                                 totalPesquisa = await tempoTotalEstudado + parseFloat(req.user.historico.totalPesquisa)
                                 totalExercicio = await 0 + parseFloat(req.user.historico.totalExercicio)
-                                pontos = parseFloat(req.user.historico.neutrinos) + parseFloat(((tempoTotalEstudado)/6).toFixed(2))
+                                pontos = await parseFloat(req.user.historico.neutrinos) + parseFloat(((tempoTotalEstudado)/6).toFixed(2))
                                 await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: pontos}}}).then((req, res) => {}).catch((err) => {})
                                 await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(),name: req.user.name, foto: req.user.foto, evento: req.body.tipo, subevento: req.body.subTipo, metodo: "Pomodoro", inicio: req.body.inicio, termino: req.body.termino, neutrinosGerado: (parseFloat(tempoTotalEstudado)/6).toFixed(2)}}}).then((req, res) => {}).catch((err) => {console.log(err)})
                             } else{
@@ -204,7 +204,7 @@
                                     totalLeitura = await 0 + parseFloat(req.user.historico.totalLeitura)
                                     totalPesquisa = await 0 + parseFloat(req.user.historico.totalPesquisa)
                                     totalExercicio = await tempoTotalEstudado + parseFloat(req.user.historico.totalExercicio)
-                                    pontos = parseFloat(req.user.historico.neutrinos) + parseFloat(((tempoTotalEstudado)/4).toFixed(2))
+                                    pontos = await parseFloat(req.user.historico.neutrinos) + parseFloat(((tempoTotalEstudado)/4).toFixed(2))
                                     await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: pontos}}}).then((req, res) => {}).catch((err) => {})
                                     await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(),name: req.user.name, foto: req.user.foto, evento: req.body.tipo, subevento: req.body.subTipo, metodo: "Pomodoro", inicio: req.body.inicio, termino: req.body.termino, neutrinosGerado: (parseFloat(tempoTotalEstudado)/4).toFixed(2)}}}).then((req, res) => {}).catch((err) => {console.log(err)})
                                 }    
@@ -257,7 +257,7 @@
                         totalLeitura = await 0 + parseFloat(req.user.historico.totalLeitura)
                         totalPesquisa = await 0 + parseFloat(req.user.historico.totalPesquisa)
                         totalExercicio = await 0 + parseFloat(req.user.historico.totalExercicio)
-                        pontos = parseFloat(req.user.historico.neutrinos) - parseFloat(((req.body.tempoEstudado)/10).toFixed(2))
+                        pontos = await parseFloat(req.user.historico.neutrinos) - parseFloat(((req.body.tempoEstudado)/10).toFixed(2))
                         await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: pontos}}}).then((req, res) => {}).catch((err) => {})
 
                     } else{
@@ -268,7 +268,7 @@
                             totalLeitura = await parseFloat(req.user.historico.totalLeitura) - parseFloat(req.body.tempoEstudado)
                             totalPesquisa = await 0 + parseFloat(req.user.historico.totalPesquisa)
                             totalExercicio = await 0 + parseFloat(req.user.historico.totalExercicio)
-                            pontos = parseFloat(req.user.historico.neutrinos) - parseFloat(((req.body.tempoEstudado)/6).toFixed(2))
+                            pontos = await parseFloat(req.user.historico.neutrinos) - parseFloat(((req.body.tempoEstudado)/6).toFixed(2))
                             await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: pontos}}}).then((req, res) => {}).catch((err) => {})
                     
                         } else{
@@ -279,7 +279,7 @@
                                 totalLeitura = await 0 + parseFloat(req.user.historico.totalLeitura)
                                 totalPesquisa = await parseFloat(req.user.historico.totalPesquisa) - parseFloat(req.body.tempoEstudado)
                                 totalExercicio = await 0 + parseFloat(req.user.historico.totalExercicio)
-                                pontos = parseFloat(req.user.historico.neutrinos) - parseFloat(((req.body.tempoEstudado)/6).toFixed(2))
+                                pontos = await parseFloat(req.user.historico.neutrinos) - parseFloat(((req.body.tempoEstudado)/6).toFixed(2))
                                 await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: pontos}}}).then((req, res) => {}).catch((err) => {})
                             } else{
                                 if(req.body.tipo == "Exercitou"){
@@ -289,7 +289,7 @@
                                     totalLeitura = await 0 + parseFloat(req.user.historico.totalLeitura)
                                     totalPesquisa = await 0 + parseFloat(req.user.historico.totalPesquisa)
                                     totalExercicio = await parseFloat(req.user.historico.totalExercicio) - parseFloat(req.body.tempoEstudado)
-                                    pontos = parseFloat(req.user.historico.neutrinos) - parseFloat(((req.body.tempoEstudado)/4).toFixed(2))
+                                    pontos = await parseFloat(req.user.historico.neutrinos) - parseFloat(((req.body.tempoEstudado)/4).toFixed(2))
                                     await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: pontos}}}).then((req, res) => {}).catch((err) => {})
                                 }    
                             }
@@ -330,7 +330,7 @@
     router.post('/enviaCodigo', async (req, res) => {
         try{
         //-- função responsavel por gerar nova senha aleatoria --//
-            function makeid() {
+        await function makeid() {
                 var text = "";
                 var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*()_+={}?/][";
                 for (var i = 0; i < 10; i++)

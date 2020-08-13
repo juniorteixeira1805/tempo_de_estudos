@@ -12,6 +12,14 @@
           <img src="{{{users.foto}}}" class="card-img-top border border-secondary rounded-circle" style="width: 150px; height: 150px;">
         </div>
           <ul class="list-group list-group-flush" style="border: none;">
+            {{#if users.privacidade.busca}}
+            <li class="list-group-item bg-transparent" style="border: none;">
+              <form action="/turmaP/addAmigoPerfil" method="POST">
+                  <input type="text" name="id" value="{{users._id}}" hidden>
+                  <button type="submit" class="btn btn-success mx-3 my-1">Enturmar</button>
+              </form>
+            </li>
+            {{/if}}
             <li class="list-group-item bg-transparent" style="border: none;"><h5 class="card-title">{{users.name}}</h5></li>
             <li class="list-group-item bg-transparent"style="border: none;"><b class="card-title">Neutrinos: {{users.historico.neutrinos}}</b>
               <div class="spinner-grow spinner-grow-sm text-info" role="status">
