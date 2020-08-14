@@ -103,7 +103,7 @@ module.exports = {
                 console.log("Atividades atualizadas.")
             });
 
-            await Dia.updateMany({dia: diaAtual}, function(err, res) {
+            await Dia.update({_id: "5f34abe096fdf21c40800d40"},{dia: diaAtual}, function(err, res) {
                 console.log("Dia do BD atualizado.")
             });
 
@@ -138,7 +138,7 @@ module.exports = {
                 console.log("Atividades atualizadas.")
             });
 
-            await Dia.updateMany({dia: diaAtual}, function(err, res) {
+            await Dia.update({_id: "5f34abe096fdf21c40800d40"},{dia: diaAtual}, function(err, res) {
                 console.log("Dia do BD atualizado.")
             });
 
