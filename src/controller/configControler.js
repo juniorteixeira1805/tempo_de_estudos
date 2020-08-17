@@ -28,12 +28,8 @@ router.post('/privacidade', async (req, res) => {
     router.post('/registerDia', async (req, res) => {
         var data = await new Date
         var day = await data.getDate()
-        var dayS = await data.getDay()
-        var m = await (parseInt(data.getMonth()) + 1).toString()
         const novData = {
             dia: day,
-            diaDaSemana: dayS,
-            mes: m,
         }
 
     //-- persistindo no banco --//

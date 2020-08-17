@@ -6,13 +6,6 @@ const DataSchema = new mongoose.Schema({
         type : String,
     },
 
-    diaDaSemana : {
-        type : String,
-    },
-
-    mes : {
-        type : String,
-    },
 });
 
 

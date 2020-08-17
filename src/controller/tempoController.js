@@ -80,7 +80,7 @@ module.exports = {
 
     //-- função que verifica quando o servidor é iniciado --//
         if(diaAtual != diaBD){
-            if(semanaAtual == "7"){
+            if(semanaAtual == "1"){
                 await User.updateMany({$set: {'historico.semana': 0}}, function(err, res) {//-- zerando as horas diarias --//
                     console.log("Zerando semanas...")
                 });
@@ -115,7 +115,7 @@ module.exports = {
         setInterval( async function(){
      //-- função que verifica quando o servidor é iniciado --//
         if(diaAtual != diaBD){
-            if(semanaAtual == "7"){
+            if(semanaAtual == "1"){
                 await User.updateMany({$set: {'historico.semana': 0}}, function(err, res) {//-- zerando as horas diarias --//
                     console.log("Zerando semanas...")
                 });
