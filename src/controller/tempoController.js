@@ -70,7 +70,7 @@ module.exports = {
     verifcaData: async function(){ 
 
     //-- buscando dados do BD --//
-        var dataBD = await Dia.findOne({_id: "5f34abe096fdf21c40800d40"})
+        var dataBD = await Dia.findOne({_id: "5f3a7535f90f5f08bc588bbd"})
         var diaBD = dataBD.dia
 
     //-- buscando data atual --//
@@ -103,7 +103,7 @@ module.exports = {
                 console.log("Atividades atualizadas.")
             });
 
-            await Dia.update({_id: "5f34abe096fdf21c40800d40"},{dia: diaAtual}, function(err, res) {
+            await Dia.update({_id: "5f3a7535f90f5f08bc588bbd"},{dia: diaAtual}, function(err, res) {
                 console.log("Dia do BD atualizado.")
             });
 
@@ -138,7 +138,7 @@ module.exports = {
                 console.log("Atividades atualizadas.")
             });
 
-            await Dia.update({_id: "5f34abe096fdf21c40800d40"},{dia: diaAtual}, function(err, res) {
+            await Dia.update({_id: "5f3a7535f90f5f08bc588bbd"},{dia: diaAtual}, function(err, res) {
                 console.log("Dia do BD atualizado.")
             });
 
