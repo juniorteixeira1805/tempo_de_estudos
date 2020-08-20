@@ -113,7 +113,15 @@ module.exports = {
 
         //-- função que verifica periodicamente --//
         setInterval( async function(){
-     //-- função que verifica quando o servidor é iniciado --//
+        //-- buscando dados do BD --//
+            dataBD = await Dia.findOne({_id: "5f3a7535f90f5f08bc588bbd"})
+            diaBD = dataBD.dia
+
+        //-- buscando data atual --//
+            data = new Date
+            diaAtual = data.getDate()
+            semanaAtual = data.getDay()
+        //-- função que verifica quando o servidor é iniciado --//
         if(diaAtual != diaBD){
             if(semanaAtual == "1"){
                 await User.updateMany({$set: {'historico.semana': 0}}, function(err, res) {//-- zerando as horas diarias --//
