@@ -67,6 +67,10 @@
     </li>
 
     <li class="nav-item">
+      <a class="nav-link text-dark" role="button"><b>Resumos</b></a>
+    </li>
+
+    <li class="nav-item">
       <a class="nav-link text-dark" href="/turma/minha-turma" role="button" aria-haspopup="true" aria-expanded="false"><b>Turma</b></a>
     </li>
   </ul>
@@ -95,8 +99,8 @@
 
   <nav class="nav navbar-collapse navbar-dark  sticky-top small" style="width: 100%; background-color: #C0C0C0;">
     <ul class="nav nav-tabs bg-transparent border-0">
-      <li class="nav-item">
-        <a class="nav-link text-dark" href="#playlist" role="button" aria-haspopup="true" aria-expanded="false">Playlist
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-dark" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Playlist
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-music-note" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
           <path fill-rule="evenodd" d="M9 3v10H8V3h1z"/>
@@ -107,15 +111,28 @@
           <path d="M11 10a1 1 0 0 1 1-1h2v4a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-3zm-6 0a1 1 0 0 0-1-1H2v4a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-3z"/>
         </svg>
         </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" target="_blank" href="https://www.youtube.com/watch?v=5qap5aO4i9A"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Vídeo e Áudio">lofi hip hop radio - beats to relax/study to</span></a>
+          <a class="dropdown-item" target="_blank" href="https://www.youtube.com/watch?v=DWcJFNfaw9c"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Vídeo e Áudio">lofi hip hop radio - beats to sleep/chill to</span></a>
+          <a class="dropdown-item" target="_blank" href="https://drive.google.com/file/d/1jqdIBZAzQrslbnkXQg7xKy3n8unHIa9J/preview"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Apenas Áudio">Sonorização</span></a>
+          <a class="dropdown-item" target="_blank" href="https://drive.google.com/file/d/1TtrKAhOSVEtEWbFrHPSI2As3VsEUmupw/preview"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Apenas Áudio">Instrumental-1</span></a>
+          <a class="dropdown-item" target="_blank" href="https://drive.google.com/file/d/1_PBYWvyKgeG4CP2gePpOsHdHDcqLa1RE/preview"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Apenas Áudio">Instrumental-2</span></a>
+        </div>
       </li>
 
       <li class="nav-item dropdown">
-        <a class="nav-link text-dark" href="#salas" role="button" aria-haspopup="true" aria-expanded="false">Salas de estudo</a>
+        <a class="nav-link text-dark" href="/tempo/salaIndividualPublica" role="button" aria-haspopup="true" aria-expanded="false">Salas de estudo</a>
       </li>
+
+    <li class="nav-item">
+      <a class="nav-link text-dark" href="/rank/geralPublico" role="button">Ranks</a>
+    </li>
 
       <li class="nav-item dropdown">
         <a class="nav-link text-dark" href="#turmas" role="button" aria-haspopup="true" aria-expanded="false">Turma</a>
       </li>
+
+
     </ul>
   </nav>
   {{/if}}

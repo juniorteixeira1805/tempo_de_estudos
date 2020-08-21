@@ -1,0 +1,125 @@
+<div class="container">
+  <div class="dropdown-divider"></div>
+  <h1 class="display-4 text-dark">Sua sala de estudos</h1>
+  <div class="col-sm text-center">
+    <a href="/user/registrodeusuario" type="button" class="btn btn-dark mx-3 my-1">Resumos</a>
+    <a href="/user/registrodeusuario" type="button" class="btn btn-dark mx-3 my-1">Notas</a>
+    <a href="/user/registrodeusuario" type="button" class="btn btn-dark mx-3 my-1">Metas</a>
+    <a href="/user/registrodeusuario" type="button" class="btn btn-dark mx-3 my-1">FlashCards</a>
+  </div>
+    <div class="media-body">
+        <p><b>A Sala de estudos tem finalidade ajudar a você a ter mais facilidade para focar nos estudos, interagir com outros usuários, estudar juntos, compartilhar arquivos, criar um rank só com seus amigos. Dessa forma você tem as opções de modo aberto, a sala de estudos individual e a sala compartilhada.</b></p>
+        <ul>
+            <li>
+                <h4 class="my-3"><b>Modo aberto</b></h4>
+                <p><b>Foco e concentração são dois dos maiores aliados de quem está estudando, seja para conseguir boas notas, na escola, na faculdade, ter um bom desempenho em concursos, entre outras situações. E sabendo que muitas vezes o fato da quantidade de conteúdo a serem estudados acabam por complicar a rotina de estudos. Então aqui temos playlists especiais para quem precisa de uma força extra para manter o foco nas suas rotinas ou até mesmo para quem pretende fazer maratona de estudos.</b></p>
+            </li>
+            <li>
+                <h4 class="my-3"><b>Sala de estudos individual </b></h4>
+                <p><b>Ao optar pela sala individual você será direcionado para uma página privada que só você terá acesso, nela você poderá:</b></p>
+                <p><b>1ª opção é escrever resumos: escrever resumos enquanto estudam, eles ficaram disponíveis por 30 dias. De toda forma, será permitido que apague os resumos criados antes do tempo limite determinado.</b></p>
+                <p><b>2ª opção é adicionar notas:  nessa opção você pode criar notas com a finalidade de servir como pequenos lembretes.</b></p>
+                <p><b>3ª opção é adicionar metas: trace suas metas diárias, semanais e mensais, assim, você atingirá seus objetivos com mais eficiência.</b></p>
+                <p><b>4ª opção é o tempo guiado: Esse sistema possui três métodos de tempo guiado que buscam auxiliar o usuário a manter o foco e aumentar a sua produtividade, os métodos são: o iniciante, avançado e livre:</b></p>
+                <ul>
+                    <li>
+                        <p><b>No método iniciante, o usuário terá 25 min de foco e 5 min para descansar. </b></p>
+                    </li>
+                    <li>
+                        <p><b>Na opção Avançado, o usuário ficará estudando por 50 min e descansará por 10 min. </b></p>
+                    </li>
+                    <li>
+                        <p><b>No método livre, o usuário poderá estudar o tempo que quiser e descansar o quanto quiser, é só ele mesmo registrar no temporizador o tempo que estudará e o tempo que descansará.</b></p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+            <div class="dropdown-divider col-sm"></div>
+
+  <div class="card-deck my-4">
+
+  <div class="dropdown-divider mt-4"></div>
+  <h1 class="display-4 text-dark">Estudar - Pomodoro</h1>
+  <div class="card-deck">
+    <div class="card bg-dark mt-2">
+        <div class="card-header">
+            <div class="btn-group" role="group">
+                  <button id="btnGroupDrop1" type="button" class="btn btn-light dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Metodos
+                  </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="list-group" id="list-tab" role="tablist">
+                            <a class="list-group-item list-group-item-action dropdown-item" href="/user/registrodeusuario">Iniciante</a>
+                            <a class="list-group-item list-group-item-action dropdown-item" href="/user/registrodeusuario">Avançado</a>
+                            <a class="list-group-item list-group-item-action dropdown-item" href="/user/registrodeusuario">Livre</a>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+        </div>
+        <div class="card-body" style="margin: 0 auto;">
+          <p class="text-light">A Técnica Pomodoro é um método de gerenciamento de tempo desenvolvido por Francesco Cirillo no final dos anos 80. A técnica consiste na utilização de um cronômetro para dividir o trabalho em períodos de 25 minutos, separados por breves intervalos. A técnica deriva seu nome da palavra italiana pomodoro (tomate), como referência ao popular cronômetro gastronômico na forma dessa fruta. O método é baseado na ideia de que pausas frequentes podem aumentar a agilidade mental.</p>
+            
+            <div class="container" id="exibeIniciante" hidden>
+                <div class="card-deck bg-dark text-light">
+                    <div class="card bg-dark text-light">
+                      <div class="card-header text-center bg-dark">
+                        <div style="line-height:300px;" id="temp" hidden>
+                          <b><h3 style="100%" class="text-light" id="mostrador"></h3></b>
+                        </div>
+                      </div>
+                      <div class="card-body col-sm-10" style="margin: 0 auto;">
+                        <div>
+                          <p class="start text-light">A opção iniciante é para pessoas que perdem facilmente a concentração ou que não possui hábito de estudar. Iniciando está opção, você estudará 25 min e descansará 5 min. O temporizador marcará o total, ou seja, 30 min. Ao passar 25 min, um beep soará, então você deverá parar até o beep soar novamente, marcando o fim de um ciclo e, assim, poderá salvar seu tempo e reiniciar o ciclo.</p>
+                          <button id="btniniciarIniciante" class="btn btn-light" style="width: 100%;" onclick="iniciante()" >Iniciar</button>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" id="exibeAvancado" hidden>
+                <div class="card-deck">
+
+                    <div class="card bg-dark">
+                      <div class="card-header text-center bg-dark">
+                        <div style="line-height:300px;" id="tempAvancado" hidden>
+                          <b><h3 style="100%" class="text-light" id="mostradorAvancado"></h3></b>
+                        </div>
+                      </div>
+                      <div class="card-body col-sm-10" style="margin: 0 auto;">
+                        <div class="bg-dark">
+                          <p class="start text-light">A opção Avançado é para pessoas que possuem o hábito de estudar. Iniciando está opção, estudará 50 min e descansará 10 min. O temporizador marcará o total, ou seja, 60 min. Ao passar 50 min, um beep soará, então você deverá parar até o beep soar novamente, marcando o fim de um ciclo e, assim, poderá salvar seu tempo e reiniciar o ciclo.</p>
+                          <button id="btniniciarAvancado" class="btn btn-light" style="width: 100%;" onclick="Avancado()" >Iniciar</button>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+
+    <div class="container" id="exibeLivre" hidden>
+                <div class="card-deck">
+                    <div class="card bg-dark">
+                      <div class="card-header text-center bg-dark">
+                        <div style="line-height:300px;" id="tempLivre" hidden>
+                          <b><h3 style="100%" class="text-light" id="mostradorLivre"></h3></b>
+                        </div>
+                      </div>
+                      <div class="card-body col-sm-10" style="margin: 0 auto;">
+                        <div>
+                          <p class="start text-light">Iniciando está opção, você poderá estudar o tempo que quiser e descansará o quanto quiser. O temporizador marcará o total. Ao passar o tempo que você adicionou de estudo, um beep soará, então você deverá parar até o beep soar novamente, marcando o fim de um ciclo e, assim, poderá salvar seu tempo e reiniciar o ciclo.</p>
+                          <button id="btniniciarLivre" class="btn btn-light" style="width: 100%;" onclick="Livre()" >Iniciar</button>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

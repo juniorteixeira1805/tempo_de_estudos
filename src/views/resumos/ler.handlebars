@@ -28,9 +28,18 @@
       </button>
     </form>
   </div>
+
+  <div id="conteudo" hidden>
+    <h3>{{resumo.titulo}}</h3>
+    <div class="textosEmHtmlpdf">{{resumo.corpo}}</div>
+    <div class="textosEmHtmlpdf"><b>Referência: </b><a target="_blank" href="{{{resumo.ref}}}">{{resumo.ref}}</a></div>
+  </div>
+<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Funcionalidade ainda não está totalmente concluída.">
+  <div id="editor"></div>
+  <button id="btGerarPDF" class="btn btn-dark">Gerar PDF</button>
 </div> 
-
-
+</span>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
 <script>
   const x = document.getElementsByClassName("textosEmString").length
   var resumosEmString = document.getElementsByClassName("textosEmString")
@@ -39,4 +48,27 @@
     document.getElementsByClassName("textosEmHtml")[i].innerHTML = document.getElementsByClassName("textosEmString")[i].innerText
     i++;
   }
+
+  const y = document.getElementsByClassName("textosEmString").length
+  var resumosEmString = document.getElementsByClassName("textosEmString")
+  var j = 0;
+  while(j<y){
+    document.getElementsByClassName("textosEmHtmlpdf")[j].innerHTML = document.getElementsByClassName("textosEmString")[j].innerText
+    j++;
+  }
+
+  var doc = new jsPDF();
+  var specialElementHandlers = {
+      '#editor': function (element, renderer) {
+          return true;
+      }
+  };
+
+  $('#btGerarPDF').click(function () {
+      doc.fromHTML($('#conteudo').html(), 10, 10, {
+          'width': 170,
+              'elementHandlers': specialElementHandlers
+      });
+      doc.save('exemplo-pdf.pdf');
+  });
 </script>

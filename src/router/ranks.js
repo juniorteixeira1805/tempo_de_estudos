@@ -179,4 +179,18 @@ router.get('/resumos', eAdmin, async (req, res) => {
         }
     })
 
+    //-- rota responsavel por rendizar o rank em relação do tempo --//
+    router.get('/geralPublico', async (req, res) => {
+        //-- Passando todos os usuarios para a view --//
+        try{
+            User.find({}).sort({'historico.neutrinos' : 'desc'}).then((usuarios) => {
+
+                res.render("./rank/rankgeralPublico", {usuarios: usuarios})
+                }).catch((err) => {
+                res.redirect("/user/registro")
+                })
+        } catch (err){
+            res.redirect("/user/registro")
+        }
+    })
 module.exports = router

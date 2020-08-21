@@ -1,0 +1,118 @@
+<div class="container">
+  <!-- Small modal -->
+  <h3 >Rank Geral
+  <span class="my-2 d-inline-block small" tabindex="0"  data-toggle="modal" data-target=".bd-example-modal-lg" data-toggle="tooltip" title="Clique para saber como funciona.">
+    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+    </svg>
+  </span>
+  </h3>
+  <p>Só são exibidos no rank os participantes que não são privados e que possuem mais de 10 neutrinos.</p>
+  <div class="dropdown-divider"></div>
+  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content bg-dark text-light">
+        <div class="container">
+          <h1>Sistema de Neutrinos</h1>
+          <p>A classificação do rank geral é dado conforme a quantidade de Neutrinos dos participantes. Quanto mais Neutrinos o participante tiverem, melhor colocado ele estará.</p>
+          <p>Este sistema funciona da seguinte forma:</p>
+          <ul>
+            <li>
+              <p>Quantidade de minutos dos tipo: Estudos e Assistir Aula é dividido por 10. EX: Estudou/AssistiuAula 100 minutos, a quantidade de Neutrinos recebidos será 100/10 = 10 Neutrinos</p>
+            </li>
+            <li>
+              <p>Quantidade de minutos dos tipo: Leitura e  Pesquisa é dividido por 6. EX: Leu/Pesquisou 100 minutos, a quantidade de Neutrinos recebidos será 100/6 = 16,67 Neutrinos</p>
+            </li>
+            <li>
+              <p>Quantidade de minutos do tipo: Exercicios é dividido por 4. EX: Exercitou 100 minutos, a quantidade de Neutrinos recebidos será 100/4 = 25 Neutrinos</p>
+            </li>
+          </ul>
+          <h3>Outras atividade que geram Neutrinos</h3>
+          <ul>
+            <li>
+              <p><b>Resumos:</b> A cada resumo NÃO PRIVADO o usuário recebe 30 Neutrinos</p>
+            </li>
+            <li>
+              <p><b>Concluir atividade diária:</b> A cada atividade diária concluida o usuário recebe 3 Neutrinos</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- Usuarios que não são privados verão está pagina-->
+      <div class="table-responsive-sm text-center">
+        <table class="table table-dark table-hover">
+          <thead>
+            <tr>
+              <th>
+                <ul class="nav nav-tabs border-0">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-secondary text-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><b>Filtrar</b></a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="/user/registrodeusuario">Cadastra-se</a>
+                    </div>
+                  </li>
+                </ul>
+              </th>
+              <th scope="col">
+
+              </th>
+              <th scope="col"><svg class="bi bi-person-lines-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7 1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm2 9a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
+              </svg> - Nome</th>
+              <th scope="col">
+                <svg class="bi bi-book-half" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 0 0 7.5 2.5v11a.5.5 0 0 0 .854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 0 0-.799-.34 12.96 12.96 0 0 0-2.073-.609zM15 2.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.387-.023-3.426.56V2.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0 1 15 2.82z"/>
+                  <path fill-rule="evenodd" d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 0 1 8.5 2.5v11a.5.5 0 0 1-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 0 1 0 13.5v-11a.5.5 0 0 1 .276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 0 1 .22-.103 12.958 12.958 0 0 1 2.7-.869z"/>
+                </svg> - Curso</th>
+              <th scope="col">
+                 Neutrinos
+                <div class="spinner-grow spinner-grow-sm text-info" role="status">
+                  <span class="sr-only"></span>
+                </div>
+              </th>
+              <th scope="col">
+               Tempo total
+               <img src="https://i.pinimg.com/originals/24/75/7d/24757d57ba054e9144ea483574f706b1.gif" style="width: 25px; height: 30px;">
+               </th>
+            </tr>
+          </thead>
+          <tbody>
+          {{#each usuarios}}
+            {{#if privacidade.rank}} <!-- Só lista os usuarios que não são privados -->
+            <tr class="linha ">
+              <td>
+                <b class="position"></b>
+              </td>  
+              <td><span class="d-inline-block text-right" tabindex="0" data-toggle="tooltip" title="{{{recado}}}"><img class="rounded-circle border border-secondary" style="width: 40px; height: 40px;" src="{{foto}}"></span>
+              </td>
+              <td class="text-center"><a class="perfil" href="/perfis/perfil/{{_id}}" style="text-decoration: none;"><b class="pessoas text-light">{{name}}</b></a>
+              </td>
+              <td>{{curso}}</td>
+              <td class="neutrinos">{{historico.neutrinos}}</td>
+              <td>{{historico.total}} minutos</td>
+              <td class="id" hidden>{{_id}}</td>
+            </tr>
+            {{else}}
+            {{/if}}
+          {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>    
+
+<script>
+  const quantLinha = document.getElementsByClassName("linha").length
+  var i = 0
+  var neutrinos = 0
+
+  while(i < quantLinha){
+    document.getElementsByClassName("position")[i].innerText = i + 1 + "º"
+    neutrinos = document.getElementsByClassName("neutrinos")[i].innerText
+    if(neutrinos < 10){
+      document.getElementsByClassName("linha")[i].setAttribute("hidden", "hidden")
+    }
+    i++
+  }
+</script>

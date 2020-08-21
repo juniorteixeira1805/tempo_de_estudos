@@ -26,6 +26,10 @@ const router = express.Router();
             console.log("deu erro: ", err)
             })
     })
+    //-- Rota que renderiza o registro de usuario --//
+    router.get('/salaIndividualPublica', (req, res) => { 
+        res.render("./salaIndividual/salaPublica")
+    })
 
     router.get('/notas', eAdmin, (req, res) => {
         
