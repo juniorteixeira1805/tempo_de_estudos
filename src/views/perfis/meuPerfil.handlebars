@@ -94,32 +94,116 @@
     <div class="col-sm mb-4">
       <h1 class="display-5">Meu feed</h1>
       <div class="dropdown-divider"></div>
-      {{#each user.meusEventos}}
-        <div class="evento col-sm mb-4">
-          <div class="card bg-transparent m-0 p-0">
-            <div class="card-header bg-light">
-                <img src="{{foto}}" class="rounded mr-2" alt="..." style="width: 40px; height: 40px;">
-                <strong class="mr-auto text-dark">{{name}}</strong>
-              </a>
-              <small class="text-muted">{{dateCreater}}</small>
-            </div>
-            <div class="card-body text-dark bg-transparent">
-              <p class="m-0 p-0">Atividade: {{evento}}</p>
-              <p class="m-0 p-0">Subatividade: {{subevento}}</p>
-              <p class="m-0 p-0">Horário da atividade: <a class="VerifHora">{{inicio}} - {{termino}}</a></p>
-              <p class="m-0 p-0">Método: {{metodo}}</p>
-              <b class="m-0 p-0">Neutrinos gerados pela atividade: {{neutrinosGerado}}</b>
-              <div class="spinner-grow spinner-grow-sm text-info" role="status">
-                <span class="sr-only"></span>
-              </div>
-            </div>
+  {{#each eventos}}
+    <div class="evento col-sm-12 m-0 p-0 my-2">
+      <div class="card bg-transparent m-0 p-0">
+        <div class="col-sm toast-header bg-light">
+          <div class="col-sm">
+            <img src="{{foto}}" class="rounded mr-2" alt="..." style="width: 40px; height: 40px;">
+            <strong class="mr-auto text-dark">{{name}}</strong>
+          </div>
+          <div class="col-sm text-right">
+            <small class="text-muted"><a class="data" hidden>{{dateCreater}}</a><a class="newDate"></a></small>
           </div>
         </div>
-      {{else}}
-      <div class="alert alert-warning text-center">Seus eventos serão exibidos aqui.</div>
-      {{/each}}
+        <div class="card-body text-dark bg-transparent">
+          <p class="m-0 p-0">Atividade: {{evento}}</p>
+          <p class="sub m-0 p-0">Subatividade: <a class="atv">{{subevento}}</a></p>
+          <p class="hora m-0 p-0">Horário da atividade: <a class="VerifHora">{{inicio}} - {{termino}}</a></p>
+          <p class="metodoTitulo m-0 p-0">Método: <a class="metodo">{{metodo}}</a></p>
+          <b class="m-0 p-0">Neutrinos gerados pela atividade: {{neutrinosGerado}}</b>
+          <div class="spinner-grow spinner-grow-sm text-info" role="status">
+            <span class="sr-only"></span>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+{{else}}
+<div class="alert alert-warning text-center">Enturme um amigo para acompanhar sua rotina de estudos. Barra superior -> Turma -> Enturma novo amigo. Caso já tenha enturmado, assim que ele praticar alguma atividade na plataforma, aparecerá aqui no seu feed.</div>
+{{/each}}
 
+<script>
+  function diadasemana(data){
+        var recebimento = new Date(data)
+    
+        var diadasemana = recebimento.getDay().toString()
+    
+        if(diadasemana == 1){
+            return "Segunda-feira"
+        }
+    
+        if(diadasemana == 2){
+            return "Terça-feira"
+        }
+    
+        if(diadasemana == 3){
+            return "Quarta-feira"
+        }
+    
+        if(diadasemana == 4){
+            return "Quinta-feira"
+        }
+    
+        if(diadasemana == 5){
+            return "Sexta-feira"
+        }
+    
+        if(diadasemana == 6){
+            return "Sabado"
+        }
+    
+        if(diadasemana == 7){
+            return "Domingo"
+        }
+    }
 
+    function novadata(data){
+        
+        var recebimento = new Date(data) //-- Criando data do momento --//
+        var dia = ( recebimento.getDate()).toString() //-- extraindo o dia da data criada --//
+
+    //-- Acrescentando os 0 para quando tiver um algarismo --//
+        if(dia < 10){
+            dia = "0" + dia
+        }
+        var mes = (1 + recebimento.getMonth()).toString()
+        if(mes < 10){
+            mes = "0" + mes
+        }
+
+    //-- Extraindo o ano --//
+        var ano = recebimento.getFullYear().toString()
+        
+    
+        var datadeRecebimento = dia + "/" + mes + "/" + ano //-- Juntando tudo --//
+    
+        return datadeRecebimento
+    }
+
+    const quantEvento = document.getElementsByClassName("evento").length
+    var novaData = ""
+    i = 0
+
+    while(i<quantEvento){
+
+      if(document.getElementsByClassName("metodo")[i].innerText == ""){
+        document.getElementsByClassName("metodoTitulo")[i].setAttribute("hidden" , "hidden")
+      }
+
+      if(document.getElementsByClassName("VerifHora")[i].innerText == "--:-- - --:--" || document.getElementsByClassName("VerifHora")[i].innerText == ""){
+        document.getElementsByClassName("hora")[i].setAttribute("hidden" , "hidden")
+      }
+
+      if(document.getElementsByClassName("atv")[i].innerText == ""){
+        document.getElementsByClassName("sub")[i].setAttribute("hidden" , "hidden")
+      }
+
+        data = new Date(document.getElementsByClassName("data")[i].innerHTML)
+        novaData = "(" +  novadata(data) + ")"
+        novaData = novaData + " - " + diadasemana(data) + " às "
+        novaData = novaData + data.getHours() + ":" + data.getMinutes() + ":" + data.getSeconds()
+        document.getElementsByClassName("newDate")[i].innerHTML = novaData
+        i++
+    }
+
+</script>

@@ -13,13 +13,30 @@ const Resumo = mongoose.model("resumos")
 const Meta = mongoose.model("metas")
 
 router.get('/meuperfil', eAdmin, async (req, res) => {
-    Atividade.find({'estudante': req.user.id}).sort({horarioInicial: 0}).then((atv) => {
-        console.log(req.user.name + " está vendo seu perfil.")
-        res.render("./perfis/meuPerfil", {atv: atv})
-        }).catch((err) => {
+    try{
+        var eventosVet = await User.find({_id: req.user._id}).select('meusEventos')
+        var i = 0
+        var eventos = eventosVet[0].meusEventos
+
+        //-- ordenando todos os eventos --//
+        function comparar(a, b) {
+            if (a.dateCreater > b.dateCreater ) {
+
+              return -1;
+            }
+            if (a.dateCreater < b.dateCreater ) {
+              return 1;
+            }
+            // a deve ser igual a b
+        }
+
+        eventos.sort(comparar)
+
+        res.render("./perfis/meuPerfil", {eventos: eventos})
+    } catch(err){
         res.redirect("/user/home")
         console.log("deu erro: ", err)
-        })
+    }
 
 })
 
@@ -38,8 +55,23 @@ router.get('/perfil/:id', eAdmin, async (req, res) => {
 
 //-- Rota que renderiza o historico --//
     router.get('/historico/:id', eAdmin, async (req, res) => {
-        User.findOne({ _id: req.params.id}).sort({dateCreater: -1}).select('tempos').then((users) => {
-            res.render("./perfis/historico", {users: users})
+        User.findOne({ _id: req.params.id}).sort({'tempos.dateCreater': 1}).select('tempos').then((users) => {
+            var tempos = users.tempos
+    
+            //-- ordenando todos os eventos --//
+            function comparar(a, b) {
+                if (a.dateCreater > b.dateCreater ) {
+    
+                  return -1;
+                }
+                if (a.dateCreater < b.dateCreater ) {
+                  return 1;
+                }
+                // a deve ser igual a b
+            }
+    
+            tempos.sort(comparar)
+            res.render("./perfis/historico", {users: tempos})
             console.log(req.user.name + " Esta vizualisando o historico de " +  req.params.id)
 
             }).catch((err) => {
@@ -51,8 +83,23 @@ router.get('/perfil/:id', eAdmin, async (req, res) => {
 
 //-- Rota que renderiza o historico --//
     router.get('/meu-historico', eAdmin, async (req, res) => {
-        User.findOne({ _id: req.user._id}).sort({dateCreater: -1}).select('tempos').then((users) => {
-            res.render("./perfis/meuHistorico", {users: users})
+        User.findOne({ _id: req.user._id}).sort({'tempos.dateCreater': -1}).select('tempos').then((users) => {
+            var tempos = users.tempos
+    
+            //-- ordenando todos os eventos --//
+            function comparar(a, b) {
+                if (a.dateCreater > b.dateCreater ) {
+    
+                  return -1;
+                }
+                if (a.dateCreater < b.dateCreater ) {
+                  return 1;
+                }
+                // a deve ser igual a b
+            }
+    
+            tempos.sort(comparar)
+            res.render("./perfis/meuHistorico", {users: tempos})
             console.log(req.user.name + " Esta vizualisando o historico de " +  req.params.id)
 
             }).catch((err) => {
