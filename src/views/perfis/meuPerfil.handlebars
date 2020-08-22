@@ -8,9 +8,14 @@
   <div class="row">
     <div class="col-sm-4 mb-4">
       <div class="col-sm text-center">
-        <a href="/dist/index.html">
-        <img src="{{{user.foto}}}" class="card-img-top border border-secondary rounded-circle" style="width: 150px; height: 150px;">
-      </a>
+      <img src="{{{user.foto}}}" class="card-img-top border border-secondary rounded-circle" style="width: 150px; height: 150px;">
+      <form action="/auth/addFoto" method="POST" enctype="multipart/form-data">
+        <div class="form-group col-sm">
+          <label for="exampleFormControlFile1">Selecione seu avatar</label>
+          <input type="file" name="foto" class="form-control-file" id="exampleFormControlFile1" onclick="desocutar()">
+          <button type="submit" id="btnn" class="btn my-1 text-light btn-success" hidden >Salvar</button>
+        </div>
+      </form>
       </div>
       <ul class="list-group list-group-flush m-0 p-0">
         <li class="list-group-item text-center bg-transparent m-0 p-0" style="border: none;"><h5 class="card-title">{{user.name}}</h5></li>
@@ -205,5 +210,8 @@
         document.getElementsByClassName("newDate")[i].innerHTML = novaData
         i++
     }
-
+ function desocutar(){
+    setTimeout(function(){ document.getElementById("btnn").removeAttribute("hidden", "hidden"); }, 1500);
+   
+ }
 </script>
