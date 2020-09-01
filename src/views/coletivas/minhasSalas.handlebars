@@ -1,0 +1,86 @@
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-dark">
+        <li class="breadcrumb-item"><a class="text-light" href="/user/home">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Minhas salas coletivas</li>
+    </ol>
+  </nav>
+    {{#if minhaSala}}
+      <div class="table-responsive-sm text-center">
+        <table class="table table-dark table-hover text-light">
+          <thead>
+            <tr>
+              <th scope="col">Minha sala coletiva</th>                
+          </thead>
+          <tbody>
+            <tr class="linha">
+              <td>
+                <a class="text-light" href="/coletiva/minha-sala-coletiva">
+                {{minhaSala.nomeSala}}
+                </a> 
+              </td> 
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    {{else}}
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-dark text-light" data-toggle="modal" data-target="#staticBackdrop">
+    Criar minha sala coletiva
+    </button>
+    {{/if}}
+
+    
+      <div class="table-responsive-sm text-center my-2">
+        <table class="table table-dark table-hover text-light">
+          <thead>
+            <tr>
+              <th scope="col"> Salas de outros usuarios que participo</th>                
+          </thead>
+          <tbody>
+            {{#each coletivas}}
+              {{#each coletivas}}
+                <tr class="linha">
+                  <td>
+                    <a class="text-light" href="/coletiva/sala-coletiva/{{coletiva._id}}">
+                    {{coletiva.nomeSala}}
+                    </a> 
+                  </td> 
+                </tr>
+              {{/each}}
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+  
+   <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Todos os campos são obrigatórios</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form method="POST" action="/coletivaP/registerColetiva">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Informe o nome da sala</label>
+                    <input type="text" class="form-control" name="nomeSala" id="formGroupExampleInput" placeholder="Ex.: Rumo a aprovação..">
+                </div>
+                <div class="form-group">
+                    <label for="example-number-input">Minha meta semanal</label>
+                    <input class="form-control" type="number" name="meta" id="example-number-input" placeholder="Minutos que deverá ser estudado na semana.">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Criar sala</button>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>

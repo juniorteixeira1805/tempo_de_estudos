@@ -7,6 +7,7 @@
     const SalaIndividual = require('../models/salaIndividual');
     const Resumos = require('../models/Resumo');
     const Metas = require('../models/Meta');
+    const Coletiva = require('../models/salaColetiva');
 
     const router = express.Router();
 
@@ -155,6 +156,8 @@
             SalaIndividual.deleteOne({ responsavel: req.body.id }, function (err) { //procurando todas as collections que tem o id que vem do body (usuario) como estudante
                 console.log(req.user.name + " deletou as sua sala individual")
             })
+
+            Coletiva.findOneAndUpdate({ responsavel: req.user._id },{ $pull: { participantes: { participante: req.user._id } } })
 
         //--Deletando usuario do banco de dados--//
             User.deleteOne({_id: req.body.id}).then(() => { //--Procurando a collection que tem o id que vem do body (usuario)--//

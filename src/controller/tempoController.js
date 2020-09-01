@@ -79,7 +79,7 @@ module.exports = {
         var semanaAtual = data.getDay()
 
     //-- função que verifica quando o servidor é iniciado --//
-        if(diaAtual != diaBD){
+        if(diaAtual != diaBD && data.getHours() == "3"){
             if(semanaAtual == "1"){
                 await User.updateMany({$set: {'historico.semana': 0}}, function(err, res) {//-- zerando as horas diarias --//
                     console.log("Zerando semanas...")
@@ -122,7 +122,7 @@ module.exports = {
             diaAtual = data.getDate()
             semanaAtual = data.getDay()
         //-- função que verifica quando o servidor é iniciado --//
-        if(diaAtual != diaBD){
+        if(diaAtual != diaBD  && data.getHours() == "3"){
             if(semanaAtual == "1"){
                 await User.updateMany({$set: {'historico.semana': 0}}, function(err, res) {//-- zerando as horas diarias --//
                     console.log("Zerando semanas...")

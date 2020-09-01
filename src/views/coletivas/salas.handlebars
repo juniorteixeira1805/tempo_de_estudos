@@ -1,0 +1,171 @@
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-dark">
+        <li class="breadcrumb-item"><a class="text-light" href="/user/home">Home</a></li>
+        <li class="breadcrumb-item"><a class="text-light" href="/coletiva/minhas-salas-coletivas">Minhas salas coletivas</a></li>
+        <li class="breadcrumb-item active" aria-current="page">sala</li>
+    </ol>
+  </nav>
+  <h1 class="display-4 text-dark">{{coletivas.nomeSala}}</h1>
+  <div class="dropdown-divider"></div>
+
+    <div class="table-responsive-sm text-center">
+    <table class="table table-dark table-hover text-light">
+        <thead>
+            <tr class="text-center">
+                <th>
+                <form method="POST" action="/coletivaP/sairdasala">
+                    <button class="btn btn-danger" type="submit"> Sair da sala
+                    </button>
+                    <input type="text" value="{{coletivas._id}}" name="id" hidden>
+                </form>
+                </th>
+                <th>
+                    <svg class="bi bi-person-lines-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7 1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm2 9a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                    Participantes
+                </th>
+                <th>
+                    Tempo da semana
+                </th>
+                <th>
+                    Meta
+                </th>
+            </tr>             
+        </thead>
+        <tbody>
+        {{#each coletivas}}
+            {{#each participantes}}
+            <tr class="linha">
+            <td>
+                <span class="d-inline-block text-right" tabindex="0" data-toggle="tooltip" title="{{{participante.recado}}}"><img class="rounded-circle border border-secondary" style="width: 40px; height: 40px;" src="{{participante.foto}}"></span>
+            </td>
+            <td>
+                {{participante.name}}
+            </td>
+            <td class="semana">
+                {{participante.historico.semana}}
+            </td>
+            <td class="meta">
+                {{meta}} minutos
+            </td>
+            </tr>
+            {{/each}}
+        {{/each}}
+        
+        </tbody>
+    </table>
+    </div>
+    <button type="button" class="btn btn-dark text-light" data-toggle="modal" data-target="#comentario">
+        Adicionar comentario
+    </button>
+    <div class="card-deck my-4">
+    {{#each feed}}
+        <div class="evento col-sm-4 mt-2">
+            <div class="toast" role="alert" aria-live="polite" aria-atomic="true" data-delay="9999999999">
+                <div class="toast-header">
+                    <img src="{{participante.foto}}" class="rounded mr-2" style="width: 40px; height: 40px;" alt="...">
+                    <strong class="mr-auto">{{participante.name}}</strong>
+                    <small><a class="data" hidden>{{dateCreater}}</a><a class="newDate"></a></small>
+                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="toast-body">
+                    {{texto}}
+                </div>
+            </div>
+        </div>
+    {{/each}}
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="comentario" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Todos os campos são obrigatórios</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form method="POST" action="/coletivaP/addTextom">
+                <div class="form-group">
+                    <label for="example-number-input">Informe a meta semanal</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" name="texto" rows="3"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Adicionar </button>
+                    <input name="id" value="{{coletivas._id}}" hidden>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+    </div>
+
+<script>
+    var quantLinhas = document.getElementsByClassName("linha").length
+    var i = 0;
+
+    while(i<quantLinhas){
+        if(document.getElementsByClassName("meta")[i].innerText > document.getElementsByClassName("semana")[i].innerText){
+            document.getElementsByClassName("linha")[i].style.color = " #FA8072"
+        }
+        i++
+    }
+  function diadasemana(data){
+        var recebimento = new Date(data)
+    
+        var diadasemana = recebimento.getDay().toString()
+    
+        if(diadasemana == 1){
+            return "Segunda-feira"
+        }
+    
+        if(diadasemana == 2){
+            return "Terça-feira"
+        }
+    
+        if(diadasemana == 3){
+            return "Quarta-feira"
+        }
+    
+        if(diadasemana == 4){
+            return "Quinta-feira"
+        }
+    
+        if(diadasemana == 5){
+            return "Sexta-feira"
+        }
+    
+        if(diadasemana == 6){
+            return "Sabado"
+        }
+    
+        if(diadasemana == 7){
+            return "Domingo"
+        }
+    }
+
+
+    const quantEvento = document.getElementsByClassName("evento").length
+    var novaData = ""
+    i = 0
+
+    while(i<quantEvento){
+
+        data = new Date(document.getElementsByClassName("data")[i].innerHTML)
+
+        novaData =  diadasemana(data) + " às "
+        novaData = novaData + data.getHours() + ":" + data.getMinutes() + ":" + data.getSeconds()
+        document.getElementsByClassName("newDate")[i].innerHTML = novaData
+        i++
+    }
+
+</script>

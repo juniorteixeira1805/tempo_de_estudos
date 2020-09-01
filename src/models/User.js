@@ -177,6 +177,14 @@ const UserSchema = new mongoose.Schema({
         ref: "users",
     }],
 
+    coletivas : [{
+        coletiva: {
+            type: Schema.Types.ObjectId, //-- Salva o id do dono da atividade --//
+            ref: "coletivas",
+        }
+
+    }],
+
     meusEventos: [{
         dateCreater:{ type: Date},
         name:{ type: String},

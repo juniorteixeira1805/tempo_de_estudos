@@ -34,6 +34,8 @@ const io = require('socket.io')(server)
     const Tempo = require('./router/tempo')
     const Rank = require('./router/ranks')
     const Perfis = require('./router/perfis')
+    const ColetivaP = require('./controller/coletivaController')
+    const Coletiva = require('./router/coletivas')
 
 //configurações
     //sessão
@@ -96,13 +98,15 @@ const io = require('socket.io')(server)
     app.use('/config', ConfigGet)
     app.use('/configP', ConfigPost)
     app.use('/perfis', Perfis)
+    app.use('/coletivaP', ColetivaP)
+    app.use('/coletiva', Coletiva)
    //app.use('/Individual', GetIndividual)
 
     
 
 //outros
     //--Funções chamadas para atualizar as horas do dia, semana e mes--//
-    //funcdata.verifcaData()
+    funcdata.verifcaData()
 
 //--Rota para renderizar pagina de login--(Tem que ser retirada daqui)//
         app.get('/', (req, res) =>{
