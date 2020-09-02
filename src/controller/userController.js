@@ -138,7 +138,7 @@
                 minutosTotalNoDia = await parseFloat(tempoTotalEstudado) + parseFloat(req.user.historico.dia)  
                 minutosTotalNoSemana = await tempoTotalEstudado + parseFloat(req.user.historico.semana)
                 minutosTotalNoMes = await tempoTotalEstudado + parseFloat(req.user.historico.mes)        
-                minutosTotalNoTotal = await tempoTotalEstudado + parseFloat(req.user.historico.total)
+                minutosTotalNoTotal = await tempoTotalEstudado + parseFloat((req.user.historico.total/1).toFixed(0))
             //-- verificando quantos eventos tem --//
                 var eventos = await User.findOne({_id: req.user._id}).select('meusEventos')
                 eventos = await eventos.meusEventos
@@ -210,17 +210,17 @@
                 
             console.log(req.user.name+ ", cadastrou novo tempo")
             req.flash("sucess_msg", req.user.name+ ", seu tempo foi cadastrado") // apresenta na tela a msg de salvo
-            res.redirect("/tempo/aberto") //redireciona para a pagina
+            res.redirect("/tempo/salaIndividual") //redireciona para a pagina
         }).catch((err) => {
             console.log("erro ao cadastrar meta: "+ err)
             req.flash("error_msg",req.user.name + "Houve um erro ao cadastrar seu tempo. Entre em contato pelo suporte.") // apresenta uma mensagem de erro
-            res.redirect("/user/aberto") // redireciona para a pagina
+            res.redirect("/tempo/salaIndividual") // redireciona para a pagina
         })
 
         } catch(err) {
             console.log("erro ao acrescentar tempo: " +err)
             req.flash("error_msg", "Houve um erro ao salvar") // apresenta uma mensagem de erro
-            res.redirect("/user/aberto") // redireciona para a pagina
+            res.redirect("/tempo/salaIndividual") // redireciona para a pagina
         }
     })
 
