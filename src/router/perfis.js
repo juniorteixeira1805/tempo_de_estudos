@@ -123,14 +123,11 @@ router.get('/perfil/:id', eAdmin, async (req, res) => {
     })
 
 //-- Rota que renderiza o historico --//
-    router.get('/ler-resumo/:id', eAdmin, async (req, res) => {
-        Resumo.findOne({ _id: req.params.id}).sort({dateCreater: -1}).then((resumo) => {
-            res.render("./perfis/lerResumo", {resumo: resumo})
-            console.log(req.user.name + " Esta vizualisando o resumo" +  req.params.id)
-
+    router.get('/ler-resumo/:id', async (req, res) => {
+        await Resumo.findOne({ _id: req.params.id}).then((resumo) => {
+                res.render("./perfis/lerResumo", {resumo: resumo})
             }).catch((err) => {
-            res.redirect("/perfis/perfis")
-            console.log("deu erro: ", err)
+                res.send("Erro" + err)
             })
 
     })

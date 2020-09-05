@@ -6,6 +6,35 @@ const Resumo = require('../models/Resumo')
 const Tag = require('../models/Tag')
 
 const router = express.Router();
+//-- Rota que renderiza todos os resumos --//
+    router.get('/resumos', (req, res) => {
+        Resumo.find({}).populate('tag').then( async(resumos) => {
+            var tags = await Tag.find({})
+            res.render("./resumos/resumosPublicos", {resumos: resumos, tag: tags}) 
+        }).catch((err) => {
+            res.send("Erro!" + err)
+        })
+    })
+
+//-- Rota que renderiza todos os resumos --//
+    router.get('/resumos-filtrado/:id', (req, res) => {
+        Resumo.find({tag: req.params.id}).populate('tag').then( async(resumos) => {
+            var tags = await Tag.find({})
+            res.render("./resumos/resumosPublicos", {resumos: resumos, tag: tags}) 
+        }).catch((err) => {
+            res.send("Erro!" + err)
+        })
+    })
+
+    //-- Rota que renderiza o historico --//
+    router.get('/ler-resumo-publico/:id', async (req, res) => {
+        await Resumo.findOne({ _id: req.params.id}).populate('responsavel').then((resumo) => {
+                res.render("./resumos/lerResumoPublico", {resumo: resumo})
+            }).catch((err) => {
+                res.send("Erro" + err)
+            })
+
+    })
 
 //-- Rota responsavel por listar todos os resumos do usuario --//
     router.get('/meus-resumos', eAdmin, (req, res) => {
@@ -41,7 +70,7 @@ const router = express.Router();
     })
 
 //-- Rota responsavel por listar todo o resumos selecionado --//
-    router.get('/ler-resumo/:id', eAdmin,  (req, res) => {
+    router.get('/ler-resumo/:id', (req, res) => {
         try{
             Resumo.findOne({_id: req.params.id}).then((resumo) => {
                 res.render("./resumos/ler", {resumo: resumo})
