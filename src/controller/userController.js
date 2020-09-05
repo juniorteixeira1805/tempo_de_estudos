@@ -437,11 +437,16 @@
     })
 
 //--Rota para deletar usuarios do banco de dados--//
-    router.post('/deletarAtividade', (req, res) =>{
+    router.post('/deletarAtividade', async (req, res) =>{
         try{
             //--Deletando do banco os tempos do usuario que será deletado--//
-            Atividade.deleteOne({ _id: req.body.id }).then((res, req) => {
+            await Atividade.deleteOne({ _id: req.body.id }).then((res, req) => {
+                req.flash("sucess_msg", "atividade salvo com sucesso") 
                 res.redirect('/perfis/cronograma')
+            }).catch((err) => {
+                req.flash("error_msg", "Houve um erro ao deletar a atividade")
+                console.log(err)
+                res.redirect("/perfis/cronograma")
             })
         } catch(err){
             console.log(req.user.name + " Erro ao deletar atividade: " + err)
