@@ -60,9 +60,15 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="submit" class="btn btn-success text-light">Salvar</button>
+            <button type="submit" onclick="desativarBotao()" id="desat" class="btn btn-success text-light">Salvar</button>
         </div>
       </form>
     </div>
   </div>
 </div>
+
+<script>
+    function desativarBotao(){
+        document.getElementById("desat").setAttribute("disabled" , "disabled")
+    }
+</script>

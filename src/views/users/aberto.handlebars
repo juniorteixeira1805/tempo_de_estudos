@@ -36,9 +36,15 @@
                 <h5 for="validationServer01">Informe o subtipo da atividade:</h5>
                 <input type="text" class="form-control " name="subTipo" placeholder="O que leu? Qual foi a aula? O que estudou?" id="validationServer01" required>
                 <div class="text-center col-sm-3" style="margin: 0 auto;">
-                    <button type="submit" class=" text-light btn btn-success mt-2">Salvar</button>
+                    <button onclick="desativarBotao()" id="desat" type="submit" class=" text-light btn btn-success mt-2">Salvar</button>
                 </div>
             </div>
         </div>
     </form>
 </div>
+
+<script>
+    function desativarBotao(){
+        document.getElementById("desat").setAttribute("disabled" , "disabled")
+    }
+</script>
