@@ -164,7 +164,7 @@
                   <button type="button" class="btn btn-outline-success" disabled>Atividade concluída</button>
                 {{else}}
               <form action="/authUser/concluiratividade" method="POST"><input type="hidden" name="id" value="{{_id}}"><input type="hidden" name="horarioTermino" value="{{horarioTermino}}"><input type="hidden" name="horarioInicial" value="{{horarioInicial}}">
-                  <button type="submit" class="btn btn-outline-light">Concluir atividade</button>
+                  <button type="submit" id="desat" onclick="desativarBotao()" class="btn btn-outline-light">Concluir atividade</button>
                 </form>
                 {{/if}}
               </td>
@@ -292,6 +292,10 @@
   </div>
   {{/if}}
 <script>
+
+    function desativarBotao(){
+        setTimeout(function(){ document.getElementById("desat").setAttribute("disabled" , "disabled") }, 100);
+    }
 
   function diadasemana(data){
         var recebimento = new Date(data)

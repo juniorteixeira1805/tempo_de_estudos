@@ -10,7 +10,12 @@
                 <input class="form-control" name="resposta" id="resposta" rows="3" required></input>
             </div> 
         <div class="modal-footer">
-            <button type="submit" class="btn btn-success mb-2">Adicionar </button>
+            <button type="submit" onclick="desativarBotao(this)" class="btn btn-success mb-2">Adicionar </button>
         </div>
     </form>
 </div>
+<script>
+    function desativarBotao(x){
+      setTimeout(function(){ x.setAttribute("disabled" , "disabled") }, 100);
+    }
+</script>

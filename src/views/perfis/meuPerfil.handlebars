@@ -13,7 +13,7 @@
         <div class="form-group col-sm">
           <label for="exampleFormControlFile1">Selecione seu avatar</label>
           <input type="file" name="foto" class="form-control-file" id="exampleFormControlFile1" onclick="desocutar()">
-          <button type="submit" id="btnn" class="btn my-1 text-light btn-success" hidden >Salvar</button>
+          <button type="submit" id="btnn" onclick="desativarBotao(this)" class="btn my-1 text-light btn-success" hidden >Salvar</button>
         </div>
       </form>
       </div>
@@ -128,6 +128,9 @@
 {{/each}}
 
 <script>
+  function desativarBotao(x){
+    setTimeout(function(){ x.setAttribute("disabled" , "disabled") }, 100);
+  }
   function diadasemana(data){
         var recebimento = new Date(data)
     

@@ -78,7 +78,7 @@
                             </div>
                         </div>
                     </fieldset>
-                    <button type="submit" style="width: 100%;" class="btn btn-success text-light">Salvar</button>
+                    <button type="submit" id="desat" style="width: 100%;" onclick="desativarBotao()" class="btn btn-success text-light">Salvar</button>
                 </form>
             </div>
         </div>
@@ -127,3 +127,8 @@
     </div>
   </div>
 </div>
+<script>
+    function desativarBotao(){
+        setTimeout(function(){ document.getElementById("desat").setAttribute("disabled" , "disabled") }, 100);
+    }
+</script>

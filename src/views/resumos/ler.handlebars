@@ -21,7 +21,7 @@
   <div class="col-sm">
     <form class="mt-4 text-right col-sm" action="/resumoP/deletarResumo" method="POST">
       <input type="" name="id" value="{{resumo._id}}" hidden>
-      <button type="submit" class="btn text-light" style="background-color: #FA8072;">Deletar
+      <button type="submit" onclick="desativarBotao(this)" class="btn text-light" style="background-color: #FA8072;">Deletar
         <svg class="bi bi-trash-fill text-light" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
         </svg>
@@ -41,6 +41,9 @@
 </span>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
 <script>
+  function desativarBotao(x){
+    setTimeout(function(){ x.setAttribute("disabled" , "disabled") }, 100);
+  }
   const x = document.getElementsByClassName("textosEmString").length
   var resumosEmString = document.getElementsByClassName("textosEmString")
   var i = 0;

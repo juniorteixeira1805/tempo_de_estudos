@@ -29,8 +29,14 @@
                 <b><label for="exampleFormControlTextarea1" class="text-light">Texto*</label></b>
                 <textarea maxlength="300" class="form-control" placeholder="(Máximo: 300 caracteres)" name="texto" id="texto" rows="3" required></textarea>
             </div>
-                <button type="submit" class="btn btn-success text-light">Enviar</button>
+                <button type="submit" id="desat" onclick="desativarBotao()" class="btn btn-success text-light">Enviar</button>
             </form>
         </div>
     </div>
 </div>
+
+<script>
+    function desativarBotao(){
+        setTimeout(function(){ document.getElementById("desat").setAttribute("disabled" , "disabled") }, 100);
+    }
+</script>

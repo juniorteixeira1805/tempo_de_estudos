@@ -50,16 +50,13 @@
                 
                 <div class="row my-4">
                     <div class="col-sm">
-                        <!-- Button trigger modal -->
-                        <a type="button" class="text-light" data-toggle="modal" data-target="#exampleModal">
-                            Ler Política de Privacidade e Termos e Condições
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                        </svg>
-                        </a>
-                        <div class="form-group form-check">
-                            <input type="checkbox" onclick="aceitou()" class="form-check-input" id="act1">
-                            <label class="form-check-label text-light" for="act1">Declaro que aceito a Política de Privacidade e os Termos e Condições</label>
+                        <div class="custom-control custom-checkbox mr-sm-2">
+                            <input type="checkbox" onclick="aceitou()" class="custom-control-input" id="act1">
+                            <label class="custom-control-label text-light" for="act1"><a type="button" class="text-light" data-toggle="modal" data-target="#exampleModal" style="border-bottom: 1px solid white">Declaro que aceito a Política dePrivacidade e os Termos e Condições</a>
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                            </svg>
+                        </label>
                         </div>
                     </div>
 
@@ -100,14 +97,22 @@
   //var onloadCallback = function() {
    // alert("Pressione ok para continuar.");
  // };
+    var estado = 'desativado'
 
     function aceitou(){
-        document.getElementById("act1").setAttribute("disabled" , "disabled")
-        document.getElementById("act2").removeAttribute("disabled" , "disabled")
+        if(estado == 'desativado'){
+            document.getElementById("act2").removeAttribute("disabled" , "disabled")
+            estado = 'ativado'
+        } else if(estado == 'ativado'){
+            document.getElementById("act2").setAttribute("disabled" , "disabled")
+            estado = 'desativado'
+        }
+
     }
 
-
+    
     function desativarBotao(){
-        document.getElementById("act2").setAttribute("disabled" , "disabled")
+        setTimeout(function(){ document.getElementById("act2").setAttribute("disabled" , "disabled") }, 100);
     }
+
 </script>

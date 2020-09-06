@@ -78,7 +78,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Criar sala</button>
+                    <button type="submit" onclick="desativarBotao(this)" class="btn btn-primary">Criar sala</button>
                 </div>
             </form>
         </div>
@@ -86,3 +86,8 @@
     </div>
     </div>
 </div>
+<script>
+  function desativarBotao(x){
+    setTimeout(function(){ x.setAttribute("disabled" , "disabled") }, 100);
+  }
+</script>

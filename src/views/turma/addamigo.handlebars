@@ -27,7 +27,7 @@
           <td>
             <form action="/turmaP/addAmigo" method="POST">
                 <input type="text" name="id" value="{{_id}}" hidden>
-                <button type="submit" class="btn btn-success mx-3 my-1">Enturmar</button>
+                <button type="submit" id="desat" onclick="desativarBotao()" class="btn btn-success mx-3 my-1">Enturmar</button>
             </form>
           </td>
         </tr>
@@ -47,3 +47,9 @@
   </div>
 
 </div>
+
+<script>
+    function desativarBotao(){
+        setTimeout(function(){ document.getElementById("desat").setAttribute("disabled" , "disabled") }, 100);
+    }
+</script>

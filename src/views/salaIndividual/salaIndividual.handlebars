@@ -6,8 +6,8 @@
       <li class="breadcrumb-item active" aria-current="page">Minha Sala de estudos</li>
     </ol>
   </nav>
-  <div class="dropdown-divider"></div>
   <h1 class="display-4 text-dark">{{sala.nomeSala}}</h1>
+  <div class="dropdown-divider"></div>
   <div class="col-sm text-center">
     <a href="/resumo/meus-resumos" type="button" class="btn btn-dark mx-3 my-1">Resumos</a>
     <a href="/tempo/notas" type="button" class="btn btn-dark mx-3 my-1">Notas</a>
@@ -131,7 +131,7 @@
                               </select>
                               <label class="text-light" for="validationServer01">Informe o subtipo da atividade:</label>
                               <input type="text" class="form-control" name="subTipo" placeholder="O que leu? Qual foi a aula? O que estudou?" id="validationServer01" required>
-                                <button type="submit" class="btn btn-light mt-2">Salvar</button>
+                                <button type="submit" onclick="desativarBotao()" id="desat2" class="btn btn-light mt-2">Salvar</button>
                             </div>
                         </form>
                       </div>
@@ -183,7 +183,7 @@
                               </select>
                               <label class="text-light" for="validationServer01">Informe o subtipo da atividade:</label>
                               <input type="text" class="form-control" name="subTipo" placeholder="O que leu? Qual foi a aula? O que estudou?" id="validationServer01" required>
-                                <button type="submit" class="btn btn-light mt-2">Salvar</button>
+                                <button type="submit" onclick="desativarBotao()" id="desat3" class="btn btn-light mt-2">Salvar</button>
 
                             </div>
                         </form>
@@ -244,7 +244,7 @@
                               </select>
                               <label class="text-light" for="validationServer01">Informe o subtipo da atividade:</label>
                               <input type="text" class="form-control" name="subTipo" placeholder="O que leu? Qual foi a aula? O que estudou?" id="validationServer01" required>
-                                <button type="submit" class="btn btn-light mt-2" onclick="enable()">Salvar</button>
+                                <button type="submit" id="desat" class="btn btn-light mt-2" onclick="enable()">Salvar</button>
 
                             </div>
                         </form>
@@ -296,13 +296,17 @@
     <div class="col-sm-6 text-center" style="margin: 0 auto;">
       <label for="staticEmail" class="col-sm-4 col-form-label">Nome da sua sala:</label>
       <input type="text" name="nomeSala" class="form-control-plaintext bg-light" id="nomeSala" required>
-          <button type="submit" class="btn btn-light mt-4">Cadastrar minha sala</button>
+          <button type="submit" onclick="desativarBotao()" id="desat" class="btn btn-light mt-4">Cadastrar minha sala</button>
     </div>
 </form>
 
 {{/if}}
 <script>
-
+  function desativarBotao(){
+      setTimeout(function(){ document.getElementById("desat").setAttribute("disabled" , "disabled") }, 100);
+      setTimeout(function(){ document.getElementById("desat2").setAttribute("disabled" , "disabled") }, 100);
+      setTimeout(function(){ document.getElementById("desat3").setAttribute("disabled" , "disabled") }, 100);
+  }
 async function beepInicio(){
 let context = new AudioContext(),
    oscillator = context.createOscillator();
@@ -541,5 +545,6 @@ function Livre() {
 function enable(){
     document.getElementById("fimBackLivre").removeAttribute("disabled");
     document.getElementById("inicioBackLivre").removeAttribute("disabled");
+    setTimeout(function(){ document.getElementById("desat").setAttribute("disabled" , "disabled") }, 100)
 }
 </script>

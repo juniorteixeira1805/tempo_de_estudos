@@ -56,7 +56,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-success text-light">Cadastrar</button>
+                <button type="submit" id="desat" onclick="desativarBotao()" class="btn btn-success text-light">Salvar</button>
                 
             </form>
         </div>
@@ -64,3 +64,8 @@
 </div>
 
 </div>
+<script>
+    function desativarBotao(){
+        setTimeout(function(){ document.getElementById("desat").setAttribute("disabled" , "disabled") }, 100);
+    }
+</script>

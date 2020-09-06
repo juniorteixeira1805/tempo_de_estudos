@@ -2,6 +2,12 @@
   <div class="form-group col-sm-4 text-center" style="margin: 0 auto;">
     <label for="tag">Nova Tag</label>
     <input class="form-control" name="tag" id="tag" rows="1"></input>
-    <button type="submit" class="btn btn-dark my-2">salvar</button>
+    <button type="submit" onclick="desativarBotao(this)" class="btn btn-dark my-2">salvar</button>
   </div>
 </form>
+
+<script>
+    function desativarBotao(x){
+      setTimeout(function(){ x.setAttribute("disabled" , "disabled") }, 100);
+    }
+</script>

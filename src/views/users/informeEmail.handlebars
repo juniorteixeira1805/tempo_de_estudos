@@ -14,7 +14,7 @@
 
 
                 <div class="g-recaptcha" data-sitekey="your_site_key">
-                    <button type="submit" class="btn btn-success text-light">Enviar</button>
+                    <button type="submit" id="desat" onclick="desativarBotao()" class="btn btn-success text-light">Enviar</button>
                 </div>
                 
             </form>
@@ -27,6 +27,9 @@
 </script>
 <script type="text/javascript">
   var onloadCallback = function() {
-    alert("grecaptcha is ready!");
+    alert("Precione ok para continuar!");
   };
+    function desativarBotao(){
+        setTimeout(function(){ document.getElementById("desat").setAttribute("disabled" , "disabled") }, 100);
+    }
 </script>

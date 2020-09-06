@@ -15,7 +15,7 @@
             <tr class="text-center">
                 <th>
                 <form method="POST" action="/coletivaP/sairdasala">
-                    <button class="btn btn-danger" type="submit"> Sair da sala
+                    <button class="btn btn-danger" onclick="desativarBotao(this)" type="submit"> Sair da sala
                     </button>
                     <input type="text" value="{{coletivas._id}}" name="id" hidden>
                 </form>
@@ -100,7 +100,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Adicionar </button>
+                    <button type="submit" onclick="desativarBotao(this)" class="btn btn-primary">Adicionar </button>
                     <input name="id" value="{{coletivas._id}}" hidden>
                 </div>
             </form>
@@ -110,6 +110,9 @@
     </div>
 
 <script>
+  function desativarBotao(x){
+    setTimeout(function(){ x.setAttribute("disabled" , "disabled") }, 100);
+  }
     var quantLinhas = document.getElementsByClassName("linha").length
     var i = 0;
 

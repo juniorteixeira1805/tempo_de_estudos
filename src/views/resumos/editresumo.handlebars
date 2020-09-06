@@ -24,13 +24,16 @@
             <textarea maxlength="5000" class="form-control" name="corpo" id="corpo" rows="30" required>{{resumo.corpo}}</textarea>
             <label for="name" class="text-light">Referências</label>
             <input type="text" name="ref" id="name" value="{{resumo.ref}}" class="form-control my-1" placeholder="referencia sobre o que escreveu. Pode ser link de sites, documentos, videos ou até mesmo livros.">
-            <button type="submit" class="btn btn-light my-1">Salvar</button>
+            <button type="submit" onclick="desativarBotao(this)" class="btn btn-light my-1">Salvar</button>
         </div>
     </form>
 </div>
 
 <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script>
 <script type="text/javascript">
+    function desativarBotao(x){
+      setTimeout(function(){ x.setAttribute("disabled" , "disabled") }, 100);
+    }
         bkLib.onDomLoaded(function() { nicEditors.allTextAreas() }); // convert all text areas to rich text editor on that page
 
         bkLib.onDomLoaded(function() {
