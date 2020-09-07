@@ -1502,24 +1502,23 @@ body {
     font-size: 100%; } }
 </style>
 </head>
-<body>
 <!-- partial:index.partial.html -->
 <body class="opening hide-UI view-2D zoom-large data-close controls-close">
     <div id="navbar">
       <a id="toggle-data" href="#data"><i class="icon-data"></i>Data</a>
-      <h1>Sistema Solar 3D  <a href="/system/license.txt" class="text-light">Licensa do código</a><br><span></span></h1>
+      <h1>Sistema Solar 3D<br><span></span></h1>
       <a id="toggle-controls" href="#controls"><i class="icon-controls"></i>Controles</a>
     </div>
     <div id="data">
       <a class="sun" title="sol" href="#sunspeed">Sol</a>
-      <a class="mercury" title="mercurio" href="#mercuryspeed">Mercurio</a>
-      <a class="venus" title="venus" href="#venusspeed">Venus</a>
-      <a class="earth active" title="tierra" href="#earthspeed">Tierra</a>
-      <a class="mars" title="marte" href="#marsspeed">Marte</a>
-      <a class="jupiter" title="jupiter" href="#jupiterspeed">Jupiter</a>
-      <a class="saturn" title="saturno" href="#saturnspeed">Saturno</a>
-      <a class="uranus" title="urano" href="#uranusspeed">Urano</a>
-      <a class="neptune" title="neptuno" href="#neptunespeed">Neptuno</a>
+      <a class="mercury active" title="mercurio" href="#mercuryspeed">Mercúrio</a>
+      <a class="nome venus" title="venus" href="#venusspeed" hidden>Vénus</a>
+      <a class="nome earth" title="tierra" href="#earthspeed" hidden>Terra</a>
+      <a class="nome mars" title="marte" href="#marsspeed" hidden>Marte</a>
+      <a class="nome jupiter" title="jupiter" href="#jupiterspeed" hidden>Júpiter</a>
+      <a class="nome saturn" title="saturno" href="#saturnspeed" hidden>Saturno</a>
+      <a class="nome uranus" title="urano" href="#uranusspeed" hidden>Urano</a>
+      <a class="nome neptune" title="neptuno" href="#neptunespeed" hidden>Neptuno</a>
     </div>
     <div id="controls">
       <label class="set-view">
@@ -1533,12 +1532,11 @@ body {
         <span>Velocidad</span>
       </label>
       <label>
-        <input type="radio" class="set-size" name="scale">
-        <span>Tamaño</span>
-      </label>
-      <label>
         <input type="radio" class="set-distance" name="scale">
         <span>Distancia</span>
+      </label>
+      <label>
+        <a href="/system/license.txt" target="_blank" class="text-light small">Licensa de uso código</a>
       </label>
     </div>
     <div id="universe" class="scale-stretched">
@@ -1548,7 +1546,7 @@ body {
             <div class="pos">
               <div class="planet">
                 <dl class="infos">
-                  <dt>Mercurio</dt>
+                  <dt>Mercúrio</dt>
                   <dd><span></span></dd>
                 </dl>
               </div>
@@ -1558,7 +1556,7 @@ body {
             <div class="pos">
               <div class="planet">
                 <dl class="infos">
-                  <dt>Venus</dt>
+                  <dt>Vénus</dt>
                   <dd><span></span></dd>
                 </dl>
               </div>
@@ -1593,7 +1591,7 @@ body {
             <div class="pos">
               <div class="planet">
                 <dl class="infos">
-                  <dt>Jupiter</dt>
+                  <dt>Júpiter</dt>
                   <dd><span></span></dd>
                 </dl>
               </div>
@@ -1694,27 +1692,35 @@ nav[1].setAttribute("hidden", "hidden")
 const meumes = parseInt(document.getElementsByClassName("neutrinos")[0].innerText)
   if(meumes > 49){
       document.getElementsByClassName("orbit")[1].removeAttribute("hidden", "hidden");
+      document.getElementsByClassName("nome")[0].removeAttribute("hidden", "hidden");
   } 
     if((meumes > 99)){
         document.getElementsByClassName("orbit")[2].removeAttribute("hidden", "hidden");
+        document.getElementsByClassName("nome")[1].removeAttribute("hidden", "hidden");
     }
     if(meumes > 199){
       document.getElementsByClassName("orbit")[3].removeAttribute("hidden", "hidden");
+      document.getElementsByClassName("nome")[2].removeAttribute("hidden", "hidden");
     }
     if(meumes > 199){
       document.getElementsByClassName("orbit")[4].removeAttribute("hidden", "hidden");
     }
     if(meumes > 399){
       document.getElementsByClassName("orbit")[5].removeAttribute("hidden", "hidden");
+      document.getElementsByClassName("nome")[3].removeAttribute("hidden", "hidden");
     }
     if(meumes > 799){
       document.getElementsByClassName("orbit")[6].removeAttribute("hidden", "hidden");
+      document.getElementsByClassName("nome")[4].removeAttribute("hidden", "hidden");
+
     } 
     if(meumes > 1599){
       document.getElementsByClassName("orbit")[7].removeAttribute("hidden", "hidden");
+      document.getElementsByClassName("nome")[5].removeAttribute("hidden", "hidden");
     }
       if(meumes > 3199){
       document.getElementsByClassName("orbit")[8].removeAttribute("hidden", "hidden");
+      document.getElementsByClassName("nome")[6].removeAttribute("hidden", "hidden");
     }
 
   </script>
