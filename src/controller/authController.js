@@ -182,6 +182,22 @@
 
     });
 
+//-- Rota para editar perfil --//
+router.post("/editavt", async (req, res) => {
+    try{
+    //-- Atualizando o bd User com os dados recebidos --//
+        console.log(req.body.foto)
+        await User.updateOne({_id: req.user._id}, {foto: req.body.foto}, function(err, res) {
+        });
+
+        req.flash("sucess_msg", "avatar salvo")
+        res.redirect("/user/editarusuario")
+
+    } catch(err){
+        console.log("Deu erro ao editar o perfil "+ req.user.name + err)
+    }
+})
+
 //--Rota que chama o passport para a autenticação--//
     router.post('/authenticate', (req, res, next) => {
         passport.authenticate("local", {
