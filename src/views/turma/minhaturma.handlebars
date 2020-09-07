@@ -5,7 +5,11 @@
       <li class="breadcrumb-item active" aria-current="page">Minha turma</li>
     </ol>
   </nav>
-  <h3 for="email" class="text-dark">Procurar novo amigo: </h3>
+  <h3 for="email" class="text-dark">Procurar novo amigo: 
+    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+    </svg>
+  </h3>
   <form class="form-inline mb-2" name="email" action="/turma/adicionar-amigo" method="GET">
     <input class="form-control col-sm-6" id="email" name="email" type="search" placeholder="Informe o e-mail" aria-label="Search" required>
     <button class="btn btn-dark mx-2 my-sm-0" type="submit">Procurar</button>

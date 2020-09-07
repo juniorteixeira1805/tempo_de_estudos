@@ -86,21 +86,21 @@
 <div class="modal fade" id="comentario" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header bg-dark text-light">
             <h5 class="modal-title" id="staticBackdropLabel">Todos os campos são obrigatórios</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body bg-dark text-light">
             <form method="POST" action="/coletivaP/addTextom">
                 <div class="form-group">
-                    <label for="example-number-input">Informe a meta semanal</label>
+                    <label for="example-number-input">Escreva o comentário</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" name="texto" rows="3"></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" onclick="desativarBotao(this)" class="btn btn-primary">Adicionar </button>
+                    <button type="submit" onclick="desativarBotao(this)" class="btn btn-sucess">Adicionar </button>
                     <input name="id" value="{{coletivas._id}}" hidden>
                 </div>
             </form>

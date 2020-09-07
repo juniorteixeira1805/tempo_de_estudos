@@ -14,12 +14,15 @@
         <thead>
             <tr class="text-center">
                 <th>
-                    <button type="button" class="btn btn-dark text-light" data-toggle="modal" data-target="#staticBackdrop">
-                        Adicionar participante
+                    <button type="button" class="btn btn-light text-dark" data-toggle="modal" data-target="#staticBackdrop">
+                        Adicionar membros
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                        </svg>
                     </button>
                 </th>
                 <th>
-                    <svg class="bi bi-person-lines-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="bi bi-person-lines-fill bg-dark" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7 1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm2 9a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
                     </svg>
                     Participantes
@@ -97,13 +100,13 @@
     <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header bg-dark text-light">
             <h5 class="modal-title" id="staticBackdropLabel">Todos os campos são obrigatórios</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body bg-dark text-light">
             <form method="POST" action="/coletivaP/addParticipante">
                 <input type="text" value="{{coletivas._id}}" name="id" hidden>
                 <div class="form-group">
@@ -116,7 +119,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" onclick="desativarBotao(this)" class="btn btn-primary">adicionar participante </button>
+                    <button type="submit" onclick="desativarBotao(this)" class="btn btn-success">adicionar participante </button>
                 </div>
             </form>
         </div>
@@ -127,21 +130,21 @@
 <div class="modal fade" id="comentario" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header bg-dark text-light">
             <h5 class="modal-title" id="staticBackdropLabel">Todos os campos são obrigatórios</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body bg-dark text-light">
             <form method="POST" action="/coletivaP/addTexto">
                 <div class="form-group">
-                    <label for="example-number-input">Informe a meta semanal</label>
+                    <label for="example-number-input">Escreva o comentário</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" name="texto" rows="3"></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" onclick="desativarBotao(this)" class="btn btn-primary">Adicionar</button>
+                    <button type="submit" onclick="desativarBotao(this)" class="btn btn-success">Adicionar</button>
                     <input type="text" value="{{coletivas._id}}" name="id" hidden>
                 </div>
             </form>

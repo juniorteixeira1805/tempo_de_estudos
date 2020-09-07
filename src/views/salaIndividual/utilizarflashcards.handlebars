@@ -47,7 +47,7 @@
     <ol class="breadcrumb bg-dark">
       <li class="breadcrumb-item"><a class="text-light" href="/user/home">Home</a></li>
       <li class="breadcrumb-item"><a class="text-light" href="/tempo/salaIndividual">Minha Sala de estudos</a></li>
-      <li class="breadcrumb-item text-light" href="/tempo/meus-flashcards">Meus flashcards</li>
+      <li class="breadcrumb-item"><a class="text-light"  href="/tempo/meus-flashcards">Meus flashcards</a></li>
       <li class="breadcrumb-item active" aria-current="page">Utilizar flashcards</li>
     </ol>
   </nav>
@@ -56,14 +56,15 @@
   <div class="row text-center">
       {{#each card.corpo}}
           <div class="card col-sm-5 mx-2 my-4" style="background-color: #C0C0C0;">
-          <div class="card__side card__side--front bg-secondary">
-              <h4>{{pergunta}}</h4>
-          </div>
-          <div class="card__side card__side--back card__side--back bg-dark">
-              <h4 class="text-light">{{resposta}}</h4>
-          </div>
+            <div class="card__side card__side--front bg-secondary">
+                <h4>{{pergunta}}</h4>
+            </div>
+            <div class="card__side card__side--back card__side--back bg-dark">
+                <h4 class="text-light">{{resposta}}</h4>
+            </div>
           
           </div>
       {{/each}}
   </div>
+<a class="small text-dark" target="_blank" href="/flashcards/license.txt">Licensa de uso do código.</a>
 </div>
