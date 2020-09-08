@@ -106,7 +106,7 @@ const io = require('socket.io')(server)
 
 //outros
     //--Funções chamadas para atualizar as horas do dia, semana e mes--//
-    funcdata.verifcaData()
+    //funcdata.verifcaData()
 
 //--Rota para renderizar pagina de login--(Tem que ser retirada daqui)//
         app.get('/', (req, res) =>{

@@ -94,6 +94,7 @@ const User = require('../models/User');
 //-- rota responsavel por persistir as informações no array flashcard --//
     router.post('/addParticipante', async (req, res) => {
         try{
+            var novoParticipante = User.findOne({email: req.body.email})
 
             if(req.body.email == req.user.email){
                 req.flash("error_msg", "Usuário já existente na sala.") // apresenta uma mensagem de erro
