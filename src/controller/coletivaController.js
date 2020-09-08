@@ -150,7 +150,7 @@ const User = require('../models/User');
         //-- removendo elemento --//
         try{
             console.log(req.body.id)
-        Coletiva.findOneAndUpdate({ _id: req.body.id },{ $pull: { participantes: { participante: req.user._id } } }).then( async() =>{
+            Coletiva.findOneAndUpdate({ _id: req.body.id },{ $pull: { participantes: { participante: req.user._id } } }).then( async() =>{
             User.findOneAndUpdate({_id: req.user._id}, {$pull: {coletivas: {coletiva: req.body.id}}}).then(() =>{console.log("deu certo ")}).catch((err) => {console.log("n deu certo "+ err)})
         // req.flash("sucess_msg", req.user.name+ ", seu tempo foi deletado.") // apresenta na tela a msg de salvo
             res.redirect("/coletiva/minhas-salas-coletivas") //redireciona para a pagina

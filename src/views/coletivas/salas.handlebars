@@ -35,7 +35,6 @@
             </tr>             
         </thead>
         <tbody>
-        {{#each coletivas}}
             {{#each participantes}}
             <tr class="linha">
             <td>
@@ -52,7 +51,6 @@
             </td>
             </tr>
             {{/each}}
-        {{/each}}
         
         </tbody>
     </table>
@@ -117,7 +115,7 @@
     var i = 0;
 
     while(i<quantLinhas){
-        if(document.getElementsByClassName("meta")[i].innerText > document.getElementsByClassName("semana")[i].innerText){
+        if(parseInt(document.getElementsByClassName("meta")[i].innerText) > parseInt(document.getElementsByClassName("semana")[i].innerText)){
             document.getElementsByClassName("linha")[i].style.color = " #FA8072"
         }
         i++

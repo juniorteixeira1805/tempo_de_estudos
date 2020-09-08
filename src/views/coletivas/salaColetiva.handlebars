@@ -36,8 +36,7 @@
             </tr>             
         </thead>
         <tbody>
-        {{#each coletivas}}
-            {{#each participantes}}
+        {{#each participantes}}
             <tr class="linha">
             <td>
                 <span class="d-inline-block text-right" tabindex="0" data-toggle="tooltip" title="{{{participante.recado}}}"><img class="rounded-circle border border-secondary" style="width: 40px; height: 40px;" src="{{participante.foto}}"></span>
@@ -64,7 +63,6 @@
             </td>
             </tr>
             {{/each}}
-        {{/each}}
         <div id="meuid" hidden>{{user._id}}</div>
         </tbody>
     </table>
@@ -161,7 +159,7 @@
     var i = 0;
 
     while(i<quantLinhas){
-        if(document.getElementsByClassName("meta")[i].innerText > document.getElementsByClassName("semana")[i].innerText){
+        if(parseInt(document.getElementsByClassName("meta")[i].innerText) > parseInt(document.getElementsByClassName("semana")[i].innerText)){
             document.getElementsByClassName("linha")[i].style.color = " #FA8072"
         }
         if(document.getElementById("meuid").innerText == document.getElementsByClassName("idlinha")[i].value){
