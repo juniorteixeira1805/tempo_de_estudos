@@ -94,19 +94,29 @@ const User = require('../models/User');
 //-- rota responsavel por persistir as informações no array flashcard --//
     router.post('/addParticipante', async (req, res) => {
         try{
-            var novoParticipante = await User.findOne({email: req.body.email})
-            Coletiva.findOneAndUpdate({ _id: req.body.id }, {$push: { participantes: {participante: novoParticipante, meta: req.body.meta} }}).then(() =>{
-                User.findOneAndUpdate({_id: novoParticipante}, {$push: {coletivas: {coletiva: req.body.id}}}).then(() =>{console.log("deu certo ")}).catch((err) => {console.log("n deu certo "+ err)})
-                // console.log(req.user.name+ ", adicionou um card")
-            //  req.flash("sucess_msg", req.user.name+ ", seu card foi adicionado.") // apresenta na tela a msg de salvo
-                res.redirect("/coletiva/minha-sala-coletiva") //redireciona para a pagina
-            }).catch((err) => {
-                console.log("erro ao cadastrar nota: " + err)
-        //      req.flash("error_msg",req.user.name + "Houve um erro ao adicionar seu card. Entre em contato pelo suporte.") // apresenta uma mensagem de erro
+
+            if(req.body.email == req.user.email){
+                req.flash("error_msg", "Usuário já existente na sala.") // apresenta uma mensagem de erro
                 res.redirect("/coletiva/minha-sala-coletiva") // redireciona para a pagina
-            })
+            } else {
+                if((novoParticipante != null) && (novoParticipante != undefined) && (novoParticipante != "")){
+                    Coletiva.findOneAndUpdate({ _id: req.body.id }, {$push: { participantes: {participante: novoParticipante, meta: req.body.meta} }}).then(() =>{
+                        User.findOneAndUpdate({_id: novoParticipante}, {$push: {coletivas: {coletiva: req.body.id}}}).then(() =>{console.log("deu certo ")}).catch((err) => {console.log("n deu certo "+ err)})
+                        req.flash("sucess_msg", "Novo membro adicionado.") // apresenta na tela a msg de salvo
+                        res.redirect("/coletiva/minha-sala-coletiva") //redireciona para a pagina
+                    }).catch((err) => {
+                        console.log("erro ao cadastrar nota: " + err)
+                        req.flash("error_msg", "Houve um erro ao adicionar o membro. Entre em contato pelo suporte.") // apresenta uma mensagem de erro
+                        res.redirect("/coletiva/minha-sala-coletiva") // redireciona para a pagina
+                    })
+                } else {
+                    req.flash("error_msg", "Usuário não encontrado.") // apresenta uma mensagem de erro
+                    res.redirect("/coletiva/minha-sala-coletiva") // redireciona para a pagina
+                }
+            }
+
         } catch(err){
-            console.log("erro ao cadastrar nota: "+err)
+            console.log("erro ao adicionar membro: "+err)
         //  req.flash("error_msg",req.user.name + "Houve um erro ao adicionar seu card. Entre em contato pelo suporte.") // apresenta uma mensagem de erro
             res.redirect("/coletiva/minha-sala-coletiva") // redireciona para a pagina
         }

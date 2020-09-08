@@ -34,6 +34,7 @@ const ColetivaSchema = new mongoose.Schema({
 
     participantes : [{
         participante: {
+            unique: true,
             type: Schema.Types.ObjectId, //-- Salva o id do dono da atividade --//
             ref: "users",
         },

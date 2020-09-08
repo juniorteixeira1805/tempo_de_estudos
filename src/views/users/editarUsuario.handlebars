@@ -44,15 +44,7 @@
 
                 <div class="row my-4">
                     <div class="col-sm">
-                        <label for="email" class="text-light">E-mail*</label>
-                        <input type="email" name="email" id="email" value="{{user.email}}"  class="form-control" placeholder="Ex.: Ross@gmail.com" required>
-                    </div>
-                </div>
-
-                <div class="row my-4">
-                    <div class="col-sm">
-                        <label for="password" class="text-light">Senha*</label>
-                        <input type="password" name="password" id="password" class="form-control" placeholder="Informe a senha" required>
+                        <p class="text-light">Para modificar o e-mail, entre em contato pelo suporte ou chat.</p>
                     </div>
                 </div>
 
@@ -60,9 +52,27 @@
                 
             </form>
         </div>
+        <div class="container">
+
+            <form method="POST" action="/auth/mudarSenha">
+                <div class="dropdown-divider"></div>
+                <h5 class="text-light">Modificar senha:</h5>
+                <div class="row my-4">
+                    <div class="col-sm">
+                        <label for="password" class="text-light">Senha*</label>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Informe a senha atual" required>
+                        <label for="newpassword" class="text-light">Nova Senha*</label>
+                        <input type="password" name="newpassword" id="newpassword" class="form-control" placeholder="Informe a nova senha" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success text-light">Salvar</button>  
+                <div class="dropdown-divider"></div>    
+            </form>
+        </div>
 
         <div class="card text-center mt-2 bg-dark mb-2">
             <div class="card-header bg-dark">
+                <h5 class="text-light">Modificar Avatar:</h5>
                 <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Você pode adicionar uma foto sua em seu perfil.">
                     <button class="btn btn-light mt-2 bnt-responsive-sm btn-sm" style="margin: 0 auto;" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         Avatars predefinidos

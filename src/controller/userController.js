@@ -480,8 +480,6 @@
             });
             await User.updateOne({_id: req.user._id},{curso: req.body.curso}, function(err, res) {
             });
-            await User.updateOne({_id: req.user._id}, {foto: req.body.foto}, function(err, res) {
-            });
             await User.updateOne({_id: req.user._id}, {email: req.body.email}, function(err, res) {
             });
             await User.updateOne({_id: req.user._id}, {bio: req.body.bio}, function(err, res) {
@@ -490,16 +488,12 @@
             });
             await User.updateOne({_id: req.user._id}, {objetivo: req.body.objetivo}, function(err, res) {
             });
-            var senha = await bct.hash(req.body.password, 5);
-            await User.updateOne({_id: req.user._id}, {password: senha}, function(err, res) {
-            });
-
-            console.log(req.user.name + " Editou o perfil")
             req.flash("sucess_msg", "Perfil editado")
-            res.redirect("/user/home")
+            res.redirect("/user/editarusuario")
 
         } catch(err){
-            console.log("Deu erro ao editar o perfil "+ req.user.name + err)
+            req.flash("error_msg", "Houve um erro ao salvar") // apresenta uma mensagem de erro
+            res.redirect("/user/editarusuario")
         }
     })
 

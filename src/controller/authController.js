@@ -13,6 +13,8 @@
 
     const passport = require('passport')
 
+    const bct = require('bcryptjs');
+
     const Email = require("../config/nodemailer")
 
 
@@ -183,20 +185,47 @@
     });
 
 //-- Rota para editar perfil --//
-router.post("/editavt", async (req, res) => {
-    try{
-    //-- Atualizando o bd User com os dados recebidos --//
-        console.log(req.body.foto)
-        await User.updateOne({_id: req.user._id}, {foto: req.body.foto}, function(err, res) {
-        });
+    router.post("/editavt", async (req, res) => {
+        try{
+        //-- Atualizando o bd User com os dados recebidos --//
+            await User.updateOne({_id: req.user._id}, {foto: req.body.foto}, function(err, res) {
+            });
 
-        req.flash("sucess_msg", "avatar salvo")
-        res.redirect("/user/editarusuario")
+            req.flash("sucess_msg", "avatar salvo")
+            res.redirect("/user/editarusuario")
 
-    } catch(err){
-        console.log("Deu erro ao editar o perfil "+ req.user.name + err)
-    }
-})
+        } catch(err){
+            console.log("Deu erro ao editar o perfil "+ req.user.name + err)
+        }
+    })
+
+//-- Rota para editar perfil --//
+    router.post("/mudarSenha", async (req, res) => {
+        try{
+            if((req.body.newpassword != null) && (req.body.newpassword != undefined && (req.body.newpassword != ""))){
+                //--Verificando a se a senha está correta--//
+                bct.compare(req.body.password, req.user.password, async (erro, batem) => {
+                    if(batem){
+                        var senha = await bct.hash(req.body.newpassword, 5);
+                        await User.updateOne({_id: req.user._id}, {password: senha}, function(err, res) {
+                        });
+                        req.flash("sucess_msg", "senha alterada.")
+                        res.redirect("/user/editarusuario")
+                    } else{
+                        req.flash("error_msg", "Senha atual incorreta.") // apresenta uma mensagem de erro
+                        res.redirect("/user/editarusuario")
+                    }
+                })
+            } else{
+                req.flash("error_msg", "o campo não pode ser vazio.") // apresenta uma mensagem de erro
+                res.redirect("/user/editarusuario") 
+            }
+
+        } catch(err){
+            req.flash("error_msg", "Houve um erro ao salvar.") // apresenta uma mensagem de erro
+            res.redirect("/user/editarusuario")
+        }
+    })
 
 //--Rota que chama o passport para a autenticação--//
     router.post('/authenticate', (req, res, next) => {
