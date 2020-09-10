@@ -72,7 +72,7 @@ const io = require('socket.io')(server)
 
     //mongoose
         mongoose.Promise = global.Promise; // evita alguns tipos de erros
-        mongoose.connect("mongodb+srv://mateus08:mateus08081999@cluster0.5e8de.mongodb.net/plataforma?retryWrites=true&w=majority", { useFindAndModify: false }).then(() => { //cponectando ao banco de dados
+        mongoose.connect("mongodb+srv://devorion01:as123@cluster0-czhpf.mongodb.net/test?retryWrites=true&w=majority", { useFindAndModify: false }).then(() => { //cponectando ao banco de dados
             console.log("conectado ao mongo")
         }).catch((err) => {
             console.log("erro ao se conectar "+err)
