@@ -9,6 +9,7 @@
     const Metas = require('../models/Meta');
     const Coletiva = require('../models/salaColetiva');
 
+    const fs = require('fs')
     const router = express.Router();
 
     const passport = require('passport')
@@ -21,19 +22,32 @@
     const storage = multer.diskStorage({
         destination: function(req, file, cb) {
             cb(null, path.join(__dirname, '../public/uploads/'));
-            //cb(null, "./public/uploads/")
         },
-
         filename: function(req, file, cb) {
             var caminho = file.originalname + Date.now() + path.extname(file.originalname)
             cb(null, caminho)
             var desti = "/uploads/" + caminho
             User.updateOne({_id: req.user._id}, {foto: desti}).then((req, res) => {}).catch((err) => {})
-        }
+        },
     })
 
-    const upload = multer({storage})
-
+    const upload = multer({
+        storage,
+        fileFilter: function(req, file, cb){
+            const ext = path.extname(file.originalname) 
+            if(ext !== '.png' && ext !== '.jpeg' && ext !== '.jpg') {
+                req.flash("error_msg", "Apenas imagens do tipo JPEG, JPG e PNG são permitidas")
+                cb(null, false)
+            }
+            else { cb(null, true); }
+        },
+        limits: {
+            files: 1,
+            fileSize: 2600 * 2600
+        },
+        
+    })
+    
     router.post("/addFoto", upload.single("foto"), async(req, res) => {
         res.redirect("/perfis/meuperfil")
     })
