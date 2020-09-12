@@ -102,11 +102,6 @@
                           <button id="btniniciarIniciante" class="btn btn-light" style="width: 100%;" onclick="iniciante()" >Iniciar</button>
                         </div>
                         <form action="/authUser/registerTempoPomodoro" method="POST">
-                          <input type="hidden" name="id" value="{{user._id}}"></td>
-                          <input type="hidden" name="dia" value="{{user.dia}}"></td>
-                          <input type="hidden" name="semana" value="{{user.semana}}"></td>
-                          <input type="hidden" name="mes" value="{{user.mes}}"></td>
-                          <input type="hidden" name="total" value="{{user.total}}"></td>
                           <input type="text" class="form-control text-center" name="inicio" id="inicioBackIniciante" hidden>
                           <input type="text" class="form-control text-center" name="termino" id="fimBackiniciante"  hidden>
                             <div class="form-row">
@@ -126,7 +121,6 @@
                                 <option value="Estudou">Estudei</option>
                                 <option value="Leitura">Fiz uma Leitura</option>
                                 <option value="Pesquisou">Pesquisa</option>
-                                <option value="Revisou">Revisei</option>
                                 <option value="Exercitou">Exercicios</option>
                               </select>
                               <label class="text-light" for="validationServer01">Informe o subtipo da atividade:</label>
@@ -154,11 +148,6 @@
                           <button id="btniniciarAvancado" class="btn btn-light" style="width: 100%;" onclick="Avancado()" >Iniciar</button>
                         </div>
                         <form action="/authUser/registerTempoPomodoro" method="POST">
-                          <input type="hidden" name="id" value="{{user._id}}"></td>
-                          <input type="hidden" name="dia" value="{{user.dia}}"></td>
-                          <input type="hidden" name="semana" value="{{user.semana}}"></td>
-                          <input type="hidden" name="mes" value="{{user.mes}}"></td>
-                          <input type="hidden" name="total" value="{{user.total}}"></td>
                           <input type="text" class="form-control text-center" name="inicio" id="inicioBackAvancado" hidden>
                           <input type="text" class="form-control text-center" name="termino" id="fimBackAvancado"  hidden>
                             <div class="form-row">
@@ -178,7 +167,6 @@
                                 <option value="Estudou">Estudei</option>
                                 <option value="Leitura">Fiz uma Leitura</option>
                                 <option value="Pesquisou">Pesquisa</option>
-                                <option value="Revisou">Revisei</option>
                                 <option value="Exercitou">Exercicios</option>
                               </select>
                               <label class="text-light" for="validationServer01">Informe o subtipo da atividade:</label>
@@ -203,16 +191,11 @@
                         </div>
                       </div>
                       <div class="card-body col-sm-10" style="margin: 0 auto;">
-                        <div>
-                          <p class="start text-light">Iniciando está opção, você poderá estudar o tempo que quiser e descansará o quanto quiser. O temporizador marcará o total. Ao passar o tempo que você adicionou de estudo, um beep soará, então você deverá parar até o beep soar novamente, marcando o fim de um ciclo e, assim, poderá salvar seu tempo e reiniciar o ciclo.</p>
-                          <button id="btniniciarLivre" class="btn btn-light" style="width: 100%;" onclick="Livre()" >Iniciar</button>
-                        </div>
                         <form action="/authUser/registerTempoPomodoro" method="POST">
-                          <input type="hidden" name="id" value="{{user._id}}"></td>
-                          <input type="hidden" name="dia" value="{{user.dia}}"></td>
-                          <input type="hidden" name="semana" value="{{user.semana}}"></td>
-                          <input type="hidden" name="mes" value="{{user.mes}}"></td>
-                          <input type="hidden" name="total" value="{{user.total}}"></td>
+                          <div>
+                            <p class="start text-light">Iniciando está opção, você poderá estudar o tempo que quiser e descansará o quanto quiser. O temporizador marcará o total. Ao passar o tempo que você adicionou de estudo, um beep soará, então você deverá parar até o beep soar novamente, marcando o fim de um ciclo e, assim, poderá salvar seu tempo e reiniciar o ciclo.</p>
+                            <button id="btniniciarLivre" class="btn btn-light" style="width: 100%;" onclick="Livre()" >Iniciar</button>
+                          </div>
                           <div id="mostraInicioLivre" class="form-group mx-sm-3 mb-2" hidden>
                           <small class="text-center text-light">Horário de início:</small>
                           <input class="text-center" type="text" id="inicioBackLivre"  name="inicio"  style="width: 30%; min-width: 50px;">
@@ -225,11 +208,11 @@
                             <div class="form-row">
                               <div class="form-group mx-sm-3 mb-2" id="labelALivre">
                                 <small class="text-center text-light">Tempo de estudo:</small>
-                                <input type="number" class="form-control text-center" id="inicioLivre" min="0" max="240" placeholder="Em minutos">
+                                <input type="number" class="form-control text-center" id="inicioLivre" value="1" min="0" max="240" placeholder="Em minutos" required>
                               </div>
                               <div class="form-group mx-sm-3 mb-2" id="labelBLivre">
                                 <small class="text-center text-light">Tempo de descanso:</small>
-                                <input type="number" class="form-control text-center" id="fimLivre" min="0" max="240" placeholder="Em minutos">
+                                <input type="number" class="form-control text-center" id="fimLivre" value="1" min="0" max="240" placeholder="Em minutos" required>
                               </div>
                               <h3 id="avisoLivre" class="text-light" hidden>Agora, descanse!</h3>
                             </div>
@@ -239,7 +222,6 @@
                                 <option value="Estudou">Estudei</option>
                                 <option value="Leitura">Fiz uma Leitura</option>
                                 <option value="Pesquisou">Pesquisa</option>
-                                <option value="Revisou">Revisei</option>
                                 <option value="Exercitou">Exercicios</option>
                               </select>
                               <label class="text-light" for="validationServer01">Informe o subtipo da atividade:</label>
@@ -382,7 +364,7 @@ function iniciante() {
     minuto = minuto-1
     }
 
-    if(minutosToatais == 300){
+    if(minutosToatais == 30){
       beepInicio()
       var datafim = new Date()
       var horaFinal = datafim.getHours()

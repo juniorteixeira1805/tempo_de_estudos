@@ -129,7 +129,10 @@
             var nova_Data = await funcdata.novadata(new Date())
 
         //-- Calculando a quantidade de minutos estudados --//
-            tempoTotalEstudado = await parseFloat(funcdata.tempoEstudado(req.body.inicio, req.body.termino)).toFixed(2)
+        console.log(req.body.termino)
+        console.log(req.body.inicio)
+            tempoTotalEstudado = await parseFloat(funcdata.tempoEstudado(req.body.inicio, req.body.termino).toFixed(2))
+            console.log(tempoTotalEstudado)
 
         //-- persistindo no banco de dados --//
             await User.findOneAndUpdate({ _id: req.user._id }, {$push: { tempos: {dateCreater: new Date(), novaData: nova_Data, inicio: req.body.inicio, termino: req.body.termino, tempoEstudado: tempoTotalEstudado, tipo: req.body.tipo, subTipo: req.body.subTipo, metodo: "Pomodoro"} }}).then(async () =>{
