@@ -84,14 +84,14 @@ module.exports = {
                 await User.updateMany({$set: {'historico.semana': 0}}, function(err, res) {//-- zerando as horas diarias --//
                     console.log("Zerando semanas...")
                 });
+                await User.updateMany({$set: {'historico.neutrinos': 0}}, function(err, res) {//-- zerando as horas diarias --//
+                    console.log("Zerando neutrinos...")
+                });
             }
 
             if(diaAtual == "1"){
                 await User.updateMany({$set: {'historico.mes': 0}}, function(err, res) {//-- zerando as horas diarias --//
                     console.log("Zerando meses...")
-                });
-                await User.updateMany({$set: {'historico.neutrinos': 0}}, function(err, res) {//-- zerando as horas diarias --//
-                    console.log("Zerando neutrinos...")
                 });
             }
 
@@ -127,14 +127,14 @@ module.exports = {
                 await User.updateMany({$set: {'historico.semana': 0}}, function(err, res) {//-- zerando as horas diarias --//
                     console.log("Zerando semanas...")
                 });
+                await User.updateMany({$set: {'historico.neutrinos': 0}}, function(err, res) {//-- zerando as horas diarias --//
+                    console.log("Zerando neutrinos...")
+                });
             }
 
             if(diaAtual == "1"){
                 await User.updateMany({$set: {'historico.mes': 0}}, function(err, res) {//-- zerando as horas diarias --//
                     console.log("Zerando meses...")
-                });
-                await User.updateMany({$set: {'historico.neutrinos': 0}}, function(err, res) {//-- zerando as horas diarias --//
-                    console.log("Zerando neutrinos...")
                 });
             }
 

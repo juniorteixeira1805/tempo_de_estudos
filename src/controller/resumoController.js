@@ -41,7 +41,7 @@ const router = express.Router();
                 totalLeitura = await 0 + parseInt(req.user.historico.totalLeitura)
                 totalPesquisa = await 0 + parseInt(req.user.historico.totalPesquisa)
                 totalExercicio = await 0 + parseInt(req.user.historico.totalExercicio)
-                pontos = parseInt(req.user.historico.neutrinos) + 30
+                pontos = parseInt(req.user.historico.neutrinos) + 500
                 await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, neutrinos: pontos}}}).then((req, res) => {}).catch((err) => {})
                 await User.findOneAndUpdate({_id: req.user._id}, {$push: {meusEventos: {dateCreater: new Date(), evento: "Redigiu um novo resumo", name: req.user.name, foto: req.user.foto, subevento: req.body.titulo, metodo: "Escrita", inicio: "--:--", termino: "--:--", neutrinosGerado: 30}}}).then((req, res) => {}).catch((err) => {})
                 let rsm = req.user.resumos + 1
@@ -102,7 +102,7 @@ const router = express.Router();
                 totalLeitura = await 0 + parseInt(req.user.historico.totalLeitura)
                 totalPesquisa = await 0 + parseInt(req.user.historico.totalPesquisa)
                 totalExercicio = await 0 + parseInt(req.user.historico.totalExercicio)
-                pontos = req.user.historico.pts - 30
+                pontos = req.user.historico.pts - 500
                 await User.findOneAndUpdate({_id: req.user._id}, {$set: {historico: {dia: minutosTotalNoDia, semana: minutosTotalNoSemana, mes: minutosTotalNoMes, total: minutosTotalNoTotal, totalEstudo: totalEstudo, totalAula: totalAula, totalLeitura: totalLeitura, totalPesquisa: totalPesquisa, totalExercicio: totalExercicio, pts: pontos}}}).then((req, res) => {}).catch((err) => {})
                 //-- verificando quantos eventos tem --//
                 var eventos = await User.findOne({_id: req.user._id}).select('meusEventos')
