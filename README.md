@@ -1,1 +1,1 @@
-[![Run on Repl.it](https://repl.it/badge/github/juniorteixeira1805/tempo_de_estudos)](https://repl.it/github/juniorteixeira1805/tempo_de_estudos)
+
