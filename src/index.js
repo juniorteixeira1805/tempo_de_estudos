@@ -12,11 +12,6 @@ const funcdata = require("./controller/tempoController")
 //const https = require('https')
 require("./config/auth")(passport)
 
-// configurando o socket.io
-const server = require('http').createServer(app)
-const io = require('socket.io')(server)
-
-
 // importando meus packs
     const Auth = require('./controller/authController')
     const AuthUser = require('./controller/userController')
@@ -115,6 +110,6 @@ const io = require('socket.io')(server)
         
     //conectando o servidor a porta 
         const PORT = process.env.PORT || 3000
-        server.listen(PORT, () => {
+        app.listen(PORT, () => {
             console.log("servidor rodando...")
         })
