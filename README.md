@@ -3,12 +3,12 @@
 <p align="center">
  <a href="#Description">Description</a> •
  <a href="#Situation">Situation</a> •
- <a href="#GettingStarted">Getting Started</a> • 
+ <a href="#Getting Started">Getting Started</a> • 
  <a href="#Technologies">Technologies</a>
  <a href="#Features">Features</a> • 
  <a href="#Contributions">Contributions</a> •
  <a href="#License">License</a> • 
- <a href="#Author">Author</a>
+ <a href="#Authors">Author</a>
 </p>
 
 ## Description
@@ -46,7 +46,7 @@ node src/index.js
 - É possivel cadastrar salas de estudos individuais e coletivas;
 
 ## Contributions
-Contribuições para o projeto são sempre bem-vindas.
+Contribuições para o projeto são sempre bem-vindas. Entretando, o projeto está descontinuado!
 
 ## License
 Não se aplica.
