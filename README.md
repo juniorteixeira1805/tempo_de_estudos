@@ -1,4 +1,4 @@
-# node.js-graphql-mongodb
+# Tempo de estudos
 
 <p align="center">
  <a href="#Description">Description</a> •
@@ -40,6 +40,7 @@ node src/index.js
 
 ## Features
 - É possível cadastrar usuários;
+- É posível informar o tempo de estudos;
 - É possível seguir pessoas;
 - É possivel cadastrar resumos, notas, flashcards e metas;
 - É possivel cadastrar salas de estudos individuais e coletivas;
