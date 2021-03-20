@@ -3,12 +3,12 @@
 <p align="center">
  <a href="#Description">Description</a> •
  <a href="#Situation">Situation</a> •
- <a href="#Getting Started">Getting Started</a> • 
+ <a href="#Getting-Started">Getting Started</a> • 
  <a href="#Technologies">Technologies</a>
  <a href="#Features">Features</a> • 
  <a href="#Contributions">Contributions</a> •
  <a href="#License">License</a> • 
- <a href="#Authors">Author</a>
+ <a href="#Authors">Authors</a>
 </p>
 
 ## Description
@@ -18,7 +18,7 @@ Uma plataforma de estudos para auxiliar os estudantes em suas rotinas de estudos
 **PROJETO DESCONTINUADO**
 (Outro peojeto será criado)
 
-## Getting Started
+## Getting-Started
 Para utilizar o projeto, basta clonar o repositório em um diretório de sua preferência com o seguinte comando:
 ```
 git clone https://github.com/juniorteixeira1805/tempo_de_estudos
